@@ -1,40 +1,5 @@
 .basecomponent {
   width: fit-content;
   height: fit-content;
-
   display: flex;
-  // width: 150px;
-  // height: 40px;
-}
-
-.touchable {
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-.border_default {
-  border: var(--border-default);
-}
-
-.border_active {
-  border: var(--border-active);
-}
-
-.radius_1 {
-  border-radius: var(--radius-1);
-}
-
-.radius_2 {
-  border-radius: var(--radius-2);
-}
-
-.padding_1 {
-  padding: var(--padding-1);
-}
-
-.padding_2 {
-  padding: var(--padding-2);
 }
