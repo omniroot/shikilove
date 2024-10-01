@@ -11,6 +11,21 @@ export const ProfilePage = () => {
       <Test justifyContent="center" alignItems="center">
         123
       </Test>
+      <Test justifyContent="center" alignItems="center">
+        123
+      </Test>
+      <Test justifyContent="center" alignItems="center">
+        123
+      </Test>
+      <Test justifyContent="center" alignItems="center">
+        123
+      </Test>
+      <Test justifyContent="center" alignItems="center">
+        123
+      </Test>
+      <Test justifyContent="center" alignItems="center">
+        123
+      </Test>
     </div>
   );
 };
