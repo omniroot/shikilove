@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styles from "./BaseComponent.module.scss";
 import clsx from "clsx";
-interface IBaseComponent {
+export interface IBaseComponent {
   className?: string;
   children?: React.ReactNode;
   touchable?: boolean;
