@@ -1,17 +1,29 @@
 import { Box } from "@ui/Box/Box";
 import styles from "./Sidebar.module.scss";
-import { ProfileIcon } from "@/shared/icons";
+import {
+  LogoutIcon,
+  ProfileIcon,
+  SearchIcon,
+  SettingsIcon,
+} from "@/shared/icons";
+import { IconButton } from "@ui/IconButton/IconButton";
 
 export const Sidebar = () => {
   return (
-    <Box className={styles.sidebar}>
+    <Box className={styles.sidebar} flexDirection="column">
       <span>Shikimori</span>
-      <Box border="active">
+      <IconButton border="active">
         <ProfileIcon />
-      </Box>
-      <Box>Search</Box>
-      <Box>Settings</Box>
-      <Box>Logout</Box>
+      </IconButton>
+      <IconButton>
+        <SearchIcon />
+      </IconButton>
+      <IconButton>
+        <SettingsIcon />
+      </IconButton>
+      <IconButton>
+        <LogoutIcon />
+      </IconButton>
     </Box>
   );
 };
