@@ -1,6 +1,9 @@
 .basecomponent {
   width: fit-content;
   height: fit-content;
+  // width: 150px;
+  // height: 40px;
+  padding: var(--padding-1);
 }
 
 .touchable {
@@ -12,9 +15,17 @@
 }
 
 .border_default {
-  border: 2px solid var(--secondary);
+  border: var(--border-default);
 }
 
 .border_active {
-  border: 2px solid var(--accent);
+  border: var(--border-active);
+}
+
+.radius_1 {
+  border-radius: var(--radius-1);
+}
+
+.radius_2 {
+  border-radius: var(--radius-2);
 }
