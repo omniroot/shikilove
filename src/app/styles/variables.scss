@@ -14,6 +14,12 @@
   --radius-2: 2rem;
   --radius: var(--radius-1);
 
+  --gap-1: 0.5rem;
+  --gap-2: 1rem;
+  --gap: var(--gap-1);
+
+  --border-none: none;
+  --border-transparent: 0.2rem solid transparent;
   --border-default: 0.2rem solid var(--secondary);
   --border-active: 0.2rem solid var(--accent);
   --border: var(--border-default);
