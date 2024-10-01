@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { CSSProperties, FC } from "react";
 import styles from "./BaseComponent.module.scss";
 import clsx from "clsx";
 export interface IBaseComponent {
@@ -8,6 +8,9 @@ export interface IBaseComponent {
   border?: boolean | "default" | "active";
   radius?: boolean | "1" | "2";
   padding?: boolean | "1" | "2";
+  flexDirection?: "row" | "column";
+  jsutifyContent?: "start" | "center " | "end";
+  alignItems?: "start" | "center" | "end";
 }
 
 export const BaseComponent: FC<IBaseComponent> = ({
@@ -17,6 +20,9 @@ export const BaseComponent: FC<IBaseComponent> = ({
   border = false,
   radius = false,
   padding = false,
+  flexDirection = "row",
+  jsutifyContent = "start",
+  alignItems = "start",
 }) => {
   const _class = clsx(styles.basecomponent, className, {
     [styles.touchable]: touchable,
@@ -28,5 +34,15 @@ export const BaseComponent: FC<IBaseComponent> = ({
     [styles.padding_2]: padding === "2",
   });
 
-  return <div className={_class}>{children}</div>;
+  const _style: CSSProperties = {
+    flexDirection: flexDirection,
+    justifyContent: jsutifyContent,
+    alignItems: alignItems,
+  };
+
+  return (
+    <div className={_class} style={_style}>
+      {children}
+    </div>
+  );
 };
