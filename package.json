@@ -15,6 +15,7 @@
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
+    "@emotion/css": "^11.13.4",
     "@eslint/js": "^9.9.0",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.3",
