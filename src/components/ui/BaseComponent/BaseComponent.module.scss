@@ -3,7 +3,6 @@
   height: fit-content;
   // width: 150px;
   // height: 40px;
-  padding: var(--padding-1);
 }
 
 .touchable {
@@ -28,4 +27,12 @@
 
 .radius_2 {
   border-radius: var(--radius-2);
+}
+
+.padding_1 {
+  padding: var(--padding-1);
+}
+
+.padding_2 {
+  padding: var(--padding-2);
 }
