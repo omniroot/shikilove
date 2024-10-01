@@ -16,6 +16,7 @@ export interface IBaseComponent {
   justifyContent?: "start" | "center" | "end";
   alignItems?: "start" | "center" | "end";
   gap?: "none" | "1" | "2";
+  pseudoHide?: boolean;
   onMouseEnter?: (event: React.MouseEvent<HTMLDivElement>) => void;
   onMouseLeave?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
@@ -31,6 +32,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
   justifyContent = "start",
   alignItems = "start",
   gap = "none",
+  pseudoHide = false,
   as = "div",
   ...rest
 }) => {
@@ -47,7 +49,11 @@ export const BaseComponent: FC<IBaseComponent> = ({
     ${padding === "2" && "padding: var(--padding-2);"}
     ${gap === "1" && "gap: var(--gap-1);"}
     ${gap === "2" && "gap: var(--gap-2);"}
-
+    
+    opacity: 1;
+    ${pseudoHide
+      ? "visibility: hidden;width: 1px; opacity: 0;"
+      : "visibility: visible;"}
     flex-direction: ${flexDirection};
     justify-content: ${justifyContent};
     align-items: ${alignItems};
