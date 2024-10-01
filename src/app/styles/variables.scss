@@ -6,7 +6,15 @@
   --text: #f2f4f3;
   --text-secondary: #4c4c4c;
 
-  --radius-1: 12px;
-  --radius-2: 24px;
+  --padding-1: 0.5rem;
+  --padding-2: 1rem;
+  --padding: var(--padding-1);
+
+  --radius-1: 1rem;
+  --radius-2: 2rem;
   --radius: var(--radius-1);
+
+  --border-default: 0.2rem solid var(--secondary);
+  --border-active: 0.2rem solid var(--accent);
+  --border: var(--border-default);
 }
