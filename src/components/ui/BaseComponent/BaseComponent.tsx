@@ -5,7 +5,7 @@ interface IBaseComponent {
   className?: string;
   children?: React.ReactNode;
   touchable?: boolean;
-  border?: boolean;
+  border?: boolean | "default" | "active";
 }
 
 export const BaseComponent: FC<IBaseComponent> = ({
@@ -16,7 +16,8 @@ export const BaseComponent: FC<IBaseComponent> = ({
 }) => {
   const _class = clsx(styles.basecomponent, className, {
     [styles.touchable]: touchable,
-    [styles.border]: border,
+    [styles.border_default]: border === "default",
+    [styles.border_active]: border === "active",
   });
 
   return <div className={_class}>{children}</div>;
