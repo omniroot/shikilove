@@ -9,7 +9,7 @@ export interface IBaseComponent {
   radius?: boolean | "1" | "2";
   padding?: boolean | "1" | "2";
   flexDirection?: "row" | "column";
-  jsutifyContent?: "start" | "center " | "end";
+  jsutifyContent?: "start" | "center" | "end";
   alignItems?: "start" | "center" | "end";
 }
 
