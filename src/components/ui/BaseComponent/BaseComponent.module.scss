@@ -1,0 +1,12 @@
+.basecomponent {
+  width: fit-content;
+  height: fit-content;
+}
+
+.touchable {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
