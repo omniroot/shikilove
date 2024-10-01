@@ -9,7 +9,7 @@ export const IconButton: FC<IIconButtonProps> = ({
   border = "default",
   radius = "1",
   padding = "1",
-  jsutifyContent = "center",
+  justifyContent = "center",
   alignItems = "center",
   touchable = true,
   ...rest
@@ -20,7 +20,7 @@ export const IconButton: FC<IIconButtonProps> = ({
       border={border}
       radius={radius}
       padding={padding}
-      jsutifyContent={jsutifyContent}
+      justifyContent={justifyContent}
       alignItems={alignItems}
       touchable={touchable}
     >
