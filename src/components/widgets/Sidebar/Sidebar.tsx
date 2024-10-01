@@ -8,7 +8,8 @@ import {
 } from "@/shared/icons";
 import { IconButton } from "@ui/IconButton/IconButton";
 import { Link } from "react-router-dom";
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
+import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
 
 export const Sidebar = () => {
   const [isSidebarHovered, setIsSidebarHovered] = useState(false);
@@ -20,6 +21,10 @@ export const Sidebar = () => {
     setIsSidebarHovered(false);
   };
 
+  useEffect(() => {
+    console.log(isSidebarHovered);
+  }, [isSidebarHovered]);
+
   return (
     <Box className={styles.sidebar_container} padding="none" border="none">
       <Box
@@ -30,10 +35,10 @@ export const Sidebar = () => {
         onMouseEnter={onSidebarMouseEnter}
         onMouseLeave={onSidebarMouseLeave}
       >
-        {/* <span>Shikimori</span> */}
-        <IconButton border="active">
+        {/* <Box pseudoHide>Shikimori</Box> */}
+        <IconButton border="active" className={styles.profile}>
           <ProfileIcon />
-          {isSidebarHovered && "Profile"}
+          {/* <BaseComponent pseudoHide={!isSidebarHovered}>Profile</BaseComponent> */}
         </IconButton>
         <IconButton border="transparent">
           <SearchIcon />
