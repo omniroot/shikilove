@@ -1,4 +1,18 @@
-.sidebar {
+.sidebar_container {
   width: 70px;
-  height: 100dvh;
+  height: 97dvh;
+
+  .sidebar {
+    position: fixed;
+    width: 70px;
+    height: 100%;
+  }
+}
+
+.sidebar_container:has(.sidebar:hover) {
+  width: 250px;
+}
+
+.sidebar:hover {
+  width: calc(250px - var(--padding-2) * 2);
 }
