@@ -22,6 +22,13 @@
   --gap-2: 1rem;
   --gap: var(--gap-1);
 
+  --text-size-h1: 2rem; /* Размер для h1 */
+  --text-size-h2: 1.75rem; /* Размер для h2 */
+  --text-size-h3: 1.5rem; /* Размер для h3 */
+  --text-size-h4: 1.25rem; /* Размер для h4 */
+  --text-size-h5: 1rem; /* Размер для h5 */
+  --text-size-h6: 0.875rem; /* Размер для h6 */
+
   --border-none: none;
   --border-transparent: 0.2rem solid transparent;
   --border-default: 0.2rem solid var(--secondary);
