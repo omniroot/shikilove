@@ -14,7 +14,7 @@ export const Divide: FC<IDivideProps> = ({
   const _style = css`
     ${orientation === "horizontal" && `min-width: ${width}; min-height: 3px;`}
     ${orientation === "vertical" && `min-width: 3px; min-height: ${width};`}
-    background-color: var(--secondary);
+    background-color: var(--color-secondary);
   `;
   return (
     <Box

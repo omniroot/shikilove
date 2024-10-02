@@ -4,6 +4,19 @@ import clsx from "clsx";
 import { css } from "@emotion/css";
 import { Link } from "react-router-dom";
 
+type IColors =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "text"
+  | "text-secondary"
+  | "transparent"
+  | "red"
+  | "violet"
+  | "blue"
+  | "green"
+  | "yellow";
+
 export interface IBaseComponent {
   className?: string;
   as?: React.ElementType | "div" | typeof Link;
@@ -61,6 +74,8 @@ export interface IBaseComponent {
     | "unsafe center";
   gap?: "none" | "1" | "2";
   margin?: "none" | "1" | "2";
+  textColor?: IColors;
+  backgroundColor?: IColors;
   pseudoHide?: boolean;
   to?: string;
   onMouseEnter?: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -81,6 +96,8 @@ export const BaseComponent: FC<IBaseComponent> = ({
   flexDirection = "row",
   justifyContent = "start",
   alignItems = "start",
+  textColor = "text",
+  backgroundColor = "transparent",
   gap = "none",
   pseudoHide = false,
   as = "div",
@@ -105,6 +122,8 @@ export const BaseComponent: FC<IBaseComponent> = ({
     width: ${width};
     height: ${height};
 
+    ${`color: var(--color-${textColor});`}
+    ${`background-color: var(--color-${backgroundColor});`}
     opacity: 1;
     ${pseudoHide
       ? "visibility: hidden;width: 1px; opacity: 0;"
