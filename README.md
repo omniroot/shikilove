@@ -24,5 +24,5 @@
 
   - [ ] AnimeCard
 
-- [ ] Widgets - business components
-  - [ ] Sidebar
+- [ ] Widgets
+  - [x] Sidebar
