@@ -11,7 +11,7 @@ export const IconButton: FC<IIconButtonProps> = ({
   padding = "1",
   justifyContent = "center",
   alignItems = "center",
-  touchable = true,
+  clickable = true,
   ...rest
 }) => {
   return (
@@ -22,7 +22,7 @@ export const IconButton: FC<IIconButtonProps> = ({
       padding={padding}
       justifyContent={justifyContent}
       alignItems={alignItems}
-      touchable={touchable}
+      clickable={clickable}
     >
       {children}
     </BaseComponent>
