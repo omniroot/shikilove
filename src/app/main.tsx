@@ -5,7 +5,6 @@ import { RouterProvider } from "react-router-dom";
 
 import "@/app/styles/global.scss";
 
-// test 2
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RouterProvider router={router} />
