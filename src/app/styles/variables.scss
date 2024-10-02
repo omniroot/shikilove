@@ -1,11 +1,4 @@
 :root {
-  --primary: #151515;
-  --secondary: #1e1e1e;
-  --accent: #b3b3f1;
-
-  --text: #f2f4f3;
-  --text-secondary: #4c4c4c;
-
   --padding-1: 0.5rem;
   --padding-2: 1rem;
   --padding: var(--padding-1);
@@ -31,7 +24,28 @@
 
   --border-none: none;
   --border-transparent: 0.2rem solid transparent;
-  --border-default: 0.2rem solid var(--secondary);
-  --border-active: 0.2rem solid var(--accent);
+  --border-default: 0.2rem solid var(--color-secondary);
+  --border-active: 0.2rem solid var(--color-accent);
   --border: var(--border-default);
+
+  --color-primary: #151515;
+  --color-secondary: #1e1e1e;
+  --color-accent: #b3b3f1;
+
+  --color-text: #f2f4f3;
+  --color-text-secondary: #4c4c4c;
+
+  --color-transparent: transparent;
+  --color-red: #ba252f;
+  --color-violet: slateblue;
+  --color-blue: #aec5eb;
+  --color-green: #a7f098;
+  --color-yellow: #f3c669;
+
+  --color-white: white;
+
+  --color-black: black;
+}
+
+h2 {
 }
