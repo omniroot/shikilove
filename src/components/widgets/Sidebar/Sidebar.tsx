@@ -65,7 +65,7 @@ export const Sidebar = () => {
       >
         <Box>Shiki</Box>
         <NavBar pages={start_pages} />
-        <Box className={styles.spacer} border="none"></Box>
+        <Box className={styles.spacer} height="100%" border="none"></Box>
         <NavBar pages={end_pages} />
       </Box>
     </Box>
