@@ -7,6 +7,20 @@ import { Link } from "react-router-dom";
 export interface IBaseComponent {
   className?: string;
   as?: React.ElementType | "div" | typeof Link;
+  width?:
+    | string
+    | "max-content"
+    | "min-content"
+    | "fit-content"
+    | "auto"
+    | "stretch";
+  height?:
+    | string
+    | "max-content"
+    | "min-content"
+    | "fit-content"
+    | "auto"
+    | "stretch";
   children?: React.ReactNode;
   clickable?: boolean;
   hoverable?: boolean;
@@ -56,6 +70,8 @@ export interface IBaseComponent {
 export const BaseComponent: FC<IBaseComponent> = ({
   children,
   className,
+  width = "auto",
+  height = "auto",
   clickable = false,
   hoverable = false,
   border = "none",
@@ -85,6 +101,9 @@ export const BaseComponent: FC<IBaseComponent> = ({
     ${margin === "2" && "margin: var(--margin-2);"}
     ${gap === "1" && "gap: var(--gap-1);"}
     ${gap === "2" && "gap: var(--gap-2);"}
+
+    width: ${width};
+    height: ${height};
 
     opacity: 1;
     ${pseudoHide
