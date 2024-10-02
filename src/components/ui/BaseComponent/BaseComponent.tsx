@@ -14,9 +14,39 @@ export interface IBaseComponent {
   radius?: "none" | "1" | "2";
   padding?: "none" | "1" | "2";
   flexDirection?: "row" | "column";
-  justifyContent?: "start" | "center" | "end";
-  alignItems?: "start" | "center" | "end";
+  justifyContent?:
+    | "start"
+    | "center"
+    | "end"
+    | "flex-start"
+    | "flex-end"
+    | "left"
+    | "right"
+    | "normal"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "stretch"
+    | "safe center"
+    | "unsafe center";
+  alignItems?:
+    | "normal"
+    | "stretch"
+    | "center"
+    | "start"
+    | "end"
+    | "flex-start"
+    | "flex-end"
+    | "self-start"
+    | "self-end"
+    | "anchor-center"
+    | "baseline"
+    | "first baseline"
+    | "last baseline"
+    | "safe center"
+    | "unsafe center";
   gap?: "none" | "1" | "2";
+  margin?: "none" | "1" | "2";
   pseudoHide?: boolean;
   to?: string;
   onMouseEnter?: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -31,6 +61,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
   border = "none",
   radius = "none",
   padding = "none",
+  margin = "none",
   flexDirection = "row",
   justifyContent = "start",
   alignItems = "start",
@@ -50,6 +81,8 @@ export const BaseComponent: FC<IBaseComponent> = ({
     ${radius === "2" && "border-radius: var(--radius-2);"}
     ${padding === "1" && "padding: var(--padding-1);"}
     ${padding === "2" && "padding: var(--padding-2);"}
+    ${margin === "1" && "margin: var(--margin-1);"}
+    ${margin === "2" && "margin: var(--margin-2);"}
     ${gap === "1" && "gap: var(--gap-1);"}
     ${gap === "2" && "gap: var(--gap-2);"}
 
