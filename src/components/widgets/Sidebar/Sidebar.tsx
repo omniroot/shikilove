@@ -10,6 +10,34 @@ import { IconButton } from "@ui/IconButton/IconButton";
 import { Link } from "react-router-dom";
 import { MouseEvent, useEffect, useState } from "react";
 import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
+import { RLink } from "@ui/RLink/RLink";
+import { NavBar } from "@features/NavBar/NavBar";
+
+const start_pages = [
+  {
+    name: "Profile",
+    path: "/",
+    icon: <ProfileIcon />,
+  },
+  {
+    name: "Search",
+    path: "/search",
+    icon: <SearchIcon />,
+  },
+];
+
+const end_pages = [
+  {
+    name: "Settings",
+    path: "/settings",
+    icon: <SettingsIcon />,
+  },
+  {
+    name: "Logout",
+    path: "/logout",
+    icon: <LogoutIcon />,
+  },
+];
 
 export const Sidebar = () => {
   const [isSidebarHovered, setIsSidebarHovered] = useState(false);
@@ -35,20 +63,10 @@ export const Sidebar = () => {
         onMouseEnter={onSidebarMouseEnter}
         onMouseLeave={onSidebarMouseLeave}
       >
-        {/* <Box pseudoHide>Shikimori</Box> */}
-        <IconButton border="active" className={styles.profile}>
-          <ProfileIcon />
-          {/* <BaseComponent pseudoHide={!isSidebarHovered}>Profile</BaseComponent> */}
-        </IconButton>
-        <IconButton border="transparent">
-          <SearchIcon />
-        </IconButton>
-        <IconButton border="transparent">
-          <SettingsIcon />
-        </IconButton>
-        <IconButton border="transparent">
-          <LogoutIcon />
-        </IconButton>
+        <Box>Shiki</Box>
+        <NavBar pages={start_pages} />
+        <Box className={styles.spacer} border="none"></Box>
+        <NavBar pages={end_pages} />
       </Box>
     </Box>
   );

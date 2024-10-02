@@ -9,12 +9,8 @@
   }
 }
 
-.sidebar_container:has(.sidebar:hover) {
-  min-width: 250px;
-}
-
-.sidebar:hover {
-  min-width: 250px;
+.spacer {
+  height: 100%;
 }
 
 .profile {
