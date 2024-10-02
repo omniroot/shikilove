@@ -8,7 +8,8 @@ export interface IBaseComponent {
   className?: string;
   as?: React.ElementType | "div" | typeof Link;
   children?: React.ReactNode;
-  touchable?: boolean;
+  clickable?: boolean;
+  hoverable?: boolean;
   border?: "none" | "transparent" | "default" | "active";
   radius?: "none" | "1" | "2";
   padding?: "none" | "1" | "2";
@@ -17,6 +18,7 @@ export interface IBaseComponent {
   alignItems?: "start" | "center" | "end";
   gap?: "none" | "1" | "2";
   pseudoHide?: boolean;
+  to?: string;
   onMouseEnter?: (event: React.MouseEvent<HTMLDivElement>) => void;
   onMouseLeave?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
@@ -24,7 +26,8 @@ export interface IBaseComponent {
 export const BaseComponent: FC<IBaseComponent> = ({
   children,
   className,
-  touchable = false,
+  clickable = false,
+  hoverable = false,
   border = "none",
   radius = "none",
   padding = "none",
@@ -37,8 +40,8 @@ export const BaseComponent: FC<IBaseComponent> = ({
   ...rest
 }) => {
   const _style = css`
-    ${touchable ? "cursor: pointer;" : "cursor: default;"}
-    ${touchable && ":hover {border: var(--border-default);}"}
+    ${clickable ? "cursor: pointer;" : "cursor: default;"}
+    ${hoverable && ":hover {border: var(--border-default);}"}
     ${border === "none" && "border: var(--border-none);"}
     ${border === "transparent" && "border: var(--border-transparent);"}
     ${border === "default" && "border: var(--border-default);"}
@@ -49,7 +52,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
     ${padding === "2" && "padding: var(--padding-2);"}
     ${gap === "1" && "gap: var(--gap-1);"}
     ${gap === "2" && "gap: var(--gap-2);"}
-    
+
     opacity: 1;
     ${pseudoHide
       ? "visibility: hidden;width: 1px; opacity: 0;"
