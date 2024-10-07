@@ -111,6 +111,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
 
   const _style = css`
     ${clickable ? "cursor: pointer;" : "cursor: default;"}
+    ${clickable && " *{ cursor: pointer; }"}
     ${hoverable && ":hover {border: var(--border-default);}"}
     ${border === "none" && "border: var(--border-none);"}
     ${border === "transparent" && "border: var(--border-transparent);"}
