@@ -44,6 +44,7 @@ export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title, link }) => {
       // border="active"
       // onMouseEnter={onAnimeCardMouseEnter}
       // onMouseLeave={onAnimeCardMouseLeave}
+      clickable
       radius="1"
       as={Link}
       to={`/anime/${link}`}
