@@ -40,18 +40,18 @@ const end_pages = [
 ];
 
 export const Sidebar = () => {
-  const [isSidebarHovered, setIsSidebarHovered] = useState(false);
+  // const [isSidebarHovered, setIsSidebarHovered] = useState(false);
 
-  const onSidebarMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
-    setIsSidebarHovered(true);
-  };
-  const onSidebarMouseLeave = (event: MouseEvent<HTMLDivElement>) => {
-    setIsSidebarHovered(false);
-  };
+  // const onSidebarMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
+  //   setIsSidebarHovered(true);
+  // };
+  // const onSidebarMouseLeave = (event: MouseEvent<HTMLDivElement>) => {
+  //   setIsSidebarHovered(false);
+  // };
 
-  useEffect(() => {
-    console.log(isSidebarHovered);
-  }, [isSidebarHovered]);
+  // useEffect(() => {
+  //   console.log(isSidebarHovered);
+  // }, [isSidebarHovered]);
 
   return (
     <Box className={styles.sidebar_container} padding="none" border="none">
@@ -60,8 +60,8 @@ export const Sidebar = () => {
         flexDirection="column"
         alignItems="center"
         gap="1"
-        onMouseEnter={onSidebarMouseEnter}
-        onMouseLeave={onSidebarMouseLeave}
+        // onMouseEnter={onSidebarMouseEnter}
+        // onMouseLeave={onSidebarMouseLeave}
       >
         <Box>Shiki</Box>
         <NavBar pages={start_pages} />
