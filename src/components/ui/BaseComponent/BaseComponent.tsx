@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactElement, ReactNode } from "react";
 import styles from "./BaseComponent.module.scss";
 import clsx from "clsx";
 import { css } from "@emotion/css";
@@ -80,6 +80,7 @@ export interface IBaseComponent {
   to?: string;
   onMouseEnter?: (event: React.MouseEvent<HTMLDivElement>) => void;
   onMouseLeave?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: () => void;
 }
 
 export const BaseComponent: FC<IBaseComponent> = ({
@@ -101,8 +102,13 @@ export const BaseComponent: FC<IBaseComponent> = ({
   gap = "none",
   pseudoHide = false,
   as = "div",
+  onClick = () => {},
   ...rest
 }) => {
+  const onBaseClickHandle = () => {
+    onClick && onClick();
+  };
+
   const _style = css`
     ${clickable ? "cursor: pointer;" : "cursor: default;"}
     ${hoverable && ":hover {border: var(--border-default);}"}
@@ -121,7 +127,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
 
     width: ${width};
     height: ${height};
-
+    text-decoration: none;
     ${`color: var(--color-${textColor});`}
     ${`background-color: var(--color-${backgroundColor});`}
     opacity: 1;
@@ -137,7 +143,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
   const Component = as;
 
   return (
-    <Component {...rest} className={_class}>
+    <Component {...rest} className={_class} onClick={onBaseClickHandle}>
       {children}
     </Component>
   );
