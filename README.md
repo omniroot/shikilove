@@ -13,7 +13,8 @@
 
 - [ ] UI - ui components
 
-  - [ ] Typography
+  - [x] Typography
+  - [ ] ButtonGroup
   - [ ] Button
   - [ ] IconButton
   - [ ] Chip
