@@ -1,20 +1,18 @@
+import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
+import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates";
 import {
   DroppedIcon,
-  LogoutIcon,
   PlannedIcon,
   PostponedIcon,
-  ProfileIcon,
-  SettingsIcon,
   WatchedIcon,
   WatchingIcon,
 } from "@/shared/icons";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard";
-import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
 import { Box } from "@ui/Box/Box";
+import { Button } from "@ui/Button/Button";
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup";
 import { Divide } from "@ui/Divide/Divide";
 import { IconButton } from "@ui/IconButton/IconButton";
-import { Test } from "@ui/Test/Test";
 import { Typography } from "@ui/Typography/Typography";
 import { useState } from "react";
 
@@ -75,6 +73,8 @@ const elements = [
 ];
 
 export const ProfilePage = () => {
+  const { loading, nickname, lastOnlineAt, avatarUrl } = useFetchCurrentUser();
+  const { userRates } = useFetchUserRates();
   const [activePage, setActivePage] = useState<IPages>("watching");
 
   const onButtonGroupClick = (id: string) => {
@@ -84,6 +84,9 @@ export const ProfilePage = () => {
       }
     });
   };
+
+  // if (loading) return "loading...";
+
   return (
     <Box
       border="none"
@@ -94,12 +97,12 @@ export const ProfilePage = () => {
     >
       <Box width="100%">
         <Box width="100%" border="none" padding="none">
-          <img src="avatar.png" width={200} />
+          <img src={avatarUrl} width={200} />
           <Divide orientation="vertical" width="170px" />
           <Box flexDirection="column" width="100%" border="none" padding="none">
             <Box justifyContent="space-between" width="100%" border="none">
-              <Typography size="3">OmniRoot</Typography>
-              <Typography size="4">около 5 часов назад</Typography>
+              <Typography size="3">{nickname}</Typography>
+              <Typography size="4">{lastOnlineAt}</Typography>
             </Box>
             <Box justifyContent="space-between" width="100%" border="none">
               <Typography>I love anime</Typography>
@@ -119,7 +122,20 @@ export const ProfilePage = () => {
           }}
         />
         <Box gap="1" border="none" padding="none">
-          {activePage === "watching" && (
+          {/*  */}
+          {/*  */}
+
+          {userRates?.map((rate) => {
+            return (
+              <AnimeCard
+                title={rate.anime.name}
+                image={rate.anime.poster.main2xUrl}
+                id={rate.anime.id}
+              />
+            );
+          })}
+
+          {/* {activePage === "watching" && (
             <AnimeCard
               id="1"
               title="Naruto"
@@ -134,9 +150,11 @@ export const ProfilePage = () => {
               image="/naruto.png"
               link="naruto_itachi"
             />
-          )}
+          )} */}
         </Box>
+        <Button>123</Button>
       </Box>
+      <Button>Subscribe</Button>
     </Box>
   );
 };

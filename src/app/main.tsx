@@ -4,9 +4,22 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
 import "@/app/styles/global.scss";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { CONSTS } from "@/shared/consts/consts";
+
+const client = new ApolloClient({
+  uri: CONSTS.API_URL,
+  cache: new InMemoryCache(),
+  headers: {
+    "User-Agent": "ShikiLove",
+    Authorization: `Bearer ${CONSTS.ACCESS_TOKEN}`,
+  },
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ApolloProvider client={client}>
+      <RouterProvider router={router} />
+    </ApolloProvider>
   </StrictMode>
 );
