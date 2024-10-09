@@ -4,7 +4,7 @@ const GET_USER_RATES = gql`
   {
     userRates(
       page: 1
-      limit: 5
+      limit: 30
       targetType: Anime
       order: { field: updated_at, order: desc }
     ) {
