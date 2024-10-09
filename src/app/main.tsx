@@ -7,12 +7,14 @@ import "@/app/styles/global.scss";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { CONSTS } from "@/shared/consts/consts";
 
+const access_token = localStorage.getItem("access_token");
+
 const client = new ApolloClient({
   uri: CONSTS.API_URL,
   cache: new InMemoryCache(),
   headers: {
     "User-Agent": "ShikiLove",
-    Authorization: `Bearer ${CONSTS.ACCESS_TOKEN}`,
+    Authorization: `Bearer ${access_token}`,
   },
 });
 
