@@ -41,6 +41,7 @@ export interface IBaseComponent {
   radius?: "none" | "1" | "2";
   padding?: "none" | "1" | "2";
   flexDirection?: "row" | "column";
+  flexWrap?: "nowrap" | "wrap" | "wrap-reverse";
   justifyContent?:
     | "start"
     | "center"
@@ -95,6 +96,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
   padding = "none",
   margin = "none",
   flexDirection = "row",
+  flexWrap = "nowrap",
   justifyContent = "start",
   alignItems = "start",
   textColor = "text",
@@ -126,6 +128,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
     ${gap === "1" && "gap: var(--gap-1);"}
     ${gap === "2" && "gap: var(--gap-2);"}
 
+  flex-wrap: ${flexWrap};
     width: ${width};
     height: ${height};
     text-decoration: none;
