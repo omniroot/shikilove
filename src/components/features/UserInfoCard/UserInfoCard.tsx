@@ -4,8 +4,7 @@ import { Divide } from "@ui/Divide/Divide";
 import { Typography } from "@ui/Typography/Typography";
 
 export const UserInfoCard = () => {
-  // get user info
-  const { loading, nickname, lastOnlineAt, avatarUrl } = useFetchCurrentUser();
+  const { nickname, lastOnlineAt, avatarUrl } = useFetchCurrentUser();
 
   return (
     <Box width="100%" border="none" padding="none">
@@ -18,6 +17,14 @@ export const UserInfoCard = () => {
         </Box>
         <Box justifyContent="space-between" width="100%" border="none">
           <Typography>I love anime</Typography>
+          <Typography
+            backgroundColor="secondary"
+            textColor="accent"
+            radius="1"
+            padding="1"
+          >
+            {import.meta.env.MODE} mode
+          </Typography>
         </Box>
       </Box>
     </Box>
