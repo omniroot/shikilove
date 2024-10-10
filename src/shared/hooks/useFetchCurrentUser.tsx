@@ -11,7 +11,7 @@ const GET_CURRENT_USER = gql`
   }
 `;
 
-interface ICurrentUser {
+interface IResponse {
   currentUser: {
     id: string;
     avatarUrl: string;
@@ -21,7 +21,7 @@ interface ICurrentUser {
 }
 
 export const useFetchCurrentUser = () => {
-  const { loading, data, error } = useQuery<ICurrentUser>(GET_CURRENT_USER);
+  const { loading, data, error } = useQuery<IResponse>(GET_CURRENT_USER);
 
   if (!data?.currentUser) return { data, loading: loading, error: error };
 
