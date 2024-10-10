@@ -12,9 +12,8 @@ interface IAnimeCardProps {
   id?: string;
   title?: string;
   image?: string;
-  link?: string;
 }
-export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title, link }) => {
+export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
   // const [isAnimeCardHovered, setIsAnimeCardHovered] = useState(false);
 
   const onAnimeCardClick = () => {};
