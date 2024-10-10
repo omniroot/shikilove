@@ -109,6 +109,7 @@ export const AnimeUserRates = () => {
 					if (rate.status === activeFilter) {
 						return (
 							<AnimeCard
+								key={rate.anime.id}
 								title={rate.anime.name}
 								image={rate.anime.poster.main2xUrl}
 								id={rate.anime.id}

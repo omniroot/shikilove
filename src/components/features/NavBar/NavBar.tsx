@@ -22,7 +22,7 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 			{pages.map((page) => {
 				if (isCurrentPage(page)) {
 					return (
-						<Box border="active" clickable>
+						<Box border="active" clickable key={page.name}>
 							<RLink to={page.path}>{page.icon}</RLink>
 						</Box>
 					);
