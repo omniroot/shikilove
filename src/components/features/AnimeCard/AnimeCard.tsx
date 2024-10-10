@@ -1,12 +1,7 @@
-import { BaseComponent, IBaseComponent } from "@ui/BaseComponent/BaseComponent";
 import { Box } from "@ui/Box/Box";
 import { Typography } from "@ui/Typography/Typography";
-import clsx from "clsx";
-import { FC, MouseEvent, useEffect, useState } from "react";
-import styles from "./AnimeCard.module.scss";
-import { IconButton } from "@ui/IconButton/IconButton";
-import { ProfileIcon } from "@/shared/icons";
-import { Link, useNavigate } from "react-router-dom";
+import type { FC } from "react";
+import { Link } from "react-router-dom";
 
 interface IAnimeCardProps {
 	id?: string;
@@ -14,25 +9,8 @@ interface IAnimeCardProps {
 	image?: string;
 }
 export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
-	// const [isAnimeCardHovered, setIsAnimeCardHovered] = useState(false);
-
-	const onAnimeCardClick = () => {};
-
-	// const onAnimeCardMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
-	//   setIsAnimeCardHovered(true);
-	// };
-	// const onAnimeCardMouseLeave = (event: MouseEvent<HTMLDivElement>) => {
-	//   setIsAnimeCardHovered(false);
-	// };
-	// const _class_anime_card = clsx(styles.anime_card);
-
-	// const _class_hover_container = clsx(styles.anime_card_hover_container, {
-	//   [styles.anime_card_hover_container_hovered]: isAnimeCardHovered === true,
-	// });
-
-	// useEffect(() => {
-	//   console.log(isAnimeCardHovered);
-	// }, [isAnimeCardHovered]);
+	const _onAnimeCardClick = () => {};
+	const _aa = 11;
 
 	return (
 		<Box
@@ -40,21 +18,16 @@ export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
 			height="380px"
 			flexDirection="column"
 			alignItems="center"
-			// border="active"
-			// onMouseEnter={onAnimeCardMouseEnter}
-			// onMouseLeave={onAnimeCardMouseLeave}
 			clickable
 			radius="1"
 			as={Link}
 			to={`/animes/${id}`}
-
-			// className={_class_anime_card}
-			// padding="1"
 		>
 			<img
 				src={image}
 				width="100%"
 				height="85%"
+				alt={title}
 				style={{ borderRadius: "var(--radius)" }}
 			/>
 			<Typography

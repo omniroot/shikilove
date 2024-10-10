@@ -1,10 +1,10 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import styles from "./GlobalLayout.module.scss";
-import { Sidebar } from "@widgets/Sidebar/Sidebar";
-import { Box } from "@ui/Box/Box";
-import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
 import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
 import { useAuthorization } from "@/shared/hooks/useAuthorization";
+import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
+import { Box } from "@ui/Box/Box";
+import { Sidebar } from "@widgets/Sidebar/Sidebar";
+import { Outlet } from "react-router-dom";
+import styles from "./GlobalLayout.module.scss";
 
 export const GlobalLayout = () => {
 	const { loading, error, ...rest } = useFetchCurrentUser();
@@ -17,9 +17,8 @@ export const GlobalLayout = () => {
 			localStorage.setItem("refresh_token", respose.refresh_token);
 			window.location.reload();
 			return true;
-		} else {
-			return false;
 		}
+			return false;
 	};
 
 	if (loading) return "loading...";

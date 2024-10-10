@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { FC } from "react";
+import type { FC } from "react";
 
 interface IImageViewProps {
 	src?: string;

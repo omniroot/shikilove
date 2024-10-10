@@ -1,6 +1,5 @@
 import { shikimoriApi } from "@/services/user.api";
-import { SerializedError, createAsyncThunk } from "@reduxjs/toolkit";
-import { AxiosError } from "axios";
+import { type SerializedError, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchUserThunk = createAsyncThunk(
 	"user/fetchUser",
@@ -28,12 +27,11 @@ export const fetchUserThunk = createAsyncThunk(
 					isLogin: true,
 					user: response,
 				};
-			} else {
+			}
 				return thunkApi.rejectWithValue({
 					code: "401",
 					message: "Null from fetchUserThunk",
 				} as SerializedError);
-			}
 		} catch (error: any) {
 			console.log("Error from fetchUserThunk", error);
 

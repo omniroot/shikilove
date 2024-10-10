@@ -1,6 +1,8 @@
-import { BaseComponent, IBaseComponent } from "@ui/BaseComponent/BaseComponent";
-import styles from "./IconButton.module.scss";
-import { FC } from "react";
+import {
+	BaseComponent,
+	type IBaseComponent,
+} from "@ui/BaseComponent/BaseComponent";
+import type { FC } from "react";
 
 interface IIconButtonProps extends IBaseComponent {}
 

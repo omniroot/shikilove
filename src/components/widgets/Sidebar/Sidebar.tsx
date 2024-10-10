@@ -6,11 +6,6 @@ import {
 	SearchIcon,
 	SettingsIcon,
 } from "@/shared/icons";
-import { IconButton } from "@ui/IconButton/IconButton";
-import { Link } from "react-router-dom";
-import { MouseEvent, useEffect, useState } from "react";
-import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
-import { RLink } from "@ui/RLink/RLink";
 import { NavBar } from "@features/NavBar/NavBar";
 
 const start_pages = [
@@ -65,7 +60,7 @@ export const Sidebar = () => {
 			>
 				<Box>Shiki</Box>
 				<NavBar pages={start_pages} />
-				<Box className={styles.spacer} height="100%" border="none"></Box>
+				<Box className={styles.spacer} height="100%" border="none" />
 				<NavBar pages={end_pages} />
 			</Box>
 		</Box>

@@ -1,8 +1,9 @@
-import React, { FC, ReactElement, ReactNode } from "react";
+import type React from "react";
+import type { FC } from "react";
 import styles from "./BaseComponent.module.scss";
 import clsx from "clsx";
 import { css } from "@emotion/css";
-import { Link } from "react-router-dom";
+import type { Link } from "react-router-dom";
 
 type IColors =
 	| "primary"
@@ -108,7 +109,7 @@ export const BaseComponent: FC<IBaseComponent> = ({
 	...rest
 }) => {
 	const onBaseClickHandle = () => {
-		onClick && onClick();
+		onClick?.();
 	};
 
 	const _style = css`

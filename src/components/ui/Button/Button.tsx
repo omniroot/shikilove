@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import { IBaseComponent } from "@ui/BaseComponent/BaseComponent";
+import type { IBaseComponent } from "@ui/BaseComponent/BaseComponent";
 import { Box } from "@ui/Box/Box";
-import { FC } from "react";
+import type { FC } from "react";
 
 interface IButtonProps extends IBaseComponent {
 	children?: React.ReactNode;

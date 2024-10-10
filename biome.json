@@ -16,10 +16,22 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"css": {
+		"formatter": {
+			"enabled": true
+		}
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"correctness": {
+				"noUnusedImports": "warn",
+				"noUnusedVariables": "warn",
+				"noUnusedFunctionParameters": "warn",
+				"noUnusedLabels": "warn",
+				"noUnusedPrivateClassMembers": "warn"
+			}
 		}
 	},
 	"javascript": {

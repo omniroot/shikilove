@@ -1,14 +1,13 @@
-import { CONSTS } from "@/consts/consts";
 import { refreshTokens } from "@/services/auth.api";
-import { IAnimeQuery } from "@/types/api.interface";
-import {
+import type { IAnimeQuery } from "@/types/api.interface";
+import type {
 	IUpdateUserRate,
 	IUser,
 	IUserInfo,
 	IUserRate,
 } from "@/types/user.interface";
 import { saveTokens } from "@/utils/saveTokens";
-import axios, { AxiosError } from "axios";
+import axios, { type AxiosError } from "axios";
 
 const _shikimoriApi = axios.create({
 	baseURL: "https://shikimori.one/",
@@ -64,24 +63,16 @@ _shikimoriApi.interceptors.response.use(
 
 export const shikimoriApi = {
 	whoami: async (): Promise<IUserInfo | null> => {
-		try {
 			const response = await _shikimoriApi.get<IUserInfo>("api/users/whoami");
 			if (response) return response.data;
-		} catch (error) {
-			throw error;
-		}
 		return null;
 	},
 	getUser: async (userId: number | null = null) => {
-		try {
 			if (userId === null) {
 				userId = Number(localStorage.getItem("userId"));
 			}
 			const response = await _shikimoriApi.get<IUser>(`api/users/${userId}`);
 			if (response) return response.data;
-		} catch (error) {
-			throw error;
-		}
 		return null;
 	},
 	searchAnime: async (name: string) => {
@@ -90,7 +81,7 @@ export const shikimoriApi = {
 				`api/animes?search=${name}`,
 			);
 			return response.data;
-		} catch (error: any) {}
+		} catch (_error: any) {}
 		return null;
 	},
 	updateUserRate: async (id: string, data: IUpdateUserRate) => {
@@ -100,7 +91,7 @@ export const shikimoriApi = {
 				data,
 			);
 			return response.data;
-		} catch (error: any) {}
+		} catch (_error: any) {}
 		return null;
 	},
 };

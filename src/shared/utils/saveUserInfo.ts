@@ -1,4 +1,4 @@
-import { IAuthTokens } from "@/services/auth.api";
+import type { IAuthTokens } from "@/services/auth.api";
 
 interface IProps {
 	tokens?: IAuthTokens;

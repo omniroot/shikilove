@@ -69,6 +69,7 @@ export const AnimePage = () => {
 				<Box gap="1">
 					{similarAnimes?.map((similarAnime) => (
 						<AnimeCard
+							key={similarAnime.id}
 							id={similarAnime.id}
 							title={similarAnime.name}
 							image={getPosterImage(similarAnime.image.original)}

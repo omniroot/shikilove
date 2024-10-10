@@ -1,6 +1,6 @@
 import { fetchUserThunk } from "@/store/userThunks";
-import { IUser } from "@/types/user.interface";
-import { SerializedError, createSlice } from "@reduxjs/toolkit";
+import type { IUser } from "@/types/user.interface";
+import { type SerializedError, createSlice } from "@reduxjs/toolkit";
 
 interface IinitialState {
 	isLogin: boolean;
@@ -22,7 +22,7 @@ const userSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchUserThunk.fulfilled, (state, action) => {
-				if (action.payload && action.payload.user) {
+				if (action.payload?.user) {
 					state.isLoading = false;
 					state.isLogin = action.payload.isLogin;
 					state.user = action.payload.user;

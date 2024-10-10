@@ -1,6 +1,8 @@
-import { BaseComponent, IBaseComponent } from "@ui/BaseComponent/BaseComponent";
-import styles from "./Box.module.scss";
-import { FC } from "react";
+import {
+	BaseComponent,
+	type IBaseComponent,
+} from "@ui/BaseComponent/BaseComponent";
+import type { FC } from "react";
 
 interface IBoxProps extends IBaseComponent {}
 

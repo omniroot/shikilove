@@ -1,5 +1,5 @@
 import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
-import { FC, ReactElement, ReactNode, useState } from "react";
+import { type FC, type ReactNode, useState } from "react";
 
 interface IElement {
 	id: string;
@@ -34,7 +34,7 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 				return (
 					<BaseComponent
 						key={element.id}
-						border={active == element.id ? "active" : "default"}
+						border={active === element.id ? "active" : "default"}
 						radius="1"
 						clickable
 						onClick={() => onGroupItemClick(element)}

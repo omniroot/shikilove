@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-interface IUser {}
+type IUser = {};
 
 interface IGlobalStore {
 	isLoading: boolean;
 	user: IUser | null;
 }
 
-const useGlobalStore = create((set) => ({}));
+const _useGlobalStore = create((_set) => ({}));
 
 // import { configureStore } from "@reduxjs/toolkit"
 // import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"

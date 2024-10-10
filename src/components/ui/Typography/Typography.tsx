@@ -1,8 +1,10 @@
 import { css } from "@emotion/css";
-import { BaseComponent, IBaseComponent } from "@ui/BaseComponent/BaseComponent";
-import { Box } from "@ui/Box/Box";
+import {
+	BaseComponent,
+	type IBaseComponent,
+} from "@ui/BaseComponent/BaseComponent";
 import clsx from "clsx";
-import { FC } from "react";
+import type { FC } from "react";
 
 interface ITypographyProps extends IBaseComponent {
 	size?: "1" | "2" | "3" | "4" | "5" | "6";

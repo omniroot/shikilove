@@ -1,7 +1,7 @@
 import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
 import { Box } from "@ui/Box/Box";
 import { RLink } from "@ui/RLink/RLink";
-import { FC, ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 
 interface IPage {

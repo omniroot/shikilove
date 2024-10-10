@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { Box } from "@ui/Box/Box";
-import { FC } from "react";
+import type { FC } from "react";
 
 interface IDivideProps {
 	width?: string;
@@ -23,6 +23,6 @@ export const Divide: FC<IDivideProps> = ({
 			radius="2"
 			margin="1"
 			className={_style}
-		></Box>
+		/>
 	);
 };
