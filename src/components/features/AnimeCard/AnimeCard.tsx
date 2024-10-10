@@ -47,7 +47,7 @@ export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title, link }) => {
       clickable
       radius="1"
       as={Link}
-      to={`/anime/${link}`}
+      to={`/animes/${id}`}
 
       // className={_class_anime_card}
       // padding="1"
