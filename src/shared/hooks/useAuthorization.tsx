@@ -1,3 +1,4 @@
+import { CONSTS } from "@/shared/consts/consts";
 import axios from "axios";
 import { access } from "fs";
 
@@ -20,10 +21,10 @@ export const useAuthorization = () => {
     try {
       const response = await _shikimoriAuth.post<IAuthTokens>("oauth/token", {
         grant_type: "authorization_code",
-        client_id: "C0cTq8ZDkHvhldEsKgxlCXam--xNTC0nk6db3EsFozI",
-        client_secret: "nrISbmULxj2wA6sb0645-bvJwjwrUTUMyr3ZAiKso9U",
+        client_id: CONSTS.OAUTH_CLIENT_ID,
+        client_secret: CONSTS.OAUTH_CLIENT_SECRET,
         code: String(authorizationCode),
-        redirect_uri: "http://localhost:5173/login/",
+        redirect_uri: CONSTS.OAUTH_REDIRECT_URI,
       });
       if (response.data) {
         return {
@@ -40,8 +41,8 @@ export const useAuthorization = () => {
     try {
       const response = await _shikimoriAuth.post<IAuthTokens>("oauth/token", {
         grant_type: "refresh_token",
-        client_id: "C0cTq8ZDkHvhldEsKgxlCXam--xNTC0nk6db3EsFozI",
-        client_secret: "nrISbmULxj2wA6sb0645-bvJwjwrUTUMyr3ZAiKso9U",
+        client_id: CONSTS.OAUTH_CLIENT_ID,
+        client_secret: CONSTS.OAUTH_CLIENT_SECRET,
         refresh_token: localStorage.getItem("refresh_token"),
       });
       if (response.data) {
