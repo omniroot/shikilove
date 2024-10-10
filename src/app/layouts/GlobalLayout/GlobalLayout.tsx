@@ -18,7 +18,7 @@ export const GlobalLayout = () => {
 			window.location.reload();
 			return true;
 		}
-			return false;
+		return false;
 	};
 
 	if (loading) return "loading...";

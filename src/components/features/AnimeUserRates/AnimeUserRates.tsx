@@ -1,10 +1,10 @@
 import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates";
 import {
-	WatchingIcon,
-	PlannedIcon,
-	WatchedIcon,
-	PostponedIcon,
 	DroppedIcon,
+	PlannedIcon,
+	PostponedIcon,
+	WatchedIcon,
+	WatchingIcon,
 } from "@/shared/icons";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard";
 import { Box } from "@ui/Box/Box";
@@ -83,11 +83,11 @@ export const AnimeUserRates = () => {
 	const [activeFilter, setActiveFilter] = useState<IPages>("watching");
 
 	const onButtonGroupClick = (id: IPages) => {
-		elements.forEach((element) => {
+		for (const element of elements) {
 			if (element.id === id) {
 				setActiveFilter(id);
 			}
-		});
+		}
 	};
 	return (
 		<Box

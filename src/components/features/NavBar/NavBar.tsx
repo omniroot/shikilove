@@ -28,7 +28,7 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 					);
 				}
 				return (
-					<Box border="transparent">
+					<Box key={page.name} border="transparent">
 						<RLink to={page.path}>{page.icon}</RLink>
 					</Box>
 				);

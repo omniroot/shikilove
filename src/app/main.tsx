@@ -4,8 +4,8 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
 import "@/app/styles/global.scss";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { CONSTS } from "@/shared/consts/consts";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const access_token = localStorage.getItem("access_token");
 
@@ -23,6 +23,7 @@ const client = new ApolloClient({
 	},
 });
 
+// biome-ignore lint/style/noNonNullAssertion: <explanation>
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<ApolloProvider client={client}>
