@@ -1,6 +1,7 @@
 import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
 import { Box } from "@ui/Box/Box";
 import { Divide } from "@ui/Divide/Divide";
+import { ImageView } from "@ui/ImageView/ImageView";
 import { Typography } from "@ui/Typography/Typography";
 
 export const UserInfoCard = () => {
@@ -8,7 +9,7 @@ export const UserInfoCard = () => {
 
   return (
     <Box width="100%" border="none" padding="none">
-      <img src={avatarUrl} width={200} />
+      <ImageView src={avatarUrl} width="250px" radius="1" />
       <Divide orientation="vertical" width="170px" />
       <Box flexDirection="column" width="100%" border="none" padding="none">
         <Box justifyContent="space-between" width="100%" border="none">
