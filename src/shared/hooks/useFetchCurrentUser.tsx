@@ -25,12 +25,16 @@ export const useFetchCurrentUser = () => {
 
   if (!data?.currentUser) return { data, loading: loading, error: error };
 
-  return {
-    userId: data.currentUser.id,
-    avatarUrl: data.currentUser.avatarUrl,
-    nickname: data.currentUser.nickname,
-    lastOnlineAt: data.currentUser.lastOnlineAt,
-    loading: loading,
-    error: error,
-  };
+  if (data) {
+    return {
+      userId: data.currentUser.id,
+      avatarUrl: data.currentUser.avatarUrl,
+      nickname: data.currentUser.nickname,
+      lastOnlineAt: data.currentUser.lastOnlineAt,
+      loading: loading,
+      error: error,
+    };
+  }
+
+  return { data, loading: loading, error: error };
 };
