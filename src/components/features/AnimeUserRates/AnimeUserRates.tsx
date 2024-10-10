@@ -7,6 +7,7 @@ import {
 	WatchingIcon,
 } from "@/shared/icons";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard";
+import { AnimeList } from "@features/AnimeList/AnimeList";
 import { Box } from "@ui/Box/Box";
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup";
 import { IconButton } from "@ui/IconButton/IconButton";
@@ -104,7 +105,7 @@ export const AnimeUserRates = () => {
 					onButtonGroupClick(activeId as IPages);
 				}}
 			/>
-			<Box width="100%" gap="1" border="none" padding="none" flexWrap="wrap">
+			<AnimeList variant="scroll">
 				{userRates?.map((rate) => {
 					if (rate.status === activeFilter) {
 						return (
@@ -117,7 +118,7 @@ export const AnimeUserRates = () => {
 						);
 					}
 				})}
-			</Box>
+			</AnimeList>
 		</Box>
 	);
 };

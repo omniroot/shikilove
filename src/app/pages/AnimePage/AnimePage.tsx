@@ -1,7 +1,6 @@
 import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
 import { useFetchSimilarAnime } from "@/shared/hooks/usеFetchSimilarAnime";
-import { getPosterImage } from "@/shared/utils/getPosterImage";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard";
+import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList";
 import { Box } from "@ui/Box/Box";
 import { Divide } from "@ui/Divide/Divide";
 import { ImageView } from "@ui/ImageView/ImageView";
@@ -66,16 +65,7 @@ export const AnimePage = () => {
 				<Typography size="4" weight="bold">
 					Similar
 				</Typography>
-				<Box gap="1">
-					{similarAnimes?.map((similarAnime) => (
-						<AnimeCard
-							key={similarAnime.id}
-							id={similarAnime.id}
-							title={similarAnime.name}
-							image={getPosterImage(similarAnime.image.original)}
-						/>
-					))}
-				</Box>
+				<AnimeSimilarList animes={similarAnimes} />
 			</Box>
 		</Box>
 	);

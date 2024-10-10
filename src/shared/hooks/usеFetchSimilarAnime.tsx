@@ -11,7 +11,7 @@ const api = axios.create({
 	},
 });
 
-interface IResponse {
+export interface ISimilarAnime {
 	id: string;
 	name: string;
 	russian: string;
@@ -30,6 +30,8 @@ interface IResponse {
 	aired_on: string;
 	released_on: string;
 }
+
+type IResponse = ISimilarAnime;
 
 export const useFetchSimilarAnime = (animeId: string) => {
 	const [response, setResponse] = useState<IResponse[] | null>(null);

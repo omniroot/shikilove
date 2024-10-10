@@ -8,9 +8,9 @@ import { ProfilePage } from "@/app/pages/ProfilePage/ProfilePage";
 import { SearchPage } from "@/app/pages/SearchPage/SearchPage";
 import { SettingsPage } from "@/app/pages/SettingsPage/SettingsPage";
 import {
+	Route,
 	createBrowserRouter,
 	createRoutesFromElements,
-	Route,
 } from "react-router-dom";
 
 export const router = createBrowserRouter(
@@ -21,6 +21,7 @@ export const router = createBrowserRouter(
 			<Route path="/animes" element={<AnimesPage />} />
 			<Route path="/animes/:animeId" element={<AnimePage />} />
 
+			{/* <Route path="/test" element={<TestPage />} /> */}
 			<Route path="/settings" element={<SettingsPage />} />
 			<Route path="/login" element={<LoginPage />} />
 			<Route path="/logout" element={<LogoutPage />} />

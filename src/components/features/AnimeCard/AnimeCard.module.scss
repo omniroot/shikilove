@@ -1,17 +1,10 @@
-.anime_card {
-  position: relative;
-}
 
-.anime_card_hover_container {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  min-width: calc(100% - var(--padding) * 2);
-  height: 50px;
-  opacity: 0 !important;
-  translate: -50% 0;
-}
 
-.anime_card_hover_container_hovered {
-  opacity: 1 !important;
+.animecard {
+  min-width: 250px;
+  height: 350px;
+  padding: var(--padding);
+  text-decoration: none;
+  border: var(--border);
+  border-radius: var(--radius);
 }

@@ -1,5 +1,6 @@
-import { Box } from "@ui/Box/Box";
 import { Typography } from "@ui/Typography/Typography";
+import styles from "./AnimeCard.module.scss";
+
 import type { FC } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,20 +10,8 @@ interface IAnimeCardProps {
 	image?: string;
 }
 export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
-	const _onAnimeCardClick = () => {};
-	const _aa = 11;
-
 	return (
-		<Box
-			width="250px"
-			height="380px"
-			flexDirection="column"
-			alignItems="center"
-			clickable
-			radius="1"
-			as={Link}
-			to={`/animes/${id}`}
-		>
+		<Link to={`/animes/${id}`} className={styles.animecard}>
 			<img
 				src={image}
 				width="100%"
@@ -49,6 +38,6 @@ export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
           <ProfileIcon />
         </IconButton>
       </Box> */}
-		</Box>
+		</Link>
 	);
 };

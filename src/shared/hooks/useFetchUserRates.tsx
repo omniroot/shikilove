@@ -22,7 +22,7 @@ const GET_USER_RATES = gql`
   }
 `;
 
-interface IUserRate {
+export interface IUserRate {
 	id: string;
 	anime: {
 		id: string;
