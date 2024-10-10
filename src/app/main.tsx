@@ -10,23 +10,23 @@ import { CONSTS } from "@/shared/consts/consts";
 const access_token = localStorage.getItem("access_token");
 
 const client = new ApolloClient({
-  uri: CONSTS.API_URL,
-  cache: new InMemoryCache(),
-  defaultOptions: {
-    query: {
-      pollInterval: 45000,
-    },
-  },
-  headers: {
-    "User-Agent": "ShikiLove",
-    Authorization: `Bearer ${access_token}`,
-  },
+	uri: CONSTS.API_URL,
+	cache: new InMemoryCache(),
+	defaultOptions: {
+		query: {
+			pollInterval: 45000,
+		},
+	},
+	headers: {
+		"User-Agent": "ShikiLove",
+		Authorization: `Bearer ${access_token}`,
+	},
 });
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ApolloProvider client={client}>
-      <RouterProvider router={router} />
-    </ApolloProvider>
-  </StrictMode>,
+	<StrictMode>
+		<ApolloProvider client={client}>
+			<RouterProvider router={router} />
+		</ApolloProvider>
+	</StrictMode>,
 );

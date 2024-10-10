@@ -3,8 +3,8 @@ import { create } from "zustand";
 interface IUser {}
 
 interface IGlobalStore {
-  isLoading: boolean;
-  user: IUser | null;
+	isLoading: boolean;
+	user: IUser | null;
 }
 
 const useGlobalStore = create((set) => ({}));

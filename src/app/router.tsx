@@ -8,23 +8,23 @@ import { ProfilePage } from "@/app/pages/ProfilePage/ProfilePage";
 import { SearchPage } from "@/app/pages/SearchPage/SearchPage";
 import { SettingsPage } from "@/app/pages/SettingsPage/SettingsPage";
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
+	createBrowserRouter,
+	createRoutesFromElements,
+	Route,
 } from "react-router-dom";
 
 export const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<GlobalLayout />}>
-      <Route path="/" element={<ProfilePage />} />
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/animes" element={<AnimesPage />} />
-      <Route path="/animes/:animeId" element={<AnimePage />} />
+	createRoutesFromElements(
+		<Route path="/" element={<GlobalLayout />}>
+			<Route path="/" element={<ProfilePage />} />
+			<Route path="/search" element={<SearchPage />} />
+			<Route path="/animes" element={<AnimesPage />} />
+			<Route path="/animes/:animeId" element={<AnimePage />} />
 
-      <Route path="/settings" element={<SettingsPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/logout" element={<LogoutPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Route>,
-  ),
+			<Route path="/settings" element={<SettingsPage />} />
+			<Route path="/login" element={<LoginPage />} />
+			<Route path="/logout" element={<LogoutPage />} />
+			<Route path="*" element={<NotFoundPage />} />
+		</Route>,
+	),
 );

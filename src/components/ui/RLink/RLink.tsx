@@ -8,16 +8,16 @@ import { Link, useLocation } from "react-router-dom";
 interface IRLinkProps extends IBaseComponent {}
 
 export const RLink: FC<IRLinkProps> = ({
-  children,
-  className,
-  clickable = true,
-  as = Link,
-  border = "transparent",
-  to,
+	children,
+	className,
+	clickable = true,
+	as = Link,
+	border = "transparent",
+	to,
 }) => {
-  const isCurrentPage = useLocation().pathname === to;
+	const isCurrentPage = useLocation().pathname === to;
 
-  const _style = css`
+	const _style = css`
     color: inherit;
     text-decoration: none;
 
@@ -28,17 +28,17 @@ export const RLink: FC<IRLinkProps> = ({
     ${isCurrentPage && "color: var(--accent);"}
   `;
 
-  const _class = clsx(className, _style);
+	const _class = clsx(className, _style);
 
-  return (
-    <BaseComponent
-      as={as}
-      to={to}
-      clickable={clickable}
-      border={border}
-      className={_class}
-    >
-      {children}
-    </BaseComponent>
-  );
+	return (
+		<BaseComponent
+			as={as}
+			to={to}
+			clickable={clickable}
+			border={border}
+			className={_class}
+		>
+			{children}
+		</BaseComponent>
+	);
 };
