@@ -25,6 +25,6 @@ export const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />} />
       <Route path="/logout" element={<LogoutPage />} />
       <Route path="*" element={<NotFoundPage />} />
-    </Route>
-  )
+    </Route>,
+  ),
 );

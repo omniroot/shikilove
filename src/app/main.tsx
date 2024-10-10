@@ -28,5 +28,5 @@ createRoot(document.getElementById("root")!).render(
     <ApolloProvider client={client}>
       <RouterProvider router={router} />
     </ApolloProvider>
-  </StrictMode>
+  </StrictMode>,
 );
