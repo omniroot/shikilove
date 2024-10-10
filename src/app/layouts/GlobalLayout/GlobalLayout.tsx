@@ -36,7 +36,7 @@ export const GlobalLayout = () => {
   return (
     <div className={styles.globallayout}>
       <Sidebar />
-      <Box className={styles.main}>
+      <Box width="100%" className={styles.main}>
         <Outlet />
       </Box>
     </div>
