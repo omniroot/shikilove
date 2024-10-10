@@ -1,11 +1,16 @@
 # Shikimori
 
+## Todos
+
+- [ ] Rewrite util getPosterImage(link) to getPosterImage(images) like (original, preview, x48, x96) and select image depending on various factors (mobile phone, mobile Internet 3g, lite mode from settings)
+- [ ] Separate login from AnimeUserRates to AnimesList and replace on it in AnimePage
+
 ## Roadmap
 
 - [ ] Pages
 
   - [ ] AnimePage
-  - [ ] ProfilePage
+  - [x] ProfilePage
   - [ ] SearchPage
   - [ ] SettingsPage
   - [ ] LoginPage
@@ -14,16 +19,16 @@
 - [ ] UI - ui components
 
   - [x] Typography
-  - [ ] ButtonGroup
-  - [ ] Button
-  - [ ] IconButton
+  - [x] ButtonGroup
+  - [x] Button
+  - [x] IconButton
+  - [x] ImageView
   - [ ] Chip
   - [ ] SelectField
-  - [ ] ImageView
 
 - [ ] Features - business components
 
-  - [ ] AnimeCard
+  - [x] AnimeCard
 
 - [ ] Widgets
   - [x] Sidebar
