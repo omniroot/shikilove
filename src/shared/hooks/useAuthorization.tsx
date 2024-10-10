@@ -1,6 +1,5 @@
 import { CONSTS } from "@/shared/consts/consts";
 import axios from "axios";
-import { access } from "fs";
 
 const _shikimoriAuth = axios.create({
   baseURL: "https://shikimori.one/",
