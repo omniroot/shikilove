@@ -18,7 +18,7 @@ export const ProfilePage = () => {
         <UserInfoCard />
       </Box>
       <Box width="100%" flexDirection="column" gap="1">
-        <Typography size="2" weight="bold" padding="1">
+        <Typography width="100%" size="2" weight="bold" padding="1">
           Watching
         </Typography>
         <AnimeUserRates />

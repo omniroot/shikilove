@@ -90,7 +90,13 @@ export const AnimeUserRates = () => {
     });
   };
   return (
-    <Box gap="1" border="none" padding="none" flexDirection="column">
+    <Box
+      width="100%"
+      gap="1"
+      border="none"
+      padding="none"
+      flexDirection="column"
+    >
       <ButtonGroup
         elements={elements}
         deafultActive="watching"
@@ -98,7 +104,7 @@ export const AnimeUserRates = () => {
           onButtonGroupClick(activeId as IPages);
         }}
       />
-      <Box gap="1" border="none" padding="none" flexWrap="wrap">
+      <Box width="100%" gap="1" border="none" padding="none" flexWrap="wrap">
         {userRates?.map((rate) => {
           if (rate.status === activeFilter) {
             return (

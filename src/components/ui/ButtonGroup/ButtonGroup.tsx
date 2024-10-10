@@ -23,7 +23,13 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
   };
 
   return (
-    <BaseComponent gap="1" border="none" clickable={false}>
+    <BaseComponent
+      width="100%"
+      flexWrap="wrap"
+      gap="1"
+      border="none"
+      clickable={false}
+    >
       {elements?.map((element) => {
         return (
           <BaseComponent
