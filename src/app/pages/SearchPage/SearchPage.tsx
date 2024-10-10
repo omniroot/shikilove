@@ -1,7 +1,7 @@
 export const SearchPage = () => {
-  return (
-    <div>
-      <span>SearchPage</span>
-    </div>
-  );
+	return (
+		<div>
+			<span>SearchPage</span>
+		</div>
+	);
 };

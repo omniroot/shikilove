@@ -1,7 +1,7 @@
 export const LogoutPage = () => {
-  return (
-    <div>
-      <span>LogoutPage</span>
-    </div>
-  );
+	return (
+		<div>
+			<span>LogoutPage</span>
+		</div>
+	);
 };

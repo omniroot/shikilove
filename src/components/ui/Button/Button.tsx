@@ -1,13 +1,13 @@
 import { css } from "@emotion/css";
-import { IBaseComponent } from "@ui/BaseComponent/BaseComponent";
+import type { IBaseComponent } from "@ui/BaseComponent/BaseComponent";
 import { Box } from "@ui/Box/Box";
-import { FC } from "react";
+import type { FC } from "react";
 
 interface IButtonProps extends IBaseComponent {
-  children?: React.ReactNode;
+	children?: React.ReactNode;
 }
 export const Button: FC<IButtonProps> = ({ children, ...rest }) => {
-  const _style = css`
+	const _style = css`
     padding: var(--padding);
     border-radius: calc(var(--radius) / 1.6);
     color: var(--color-primary);
@@ -24,14 +24,14 @@ export const Button: FC<IButtonProps> = ({ children, ...rest }) => {
     }
   `;
 
-  return (
-    <Box
-      className={_style}
-      {...rest}
-      backgroundColor="accent"
-      textColor="primary"
-    >
-      {children}
-    </Box>
-  );
+	return (
+		<Box
+			className={_style}
+			{...rest}
+			backgroundColor="accent"
+			textColor="primary"
+		>
+			{children}
+		</Box>
+	);
 };

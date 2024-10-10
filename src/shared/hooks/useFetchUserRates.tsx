@@ -23,26 +23,26 @@ const GET_USER_RATES = gql`
 `;
 
 interface IUserRate {
-  id: string;
-  anime: {
-    id: string;
-    name: string;
-    poster: {
-      main2xUrl: string;
-    };
-  };
-  status: string;
-  createdAt: string;
+	id: string;
+	anime: {
+		id: string;
+		name: string;
+		poster: {
+			main2xUrl: string;
+		};
+	};
+	status: string;
+	createdAt: string;
 }
 
 interface IResponse {
-  userRates: IUserRate[];
+	userRates: IUserRate[];
 }
 
 export const useFetchUserRates = () => {
-  const { loading, data, error } = useQuery<IResponse>(GET_USER_RATES);
+	const { loading, data, error } = useQuery<IResponse>(GET_USER_RATES);
 
-  console.log(data);
-  if (!data?.userRates) return { data, loading: loading, error: error };
-  return { userRates: data.userRates, loading: loading, error: error };
+	console.log(data);
+	if (!data?.userRates) return { data, loading: loading, error: error };
+	return { userRates: data.userRates, loading: loading, error: error };
 };

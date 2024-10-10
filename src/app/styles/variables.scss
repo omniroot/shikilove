@@ -1,51 +1,52 @@
 :root {
-  --padding-1: 0.5rem;
-  --padding-2: 1rem;
-  --padding: var(--padding-1);
+	--padding-1: 0.5rem;
+	--padding-2: 1rem;
+	--padding: var(--padding-1);
+	--margin-1: 0.5rem;
+	--margin-2: 1rem;
+	--margin: var(--margin-1);
+	--radius-1: 1rem;
+	--radius-2: 2rem;
+	--radius: var(--radius-1);
+	--gap-1: 0.5rem;
+	--gap-2: 1rem;
+	--gap: var(--gap-1);
+	--text-size-h1: 2rem;
 
-  --margin-1: 0.5rem;
-  --margin-2: 1rem;
-  --margin: var(--margin-1);
+	/* Размер для h1 */
+	--text-size-h2: 1.75rem;
 
-  --radius-1: 1rem;
-  --radius-2: 2rem;
-  --radius: var(--radius-1);
+	/* Размер для h2 */
+	--text-size-h3: 1.5rem;
 
-  --gap-1: 0.5rem;
-  --gap-2: 1rem;
-  --gap: var(--gap-1);
+	/* Размер для h3 */
+	--text-size-h4: 1.25rem;
 
-  --text-size-h1: 2rem; /* Размер для h1 */
-  --text-size-h2: 1.75rem; /* Размер для h2 */
-  --text-size-h3: 1.5rem; /* Размер для h3 */
-  --text-size-h4: 1.25rem; /* Размер для h4 */
-  --text-size-h5: 1rem; /* Размер для h5 */
-  --text-size-h6: 0.875rem; /* Размер для h6 */
+	/* Размер для h4 */
+	--text-size-h5: 1rem;
 
-  --border-none: none;
-  --border-transparent: 0.2rem solid transparent;
-  --border-default: 0.2rem solid var(--color-secondary);
-  --border-active: 0.2rem solid var(--color-accent);
-  --border: var(--border-default);
+	/* Размер для h5 */
+	--text-size-h6: 0.875rem;
 
-  --color-primary: #151515;
-  --color-secondary: #1e1e1e;
-  --color-accent: #b3b3f1;
+	/* Размер для h6 */
 
-  --color-text: #f2f4f3;
-  --color-text-secondary: #4c4c4c;
-
-  --color-transparent: transparent;
-  --color-red: #ba252f;
-  --color-violet: slateblue;
-  --color-blue: #aec5eb;
-  --color-green: #a7f098;
-  --color-yellow: #f3c669;
-
-  --color-white: white;
-
-  --color-black: black;
+	--border-none: none;
+	--border-transparent: 0.2rem solid transparent;
+	--border-default: 0.2rem solid var(--color-secondary);
+	--border-active: 0.2rem solid var(--color-accent);
+	--border: var(--border-default);
+	--color-primary: #151515;
+	--color-secondary: #1e1e1e;
+	--color-accent: #b3b3f1;
+	--color-text: #f2f4f3;
+	--color-text-secondary: #4c4c4c;
+	--color-transparent: transparent;
+	--color-red: #ba252f;
+	--color-violet: slateblue;
+	--color-blue: #aec5eb;
+	--color-green: #a7f098;
+	--color-yellow: #f3c669;
+	--color-white: white;
+	--color-black: black;
 }
 
-h2 {
-}

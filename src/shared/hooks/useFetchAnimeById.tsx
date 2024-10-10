@@ -83,95 +83,95 @@ const GET_ANIME_BY_ID = gql`
 `;
 
 interface IResponse {
-  animes: {
-    id: string;
-    name: string;
-    russian: string;
-    kind: string;
-    rating: string;
-    score: number;
-    status: string;
-    episodes: number;
-    duration: number;
-    airedOn: {
-      year: number;
-      month: number;
-      day: number;
-      date: string;
-    };
-    releasedOn: {
-      year: number;
-      month: number;
-      day: number;
-      date: string;
-    };
-    url: string;
-    poster: {
-      id: string;
-      originalUrl: string;
-      mainUrl: string;
-    };
-    licensors: string[];
-    createdAt: string;
-    updatedAt: string;
-    genres: {
-      id: string;
-      name: string;
-      russian: string;
-      kind: string;
-    }[];
-    studios: {
-      id: string;
-      name: string;
-      imageUrl: string;
-    }[];
-    related: {
-      id: string;
-      anime: {
-        id: string;
-        name: string;
-      };
-      manga: {
-        id: string;
-        name: string;
-      };
-      relationKind: string;
-      relationText: string;
-    }[];
-    videos: {
-      id: string;
-      url: string;
-      name: string;
-      kind: string;
-      playerUrl: string;
-      imageUrl: string;
-    }[];
-    screenshots: {
-      id: string;
-      originalUrl: string;
-      x166Url: string;
-      x332Url: string;
-    }[];
-    scoresStats: {
-      score: number;
-      count: number;
-    }[];
-    statusesStats: {
-      status: string;
-      count: number;
-    }[];
-    description: string;
-  }[];
+	animes: {
+		id: string;
+		name: string;
+		russian: string;
+		kind: string;
+		rating: string;
+		score: number;
+		status: string;
+		episodes: number;
+		duration: number;
+		airedOn: {
+			year: number;
+			month: number;
+			day: number;
+			date: string;
+		};
+		releasedOn: {
+			year: number;
+			month: number;
+			day: number;
+			date: string;
+		};
+		url: string;
+		poster: {
+			id: string;
+			originalUrl: string;
+			mainUrl: string;
+		};
+		licensors: string[];
+		createdAt: string;
+		updatedAt: string;
+		genres: {
+			id: string;
+			name: string;
+			russian: string;
+			kind: string;
+		}[];
+		studios: {
+			id: string;
+			name: string;
+			imageUrl: string;
+		}[];
+		related: {
+			id: string;
+			anime: {
+				id: string;
+				name: string;
+			};
+			manga: {
+				id: string;
+				name: string;
+			};
+			relationKind: string;
+			relationText: string;
+		}[];
+		videos: {
+			id: string;
+			url: string;
+			name: string;
+			kind: string;
+			playerUrl: string;
+			imageUrl: string;
+		}[];
+		screenshots: {
+			id: string;
+			originalUrl: string;
+			x166Url: string;
+			x332Url: string;
+		}[];
+		scoresStats: {
+			score: number;
+			count: number;
+		}[];
+		statusesStats: {
+			status: string;
+			count: number;
+		}[];
+		description: string;
+	}[];
 }
 
 export const useFetchAnimeById = (id: string) => {
-  const { loading, data, error } = useQuery<IResponse>(GET_ANIME_BY_ID, {
-    variables: {
-      ids: id,
-    },
-  });
+	const { loading, data, error } = useQuery<IResponse>(GET_ANIME_BY_ID, {
+		variables: {
+			ids: id,
+		},
+	});
 
-  if (!data?.animes) return { data, loading: loading, error: error };
+	if (!data?.animes) return { data, loading: loading, error: error };
 
-  return { anime: data.animes[0], loading: loading, error: error };
+	return { anime: data.animes[0], loading: loading, error: error };
 };
