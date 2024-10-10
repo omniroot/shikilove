@@ -1,4 +1,3 @@
-import { AnimeStatusFilter } from "@features/AnimeStatusFilter/AnimeStatusFilter";
 import { AnimeUserRates } from "@features/AnimeUserRates/AnimeUserRates";
 import { UserInfoCard } from "@features/UserInfoCard/UserInfoCard";
 import { Box } from "@ui/Box/Box";
