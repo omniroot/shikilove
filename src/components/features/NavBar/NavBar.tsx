@@ -13,8 +13,17 @@ interface INavBarProps {
 }
 
 export const NavBar: FC<INavBarProps> = ({ pages }) => {
-	const currentLink = useLocation().pathname;
-	const isCurrentPage = (page: IPage) => page.path === currentLink;
+	const currentPage = useLocation().pathname;
+
+	const isCurrentPage = (page: IPage) => {
+		// console.log(currentLink, page.path);
+		const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
+		const _nextPage = page.path.replaceAll("/", "");
+
+		if (_currentPage === _nextPage) { console.log(_currentPage, _nextPage, "===> true"); return true }
+		console.log(_currentPage, _nextPage, "===> false")
+		return false;
+	};
 
 	return (
 		<div className={styles.navbar}>
