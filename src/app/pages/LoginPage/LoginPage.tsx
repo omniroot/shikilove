@@ -1,8 +1,5 @@
 import { CONSTS } from "@/shared/consts/consts";
 import { useAuthorization } from "@/shared/hooks/useAuthorization";
-import { Box } from "@ui/Box/Box";
-import { Button } from "@ui/Button/Button";
-import { Typography } from "@ui/Typography/Typography";
 import { useSearchParams } from "react-router-dom";
 
 export const LoginPage = () => {
@@ -27,27 +24,12 @@ export const LoginPage = () => {
 		window.open(CONSTS.OAUTH_URL, "_self");
 	};
 	return (
-		<Box
-			justifyContent="center"
-			alignItems="center"
-			flexDirection="column"
-			gap="2"
-			padding="2"
-			width="100%"
-			height="100%"
-		>
-			<Typography size="1">LoginPage</Typography>
-			<Box
-				width="100%"
-				height="100%"
-				flexDirection="column"
-				justifyContent="center"
-				alignItems="center"
-				gap="1"
-			>
-				<Typography size="3">Login with</Typography>
-				<Button onClick={onLoginButtonClick}>Shikimori</Button>
-			</Box>
-		</Box>
+		<div>
+			<span>LoginPage</span>
+			<div>
+				<span>Login with</span>
+				<button onClick={onLoginButtonClick}>Shikimori</button>
+			</div>
+		</div>
 	);
 };

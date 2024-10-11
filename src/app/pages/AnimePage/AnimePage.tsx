@@ -1,72 +1,64 @@
 import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
-import { useFetchSimilarAnime } from "@/shared/hooks/usеFetchSimilarAnime";
-import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList";
-import { Box } from "@ui/Box/Box";
-import { Divide } from "@ui/Divide/Divide";
+
 import { ImageView } from "@ui/ImageView/ImageView";
-import { Typography } from "@ui/Typography/Typography";
+import styles from "./AnimePage.module.scss";
 import { useParams } from "react-router-dom";
+import {
+	AnimeEpisodeIcon,
+	AnimeRateIcon,
+	AnimeStatusIcon,
+} from "@/shared/icons";
+import { AnimeInfoLine } from "@features/AnimeInfoLine/AnimeInfoLine";
+import { AnimeInfoSection } from "@features/AnimeAbout/AnimeInfoSection";
+import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
-	const { similarAnimes } = useFetchSimilarAnime(animeId || "1");
 	const { anime } = useFetchAnimeById(animeId || "1");
 
-	console.log(similarAnimes);
 	return (
-		<Box
-			width="100%"
-			height="100%"
-			flexDirection="column"
-			border="none"
-			padding="none"
-			gap="1"
-		>
-			<Box width="100%">
-				<Box width="100%" border="none" gap="1" padding="none">
-					<ImageView
-						src={anime?.poster.mainUrl}
-						radius="1"
-						width="600px"
-						height="100%"
-					/>
-					<Divide width="280px" orientation="vertical" />
-					<Box width="100%" height="100%" flexDirection="column">
-						<Typography size="4" weight="bold">
-							{anime?.name}
-						</Typography>
-						<Typography>{anime?.status}</Typography>
-						<Typography>{anime?.episodes}</Typography>
-						<Typography>{anime?.score}</Typography>
-						<Box padding="none" border="none">
-							<Box>Genre</Box>
-							<Box>Genre</Box>
-						</Box>
-					</Box>
-					<Box width="100%" flexDirection="column">
-						<Typography>{anime?.name}</Typography>
-						<Typography>{anime?.status}</Typography>
-					</Box>
-				</Box>
-			</Box>
-			<Box flexDirection="column" width="100%">
-				<Typography size="4" weight="bold">
-					About
-				</Typography>
-				<Typography textColor="text-secondary">{anime?.description}</Typography>
-			</Box>
-			<Box flexDirection="column" width="100%">
-				<Typography size="4" weight="bold">
-					Screenshots
-				</Typography>
-				<Box>Add AnimeScreenshots component</Box>
-			</Box>
-			<Box flexDirection="column" width="100%">
-				<Typography size="4" weight="bold">
-					Similar
-				</Typography>
-				<AnimeSimilarList animes={similarAnimes} />
-			</Box>
-		</Box>
+		<div className={styles.anime_page}>
+			<div className={styles.anime_info}>
+				<ImageView
+					src={anime?.poster.mainUrl}
+					radius="1"
+					width="230px"
+					height="340px"
+				/>
+				<div className={styles.anime_info_left}>
+					<span className={styles.name}>{anime?.name}</span>
+					<AnimeInfoLine>
+						{" "}
+						<AnimeStatusIcon /> {anime?.status}
+					</AnimeInfoLine>
+					<AnimeInfoLine>
+						{" "}
+						<AnimeEpisodeIcon /> {anime?.episodes} episodes
+					</AnimeInfoLine>
+					<AnimeInfoLine>
+						{" "}
+						<AnimeRateIcon /> {anime?.score}
+					</AnimeInfoLine>
+					<div className={styles.genres_list}>
+						{anime?.genres?.map((genre) => (
+							<div key={genre.id} className={styles.genre}>{genre.name}</div>
+						))}
+					</div>
+				</div>
+				<div>
+					{/* <span>{anime?.name}</span>
+					<span>{anime?.status}</span> */}
+				</div>
+			</div>
+			<AnimeInfoSection title="About">
+				<span>{anime?.description}</span>
+			</AnimeInfoSection>
+			<AnimeInfoSection title="Screenshots">
+				<div>Add AnimeScreenshots component</div>
+			</AnimeInfoSection>
+			<AnimeInfoSection title="Similar">
+				<AnimeSimilarList animeId={animeId} />
+			</AnimeInfoSection>
+		</div>
 	);
 };
