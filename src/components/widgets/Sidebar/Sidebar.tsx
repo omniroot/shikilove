@@ -1,12 +1,12 @@
-import { Box } from "@ui/Box/Box";
-import styles from "./Sidebar.module.scss";
 import {
 	LogoutIcon,
 	ProfileIcon,
 	SearchIcon,
 	SettingsIcon,
+	ShikimoriIcon,
 } from "@/shared/icons";
 import { NavBar } from "@features/NavBar/NavBar";
+import styles from "./Sidebar.module.scss";
 
 const start_pages = [
 	{
@@ -35,34 +35,14 @@ const end_pages = [
 ];
 
 export const Sidebar = () => {
-	// const [isSidebarHovered, setIsSidebarHovered] = useState(false);
-
-	// const onSidebarMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
-	//   setIsSidebarHovered(true);
-	// };
-	// const onSidebarMouseLeave = (event: MouseEvent<HTMLDivElement>) => {
-	//   setIsSidebarHovered(false);
-	// };
-
-	// useEffect(() => {
-	//   console.log(isSidebarHovered);
-	// }, [isSidebarHovered]);
-
 	return (
-		<Box className={styles.sidebar_container} padding="none" border="none">
-			<Box
-				className={styles.sidebar}
-				flexDirection="column"
-				alignItems="center"
-				gap="1"
-				// onMouseEnter={onSidebarMouseEnter}
-				// onMouseLeave={onSidebarMouseLeave}
-			>
-				<Box>Shiki</Box>
+		<div className={styles.sidebar_container}>
+			<div className={styles.sidebar}>
+				<ShikimoriIcon className={styles.shikimori_icon} />
 				<NavBar pages={start_pages} />
-				<Box className={styles.spacer} height="100%" border="none" />
+				<div className={styles.spacer} />
 				<NavBar pages={end_pages} />
-			</Box>
-		</Box>
+			</div>
+		</div>
 	);
 };
