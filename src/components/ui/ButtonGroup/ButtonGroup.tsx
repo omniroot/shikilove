@@ -1,5 +1,6 @@
-import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
 import { type FC, type ReactNode, useState } from "react";
+import styles from "./ButtonGroup.module.scss";
+import clsx from "clsx";
 
 interface IElement {
 	id: string;
@@ -23,26 +24,20 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 	};
 
 	return (
-		<BaseComponent
-			width="100%"
-			flexWrap="wrap"
-			gap="1"
-			border="none"
-			clickable={false}
-		>
+		<div className={styles.button_group}>
 			{elements?.map((element) => {
 				return (
-					<BaseComponent
+					<div
+						className={clsx(styles.button, {
+							[styles.active]: active === element.id,
+						})}
 						key={element.id}
-						border={active === element.id ? "active" : "default"}
-						radius="1"
-						clickable
 						onClick={() => onGroupItemClick(element)}
 					>
 						{element.element}
-					</BaseComponent>
+					</div>
 				);
 			})}
-		</BaseComponent>
+		</div>
 	);
 };
