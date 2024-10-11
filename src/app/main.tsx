@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import "@/app/styles/global.scss";
+import "@/app/styles/main.scss";
 import { router } from "@/app/router";
 import { CONSTS } from "@/shared/consts/consts";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
