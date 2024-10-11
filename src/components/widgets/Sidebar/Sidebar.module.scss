@@ -2,7 +2,7 @@
   min-width: 70px;
   height: 100dvh;
 
-  // background-color: aqua;
+  // background-color: aqua;background-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-colorbackground-color
 
   .sidebar {
     position: fixed;
@@ -19,9 +19,21 @@
 
 
     .shikimori_icon {
-      width: 32px;
-      height: 32px;
+      width: 100%;
+      height: 45px;
+      padding: 5px;
+      margin-top: var(--gap);
       color: var(--color-white);
+      border: var(--border);
+      border-inline-start: 2px solid var(--color-white);
+      border-radius: 12px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 5px;
+      background-color: var(--color-secondary);
+      border-radius: var(--radius);
     }
   }
 }
@@ -31,5 +43,5 @@
 }
 
 .profile {
-  // width: 100%;
+  // width: 100%;widthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidth
 }
