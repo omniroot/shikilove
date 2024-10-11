@@ -1,8 +1,7 @@
-import { BaseComponent } from "@ui/BaseComponent/BaseComponent";
-import { Box } from "@ui/Box/Box";
-import { RLink } from "@ui/RLink/RLink";
 import type { FC, ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import styles from "./NavBar.module.scss";
+import clsx from "clsx";
 
 interface IPage {
 	name: string;
@@ -18,21 +17,25 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 	const isCurrentPage = (page: IPage) => page.path === currentLink;
 
 	return (
-		<BaseComponent flexDirection="column" gap="1">
+		<div className={styles.navbar}>
 			{pages.map((page) => {
 				if (isCurrentPage(page)) {
 					return (
-						<Box border="active" clickable key={page.name}>
-							<RLink to={page.path}>{page.icon}</RLink>
-						</Box>
+						<Link
+							className={clsx(styles.navitem, styles.active)}
+							to={page.path}
+							key={page.name}
+						>
+							{page.icon}
+						</Link>
 					);
 				}
 				return (
-					<Box key={page.name} border="transparent">
-						<RLink to={page.path}>{page.icon}</RLink>
-					</Box>
+					<Link className={styles.navitem} to={page.path} key={page.name}>
+						{page.icon}
+					</Link>
 				);
 			})}
-		</BaseComponent>
+		</div>
 	);
 };
