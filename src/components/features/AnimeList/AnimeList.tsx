@@ -1,7 +1,7 @@
 import type { IUserRate } from "@/shared/hooks/useFetchUserRates";
 import { css } from "@emotion/css";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard";
-import { Box } from "@ui/Box/Box";
+
 import type { FC } from "react";
 
 interface IAnimeListProps {

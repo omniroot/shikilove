@@ -1,33 +1,24 @@
 import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
-import { Box } from "@ui/Box/Box";
-import { Divide } from "@ui/Divide/Divide";
 import { ImageView } from "@ui/ImageView/ImageView";
-import { Typography } from "@ui/Typography/Typography";
+import styles from "./UserInfoCard.module.scss";
 
 export const UserInfoCard = () => {
 	const { nickname, lastOnlineAt, avatarUrl } = useFetchCurrentUser();
 
 	return (
-		<Box width="100%" border="none" padding="none">
+		<div className={styles.user_info_card}>
 			<ImageView src={avatarUrl} width="250px" radius="1" />
-			<Divide orientation="vertical" width="170px" />
-			<Box flexDirection="column" width="100%" border="none" padding="none">
-				<Box justifyContent="space-between" width="100%" border="none">
-					<Typography size="3">{nickname}</Typography>
-					<Typography size="4">{lastOnlineAt}</Typography>
-				</Box>
-				<Box justifyContent="space-between" width="100%" border="none">
-					<Typography>I love anime</Typography>
-					<Typography
-						backgroundColor="secondary"
-						textColor="accent"
-						radius="1"
-						padding="1"
-					>
-						{import.meta.env.MODE} mode
-					</Typography>
-				</Box>
-			</Box>
-		</Box>
+			{/* <Divide orientation="vertical" width="170px" /> */}
+			<div className={styles.info}>
+				<div className={styles.first_line}>
+					<span className={styles.nickname}>{nickname}</span>
+					<span className={styles.last_online_at}>{lastOnlineAt}</span>
+				</div>
+				<div className={styles.second_line}>
+					<span className={styles.about}>I love anime</span>
+					<span className={styles.dev_mode}>{import.meta.env.MODE} mode</span>
+				</div>
+			</div>
+		</div>
 	);
 };

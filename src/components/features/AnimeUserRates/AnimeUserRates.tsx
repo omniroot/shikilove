@@ -6,14 +6,13 @@ import {
 	WatchedIcon,
 	WatchingIcon,
 } from "@/shared/icons";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard";
-import { AnimeList } from "@features/AnimeList/AnimeList";
-import { Box } from "@ui/Box/Box";
+
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup";
 import { IconButton } from "@ui/IconButton/IconButton";
-import { Typography } from "@ui/Typography/Typography";
-import { Repeat } from "lucide-react";
 import { useState } from "react";
+import styles from "./AnimeUserRates.module.scss";
+import { Link } from "react-router-dom";
+import { ImageView } from "@ui/ImageView/ImageView";
 
 type IPages =
 	| "watching"
@@ -29,7 +28,7 @@ const elements = [
 		element: (
 			<IconButton>
 				<WatchingIcon />
-				<Typography size="4">watching</Typography>
+				<span>watching</span>
 			</IconButton>
 		),
 	},
@@ -38,7 +37,7 @@ const elements = [
 		element: (
 			<IconButton>
 				<PlannedIcon />
-				<Typography size="4">planned</Typography>
+				<span>planned</span>
 			</IconButton>
 		),
 	},
@@ -47,7 +46,7 @@ const elements = [
 		element: (
 			<IconButton>
 				<WatchedIcon />
-				<Typography size="4">watched</Typography>
+				<span>watched</span>
 			</IconButton>
 		),
 	},
@@ -55,8 +54,8 @@ const elements = [
 		id: "rewatching",
 		element: (
 			<IconButton>
-				<Repeat />
-				<Typography size="4">rewatching</Typography>
+				{/* <Repeat /> */}
+				<span>rewatching</span>
 			</IconButton>
 		),
 	},
@@ -65,7 +64,7 @@ const elements = [
 		element: (
 			<IconButton>
 				<PostponedIcon />
-				<Typography size="4">postponed</Typography>
+				<span>postponed</span>
 			</IconButton>
 		),
 	},
@@ -74,7 +73,7 @@ const elements = [
 		element: (
 			<IconButton>
 				<DroppedIcon />
-				<Typography size="4">dropped</Typography>
+				<span>dropped</span>
 			</IconButton>
 		),
 	},
@@ -91,13 +90,7 @@ export const AnimeUserRates = () => {
 		}
 	};
 	return (
-		<Box
-			width="100%"
-			gap="1"
-			border="none"
-			padding="none"
-			flexDirection="column"
-		>
+		<div className={styles.anime_user_rates}>
 			<ButtonGroup
 				elements={elements}
 				deafultActive="watching"
@@ -105,20 +98,27 @@ export const AnimeUserRates = () => {
 					onButtonGroupClick(activeId as IPages);
 				}}
 			/>
-			<AnimeList variant="scroll">
+			<div className={styles.anime_list}>
 				{userRates?.map((rate) => {
 					if (rate.status === activeFilter) {
 						return (
-							<AnimeCard
-								key={rate.anime.id}
-								title={rate.anime.name}
-								image={rate.anime.poster.main2xUrl}
-								id={rate.anime.id}
-							/>
+							<Link
+								to={`/animes/${rate.anime.id}`}
+								className={styles.anime_card}
+							>
+								<ImageView
+									radius="1"
+									src={rate.anime.poster.main2xUrl}
+									width="100%"
+									height="85%"
+									alt={rate.anime.name}
+								/>
+								<span className={styles.anime_title}>{rate.anime.name}</span>
+							</Link>
 						);
 					}
 				})}
-			</AnimeList>
-		</Box>
+			</div>
+		</div>
 	);
 };
