@@ -1,10 +1,9 @@
-import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
 import { useAuthorization } from "@/shared/hooks/useAuthorization";
 import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
-import { Box } from "@ui/Box/Box";
-import { Sidebar } from "@widgets/Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import styles from "./GlobalLayout.module.scss";
+import { Sidebar } from "@widgets/Sidebar/Sidebar";
+import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
 
 export const GlobalLayout = () => {
 	const { loading, error, ...rest } = useFetchCurrentUser();
@@ -35,9 +34,9 @@ export const GlobalLayout = () => {
 	return (
 		<div className={styles.globallayout}>
 			<Sidebar />
-			<Box width="100%" className={styles.main}>
+			<main className={styles.main}>
 				<Outlet />
-			</Box>
+			</main>
 		</div>
 	);
 };
