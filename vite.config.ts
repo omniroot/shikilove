@@ -4,15 +4,22 @@ import path from "path";
 import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  plugins: [react(), svgr()],
+	plugins: [react(), svgr()],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@import "./src/app/styles/global.scss";`,
+			},
+		},
+	},
 
-  resolve: {
-    alias: {
-      "@features": path.resolve(__dirname, "src", "components", "features"),
-      "@widgets": path.resolve(__dirname, "src", "components", "widgets"),
-      "@ui": path.resolve(__dirname, "src", "components", "ui"),
-      "@": path.resolve(__dirname, "src"),
-      "/": path.resolve(__dirname),
-    },
-  },
+	resolve: {
+		alias: {
+			"@features": path.resolve(__dirname, "src", "components", "features"),
+			"@widgets": path.resolve(__dirname, "src", "components", "widgets"),
+			"@ui": path.resolve(__dirname, "src", "components", "ui"),
+			"@": path.resolve(__dirname, "src"),
+			"/": path.resolve(__dirname),
+		},
+	},
 });
