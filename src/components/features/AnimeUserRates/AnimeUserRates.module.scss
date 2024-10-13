@@ -1,40 +1,31 @@
-
-
 .anime_user_rates {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
   width: 100%;
 
-  .anime_list {
+  .anime_card {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap);
-    width: 100%;
+    flex-direction: column;
+    padding: var(--padding);
+    color: var(--color-text);
+    text-decoration: none;
+    border: var(--border);
+    border-radius: var(--radius);
+    transition: all 200ms;
 
-    .anime_card {
-      display: flex;
-      flex-direction: column;
-      width: 240px;
-      height: 400px;
-      padding: var(--padding);
-      color: var(--color-text);
-      text-decoration: none;
-      border: var(--border);
-      border-radius: var(--radius);
-      transition: all 200ms;
+    .anime_title {
+      width: 100%;
+      font-size: var(--text-size-h5);
+      font-weight: bold;
+      text-align: center;
+    }
 
-      .anime_title {
-        width: 100%;
-        font-size: var(--text-size-h5);
-        font-weight: bold;
-        text-align: center;
-      }
+    &:hover {
+      border: var(--border-active);
 
-      &:hover {
-        border: var(--border-active);
-
-      }
     }
   }
+
+
 }
