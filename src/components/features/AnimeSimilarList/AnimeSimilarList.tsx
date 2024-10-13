@@ -1,9 +1,8 @@
 import { useFetchSimilarAnime } from "@/shared/hooks/usеFetchSimilarAnime";
 import { getPosterImage } from "@/shared/utils/getPosterImage";
 import type { FC } from "react";
-import styles from "./AnimeSimilarList.module.scss";
-import { ImageView } from "@ui/ImageView/ImageView";
-import { Link } from "react-router-dom";
+import { AnimeList } from "@features/AnimeList/AnimeList";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard";
 
 interface IAnimeSimilarListProps {
 	animeId?: string;
@@ -16,19 +15,15 @@ export const AnimeSimilarList: FC<IAnimeSimilarListProps> = ({ animeId }) => {
 	}
 
 	return (
-		<div className={styles.anime_similar_list}>
+		<AnimeList>
 			{similarAnimes?.map((anime) => (
-				<Link to={`/animes/${anime.id}`} className={styles.anime_card} key={anime.id}>
-					<ImageView
-						radius="1"
-						src={getPosterImage(anime.image.preview)}
-						width="100%"
-						height="85%"
-						alt={anime.name}
-					/>
-					<span className={styles.anime_title}>{anime.name}</span>
-				</Link>
+				<AnimeCard
+					key={anime.id}
+					id={anime.id}
+					image={getPosterImage(anime.image.preview)}
+					title={anime.name}
+				/>
 			))}
-		</div>
+		</AnimeList>
 	);
 };
