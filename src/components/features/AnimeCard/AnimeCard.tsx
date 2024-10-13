@@ -1,4 +1,4 @@
-import { Typography } from "@ui/Typography/Typography";
+import { ImageView } from "@ui/ImageView/ImageView";
 import styles from "./AnimeCard.module.scss";
 
 import type { FC } from "react";
@@ -11,33 +11,15 @@ interface IAnimeCardProps {
 }
 export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
 	return (
-		<Link to={`/animes/${id}`} className={styles.animecard}>
-			<img
+		<Link to={`/animes/${id}`} className={styles.anime_card} key={id}>
+			<ImageView
+				radius="1"
 				src={image}
 				width="100%"
 				height="85%"
 				alt={title}
-				style={{ borderRadius: "var(--radius)" }}
 			/>
-			<Typography
-				width="fit-content"
-				height="auto"
-				size="4"
-				weight="bold"
-				clamp="2"
-				textAlign="center"
-			>
-				{title}
-			</Typography>
-			{/* <Box
-        // className={_class_hover_container}
-        backgroundColor="secondary"
-        padding="none"
-      >
-        <IconButton>
-          <ProfileIcon />
-        </IconButton>
-      </Box> */}
+			<span className={styles.anime_title}>{title}</span>
 		</Link>
 	);
 };
