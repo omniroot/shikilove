@@ -1,0 +1,13 @@
+.animes_list_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .animes_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    justify-content: flex-start;
+
+  }
+}
