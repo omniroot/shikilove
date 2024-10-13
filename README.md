@@ -28,6 +28,9 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 ## Todos
 - [ ] ~~Rewrite util getPosterImage(link) to getPosterImage(images) like (original, preview, x48, x96) and select image depending on various factors (mobile phone, mobile Internet 3g, lite mode from settings)~~ ( at the moment this is not possible due to browser limitations )
 - [ ] Add info on hover genres
+- [ ] Add AnimeEpisodeSelector
+- [ ] Add Add function to change episodes and status
+- [ ] Add chip in AnimeCard with anime status and watched episodes
 
 ## Current progress
 - [ ] Pages
