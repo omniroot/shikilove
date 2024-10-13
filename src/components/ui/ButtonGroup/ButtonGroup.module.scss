@@ -1,9 +1,8 @@
-
-
 .button_group {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--gap);
-  
+
   .button {
     display: flex;
     align-items: center;
