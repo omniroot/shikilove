@@ -5,8 +5,6 @@ type IAnimeListProps = {
 };
 export const AnimeList: FC<IAnimeListProps> = ({ children }) => {
 	return (
-		<div className={styles.animes_list_container}>
-			<div className={styles.animes_list}>{children}</div>
-		</div>
+		<div className={styles.animes_list}>{children}</div>
 	)
 };
