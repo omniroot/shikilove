@@ -31,6 +31,9 @@
 				"noUnusedFunctionParameters": "warn",
 				"noUnusedLabels": "warn",
 				"noUnusedPrivateClassMembers": "warn"
+			},
+			"a11y": {
+				"useKeyWithClickEvents": "off"
 			}
 		}
 	},
