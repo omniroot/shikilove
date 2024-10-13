@@ -11,11 +11,22 @@ import {
 import { AnimeInfoLine } from "@features/AnimeInfoLine/AnimeInfoLine";
 import { AnimeInfoSection } from "@features/AnimeAbout/AnimeInfoSection";
 import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList";
+import { Divider } from "@ui/Divider/Divider";
+import {
+	AnimeStatusSelect,
+	animeStatusSelectOptions,
+} from "@features/AnimeStatusSelect/AnimeStatusSelect";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
 	const { anime } = useFetchAnimeById(animeId || "1");
+	const selectedStatus =
+		animeStatusSelectOptions.find(
+			(option) => option.value === anime?.userRate.status,
+		) || null;
 
+	console.log(selectedStatus);
+	if (!anime) return null;
 	return (
 		<div className={styles.anime_page}>
 			<div className={styles.anime_info}>
@@ -28,26 +39,26 @@ export const AnimePage = () => {
 				<div className={styles.anime_info_left}>
 					<span className={styles.name}>{anime?.name}</span>
 					<AnimeInfoLine>
-						{" "}
 						<AnimeStatusIcon /> {anime?.status}
 					</AnimeInfoLine>
 					<AnimeInfoLine>
-						{" "}
 						<AnimeEpisodeIcon /> {anime?.episodes} episodes
 					</AnimeInfoLine>
 					<AnimeInfoLine>
-						{" "}
 						<AnimeRateIcon /> {anime?.score}
 					</AnimeInfoLine>
 					<div className={styles.genres_list}>
 						{anime?.genres?.map((genre) => (
-							<div key={genre.id} className={styles.genre}>{genre.name}</div>
+							<div key={genre.id} className={styles.genre}>
+								{genre.name}
+							</div>
 						))}
 					</div>
 				</div>
-				<div>
-					{/* <span>{anime?.name}</span>
-					<span>{anime?.status}</span> */}
+				<Divider orientation="vertical" />
+				<div className={styles.anime_info_right}>
+					<AnimeStatusSelect defaultValue={selectedStatus} />
+					<span>{anime?.userRate.episodes}</span>
 				</div>
 			</div>
 			<AnimeInfoSection title="About">
