@@ -78,6 +78,14 @@ const GET_ANIME_BY_ID = gql`
       }
 
       description
+
+			userRate {
+				status
+				score
+				text
+				chapters
+				episodes
+    	}
     }
   }
 `;
@@ -161,6 +169,13 @@ interface IResponse {
 			count: number;
 		}[];
 		description: string;
+		userRate: {
+			status: string
+			score: number
+			text: string | null
+			chapters: number
+			episodes: number
+		}
 	}[];
 }
 
