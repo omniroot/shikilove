@@ -11,8 +11,8 @@ import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup";
 import { IconButton } from "@ui/IconButton/IconButton";
 import { useState } from "react";
 import styles from "./AnimeUserRates.module.scss";
-import { Link } from "react-router-dom";
-import { ImageView } from "@ui/ImageView/ImageView";
+import { AnimeList } from "@features/AnimeList/AnimeList";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard";
 
 type IPages =
 	| "watching"
@@ -98,27 +98,21 @@ export const AnimeUserRates = () => {
 					onButtonGroupClick(activeId as IPages);
 				}}
 			/>
-			<div className={styles.anime_list}>
+			<AnimeList>
 				{userRates?.map((rate) => {
 					if (rate.status === activeFilter) {
 						return (
-							<Link
-								to={`/animes/${rate.anime.id}`}
-								className={styles.anime_card}
-							>
-								<ImageView
-									radius="1"
-									src={rate.anime.poster.main2xUrl}
-									width="100%"
-									height="85%"
-									alt={rate.anime.name}
-								/>
-								<span className={styles.anime_title}>{rate.anime.name}</span>
-							</Link>
+							<AnimeCard
+								key={rate.anime.id}
+								id={rate.anime.id}
+								image={rate.anime.poster.main2xUrl}
+								title={rate.anime.name}
+							/>
+
 						);
 					}
 				})}
-			</div>
+			</AnimeList>
 		</div>
 	);
 };
