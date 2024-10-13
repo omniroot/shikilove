@@ -10,10 +10,10 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 
 
 ## Project lifecycle
-- [ ] Planning - design, functionality
+- [x] Planning - design, functionality
 
-- [ ] Development
-  - [ ] Alpha - Working application implementing 80% of the functionality ( + closed testing)
+- [/] Development
+  - [x] Alpha - Working application implementing 80% of the functionality ( + closed testing)
   - [ ] Beta - 100% of the functionality, preparing for release, collecting feedback, improving UX ( + open testing )
   - [ ] Optimization - This is a big stage of project development, as big as the problem with the performance of web applications. The most difficult stage on which I will spend much more time than others ( + refactoring)
   - [ ] Release - Stable version, everything planned has been implemented and works fine, I hope...
@@ -23,7 +23,7 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 
 ## Todos
 - [ ] ~~Rewrite util getPosterImage(link) to getPosterImage(images) like (original, preview, x48, x96) and select image depending on various factors (mobile phone, mobile Internet 3g, lite mode from settings)~~ ( at the moment this is not possible due to browser limitations )
-
+- [ ] Add info on hover genres
 
 ## Current progress
 - [ ] Pages
