@@ -31,4 +31,8 @@ export { AnimeStatusIcon, AnimeEpisodeIcon, AnimeRateIcon, AnimeAchievementIcon 
 
 import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
 
+import FilterIcon from "./svg/filter-icon.svg?react";
+
+export { FilterIcon };
+
 export { ShikimoriIcon };
