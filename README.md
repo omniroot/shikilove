@@ -1,19 +1,23 @@
 # Shikimori
 Shikilove - is a convenient tool for tracking anime, based on the Shikimori platform.
 
-## Features:
+## User features:
 - Ease of Use: A simple and intuitive interface for quickly adding anime to your list.
 - Modern Interface: An aesthetically pleasing and modern design that makes using the site enjoyable.
 - Extensive Database: Access to a vast database of anime with information on genres, reviews, and ratings.
 - Full Integration with Shikimori: All data is stored on Shikimori's servers.
 - Privacy and zen: no analytics, advertising or other distractions
 
+## Developer features:
+- Clean development - React, scss modules, vite
+- Clear file structure
+- WIP (Work in Progress)
 
 ## Project lifecycle
 - [x] Planning - design, functionality
 
-- [/] Development
-  - [x] Alpha - Working application implementing 80% of the functionality ( + closed testing)
+- [ ] Development
+  - [x] Alpha - Working application implementing 80% of the functionality ( + closed testing )
   - [ ] Beta - 100% of the functionality, preparing for release, collecting feedback, improving UX ( + open testing )
   - [ ] Optimization - This is a big stage of project development, as big as the problem with the performance of web applications. The most difficult stage on which I will spend much more time than others ( + refactoring)
   - [ ] Release - Stable version, everything planned has been implemented and works fine, I hope...
