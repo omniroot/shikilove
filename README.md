@@ -34,7 +34,7 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 
 ## Current progress
 - [ ] Pages
-  - [ ] AnimePage
+  - [x] AnimePage
   - [x] ProfilePage
   - [ ] SearchPage
   - [ ] SettingsPage
