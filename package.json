@@ -12,7 +12,6 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.11.8",
-		"@kuma-ui/core": "^1.5.8",
 		"axios": "^1.7.7",
 		"dayjs": "^1.11.13",
 		"framer-motion": "^11.11.4",
@@ -21,10 +20,9 @@
 		"react-dom": "^18.3.1",
 		"react-router-dom": "^6.26.2",
 		"react-select": "^5.8.1",
-		"zustand": "^4.5.5"
+		"zustand": "^5.0.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.3",
 		"@emotion/css": "^11.13.4",
 		"@types/node": "^22.7.4",
 		"@types/react": "^18.3.3",
@@ -36,12 +34,9 @@
 		"path": "^0.12.7",
 		"prettier": "^3.3.3",
 		"sass": "^1.79.4",
-		"stylelint": "^16.9.0",
-		"stylelint-config-recess-order": "^5.1.1",
-		"stylelint-config-standard-scss": "^13.1.0",
 		"typescript": "^5.5.3",
 		"vite": "^5.4.1",
 		"vite-plugin-svgr": "^4.2.0"
 	},
-	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+	"packageManager": "yarn@4.5.0"
 }
