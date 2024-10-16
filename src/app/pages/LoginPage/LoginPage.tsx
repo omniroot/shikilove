@@ -3,7 +3,7 @@ import { useAuthorization } from "@/shared/hooks/useAuthorization";
 import { useSearchParams } from "react-router-dom";
 
 export const LoginPage = () => {
-	const [searchParams, _setSearchParams] = useSearchParams();
+	const [searchParams] = useSearchParams();
 	const { fetchTokens } = useAuthorization();
 	const code = searchParams.get("code");
 

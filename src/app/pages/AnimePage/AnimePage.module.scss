@@ -1,41 +1,38 @@
-
-
 .anime_page {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap);
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
 
-  .anime_info {
-    display: flex;
+	.anime_info {
+		display: flex;
 
-    @include card;
+		@include card;
 
-    gap: var(--gap-2);
+		gap: var(--gap-2);
 
+		.anime_info_left {
+			display: flex;
+			flex-direction: column;
+			gap: var(--gap);
 
-    .anime_info_left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap);
+			.name {
+				font-size: var(--text-size-h3);
+				font-weight: bold;
+			}
 
+			.genres_list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: var(--gap);
+				margin-top: auto;
 
-      .name {
-        font-size: var(--text-size-h3);
-        font-weight: bold;
-    }
+				.genre {
+					@include card;
+					@include clickable;
 
-    .genres_list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--gap);
-      margin-top: auto;
-
-      .genre {
-        @include card;
-        @include clickable;
-
-        user-select: none;
-      }
-    }
-  }
-}}
+					user-select: none;
+				}
+			}
+		}
+	}
+}

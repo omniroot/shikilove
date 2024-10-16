@@ -17,11 +17,11 @@ export const ImageView: FC<IImageViewProps> = ({
 	src,
 }) => {
 	const _style = css`
-    width: ${width};
-    height: ${height};
+		width: ${width};
+		height: ${height};
 
-    ${`border-radius: var(--radius-${radius});`};
-  `;
+		${`border-radius: var(--radius-${radius});`};
+	`;
 
 	return <img src={src} alt={alt} className={_style} />;
 };

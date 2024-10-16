@@ -1,11 +1,4 @@
-import {
-	AnimeIcon,
-	LogoutIcon,
-	ProfileIcon,
-	SearchIcon,
-	SettingsIcon,
-	ShikimoriIcon,
-} from "@/shared/icons";
+import { AnimeIcon, LogoutIcon, ProfileIcon, SearchIcon, SettingsIcon, ShikimoriIcon } from "@/shared/icons";
 import { NavBar } from "@features/NavBar/NavBar";
 import styles from "./Sidebar.module.scss";
 

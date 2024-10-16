@@ -6,10 +6,10 @@ import { Sidebar } from "@widgets/Sidebar/Sidebar";
 import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
 import { useGlobalStore } from "@/shared/store/store";
 import clsx from "clsx";
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from "framer-motion";
 
 export const GlobalLayout = () => {
-	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore(state => state)
+	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore((state) => state);
 	const { loading, error, ...rest } = useFetchCurrentUser();
 	const { refreshTokens } = useAuthorization();
 
@@ -41,12 +41,19 @@ export const GlobalLayout = () => {
 			<main className={styles.main}>
 				<Outlet />
 			</main>
-			<AnimatePresence mode="sync" >
+			<AnimatePresence mode="sync">
 				{isRightSidebarOpened && (
-					<motion.div layout initial={{ width: 0 }} animate={{ width: "250px" }} exit={{ width: 0, }} transition={{ duration: 0.150, }} className={clsx(styles.right_sidebar, { [styles.opened]: isRightSidebarOpened })}>{rightSidebarContent}</motion.div>
-
+					<motion.div
+						layout
+						initial={{ width: 0 }}
+						animate={{ width: "250px" }}
+						exit={{ width: 0 }}
+						transition={{ duration: 0.15 }}
+						className={clsx(styles.right_sidebar, { [styles.opened]: isRightSidebarOpened })}
+					>
+						{rightSidebarContent}
+					</motion.div>
 				)}
-
 			</AnimatePresence>
 		</div>
 	);

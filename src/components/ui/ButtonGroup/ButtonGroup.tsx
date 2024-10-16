@@ -11,11 +11,7 @@ interface IButtonGroupProps {
 	deafultActive: string;
 	onClick?: (activeId: string) => void;
 }
-export const ButtonGroup: FC<IButtonGroupProps> = ({
-	elements,
-	deafultActive,
-	onClick = () => {},
-}) => {
+export const ButtonGroup: FC<IButtonGroupProps> = ({ elements, deafultActive, onClick = () => {} }) => {
 	const [active, setActive] = useState(deafultActive);
 
 	const onGroupItemClick = (element: IElement) => {

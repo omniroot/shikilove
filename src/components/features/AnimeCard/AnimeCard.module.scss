@@ -1,17 +1,17 @@
 .anime_card {
-  max-width: 230px;
-  height: 400px;
-  color: var(--color-text);
-  text-decoration: none;
+	max-width: 230px;
+	height: 400px;
+	color: var(--color-text);
+	text-decoration: none;
 
-  @include card;
-  @include clickable;
+	@include card;
+	@include clickable;
 
-  .anime_title {
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    -moz-box-orient: vertical;
-  }
+	.anime_title {
+		display: -webkit-box;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-webkit-line-clamp: 2;
+		-moz-box-orient: vertical;
+	}
 }

@@ -1,14 +1,14 @@
 import { gql, useQuery } from "@apollo/client";
 
 const GET_CURRENT_USER = gql`
-  {
-    currentUser {
-      id
-      avatarUrl
-      nickname
-      lastOnlineAt
-    }
-  }
+	{
+		currentUser {
+			id
+			avatarUrl
+			nickname
+			lastOnlineAt
+		}
+	}
 `;
 
 interface IResponse {

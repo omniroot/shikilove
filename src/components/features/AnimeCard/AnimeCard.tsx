@@ -12,13 +12,7 @@ interface IAnimeCardProps {
 export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
 	return (
 		<Link to={`/animes/${id}`} className={styles.anime_card} key={id}>
-			<ImageView
-				radius="1"
-				src={image}
-				width="100%"
-				height="85%"
-				alt={title}
-			/>
+			<ImageView radius="1" src={image} width="100%" height="85%" alt={title} />
 			<span className={styles.anime_title}>{title}</span>
 		</Link>
 	);

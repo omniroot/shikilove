@@ -1,11 +1,5 @@
 import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates";
-import {
-	DroppedIcon,
-	PlannedIcon,
-	PostponedIcon,
-	WatchedIcon,
-	WatchingIcon,
-} from "@/shared/icons";
+import { DroppedIcon, PlannedIcon, PostponedIcon, WatchedIcon, WatchingIcon } from "@/shared/icons";
 
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup";
 import { IconButton } from "@ui/IconButton/IconButton";
@@ -14,13 +8,7 @@ import styles from "./AnimeUserRates.module.scss";
 import { AnimeList } from "@features/AnimeList/AnimeList";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard";
 
-type IPages =
-	| "watching"
-	| "planned"
-	| "completed"
-	| "rewatching"
-	| "on_hold"
-	| "dropped";
+type IPages = "watching" | "planned" | "completed" | "rewatching" | "on_hold" | "dropped";
 
 const elements = [
 	{
@@ -108,7 +96,6 @@ export const AnimeUserRates = () => {
 								image={rate.anime.poster.main2xUrl}
 								title={rate.anime.name}
 							/>
-
 						);
 					}
 				})}

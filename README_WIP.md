@@ -1,4 +1,3 @@
-
     File organization
     Separation of concerns
     Code cleanliness

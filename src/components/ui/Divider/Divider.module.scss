@@ -1,12 +1,11 @@
 .divider[data-orientation="horizontal"] {
-  margin: var(--margin) 4px;
-  border-bottom: 2px solid var(--color-secondary);
-  border-radius: var(--radius);
+	margin: var(--margin) 4px;
+	border-bottom: 2px solid var(--color-secondary);
+	border-radius: var(--radius);
 }
 
 .divider[data-orientation="vertical"] {
-  margin: 4px var(--margin);
-  border-right: 2px solid var(--color-secondary);
-  border-radius: var(--radius);
-
+	margin: 4px var(--margin);
+	border-right: 2px solid var(--color-secondary);
+	border-radius: var(--radius);
 }

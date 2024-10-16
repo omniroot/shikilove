@@ -20,8 +20,11 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 		const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
 		const _nextPage = page.path.replaceAll("/", "");
 
-		if (_currentPage === _nextPage) { console.log(_currentPage, _nextPage, "===> true"); return true }
-		console.log(_currentPage, _nextPage, "===> false")
+		if (_currentPage === _nextPage) {
+			console.log(_currentPage, _nextPage, "===> true");
+			return true;
+		}
+		console.log(_currentPage, _nextPage, "===> false");
 		return false;
 	};
 
@@ -30,11 +33,7 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 			{pages.map((page) => {
 				if (isCurrentPage(page)) {
 					return (
-						<Link
-							className={clsx(styles.navitem, styles.active)}
-							to={page.path}
-							key={page.name}
-						>
+						<Link className={clsx(styles.navitem, styles.active)} to={page.path} key={page.name}>
 							{page.icon}
 						</Link>
 					);
