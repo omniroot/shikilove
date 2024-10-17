@@ -51,9 +51,20 @@ export const SearchPage = () => {
 				</div>
 			</form>
 			<AnimeList>
-				{animes?.map((anime) => {
-					return <AnimeCard key={anime.id} id={anime.id} image={anime.poster.main2xUrl} title={anime.name} />;
-				})}
+				{!!animes &&
+					animes.map((anime) => {
+						console.log("@", anime);
+						return (
+							<AnimeCard
+								key={anime.id}
+								id={anime.id}
+								image={anime.poster.main2xUrl}
+								title={anime.name}
+								userEpisodes={anime.userRate && anime.userRate.episodes}
+								userStatus={anime.userRate && anime.userRate.status}
+							/>
+						);
+					})}
 			</AnimeList>
 		</div>
 	);

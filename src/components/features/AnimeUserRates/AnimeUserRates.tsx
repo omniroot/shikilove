@@ -95,6 +95,8 @@ export const AnimeUserRates = () => {
 								id={rate.anime.id}
 								image={rate.anime.poster.main2xUrl}
 								title={rate.anime.name}
+								userStatus={rate.status}
+								userEpisodes={rate.episodes}
 							/>
 						);
 					}
