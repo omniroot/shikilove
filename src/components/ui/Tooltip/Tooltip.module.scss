@@ -1,0 +1,25 @@
+.tooltip_container {
+	position: relative;
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+
+	.tooltip {
+		max-width: 100px;
+		text-wrap: pretty;
+		position: absolute;
+		background-color: var(--color-secondary);
+		border-radius: var(--radius);
+		padding: var(--padding);
+	}
+
+	.tooltip[data-position="top"] {
+		top: -70px;
+	}
+	.tooltip[data-position="bottom"] {
+		bottom: -70px;
+	}
+
+	.showed {
+	}
+}
