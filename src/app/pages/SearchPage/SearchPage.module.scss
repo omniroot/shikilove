@@ -32,11 +32,6 @@
 				color: var(--color-text-secondary);
 			}
 
-			.placeholder {
-				font-size: var(--text-size-h6);
-				color: var(--color-text-secondary);
-			}
-
 			.search_input {
 				width: fit-content;
 				height: 100%;
@@ -46,6 +41,11 @@
 				background-color: transparent;
 				border: none;
 				outline: none;
+
+				&::placeholder {
+					font-size: var(--text-size-h6);
+					color: var(--color-text-secondary);
+				}
 			}
 		}
 
