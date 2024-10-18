@@ -3,24 +3,40 @@ import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
 import { ImageView } from "@ui/ImageView/ImageView";
 import styles from "./AnimePage.module.scss";
 import { useParams } from "react-router-dom";
-import { AnimeEpisodeIcon, AnimeRateIcon, AnimeStatusIcon } from "@/shared/icons";
+import {
+	AnimeEpisodeIcon,
+	AnimeRateIcon,
+	AnimeStatusIcon,
+} from "@/shared/icons";
 import { AnimeInfoLine } from "@features/AnimeInfoLine/AnimeInfoLine";
 import { AnimeInfoSection } from "@features/AnimeAbout/AnimeInfoSection";
 import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList";
 import { Divider } from "@ui/Divider/Divider";
-import { AnimeStatusSelect, animeStatusSelectOptions } from "@features/AnimeStatusSelect/AnimeStatusSelect";
+import {
+	AnimeStatusSelect,
+	animeStatusSelectOptions,
+} from "@features/AnimeStatusSelect/AnimeStatusSelect";
+import { Tooltip } from "@ui/Tooltip/Tooltip";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
 	const { anime } = useFetchAnimeById(animeId || "1");
-	const selectedStatus = animeStatusSelectOptions.find((option) => option.value === anime?.userRate.status) || null;
+	const selectedStatus =
+		animeStatusSelectOptions.find(
+			(option) => option.value === anime?.userRate.status,
+		) || null;
 
 	console.log(selectedStatus);
 	if (!anime) return null;
 	return (
 		<div className={styles.anime_page}>
 			<div className={styles.anime_info}>
-				<ImageView src={anime?.poster.mainUrl} radius="1" width="230px" height="340px" />
+				<ImageView
+					src={anime?.poster.mainUrl}
+					radius="1"
+					width="230px"
+					height="340px"
+				/>
 				<div className={styles.anime_info_left}>
 					<span className={styles.name}>{anime?.name}</span>
 					<AnimeInfoLine>
@@ -34,9 +50,12 @@ export const AnimePage = () => {
 					</AnimeInfoLine>
 					<div className={styles.genres_list}>
 						{anime?.genres?.map((genre) => (
-							<div key={genre.id} className={styles.genre}>
-								{genre.name}
-							</div>
+							<Tooltip
+								key={genre.id}
+								title="ну умер и умер, чё бубнить-то?ну умер и умер, чё бубнить-то?"
+							>
+								<div className={styles.genre}>{genre.name}</div>
+							</Tooltip>
 						))}
 					</div>
 				</div>
