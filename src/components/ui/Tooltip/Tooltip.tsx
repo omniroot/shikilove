@@ -29,11 +29,13 @@ export const Tooltip: FC<ITooltipProps> = ({
 			onMouseLeave={onTooltipMouseLeave}
 		>
 			<motion.div
-				className={clsx(styles.tooltip, { [styles.showed]: isHover })}
+				className={clsx(styles.tooltip)}
 				data-position={position}
-				initial={{ opacity: 0, scale: 0.8 }}
+				initial={{ opacity: 0, scale: 0.8, visibility: "hidden" }}
 				animate={
-					isHover ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+					isHover
+						? { opacity: 1, scale: 1, visibility: "visible" }
+						: { opacity: 0, scale: 0.8, visibility: "hidden" }
 				}
 				transition={{ duration: 0.15, delay: 0.1 }}
 			>

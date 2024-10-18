@@ -5,16 +5,20 @@
 	flex-direction: column;
 
 	.tooltip {
-		max-width: 100px;
-		text-wrap: pretty;
+		min-width: fit-content;
+		height: 40px;
+		max-width: 300px;
+		text-wrap-mode: nowrap;
+		word-wrap: normal;
 		position: absolute;
 		background-color: var(--color-secondary);
 		border-radius: var(--radius);
 		padding: var(--padding);
+		z-index: 10;
 	}
 
 	.tooltip[data-position="top"] {
-		top: -70px;
+		top: -50px;
 	}
 	.tooltip[data-position="bottom"] {
 		bottom: -70px;
