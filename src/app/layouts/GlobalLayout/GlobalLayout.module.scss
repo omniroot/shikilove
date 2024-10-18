@@ -13,25 +13,12 @@
 	}
 
 	.right_sidebar {
-		// position: fixed;
-
-		// right: 0;
-		// display: none;
-
-		// flex-direction: column;
-		// width: 0;
-		// opacity: 0;
-		// transition: all 200ms;
-
 		@include card;
 	}
+}
 
-	.opened {
-		// position: static;
-
-		// display: flex;
-
-		// width: 250px;
-		// opacity: 1;
+@media screen and (max-width: 768px) {
+	.global_layout {
+		flex-direction: column;
 	}
 }

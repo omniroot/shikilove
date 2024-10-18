@@ -7,8 +7,13 @@ import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
 import { useGlobalStore } from "@/shared/store/store";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export const GlobalLayout = () => {
+	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+	const isTablet = useMediaQuery("only screen and (min-width: 769px) and (max-width: 1024px)");
+	const isDesktop = useMediaQuery("only screen and (min-width: 1025px)");
 	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore((state) => state);
 	const { loading, error, ...rest } = useFetchCurrentUser();
 	const { refreshTokens } = useAuthorization();
@@ -37,10 +42,11 @@ export const GlobalLayout = () => {
 	console.log("@ rest", rest);
 	return (
 		<div className={styles.global_layout}>
-			<Sidebar />
+			{(isTablet || isDesktop) && <Sidebar />}
 			<main className={styles.main}>
 				<Outlet />
 			</main>
+			{isMobile && <BottomNavigation />}
 			<AnimatePresence mode="sync">
 				{isRightSidebarOpened && (
 					<motion.div
