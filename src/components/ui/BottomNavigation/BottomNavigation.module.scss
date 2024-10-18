@@ -3,8 +3,11 @@
 	justify-content: center;
 	position: fixed;
 	bottom: 10px;
+	left: 50%;
+	translate: -50%;
 	gap: var(--gap-2);
 	width: 90%;
+	height: 70px;
 	padding: var(--padding);
 	border: var(--border);
 	border-radius: var(--radius);
