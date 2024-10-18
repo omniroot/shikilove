@@ -1,0 +1,32 @@
+.bottom_navigation {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	bottom: 10px;
+	gap: var(--gap-2);
+	width: 90%;
+	padding: var(--padding);
+	border: var(--border);
+	border-radius: var(--radius);
+	background-color: var(--color-primary);
+
+	.navitem {
+		display: flex;
+		justify-content: center;
+		width: 70px;
+		padding: var(--padding-1);
+		color: var(--color-text);
+		cursor: pointer;
+		background-color: var(--color-primary);
+
+		@include card;
+
+		border: var(--border-transparent);
+
+		@include clickable;
+	}
+
+	.active {
+		border: var(--border-active);
+	}
+}
