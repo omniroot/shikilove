@@ -15,5 +15,18 @@ export const useChangeAnimeUserRate = () => {
 		return data;
 	};
 
-	return { changeAnimeUserStatus };
+	const changeAnimeUserEpisodes = async (
+		userRateId: number,
+		episodes: number,
+	) => {
+		const response = await api.patch(`v2/user_rates/${userRateId}`, {
+			episodes: episodes,
+		});
+		console.log("@ change episodes to ", episodes);
+		const { data } = response;
+		if (!data) return response;
+		return data;
+	};
+
+	return { changeAnimeUserStatus, changeAnimeUserEpisodes };
 };

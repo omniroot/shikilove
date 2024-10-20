@@ -19,21 +19,31 @@ import {
 } from "@features/AnimeStatusSelect/AnimeStatusSelect";
 import { Tooltip } from "@ui/Tooltip/Tooltip";
 import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate";
+import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
 	const { anime } = useFetchAnimeById(animeId || "1");
-	const { changeAnimeUserStatus } = useChangeAnimeUserRate();
+	const { changeAnimeUserStatus, changeAnimeUserEpisodes } =
+		useChangeAnimeUserRate();
 	const selectedStatus =
 		animeStatusSelectOptions.find(
 			(option) => option.value === anime?.userRate.status,
 		) || null;
+
+	const selectedEpisode = anime?.userRate.episodes || 1;
 
 	console.log("@userRate ", anime?.userRate);
 
 	const onAnimeUserStatusSelected = (item: IAnimeStatusSelectOption) => {
 		if (anime?.userRate && item) {
 			changeAnimeUserStatus(anime.userRate.id, item.value);
+		}
+	};
+
+	const onAnimeUserEpisodeSelected = (episode: number) => {
+		if (anime?.userRate && episode) {
+			changeAnimeUserEpisodes(anime.userRate.id, episode);
 		}
 	};
 
@@ -72,11 +82,15 @@ export const AnimePage = () => {
 				</div>
 				<Divider orientation="vertical" />
 				<div className={styles.anime_info_right}>
+					<AnimeEpisodeSelect
+						eipsodesCount={anime.episodes}
+						defaultValue={{ label: selectedEpisode, value: selectedEpisode }}
+						onOptionSelected={onAnimeUserEpisodeSelected}
+					/>
 					<AnimeStatusSelect
 						defaultValue={selectedStatus}
 						onOptionSelected={onAnimeUserStatusSelected}
 					/>
-					<span>{anime?.userRate.episodes}</span>
 				</div>
 			</div>
 			<AnimeInfoSection title="About">

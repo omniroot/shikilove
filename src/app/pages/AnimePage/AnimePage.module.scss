@@ -34,5 +34,10 @@
 				}
 			}
 		}
+
+		.anime_info_right {
+			display: flex;
+			gap: var(--gap);
+		}
 	}
 }
