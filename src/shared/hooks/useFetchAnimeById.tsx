@@ -80,6 +80,7 @@ const GET_ANIME_BY_ID = gql`
 			description
 
 			userRate {
+				id
 				status
 				score
 				text
@@ -170,6 +171,7 @@ interface IResponse {
 		}[];
 		description: string;
 		userRate: {
+			id: number;
 			status: string;
 			score: number;
 			text: string | null;

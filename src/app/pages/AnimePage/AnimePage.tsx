@@ -15,16 +15,27 @@ import { Divider } from "@ui/Divider/Divider";
 import {
 	AnimeStatusSelect,
 	animeStatusSelectOptions,
+	IAnimeStatusSelectOption,
 } from "@features/AnimeStatusSelect/AnimeStatusSelect";
 import { Tooltip } from "@ui/Tooltip/Tooltip";
+import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
 	const { anime } = useFetchAnimeById(animeId || "1");
+	const { changeAnimeUserStatus } = useChangeAnimeUserRate();
 	const selectedStatus =
 		animeStatusSelectOptions.find(
 			(option) => option.value === anime?.userRate.status,
 		) || null;
+
+	console.log("@userRate ", anime?.userRate);
+
+	const onAnimeUserStatusSelected = (item: IAnimeStatusSelectOption) => {
+		if (anime?.userRate && item) {
+			changeAnimeUserStatus(anime.userRate.id, item.value);
+		}
+	};
 
 	console.log(selectedStatus);
 	if (!anime) return null;
@@ -61,7 +72,10 @@ export const AnimePage = () => {
 				</div>
 				<Divider orientation="vertical" />
 				<div className={styles.anime_info_right}>
-					<AnimeStatusSelect defaultValue={selectedStatus} />
+					<AnimeStatusSelect
+						defaultValue={selectedStatus}
+						onOptionSelected={onAnimeUserStatusSelected}
+					/>
 					<span>{anime?.userRate.episodes}</span>
 				</div>
 			</div>
