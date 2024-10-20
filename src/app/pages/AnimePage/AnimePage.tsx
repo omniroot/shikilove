@@ -20,6 +20,7 @@ import {
 import { Tooltip } from "@ui/Tooltip/Tooltip";
 import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate";
 import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect";
+import { AnimeScreenshots } from "@features/AnimeScreenshots/AnimeScreenshots";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
@@ -34,6 +35,7 @@ export const AnimePage = () => {
 	const selectedEpisode = anime?.userRate.episodes || 1;
 
 	console.log("@userRate ", anime?.userRate);
+	console.log("@anime ", anime);
 
 	const onAnimeUserStatusSelected = (item: IAnimeStatusSelectOption) => {
 		if (anime?.userRate && item) {
@@ -97,7 +99,7 @@ export const AnimePage = () => {
 				<span>{anime?.description}</span>
 			</AnimeInfoSection>
 			<AnimeInfoSection title="Screenshots">
-				<div>Add AnimeScreenshots component</div>
+				<AnimeScreenshots screenshots={anime.screenshots} />
 			</AnimeInfoSection>
 			<AnimeInfoSection title="Similar">
 				<AnimeSimilarList animeId={animeId} />
