@@ -21,6 +21,8 @@ import { Tooltip } from "@ui/Tooltip/Tooltip";
 import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate";
 import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect";
 import { AnimeScreenshots } from "@features/AnimeScreenshots/AnimeScreenshots";
+import { Button } from "@ui/Button/Button";
+import { openAnimeExternal } from "@/shared/utils/openAnimeSites";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
@@ -47,6 +49,18 @@ export const AnimePage = () => {
 		if (anime?.userRate && episode) {
 			changeAnimeUserEpisodes(anime.userRate.id, episode);
 		}
+	};
+
+	const onAnimegoButtonClick = () => {
+		if (anime?.russian) openAnimeExternal(anime.russian, "animego");
+	};
+
+	const onHAnimeButtonClick = () => {
+		if (anime?.name) openAnimeExternal(anime.name, "hanime");
+	};
+
+	const onNHentaiButtonClick = () => {
+		if (anime?.name) openAnimeExternal(anime.name, "nhentai");
 	};
 
 	console.log(selectedStatus);
@@ -84,15 +98,29 @@ export const AnimePage = () => {
 				</div>
 				<Divider orientation="vertical" />
 				<div className={styles.anime_info_right}>
-					<AnimeEpisodeSelect
-						eipsodesCount={anime.episodes}
-						defaultValue={{ label: selectedEpisode, value: selectedEpisode }}
-						onOptionSelected={onAnimeUserEpisodeSelected}
-					/>
-					<AnimeStatusSelect
-						defaultValue={selectedStatus}
-						onOptionSelected={onAnimeUserStatusSelected}
-					/>
+					<div className={styles.user_selects}>
+						<AnimeEpisodeSelect
+							eipsodesCount={anime.episodes}
+							defaultValue={{ label: selectedEpisode, value: selectedEpisode }}
+							onOptionSelected={onAnimeUserEpisodeSelected}
+						/>
+						<AnimeStatusSelect
+							defaultValue={selectedStatus}
+							onOptionSelected={onAnimeUserStatusSelected}
+						/>
+					</div>
+
+					<div className={styles.watch_container}>
+						<Button variant="animego" onClick={onAnimegoButtonClick}>
+							Animego
+						</Button>
+						<Button variant="hanime" onClick={onHAnimeButtonClick}>
+							hAnime
+						</Button>
+						<Button variant="nhentai" onClick={onNHentaiButtonClick}>
+							Nhentai
+						</Button>
+					</div>
 				</div>
 			</div>
 			<AnimeInfoSection title="About">

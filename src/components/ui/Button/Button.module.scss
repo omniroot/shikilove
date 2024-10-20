@@ -1,0 +1,53 @@
+.button {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	height: 40px;
+
+	padding: var(--padding);
+	border-radius: 12px;
+	border: none;
+	gap: var(--gap);
+	color: var(--color-primary);
+	background-color: var(--color-accent);
+	transition: all 200ms;
+	font-weight: 600;
+	cursor: pointer;
+
+	&:hover {
+		color: var(--color-accent);
+		background-color: var(--color-secondary-transparent);
+	}
+
+	&:active {
+		transform: scale(97%);
+	}
+}
+
+.animego {
+	color: var(--color-text);
+	background-color: var(--color-animego);
+
+	&:hover {
+		color: var(--color-text);
+		background-color: var(--color-animego-hover);
+	}
+}
+.hanime {
+	color: var(--color-text);
+	background-color: var(--color-hanime);
+
+	&:hover {
+		color: var(--color-text);
+		background-color: var(--color-hanime-hover);
+	}
+}
+.nhentai {
+	color: var(--color-text);
+	background-color: var(--color-nhentai);
+
+	&:hover {
+		color: var(--color-text);
+		background-color: var(--color-nhentai-hover);
+	}
+}

@@ -1,5 +1,17 @@
-type IAnimesSites = "hdrezka" | "anilibria" | "animego" | "anidub";
-export const openAnimeExternal = (name: string, site: IAnimesSites) => {
+import axios from "axios";
+
+type IAnimesSites =
+	| "hdrezka"
+	| "anilibria"
+	| "animego"
+	| "anidub"
+	| "hanime"
+	| "nhentai";
+
+interface IHAnimeResponseJson {
+	slug: string;
+}
+export const openAnimeExternal = async (name: string, site: IAnimesSites) => {
 	let link = "";
 
 	if (site === "hdrezka") {
@@ -15,5 +27,32 @@ export const openAnimeExternal = (name: string, site: IAnimesSites) => {
 		link = `https://animego.org/search/all?q=${name}`;
 	}
 
+	if (site === "hanime") {
+		link = `https://search.htv-services.com/`;
+		const response = await axios.post<{ hits: string }>(
+			"https://search.htv-services.com/",
+			{
+				search_text: name,
+				blacklist: [],
+				brands: [],
+				order_by: "created_at_unix",
+				ordering: "desc",
+				page: 0,
+				tags: [],
+				tags_mode: "AND",
+			},
+		);
+
+		const { data } = response;
+		if (!data) console.log(response);
+		const jsonResponse = JSON.parse(data.hits) as IHAnimeResponseJson[];
+
+		link = `https://hanime.tv/videos/hentai/${jsonResponse[0].slug}`;
+	}
+
+	if (site === "nhentai") {
+		link = `https://nhentai.net/search/?q=${name}`;
+	}
+	console.log("@ open site ", link);
 	window.open(link);
 };
