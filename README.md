@@ -41,7 +41,7 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 ## Changelog
 
 - [x] 0.1.0 - This release is aimed at updating the existing functionality and redesign.
-- [ ] 0.2.0 - Adaprive for mobile devices.
+- [ ] 0.2.0 - Adaptive for mobile devices.
 
 ## Current progress
 
