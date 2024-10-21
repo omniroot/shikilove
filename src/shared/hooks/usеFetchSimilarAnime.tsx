@@ -1,15 +1,5 @@
-import axios from "axios";
+import { api } from "@/shared/services/api";
 import { useEffect, useState } from "react";
-
-const api = axios.create({
-	baseURL: "https://shikimori.one/api/",
-	headers: {
-		"User-Agent": "ShikiLove",
-		Accept: "application/json",
-		"Content-Type": "application/json",
-		Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-	},
-});
 
 export interface ISimilarAnime {
 	id: string;

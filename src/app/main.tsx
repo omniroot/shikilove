@@ -24,7 +24,7 @@ const client = new ApolloClient({
 		},
 	},
 	headers: {
-		"User-Agent": "ShikiLove",
+		"User-Agent": CONSTS.USER_AGENT,
 		Authorization: `Bearer ${access_token}`,
 	},
 });

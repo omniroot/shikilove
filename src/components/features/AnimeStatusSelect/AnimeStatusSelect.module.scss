@@ -1,77 +1,75 @@
 .select_container {
-  width: 200px;
-  height: 50px;
-  cursor: pointer;
+	width: 200px;
+	height: 50px;
+	cursor: pointer;
 
-  * {
-    cursor: pointer;
-
-  }
+	* {
+		cursor: pointer;
+	}
 }
 
 .select_input_control_opened {
-  width: 200px;
-  padding: 15px 10px;
-  border: var(--border);
-  border-bottom: none;
-  border-radius: var(--radius);
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+	width: 200px;
+	padding: 15px 10px;
+	border: var(--border);
+	border-bottom: none;
+	border-radius: var(--radius);
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 }
 
 .select_input_control_closed {
-  width: 200px;
-  padding: 15px 10px;
-  cursor: pointer;
-  border: var(--border);
-  border-radius: var(--radius);
+	width: 200px;
+	padding: 15px 10px;
+	cursor: pointer;
+	border: var(--border);
+	border-radius: var(--radius);
 }
 
 .placeholder {
-  color: var(--color-text-secondary);
+	color: var(--color-text-secondary);
 }
 
 .select_menu {
-  max-width: 200px;
-  padding: 0;
-  margin-top: -7px;
-  border: var(--border);
-  border-top: 0;
-  border-radius: var(--radius);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	max-width: 200px;
+	padding: 0;
+	margin-top: -7px;
+	border: var(--border);
+	border-top: 0;
+	border-radius: var(--radius);
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 
+	background-color: var(--color-secondary);
 }
 
 .select_menu_list {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: var(--padding);
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	padding: var(--padding);
 
-  .select_menu_option {
-    padding: 10px 5px;
-    cursor: pointer;
-    border-radius: var(--radius);
+	.select_menu_option {
+		padding: 10px 5px;
+		cursor: pointer;
+		border-radius: var(--radius);
 
-    &:hover {
-      background-color: var(--color-secondary-transparent);
-    }
-  }
+		&:hover {
+			background-color: var(--color-secondary-transparent);
+		}
+	}
 
-  .select_menu_option_selected {
-    padding: 10px 5px;
-    color: var(--color-accent);
-    cursor: pointer;
+	.select_menu_option_selected {
+		padding: 10px 5px;
+		color: var(--color-accent);
+		cursor: pointer;
 
-    // background-color: var(--color-accent);
-    border-inline-start: 3px solid var(--color-accent);
-    border-radius: 5px;
+		// background-color: var(--color-accent);
+		border-inline-start: 3px solid var(--color-accent);
+		border-radius: 5px;
 
-    &:hover {
-      background-color: var(--color-secondary-transparent);
-    }
-
-  }
-
+		&:hover {
+			background-color: var(--color-secondary-transparent);
+		}
+	}
 }

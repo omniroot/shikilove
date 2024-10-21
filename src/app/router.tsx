@@ -6,11 +6,7 @@ import { NotFoundPage } from "@/app/pages/NotFoundPage/NotFoundPage";
 import { ProfilePage } from "@/app/pages/ProfilePage/ProfilePage";
 import { SearchPage } from "@/app/pages/SearchPage/SearchPage";
 import { TestPage } from "@/app/pages/TestPage/TestPage";
-import {
-	Route,
-	createBrowserRouter,
-	createRoutesFromElements,
-} from "react-router-dom";
+import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(

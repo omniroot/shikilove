@@ -8,17 +8,17 @@ interface IAnimeCardProps {
 	id?: string;
 	title?: string;
 	image?: string;
+	userStatus?: string | null;
+	userEpisodes?: number | null;
 }
-export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title }) => {
+export const AnimeCard: FC<IAnimeCardProps> = ({ id, image, title, userEpisodes, userStatus }) => {
 	return (
 		<Link to={`/animes/${id}`} className={styles.anime_card} key={id}>
-			<ImageView
-				radius="1"
-				src={image}
-				width="100%"
-				height="85%"
-				alt={title}
-			/>
+			<div className={styles.info_container}>
+				{!!userStatus && <span className={styles.user_status}>{userStatus}</span>}
+				{!!userEpisodes && <span className={styles.user_episodes}>{userEpisodes}</span>}
+			</div>
+			<ImageView radius="1" src={image} width="100%" height="85%" alt={title} />
 			<span className={styles.anime_title}>{title}</span>
 		</Link>
 	);

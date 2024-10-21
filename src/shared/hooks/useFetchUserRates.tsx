@@ -1,25 +1,21 @@
 import { gql, useQuery } from "@apollo/client";
 
 const GET_USER_RATES = gql`
-  {
-    userRates(
-      page: 1
-      limit: 30
-      targetType: Anime
-      order: { field: updated_at, order: desc }
-    ) {
-      id
-      anime {
-        id
-        name
-        poster {
-          main2xUrl
-        }
-      }
-      status
-      createdAt
-    }
-  }
+	{
+		userRates(page: 1, limit: 30, targetType: Anime, order: { field: updated_at, order: desc }) {
+			id
+			anime {
+				id
+				name
+				poster {
+					main2xUrl
+				}
+			}
+			episodes
+			status
+			createdAt
+		}
+	}
 `;
 
 export interface IUserRate {
@@ -31,6 +27,7 @@ export interface IUserRate {
 			main2xUrl: string;
 		};
 	};
+	episodes: number;
 	status: string;
 	createdAt: string;
 }

@@ -17,12 +17,7 @@ export const AnimeSimilarList: FC<IAnimeSimilarListProps> = ({ animeId }) => {
 	return (
 		<AnimeList>
 			{similarAnimes?.map((anime) => (
-				<AnimeCard
-					key={anime.id}
-					id={anime.id}
-					image={getPosterImage(anime.image.preview)}
-					title={anime.name}
-				/>
+				<AnimeCard key={anime.id} id={anime.id} image={getPosterImage(anime.image.preview)} title={anime.name} />
 			))}
 		</AnimeList>
 	);

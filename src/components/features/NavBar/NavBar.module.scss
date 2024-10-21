@@ -1,28 +1,24 @@
-
-
 .navbar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap);
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
 
-  .navitem {
-    display: flex;
-    width: 100%;
-    padding: var(--padding-1);
-    color: var(--color-text);
-    cursor: pointer;
-    background-color: var(--color-primary);
+	.navitem {
+		display: flex;
+		width: 100%;
+		padding: var(--padding-1);
+		color: var(--color-text);
+		cursor: pointer;
+		background-color: var(--color-primary);
 
-    @include card;
+		@include card;
 
-    border: var(--border-transparent);
+		border: var(--border-transparent);
 
-    @include clickable;
-  }
-  
-  .active {
-    border: var(--border-active);
-  }
+		@include clickable;
+	}
 
+	.active {
+		border: var(--border-active);
+	}
 }
-

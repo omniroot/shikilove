@@ -1,7 +1,9 @@
 # Shikimori
+
 Shikilove - is a convenient tool for tracking anime, based on the Shikimori platform.
 
 ## User features:
+
 - Ease of Use: A simple and intuitive interface for quickly adding anime to your list.
 - Modern Interface: An aesthetically pleasing and modern design that makes using the site enjoyable.
 - Extensive Database: Access to a vast database of anime with information on genres, reviews, and ratings.
@@ -9,14 +11,17 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 - Privacy and zen: no analytics, advertising or other distractions
 
 ## Developer features:
+
 - Clean development - React, scss modules, vite
 - Clear file structure
 - WIP (Work in Progress)
 
 ## Project lifecycle
+
 - [x] Planning - design, functionality
 
 - [ ] Development
+
   - [x] Alpha - Working application implementing 80% of the functionality ( + closed testing )
   - [ ] Beta - 100% of the functionality, preparing for release, collecting feedback, improving UX ( + open testing )
   - [ ] Optimization - This is a big stage of project development, as big as the problem with the performance of web applications. The most difficult stage on which I will spend much more time than others ( + refactoring)
@@ -26,6 +31,7 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 - [ ] Further support for the project - This is a pet project, but I will do my best to make it something bigger
 
 ## Todos
+
 - [ ] ~~Rewrite util getPosterImage(link) to getPosterImage(images) like (original, preview, x48, x96) and select image depending on various factors (mobile phone, mobile Internet 3g, lite mode from settings)~~ ( at the moment this is not possible due to browser limitations )
 - [ ] Add info on hover genres
 - [ ] Add AnimeEpisodeSelector
@@ -33,7 +39,9 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 - [ ] Add chip in AnimeCard with anime status and watched episodes
 
 ## Current progress
+
 - [ ] Pages
+
   - [x] AnimePage
   - [x] ProfilePage
   - [ ] SearchPage
@@ -58,6 +66,6 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 - [ ] Widgets
   - [x] Sidebar
 
-
 ## Special thanks
+
 - Shikimori - for their significant contribution to the popularization of anime in Russia, the wonderful graphql api and the terrible rest api :)

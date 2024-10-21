@@ -4,7 +4,5 @@ type IAnimeListProps = {
 	children?: ReactNode;
 };
 export const AnimeList: FC<IAnimeListProps> = ({ children }) => {
-	return (
-		<div className={styles.animes_list}>{children}</div>
-	)
+	return <div className={styles.animes_list}>{children}</div>;
 };

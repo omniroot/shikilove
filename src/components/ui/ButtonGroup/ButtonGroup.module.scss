@@ -1,24 +1,24 @@
 .button_group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap);
 
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    height: 42px;
-    padding: var(--padding);
-    cursor: pointer;
-    background-color: var(--color-primary);
-    border: var(--border);
-    border-radius: var(--radius);
+	.button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		height: 42px;
+		padding: var(--padding);
+		cursor: pointer;
+		background-color: var(--color-primary);
+		border: var(--border);
+		border-radius: var(--radius);
 
-    @include hoverable;
-  }
+		@include hoverable;
+	}
 
-  .active {
-    border: var(--border-active);
-  }
+	.active {
+		border: var(--border-active);
+	}
 }

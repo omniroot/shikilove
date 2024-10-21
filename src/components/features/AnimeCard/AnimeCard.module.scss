@@ -1,17 +1,41 @@
 .anime_card {
-  max-width: 230px;
-  height: 400px;
-  color: var(--color-text);
-  text-decoration: none;
+	position: relative;
+	max-width: 230px;
+	height: 400px;
+	color: var(--color-text);
+	text-decoration: none;
 
-  @include card;
-  @include clickable;
+	@include card;
+	@include clickable;
 
-  .anime_title {
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    -moz-box-orient: vertical;
-  }
+	.info_container {
+		position: absolute;
+		display: flex;
+		justify-content: space-between;
+		padding: 2px 10px;
+		top: 10px;
+		left: 0;
+		width: 100%;
+
+		.user_status {
+			min-width: 15px;
+			padding: 2px 5px;
+			border-radius: var(--radius);
+			background-color: var(--color-secondary);
+		}
+		.user_episodes {
+			min-width: 15px;
+			padding: 2px 5px;
+			border-radius: var(--radius);
+			background-color: var(--color-secondary);
+		}
+	}
+
+	.anime_title {
+		display: -webkit-box;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-webkit-line-clamp: 2;
+		-moz-box-orient: vertical;
+	}
 }

@@ -15,15 +15,56 @@ import { Divider } from "@ui/Divider/Divider";
 import {
 	AnimeStatusSelect,
 	animeStatusSelectOptions,
+	IAnimeStatusSelectOption,
 } from "@features/AnimeStatusSelect/AnimeStatusSelect";
+import { Tooltip } from "@ui/Tooltip/Tooltip";
+import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate";
+import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect";
+import { AnimeScreenshots } from "@features/AnimeScreenshots/AnimeScreenshots";
+import { Button } from "@ui/Button/Button";
+import { openAnimeExternal } from "@/shared/utils/openAnimeSites";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
 	const { anime } = useFetchAnimeById(animeId || "1");
+	const { changeAnimeUserStatus, changeAnimeUserEpisodes } =
+		useChangeAnimeUserRate();
 	const selectedStatus =
-		animeStatusSelectOptions.find(
-			(option) => option.value === anime?.userRate.status,
-		) || null;
+		animeStatusSelectOptions.find((option) => {
+			if (anime?.userRate !== null) {
+				return option.value === anime?.userRate.status;
+			}
+			return {};
+		}) || null;
+
+	const selectedEpisode = anime?.userRate?.episodes || 0;
+
+	console.log("@userRate ", anime?.userRate);
+	console.log("@anime ", anime);
+
+	const onAnimeUserStatusSelected = (item: IAnimeStatusSelectOption) => {
+		if (anime?.userRate && item) {
+			changeAnimeUserStatus(anime.userRate.id, item.value);
+		}
+	};
+
+	const onAnimeUserEpisodeSelected = (episode: number) => {
+		if (anime?.userRate && episode) {
+			changeAnimeUserEpisodes(anime.userRate.id, episode);
+		}
+	};
+
+	const onAnimegoButtonClick = () => {
+		if (anime?.russian) openAnimeExternal(anime.russian, "animego");
+	};
+
+	const onHAnimeButtonClick = () => {
+		if (anime?.name) openAnimeExternal(anime.name, "hanime");
+	};
+
+	const onNHentaiButtonClick = () => {
+		if (anime?.name) openAnimeExternal(anime.name, "nhentai");
+	};
 
 	console.log(selectedStatus);
 	if (!anime) return null;
@@ -42,30 +83,65 @@ export const AnimePage = () => {
 						<AnimeStatusIcon /> {anime?.status}
 					</AnimeInfoLine>
 					<AnimeInfoLine>
-						<AnimeEpisodeIcon /> {anime?.episodes} episodes
+						<AnimeEpisodeIcon />
+						{anime.episodes > 0 ? anime.episodes : anime.episodesAired} episodes
 					</AnimeInfoLine>
 					<AnimeInfoLine>
 						<AnimeRateIcon /> {anime?.score}
 					</AnimeInfoLine>
 					<div className={styles.genres_list}>
 						{anime?.genres?.map((genre) => (
-							<div key={genre.id} className={styles.genre}>
-								{genre.name}
-							</div>
+							<Tooltip
+								key={genre.id}
+								title="ну умер и умер, чё бубнить-то?ну умер и умер, чё бубнить-то?"
+							>
+								<div className={styles.genre}>{genre.name}</div>
+							</Tooltip>
 						))}
 					</div>
 				</div>
 				<Divider orientation="vertical" />
 				<div className={styles.anime_info_right}>
-					<AnimeStatusSelect defaultValue={selectedStatus} />
-					<span>{anime?.userRate.episodes}</span>
+					{!anime.userRate ? (
+						<div>Add to list</div>
+					) : (
+						<div className={styles.user_selects}>
+							<AnimeEpisodeSelect
+								eipsodesCount={
+									anime.episodes > 0 ? anime.episodes : anime.episodesAired
+								}
+								defaultValue={{
+									label: selectedEpisode,
+									value: selectedEpisode,
+								}}
+								onOptionSelected={onAnimeUserEpisodeSelected}
+							/>
+							<AnimeStatusSelect
+								defaultValue={selectedStatus}
+								onOptionSelected={onAnimeUserStatusSelected}
+							/>
+						</div>
+					)}
+					<AnimeInfoSection title="Watch">
+						<div className={styles.watch_container}>
+							<Button variant="animego" onClick={onAnimegoButtonClick}>
+								Animego
+							</Button>
+							<Button variant="hanime" onClick={onHAnimeButtonClick}>
+								hAnime
+							</Button>
+							<Button variant="nhentai" onClick={onNHentaiButtonClick}>
+								Nhentai
+							</Button>
+						</div>
+					</AnimeInfoSection>
 				</div>
 			</div>
 			<AnimeInfoSection title="About">
 				<span>{anime?.description}</span>
 			</AnimeInfoSection>
 			<AnimeInfoSection title="Screenshots">
-				<div>Add AnimeScreenshots component</div>
+				<AnimeScreenshots screenshots={anime.screenshots} />
 			</AnimeInfoSection>
 			<AnimeInfoSection title="Similar">
 				<AnimeSimilarList animeId={animeId} />

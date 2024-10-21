@@ -1,38 +1,28 @@
 .global_layout {
-  display: flex;
-  gap: var(--gap-2);
-  width: 100%;
-  height: 100%;
-  padding: var(--padding-2);
+	display: flex;
+	gap: var(--gap-2);
+	width: 100%;
+	height: 100%;
+	padding: var(--padding-2);
 
-  .main {
-    width: 100%;
-    height: 100%;
+	.main {
+		width: 100%;
+		height: 100%;
 
-    @include card;
-  }
+		@include card;
+	}
 
-  .right_sidebar {
-    // position: fixed;
+	.right_sidebar {
+		@include card;
+	}
+}
 
-    // right: 0;
-    // display: none;
+@media screen and (max-width: 768px) {
+	.global_layout {
+		flex-direction: column;
+	}
 
-    // flex-direction: column;
-    // width: 0;
-    // opacity: 0;
-    // transition: all 200ms;
-
-    @include card;
-  }
-
-  .opened {
-    // position: static;
-
-    // display: flex;
-
-    // width: 250px;
-    // opacity: 1;
-
-  }
+	.main {
+		margin-bottom: 70px;
+	}
 }

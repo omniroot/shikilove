@@ -6,12 +6,25 @@
 	margin: 0;
 }
 
-
-
 html,
 body {
 	height: 100%;
 	font-family: "Open Sans", sans-serif;
 	color: var(--color-text);
 	background-color: var(--color-primary);
+}
+
+#modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100dvw;
+	height: 100dvh;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--color-secondary-transparent);
+	backdrop-filter: blur(5px);
 }
