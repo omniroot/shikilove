@@ -4,7 +4,7 @@ import axios from "axios";
 const _shikimoriAuth = axios.create({
 	baseURL: "https://shikimori.one/",
 	headers: {
-		"User-Agent": "ShikiLove",
+		"User-Agent": CONSTS.USER_AGENT,
 		Accept: "application/json",
 		"Content-Type": "application/json",
 	},
