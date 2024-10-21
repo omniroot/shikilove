@@ -11,6 +11,7 @@ const GET_ANIME_BY_ID = gql`
 			score
 			status
 			episodes
+			episodesAired
 			duration
 			airedOn {
 				year
@@ -101,6 +102,7 @@ interface IResponse {
 		score: number;
 		status: string;
 		episodes: number;
+		episodesAired: number;
 		duration: number;
 		airedOn: {
 			year: number;
