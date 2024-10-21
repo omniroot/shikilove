@@ -1,0 +1,16 @@
+.image_view_modal_container {
+	display: flex;
+	width: 80%;
+	height: 70%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.image_view_modal {
+		width: 80%;
+		height: 70%;
+		cursor: pointer;
+
+		background: var(--color-secondary);
+	}
+}

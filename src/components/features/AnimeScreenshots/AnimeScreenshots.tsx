@@ -25,6 +25,7 @@ export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({
 						radius="1"
 						alt={`Anime screenshot ${screenshot.id}`}
 						src={screenshot.x332Url}
+						full={screenshot.originalUrl}
 						key={screenshot.id}
 					/>
 				);
