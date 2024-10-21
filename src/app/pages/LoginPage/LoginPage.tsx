@@ -1,6 +1,10 @@
 import { CONSTS } from "@/shared/consts/consts";
 import { useAuthorization } from "@/shared/hooks/useAuthorization";
 import { useSearchParams } from "react-router-dom";
+import styles from "./LoginPage.module.scss";
+import { Button } from "@ui/Button/Button";
+import { ShikimoriIcon } from "@/shared/icons";
+import { ImageView } from "@ui/ImageView/ImageView";
 
 export const LoginPage = () => {
 	const [searchParams] = useSearchParams();
@@ -23,12 +27,42 @@ export const LoginPage = () => {
 	const onLoginButtonClick = () => {
 		window.open(CONSTS.OAUTH_URL, "_self");
 	};
+
+	const onLitemodeButtonClick = () => {
+		alert("Not realized");
+	};
+
 	return (
-		<div>
-			<span>LoginPage</span>
-			<div>
-				<span>Login with</span>
-				<button onClick={onLoginButtonClick}>Shikimori</button>
+		<div className={styles.login_page}>
+			<ImageView width="100px" height="140px" src="/login_cat.png" />
+			<div className={styles.login_card}>
+				<div className={styles.login_header}>
+					<span className={styles.login_text}>Login</span>
+					<span className={styles.login_about}>
+						To use the application, you need an account on shikimori.one
+					</span>
+				</div>
+				<div className={styles.login_actions}>
+					<Button
+						onClick={onLoginButtonClick}
+						variant="shikimori"
+						className={styles.shikimori_button}
+					>
+						<ShikimoriIcon />
+						Shikimori
+					</Button>
+					<Button
+						onClick={onLitemodeButtonClick}
+						variant="secondary"
+						className={styles.litemode_button}
+					>
+						Lite mode
+					</Button>
+				</div>
+				<span className={styles.litemode_info}>
+					Lite mode - option that does not require authorization, but has a
+					number of limitations and errors.
+				</span>
 			</div>
 		</div>
 	);
