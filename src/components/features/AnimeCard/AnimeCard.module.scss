@@ -39,3 +39,20 @@
 		-moz-box-orient: vertical;
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	.anime_card {
+		display: flex;
+		min-width: 100%;
+		height: 250px;
+
+		img {
+			width: 150px;
+			height: 100%;
+		}
+
+		.info_container {
+			width: 165px;
+		}
+	}
+}

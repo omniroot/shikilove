@@ -28,3 +28,13 @@
 		gap: var(--gap-2);
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	.anime_info {
+		flex-wrap: wrap;
+		justify-content: center;
+
+		.anime_info_left {
+		}
+	}
+}

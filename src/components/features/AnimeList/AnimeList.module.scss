@@ -4,3 +4,10 @@
 	gap: var(--gap);
 	justify-content: flex-start;
 }
+
+@media only screen and (max-width: 768px) {
+	.animes_list {
+		width: 100%;
+		justify-content: center;
+	}
+}
