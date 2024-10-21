@@ -8,6 +8,7 @@ import styles from "./ImageView.module.scss";
 interface IImageViewProps {
 	src?: string;
 	full?: string;
+	allowFullscreen?: boolean;
 	alt?: string;
 	width?: string;
 	height?: string;
@@ -20,12 +21,15 @@ export const ImageView: FC<IImageViewProps> = ({
 	radius = "none",
 	alt = "alt text",
 	src,
+	allowFullscreen = false,
 	full,
 }) => {
 	const [isModal, setIsModal] = useState(false);
 
 	const onImageClick = () => {
-		setIsModal((prev) => !prev);
+		if (allowFullscreen) {
+			setIsModal((prev) => !prev);
+		}
 	};
 
 	if (isModal === true) {
@@ -41,12 +45,14 @@ export const ImageView: FC<IImageViewProps> = ({
 		height: ${height};
 
 		${`border-radius: var(--radius-${radius});`};
+		${allowFullscreen && "cursor:pointer;"}
 	`;
 
 	return (
 		<>
 			<img src={src} alt={alt} className={_style} onClick={onImageClick} />
-			{isModal &&
+			{allowFullscreen === true &&
+				isModal === true &&
 				createPortal(
 					<div className={styles.image_view_modal_container} key={alt}>
 						<span>Click on image to close</span>

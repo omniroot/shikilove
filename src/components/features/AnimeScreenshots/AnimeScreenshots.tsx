@@ -27,6 +27,7 @@ export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({
 						src={screenshot.x332Url}
 						full={screenshot.originalUrl}
 						key={screenshot.id}
+						allowFullscreen
 					/>
 				);
 			})}
