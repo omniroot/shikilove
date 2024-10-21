@@ -30,11 +30,14 @@ export const AnimePage = () => {
 	const { changeAnimeUserStatus, changeAnimeUserEpisodes } =
 		useChangeAnimeUserRate();
 	const selectedStatus =
-		animeStatusSelectOptions.find(
-			(option) => option.value === anime?.userRate.status,
-		) || null;
+		animeStatusSelectOptions.find((option) => {
+			if (anime?.userRate !== null) {
+				return option.value === anime?.userRate.status;
+			}
+			return {};
+		}) || null;
 
-	const selectedEpisode = anime?.userRate.episodes || 1;
+	const selectedEpisode = anime?.userRate?.episodes || 0;
 
 	console.log("@userRate ", anime?.userRate);
 	console.log("@anime ", anime);
@@ -98,17 +101,24 @@ export const AnimePage = () => {
 				</div>
 				<Divider orientation="vertical" />
 				<div className={styles.anime_info_right}>
-					<div className={styles.user_selects}>
-						<AnimeEpisodeSelect
-							eipsodesCount={anime.episodes}
-							defaultValue={{ label: selectedEpisode, value: selectedEpisode }}
-							onOptionSelected={onAnimeUserEpisodeSelected}
-						/>
-						<AnimeStatusSelect
-							defaultValue={selectedStatus}
-							onOptionSelected={onAnimeUserStatusSelected}
-						/>
-					</div>
+					{!anime.userRate ? (
+						<div>Add to list</div>
+					) : (
+						<div className={styles.user_selects}>
+							<AnimeEpisodeSelect
+								eipsodesCount={anime.episodes}
+								defaultValue={{
+									label: selectedEpisode,
+									value: selectedEpisode,
+								}}
+								onOptionSelected={onAnimeUserEpisodeSelected}
+							/>
+							<AnimeStatusSelect
+								defaultValue={selectedStatus}
+								onOptionSelected={onAnimeUserStatusSelected}
+							/>
+						</div>
+					)}
 
 					<div className={styles.watch_container}>
 						<Button variant="animego" onClick={onAnimegoButtonClick}>
