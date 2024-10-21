@@ -7,7 +7,9 @@ import { AnimeCard } from "@features/AnimeCard/AnimeCard";
 import { AnimeList } from "@features/AnimeList/AnimeList";
 
 export const SearchPage = () => {
-	const { setRightSidebarContent, toggleRightSidebar } = useGlobalStore((state) => state);
+	const { setRightSidebarContent, toggleRightSidebar } = useGlobalStore(
+		(state) => state,
+	);
 	const [searchValue, setSearchValue] = useState("");
 	const { searchAnime, animes } = useSearchAnime();
 
@@ -36,16 +38,28 @@ export const SearchPage = () => {
 			<form className={styles.search_form} onSubmit={onSearchFormSubmit}>
 				<div className={styles.left}>
 					<SearchIcon className={styles.search_icon} width={24} height={24} />
-					<div className={styles.placeholder}>Name:</div>
-					<input type="text" className={styles.search_input} onChange={onSearchInputChange} />
+					{/* <div className={styles.placeholder}>Name:</div> */}
+					<input
+						type="text"
+						className={styles.search_input}
+						placeholder="Name:"
+						onChange={onSearchInputChange}
+					/>
 				</div>
 				<div className={styles.right}>
-					<button type="button" onClick={toggleRightSidebar} className={styles.filter_button}>
-						{" "}
+					<button
+						type="button"
+						onClick={toggleRightSidebar}
+						className={styles.filter_button}
+					>
 						<FilterIcon width={24} height={24} />
 						filters
 					</button>
-					<button type="button" onClick={onSearchButtonClick} className={styles.search_button}>
+					<button
+						type="button"
+						onClick={onSearchButtonClick}
+						className={styles.search_button}
+					>
 						<SearchIcon width={24} height={24} />
 					</button>
 				</div>

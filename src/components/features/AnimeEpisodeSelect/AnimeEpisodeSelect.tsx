@@ -1,31 +1,34 @@
 import Select, { SingleValue } from "react-select";
-import styles from "./AnimeStatusSelect.module.scss";
+import styles from "./AnimeEpisodeSelect.module.scss";
 import { type FC, useState } from "react";
-import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface";
 
-export type IAnimeStatusSelectOption = {
-	value: IUserRateAnimeStatus;
-	label: string;
+export type IAnimeEpisodeSelectOption = {
+	value: number;
+	label: number;
 };
-export const animeStatusSelectOptions: IAnimeStatusSelectOption[] = [
-	{ value: "watching", label: "Watching" },
-	{ value: "planned", label: "Planned" },
-	{ value: "completed", label: "Completed" },
-	{ value: "rewatching", label: "Rewatching" },
-	{ value: "on_hold", label: "Postponed" },
-	{ value: "dropped", label: "Dropped" },
-];
 
-interface IAnimeStatusSelectProps {
-	defaultValue: IAnimeStatusSelectOption | null;
-	onOptionSelected?: (item: IAnimeStatusSelectOption) => void;
+export const animeStatusSelectOptions = [];
+
+const getAnimeEpisodesSelectOptions = (episodesCount: number) => {
+	const options: IAnimeEpisodeSelectOption[] = [];
+	for (let i = 1; i <= episodesCount; i++) {
+		options.push({ value: i, label: i });
+	}
+	return options;
+};
+
+interface IAnimeEpisodeSelectProps {
+	defaultValue: IAnimeEpisodeSelectOption | null;
+	eipsodesCount: number;
+	onOptionSelected?: (episode: number) => void;
 }
-export const AnimeStatusSelect: FC<IAnimeStatusSelectProps> = ({
+export const AnimeEpisodeSelect: FC<IAnimeEpisodeSelectProps> = ({
 	defaultValue,
+	eipsodesCount,
 	onOptionSelected,
 }) => {
 	const [selectedOption, setSelectedOption] =
-		useState<IAnimeStatusSelectOption | null>(defaultValue);
+		useState<IAnimeEpisodeSelectOption | null>(defaultValue);
 	const [isSelecteMenuOpen, setIsSelecteMenuOpen] = useState(false);
 
 	const onSelectMenuOpen = () => {
@@ -36,10 +39,10 @@ export const AnimeStatusSelect: FC<IAnimeStatusSelectProps> = ({
 		setIsSelecteMenuOpen(false);
 	};
 
-	const onOptionSelect = (newValue: SingleValue<IAnimeStatusSelectOption>) => {
+	const onOptionSelect = (newValue: SingleValue<IAnimeEpisodeSelectOption>) => {
 		setSelectedOption(newValue);
-		if (selectedOption && onOptionSelected) {
-			onOptionSelected(newValue as IAnimeStatusSelectOption);
+		if (newValue && onOptionSelected) {
+			onOptionSelected(newValue?.value);
 		}
 	};
 
@@ -53,7 +56,7 @@ export const AnimeStatusSelect: FC<IAnimeStatusSelectProps> = ({
 			data-opened={isSelecteMenuOpen}
 			placeholder={"Select"}
 			isSearchable
-			options={animeStatusSelectOptions}
+			options={getAnimeEpisodesSelectOptions(eipsodesCount)}
 			classNames={{
 				container: () => styles.select_container,
 				control: () =>

@@ -12,7 +12,10 @@
 		align-items: center;
 		justify-content: start;
 		min-width: 70px;
-		height: 98%;
+		// height: 98%; work normal
+		height: 96%;
+		top: 50%;
+		translate: 0 -50%;
 		padding: var(--padding);
 		border: var(--border);
 		border-radius: var(--radius);

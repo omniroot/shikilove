@@ -1,5 +1,5 @@
 .select_container {
-	width: 200px;
+	width: 80px;
 	height: 50px;
 	cursor: pointer;
 
@@ -9,7 +9,7 @@
 }
 
 .select_input_control_opened {
-	width: 200px;
+	width: 80px;
 	padding: 15px 10px;
 	border: var(--border);
 	border-bottom: none;
@@ -19,7 +19,7 @@
 }
 
 .select_input_control_closed {
-	width: 200px;
+	width: 80px;
 	padding: 15px 10px;
 	cursor: pointer;
 	border: var(--border);
@@ -31,7 +31,7 @@
 }
 
 .select_menu {
-	max-width: 200px;
+	max-width: 80px;
 	padding: 0;
 	margin-top: -7px;
 	border: var(--border);
@@ -39,7 +39,6 @@
 	border-radius: var(--radius);
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
-
 	background-color: var(--color-secondary);
 }
 
@@ -65,8 +64,8 @@
 		cursor: pointer;
 
 		// background-color: var(--color-accent);
-		border-inline-start: 3px solid var(--color-accent);
-		border-radius: 5px;
+		border: 2px solid var(--color-accent);
+		border-radius: 12px;
 
 		&:hover {
 			background-color: var(--color-secondary-transparent);
