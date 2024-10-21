@@ -12,9 +12,13 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 
 export const GlobalLayout = () => {
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-	const isTablet = useMediaQuery("only screen and (min-width: 769px) and (max-width: 1024px)");
+	const isTablet = useMediaQuery(
+		"only screen and (min-width: 769px) and (max-width: 1024px)",
+	);
 	const isDesktop = useMediaQuery("only screen and (min-width: 1025px)");
-	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore((state) => state);
+	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore(
+		(state) => state,
+	);
 	const { loading, error, ...rest } = useFetchCurrentUser();
 	const { refreshTokens } = useAuthorization();
 
@@ -55,7 +59,9 @@ export const GlobalLayout = () => {
 						animate={{ width: "250px" }}
 						exit={{ width: 0 }}
 						transition={{ duration: 0.15 }}
-						className={clsx(styles.right_sidebar, { [styles.opened]: isRightSidebarOpened })}
+						className={clsx(styles.right_sidebar, {
+							[styles.opened]: isRightSidebarOpened,
+						})}
 					>
 						{rightSidebarContent}
 					</motion.div>
