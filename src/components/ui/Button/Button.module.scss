@@ -24,6 +24,16 @@
 	}
 }
 
+.secondary {
+	color: var(--color-text);
+	background-color: var(--color-secondary);
+
+	&:hover {
+		color: var(--color-text);
+		background-color: var(--color-secondary-transparent);
+	}
+}
+
 .animego {
 	color: var(--color-text);
 	background-color: var(--color-animego);
@@ -49,5 +59,15 @@
 	&:hover {
 		color: var(--color-text);
 		background-color: var(--color-nhentai-hover);
+	}
+}
+
+.shikimori {
+	color: var(--color-primary);
+	background-color: var(--color-shikimori);
+
+	&:hover {
+		color: var(--color-primary);
+		background-color: var(--color-shikimori-hover);
 	}
 }
