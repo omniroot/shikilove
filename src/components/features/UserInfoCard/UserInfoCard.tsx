@@ -10,7 +10,13 @@ export const UserInfoCard = () => {
 
 	return (
 		<div className={styles.user_info_card}>
-			<ImageView src={avatarUrl} width="250px" radius="1" />
+			<ImageView
+				src={avatarUrl}
+				full={avatarUrl}
+				width="250px"
+				radius="1"
+				allowFullscreen
+			/>
 			{/* <Divide orientation="vertical" width="170px" /> */}
 			<div className={styles.info}>
 				<div className={styles.first_line}>

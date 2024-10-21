@@ -1,0 +1,13 @@
+.genres_list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap);
+	margin-top: auto;
+
+	.genre {
+		@include card;
+		@include clickable;
+
+		user-select: none;
+	}
+}
