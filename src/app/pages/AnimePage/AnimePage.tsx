@@ -83,7 +83,8 @@ export const AnimePage = () => {
 						<AnimeStatusIcon /> {anime?.status}
 					</AnimeInfoLine>
 					<AnimeInfoLine>
-						<AnimeEpisodeIcon /> {anime?.episodes} episodes
+						<AnimeEpisodeIcon />
+						{anime.episodes > 0 ? anime.episodes : anime.episodesAired} episodes
 					</AnimeInfoLine>
 					<AnimeInfoLine>
 						<AnimeRateIcon /> {anime?.score}
@@ -106,7 +107,9 @@ export const AnimePage = () => {
 					) : (
 						<div className={styles.user_selects}>
 							<AnimeEpisodeSelect
-								eipsodesCount={anime.episodes}
+								eipsodesCount={
+									anime.episodes > 0 ? anime.episodes : anime.episodesAired
+								}
 								defaultValue={{
 									label: selectedEpisode,
 									value: selectedEpisode,
@@ -119,18 +122,19 @@ export const AnimePage = () => {
 							/>
 						</div>
 					)}
-
-					<div className={styles.watch_container}>
-						<Button variant="animego" onClick={onAnimegoButtonClick}>
-							Animego
-						</Button>
-						<Button variant="hanime" onClick={onHAnimeButtonClick}>
-							hAnime
-						</Button>
-						<Button variant="nhentai" onClick={onNHentaiButtonClick}>
-							Nhentai
-						</Button>
-					</div>
+					<AnimeInfoSection title="Watch">
+						<div className={styles.watch_container}>
+							<Button variant="animego" onClick={onAnimegoButtonClick}>
+								Animego
+							</Button>
+							<Button variant="hanime" onClick={onHAnimeButtonClick}>
+								hAnime
+							</Button>
+							<Button variant="nhentai" onClick={onNHentaiButtonClick}>
+								Nhentai
+							</Button>
+						</div>
+					</AnimeInfoSection>
 				</div>
 			</div>
 			<AnimeInfoSection title="About">
