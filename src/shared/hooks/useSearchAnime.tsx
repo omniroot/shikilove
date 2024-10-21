@@ -9,6 +9,13 @@ const GET_SEARCH_ANIME = gql`
 			poster {
 				main2xUrl
 			}
+			userRate {
+				status
+				score
+				text
+				chapters
+				episodes
+			}
 		}
 	}
 `;
@@ -20,6 +27,13 @@ interface IResponse {
 		poster: {
 			main2xUrl: string;
 		};
+		userRate: {
+			status: string;
+			score: number;
+			text: string | null;
+			chapters: number;
+			episodes: number;
+		} | null;
 	}[];
 }
 

@@ -11,6 +11,7 @@ const GET_USER_RATES = gql`
 					main2xUrl
 				}
 			}
+			episodes
 			status
 			createdAt
 		}
@@ -26,6 +27,7 @@ export interface IUserRate {
 			main2xUrl: string;
 		};
 	};
+	episodes: number;
 	status: string;
 	createdAt: string;
 }
