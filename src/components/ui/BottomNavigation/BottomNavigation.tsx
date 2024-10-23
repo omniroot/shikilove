@@ -31,11 +31,11 @@ const pages = [
 		path: "/settings",
 		icon: <SettingsIcon />,
 	},
-	{
-		name: "Logout",
-		path: "/logout",
-		icon: <LogoutIcon />,
-	},
+	// {
+	// 	name: "Logout",
+	// 	path: "/logout",
+	// 	icon: <LogoutIcon />,
+	// },
 ];
 
 export const BottomNavigation = () => {
