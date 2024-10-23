@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-export const GlobalLayout = () => {
+const GlobalLayout = () => {
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 	const isTablet = useMediaQuery(
 		"only screen and (min-width: 769px) and (max-width: 1024px)",
@@ -70,3 +70,5 @@ export const GlobalLayout = () => {
 		</div>
 	);
 };
+
+export default GlobalLayout;

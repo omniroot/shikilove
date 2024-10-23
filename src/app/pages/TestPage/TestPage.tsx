@@ -28,4 +28,5 @@ export const TestPage = () => {
 	);
 };
 
+export default TestPage;
 // {/* <iframe src="https://kodik.info/seria/1331355/e03d43d6288c6acdca1dfae4b6f6a882/720p?translations=false&min_age=16" allowFullScreen></iframe> */}

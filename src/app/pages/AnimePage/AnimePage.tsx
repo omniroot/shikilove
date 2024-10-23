@@ -29,3 +29,5 @@ export const AnimePage = () => {
 		</div>
 	);
 };
+
+export default AnimePage;

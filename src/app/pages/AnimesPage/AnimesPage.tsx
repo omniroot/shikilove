@@ -5,3 +5,5 @@ export const AnimesPage = () => {
 		</div>
 	);
 };
+
+export default AnimesPage;
