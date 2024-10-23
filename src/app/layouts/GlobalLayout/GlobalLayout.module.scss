@@ -19,6 +19,7 @@
 @media screen and (max-width: 768px) {
 	.global_layout {
 		flex-direction: column;
+		padding: var(--padding-1);
 	}
 
 	.main {
