@@ -11,10 +11,12 @@
 		height: 42px;
 		padding: var(--padding);
 		cursor: pointer;
+		color: var(--color-text);
+		font-weight: inherit;
 		background-color: var(--color-primary);
 		border: var(--border);
 		border-radius: var(--radius);
-
+		gap: var(--gap);
 		@include hoverable;
 	}
 

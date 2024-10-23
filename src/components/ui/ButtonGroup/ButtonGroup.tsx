@@ -4,7 +4,8 @@ import clsx from "clsx";
 
 interface IElement {
 	id: string;
-	element?: ReactNode;
+	title?: string;
+	icon?: ReactNode;
 }
 interface IButtonGroupProps {
 	elements?: IElement[];
@@ -31,15 +32,16 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 		<div className={_class}>
 			{elements?.map((element) => {
 				return (
-					<div
+					<button
 						className={clsx(styles.button, {
 							[styles.active]: active === element.id,
 						})}
 						key={element.id}
 						onClick={() => onGroupItemClick(element)}
 					>
-						{element.element}
-					</div>
+						{element.icon}
+						{element.title}
+					</button>
 				);
 			})}
 		</div>
