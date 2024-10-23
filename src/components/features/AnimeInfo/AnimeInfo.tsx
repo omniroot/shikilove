@@ -1,15 +1,15 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
+import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
 import {
+	AnimeStatusIcon,
 	AnimeEpisodeIcon,
 	AnimeRateIcon,
-	AnimeStatusIcon,
-} from "@/shared/icons";
-import { AnimeGenres } from "@features/AnimeGenres/AnimeGenres";
-import { AnimeInfoLine } from "@features/AnimeInfoLine/AnimeInfoLine";
-import { AnimeStatus } from "@features/AnimeStatus/AnimeStatus";
-import { AnimeWatch } from "@features/AnimeWatch/AnimeWatch";
-import { Divider } from "@ui/Divider/Divider";
-import { ImageView } from "@ui/ImageView/ImageView";
+} from "@/shared/icons/index.tsx";
+import { AnimeGenres } from "@features/AnimeGenres/AnimeGenres.tsx";
+import { AnimeInfoLine } from "@features/AnimeInfoLine/AnimeInfoLine.tsx";
+import { AnimeStatus } from "@features/AnimeStatus/AnimeStatus.tsx";
+import { AnimeWatch } from "@features/AnimeWatch/AnimeWatch.tsx";
+import { Divider } from "@ui/Divider/Divider.tsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { useParams } from "react-router-dom";
 import styles from "./AnimeInfo.module.scss";
 

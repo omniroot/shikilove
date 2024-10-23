@@ -1,13 +1,13 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
-import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect";
+import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect.tsx";
 import {
 	AnimeStatusSelect,
 	animeStatusSelectOptions,
 	IAnimeStatusSelectOption,
-} from "@features/AnimeStatusSelect/AnimeStatusSelect";
+} from "@features/AnimeStatusSelect/AnimeStatusSelect.tsx";
 import { useParams } from "react-router-dom";
 import styles from "./AnimeStatus.module.scss";
-import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate";
+import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate.tsx";
 
 export const AnimeStatus = () => {
 	const { animeId } = useParams();

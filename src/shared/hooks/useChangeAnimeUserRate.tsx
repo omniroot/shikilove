@@ -1,5 +1,5 @@
-import { api } from "@/shared/services/api";
-import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface";
+import { api } from "@/shared/services/api.ts";
+import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 
 export const useChangeAnimeUserRate = () => {
 	const changeAnimeUserStatus = async (

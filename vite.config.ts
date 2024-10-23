@@ -4,7 +4,17 @@ import path from "path";
 import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-	plugins: [react(), svgr()],
+	plugins: [
+		react(),
+		svgr({
+			// svgrOptions: {
+			// 	plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
+			// 	svgoConfig: {
+			// 		floatPrecision: 5,
+			// 	},
+			// },
+		}),
+	],
 	css: {
 		preprocessorOptions: {
 			scss: {
@@ -12,7 +22,9 @@ export default defineConfig({
 			},
 		},
 	},
-
+	build: {
+		cssMinify: "lightningcss",
+	},
 	resolve: {
 		alias: {
 			"@features": path.resolve(__dirname, "src", "components", "features"),

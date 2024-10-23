@@ -1,8 +1,8 @@
 import styles from "./BottomNavigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
-import { IPage, PAGES } from "@/shared/consts/pages";
 import { FC } from "react";
+import { IPage, PAGES } from "@/shared/consts/pages.tsx";
 
 const isCurrentPage = (currentPage: string, page: IPage) => {
 	const _currentPage = currentPage.split("/")[1].replaceAll("/", "");

@@ -1,17 +1,16 @@
-import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates";
-import {
-	DroppedIcon,
-	PlannedIcon,
-	PostponedIcon,
-	WatchedIcon,
-	WatchingIcon,
-} from "@/shared/icons";
-
-import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup";
 import { useState } from "react";
 import styles from "./AnimeUserRates.module.scss";
-import { AnimeList } from "@features/AnimeList/AnimeList";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard";
+import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates.tsx";
+import {
+	WatchingIcon,
+	PlannedIcon,
+	WatchedIcon,
+	PostponedIcon,
+	DroppedIcon,
+} from "@/shared/icons/index.tsx";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
 
 type IPages =
 	| "watching"

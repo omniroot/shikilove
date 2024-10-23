@@ -1,6 +1,6 @@
-import { Tooltip } from "@ui/Tooltip/Tooltip";
-import { IconButton } from "@ui/IconButton/IconButton";
-import { ProfileIcon, SettingsIcon } from "@/shared/icons";
+import { ProfileIcon, SettingsIcon } from "@/shared/icons/index.tsx";
+import { IconButton } from "@ui/IconButton/IconButton.tsx";
+import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import styles from "./TestPage.module.scss";
 
 export const TestPage = () => {
@@ -28,4 +28,5 @@ export const TestPage = () => {
 	);
 };
 
+export default TestPage;
 // {/* <iframe src="https://kodik.info/seria/1331355/e03d43d6288c6acdca1dfae4b6f6a882/720p?translations=false&min_age=16" allowFullScreen></iframe> */}

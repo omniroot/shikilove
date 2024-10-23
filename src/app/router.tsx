@@ -1,17 +1,36 @@
-import { GlobalLayout } from "@/app/layouts/GlobalLayout/GlobalLayout";
-import { AnimePage } from "@/app/pages/AnimePage/AnimePage";
-import { AnimesPage } from "@/app/pages/AnimesPage/AnimesPage";
-import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
-import { NotFoundPage } from "@/app/pages/NotFoundPage/NotFoundPage";
-import { ProfilePage } from "@/app/pages/ProfilePage/ProfilePage";
-import { SearchPage } from "@/app/pages/SearchPage/SearchPage";
-import { SettingsPage } from "@/app/pages/SettingsPage/SettingsPage";
-import { TestPage } from "@/app/pages/TestPage/TestPage";
+import React from "react";
 import {
-	Route,
 	createBrowserRouter,
 	createRoutesFromElements,
+	Route,
 } from "react-router-dom";
+
+const GlobalLayout = React.lazy(
+	() => import("@/app/layouts/GlobalLayout/GlobalLayout.tsx"),
+);
+const AnimePage = React.lazy(
+	() => import("@/app/pages/AnimePage/AnimePage.tsx"),
+);
+const AnimesPage = React.lazy(
+	() => import("@/app/pages/AnimesPage/AnimesPage.tsx"),
+);
+const LoginPage = React.lazy(
+	() => import("@/app/pages/LoginPage/LoginPage.tsx"),
+);
+const NotFoundPage = React.lazy(
+	() => import("@/app/pages/NotFoundPage/NotFoundPage.tsx"),
+);
+const ProfilePage = React.lazy(
+	() => import("@/app/pages/ProfilePage/ProfilePage.tsx"),
+);
+const SearchPage = React.lazy(
+	() => import("@/app/pages/SearchPage/SearchPage.tsx"),
+);
+const TestPage = React.lazy(() => import("@/app/pages/TestPage/TestPage.tsx"));
+
+const SettingsPage = React.lazy(
+	() => import("@/app/pages/SettingsPage/SettingsPage.tsx"),
+);
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(

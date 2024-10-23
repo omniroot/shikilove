@@ -1,6 +1,6 @@
-import { UserInfoCard } from "@features/UserInfoCard/UserInfoCard";
+import { AnimeUserRates } from "@features/AnimeUserRates/AnimeUserRates.tsx";
+import { UserInfoCard } from "@features/UserInfoCard/UserInfoCard.tsx";
 import styles from "./ProfilePage.module.scss";
-import { AnimeUserRates } from "@features/AnimeUserRates/AnimeUserRates";
 
 export const ProfilePage = () => {
 	// if (loading) return "loading...";
@@ -15,3 +15,5 @@ export const ProfilePage = () => {
 		</div>
 	);
 };
+
+export default ProfilePage;

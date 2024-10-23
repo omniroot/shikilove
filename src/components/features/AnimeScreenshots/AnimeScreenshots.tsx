@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./AnimeScreenshots.module.scss";
-import { ImageView } from "@ui/ImageView/ImageView";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 
 interface IAnimeScreenshot {
 	id: string;

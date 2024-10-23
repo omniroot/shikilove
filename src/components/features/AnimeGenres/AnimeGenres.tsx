@@ -1,7 +1,7 @@
-import { Tooltip } from "@ui/Tooltip/Tooltip";
-import styles from "./AnimeGenres.module.scss";
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
+import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import { useParams } from "react-router-dom";
+import styles from "./AnimeGenres.module.scss";
 export const AnimeGenres = () => {
 	const { animeId } = useParams();
 

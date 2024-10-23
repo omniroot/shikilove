@@ -1,8 +1,8 @@
-import { useFetchSimilarAnime } from "@/shared/hooks/usеFetchSimilarAnime";
-import { getPosterImage } from "@/shared/utils/getPosterImage";
+import { useFetchSimilarAnime } from "@/shared/hooks/usеFetchSimilarAnime.tsx";
+import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import type { FC } from "react";
-import { AnimeList } from "@features/AnimeList/AnimeList";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard";
 
 interface IAnimeSimilarListProps {
 	animeId?: string;
@@ -17,7 +17,12 @@ export const AnimeSimilarList: FC<IAnimeSimilarListProps> = ({ animeId }) => {
 	return (
 		<AnimeList>
 			{similarAnimes?.map((anime) => (
-				<AnimeCard key={anime.id} id={anime.id} image={getPosterImage(anime.image.preview)} title={anime.name} />
+				<AnimeCard
+					key={anime.id}
+					id={anime.id}
+					image={getPosterImage(anime.image.preview)}
+					title={anime.name}
+				/>
 			))}
 		</AnimeList>
 	);

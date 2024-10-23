@@ -1,4 +1,4 @@
-import { CONSTS } from "@/shared/consts/consts";
+import { CONSTS } from "@/shared/consts/consts.ts";
 import axios from "axios";
 
 const _shikimoriAuth = axios.create({

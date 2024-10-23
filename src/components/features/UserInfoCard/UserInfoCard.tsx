@@ -1,5 +1,5 @@
-import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
-import { ImageView } from "@ui/ImageView/ImageView";
+import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser.tsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import styles from "./UserInfoCard.module.scss";
 import dayjs from "dayjs";
 

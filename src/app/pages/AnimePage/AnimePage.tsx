@@ -1,10 +1,10 @@
-import { AnimeInfo } from "@features/AnimeInfo/AnimeInfo";
-import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection";
-import styles from "./AnimePage.module.scss";
-import { AnimeScreenshots } from "@features/AnimeScreenshots/AnimeScreenshots";
-import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList";
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
+import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { AnimeInfo } from "@features/AnimeInfo/AnimeInfo.tsx";
+import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection.tsx";
+import { AnimeScreenshots } from "@features/AnimeScreenshots/AnimeScreenshots.tsx";
+import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList.tsx";
 import { useParams } from "react-router-dom";
+import styles from "./AnimePage.module.scss";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
@@ -29,3 +29,5 @@ export const AnimePage = () => {
 		</div>
 	);
 };
+
+export default AnimePage;
