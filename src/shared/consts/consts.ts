@@ -7,9 +7,3 @@ export const CONSTS = {
 	OAUTH_CLIENT_SECRET: import.meta.env.VITE_OAUTH_CLIENT_SECRET,
 	OAUTH_REDIRECT_URI: import.meta.env.VITE_OAUTH_REDIRECT_URI,
 };
-
-// graphql
-// {
-// 	"User-Agent": "ShikiLove",
-// 	"Authorization": "Bearer 7gCPwwfuZ2UHXteRvBGqeDSpdqvPoL5EJwCjAhIB4bY"
-// }

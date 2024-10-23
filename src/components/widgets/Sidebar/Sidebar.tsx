@@ -1,48 +1,13 @@
-import {
-	AnimeIcon,
-	LogoutIcon,
-	ProfileIcon,
-	SearchIcon,
-	SettingsIcon,
-	ShikimoriIcon,
-} from "@/shared/icons";
-import { NavBar } from "@features/NavBar/NavBar";
+import { NavBar } from "@ui/NavBar/NavBar";
 import styles from "./Sidebar.module.scss";
 import { useLocation } from "react-router-dom";
-
-const start_pages = [
-	{
-		name: "Profile",
-		path: "/",
-		icon: <ProfileIcon />,
-	},
-	{
-		name: "Animes",
-		path: "/animes/",
-		icon: <AnimeIcon width={24} height={22} />,
-	},
-	{
-		name: "Search",
-		path: "/search",
-		icon: <SearchIcon />,
-	},
-];
-
-const end_pages = [
-	{
-		name: "Settings",
-		path: "/settings",
-		icon: <SettingsIcon />,
-	},
-	{
-		name: "Logout",
-		path: "/logout",
-		icon: <LogoutIcon />,
-	},
-];
+import { PAGES } from "@/shared/consts/pages";
+import { ShikimoriIcon } from "@/shared/icons";
 
 export const Sidebar = () => {
 	const currentPage = useLocation().pathname;
+	const pages_start = PAGES.sidebar_start;
+	const pages_end = PAGES.sidebar_end;
 
 	if (currentPage === "/login/") {
 		return null;
@@ -53,9 +18,9 @@ export const Sidebar = () => {
 			<div className={styles.sidebar}>
 				<ShikimoriIcon className={styles.shikimori_icon} />
 				<div className={styles.divider} />
-				<NavBar pages={start_pages} />
+				<NavBar pages={pages_start} />
 				<div className={styles.spacer} />
-				<NavBar pages={end_pages} />
+				<NavBar pages={pages_end} />
 			</div>
 		</div>
 	);

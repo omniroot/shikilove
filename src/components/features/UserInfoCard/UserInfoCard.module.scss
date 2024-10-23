@@ -7,6 +7,11 @@
 	border: var(--border);
 	border-radius: var(--radius);
 
+	.user_image {
+		width: 250px;
+		border-radius: var(--radius);
+	}
+
 	.info {
 		display: flex;
 		flex-direction: column;

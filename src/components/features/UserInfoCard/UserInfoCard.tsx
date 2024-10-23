@@ -12,9 +12,8 @@ export const UserInfoCard = () => {
 		<div className={styles.user_info_card}>
 			<ImageView
 				src={avatarUrl}
+				className={styles.user_image}
 				full={avatarUrl}
-				width="250px"
-				radius="1"
 				allowFullscreen
 			/>
 			{/* <Divide orientation="vertical" width="170px" /> */}

@@ -34,7 +34,7 @@ export const LoginPage = () => {
 
 	return (
 		<div className={styles.login_page}>
-			<ImageView width="100px" height="140px" src="/login_cat.png" />
+			<ImageView src="/login_cat.png" className={styles.cat_image} />
 			<div className={styles.login_card}>
 				<div className={styles.login_header}>
 					<span className={styles.login_text}>Login</span>

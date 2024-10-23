@@ -1,83 +1,43 @@
-import {
-	ProfileIcon,
-	AnimeIcon,
-	SearchIcon,
-	SettingsIcon,
-} from "@/shared/icons";
 import styles from "./BottomNavigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
-import { ReactNode } from "react";
+import { IPage, PAGES } from "@/shared/consts/pages";
+import { FC } from "react";
 
-interface IPage {
-	name: string;
-	path: string;
-	icon: ReactNode;
+const isCurrentPage = (currentPage: string, page: IPage) => {
+	const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
+	const _nextPage = page.path.replaceAll("/", "");
+
+	if (_currentPage === _nextPage) {
+		return true;
+	}
+	return false;
+};
+
+interface IBottomNavigationProps {
+	className?: string;
 }
-
-const pages: IPage[] = [
-	{
-		name: "Profile",
-		path: "/",
-		icon: <ProfileIcon />,
-	},
-	{
-		name: "Animes",
-		path: "/animes/",
-		icon: <AnimeIcon width={24} height={22} />,
-	},
-	{
-		name: "Search",
-		path: "/search",
-		icon: <SearchIcon />,
-	},
-	{
-		name: "Settings",
-		path: "/settings",
-		icon: <SettingsIcon />,
-	},
-	// {
-	// 	name: "Logout",
-	// 	path: "/logout",
-	// 	icon: <LogoutIcon />,
-	// },
-];
-
-export const BottomNavigation = () => {
+export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	const currentPage = useLocation().pathname;
-	const isCurrentPage = (page: IPage) => {
-		// console.log(currentLink, page.path);
-		const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
-		const _nextPage = page.path.replaceAll("/", "");
+	const pages = PAGES.bottomNavigation;
 
-		if (_currentPage === _nextPage) {
-			console.log(_currentPage, _nextPage, "===> true");
-			return true;
-		}
-		console.log(_currentPage, _nextPage, "===> false");
-		return false;
-	};
-	console.log(currentPage);
 	if (currentPage === "/login/") {
 		return null;
 	}
 
+	const _class = clsx(styles.bottom_navigation, className);
+
 	return (
-		<div className={styles.bottom_navigation}>
+		<div className={_class}>
 			{pages.map((page) => {
-				if (isCurrentPage(page)) {
-					return (
-						<Link
-							className={clsx(styles.navitem, styles.active)}
-							to={page.path}
-							key={page.name}
-						>
-							{page.icon}
-						</Link>
-					);
-				}
 				return (
-					<Link className={styles.navitem} to={page.path} key={page.name}>
+					<Link
+						className={clsx(styles.navitem, {
+							[styles.active]: isCurrentPage(currentPage, page),
+						})}
+						to={page.path}
+						key={page.name}
+					>
 						{page.icon}
 					</Link>
 				);

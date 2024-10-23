@@ -8,7 +8,6 @@ import {
 } from "@/shared/icons";
 
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup";
-import { IconButton } from "@ui/IconButton/IconButton";
 import { useState } from "react";
 import styles from "./AnimeUserRates.module.scss";
 import { AnimeList } from "@features/AnimeList/AnimeList";
@@ -25,57 +24,33 @@ type IPages =
 const elements = [
 	{
 		id: "watching",
-		element: (
-			<IconButton>
-				<WatchingIcon />
-				<span>watching</span>
-			</IconButton>
-		),
+		title: "watching",
+		icon: <WatchingIcon />,
 	},
 	{
 		id: "planned",
-		element: (
-			<IconButton>
-				<PlannedIcon />
-				<span>planned</span>
-			</IconButton>
-		),
+		title: "planned",
+		icon: <PlannedIcon />,
 	},
 	{
 		id: "completed",
-		element: (
-			<IconButton>
-				<WatchedIcon />
-				<span>watched</span>
-			</IconButton>
-		),
+		title: "completed",
+		icon: <WatchedIcon />,
 	},
 	{
 		id: "rewatching",
-		element: (
-			<IconButton>
-				{/* <Repeat /> */}
-				<span>rewatching</span>
-			</IconButton>
-		),
+		title: "rewatching",
+		icon: <PostponedIcon />,
 	},
 	{
 		id: "on_hold",
-		element: (
-			<IconButton>
-				<PostponedIcon />
-				<span>postponed</span>
-			</IconButton>
-		),
+		title: "postponed",
+		icon: <PostponedIcon />,
 	},
 	{
 		id: "dropped",
-		element: (
-			<IconButton>
-				<DroppedIcon />
-				<span>dropped</span>
-			</IconButton>
-		),
+		title: "dropped",
+		icon: <DroppedIcon />,
 	},
 ];
 export const AnimeUserRates = () => {

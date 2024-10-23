@@ -8,6 +8,12 @@
 	@include card;
 	@include clickable;
 
+	.anime_image {
+		width: 100%;
+		height: 85%;
+		border-radius: var(--radius);
+	}
+
 	.info_container {
 		position: absolute;
 		display: flex;
@@ -46,7 +52,7 @@
 		min-width: 100%;
 		height: 250px;
 
-		img {
+		.anime_image {
 			width: 150px;
 			height: 100%;
 		}
