@@ -20,11 +20,9 @@ export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({
 			{screenshots.map((screenshot) => {
 				return (
 					<ImageView
-						width="350px"
-						height="200px"
-						radius="1"
 						alt={`Anime screenshot ${screenshot.id}`}
 						src={screenshot.x332Url}
+						className={styles.anime_screenshot_image}
 						full={screenshot.originalUrl}
 						key={screenshot.id}
 						allowFullscreen

@@ -5,6 +5,12 @@
 	@include card;
 	gap: var(--gap-2);
 
+	.anime_image {
+		width: 230px;
+		height: 340px;
+		border-radius: var(--radius);
+	}
+
 	.anime_info_left {
 		width: 100%;
 		display: flex;

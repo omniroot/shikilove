@@ -34,3 +34,18 @@ body {
 	background-color: var(--color-secondary-transparent);
 	backdrop-filter: blur(5px);
 }
+
+#fullscreen_image {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100dvw;
+	height: 100dvh;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--color-secondary-transparent);
+	backdrop-filter: blur(5px);
+}

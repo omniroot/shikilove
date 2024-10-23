@@ -1,4 +1,3 @@
-import { css } from "@emotion/css";
 import clsx from "clsx";
 import { useState, type FC } from "react";
 import { createPortal } from "react-dom";
@@ -11,16 +10,9 @@ interface IImageViewProps {
 	full?: string;
 	allowFullscreen?: boolean;
 	alt?: string;
-	width?: string;
-	height?: string;
-	radius?: "none" | "1" | "2";
 }
-
 export const ImageView: FC<IImageViewProps> = ({
 	className,
-	width = "100%",
-	height = "100%",
-	radius = "none",
 	alt = "alt text",
 	src,
 	allowFullscreen = false,
@@ -35,25 +27,16 @@ export const ImageView: FC<IImageViewProps> = ({
 	};
 
 	if (isModal === true) {
-		const modal = document.getElementById("modal") || document.body;
+		const modal = document.getElementById("fullscreen_image") || document.body;
 		modal.style.display = "flex";
 	} else {
-		const modal = document.getElementById("modal") || document.body;
+		const modal = document.getElementById("fullscreen_image") || document.body;
 		modal.style.display = "none";
 	}
 
-	const _style = css`
-		width: ${width};
-		height: ${height};
-
-		max-width: ${width};
-		max-height: ${height};
-
-		${`border-radius: var(--radius-${radius});`};
-		${allowFullscreen && "cursor:pointer;"}
-	`;
-
-	const _class = clsx(_style, className);
+	const _class = clsx(styles.image_view, className, {
+		[styles.clickable]: allowFullscreen,
+	});
 
 	return (
 		<>
@@ -66,11 +49,11 @@ export const ImageView: FC<IImageViewProps> = ({
 						<img
 							src={full}
 							alt={alt}
-							className={clsx(_style, styles.image_view_modal)}
+							className={clsx(_class, styles.image_view_modal)}
 							onClick={onImageClick}
 						/>
 					</div>,
-					document.getElementById("modal") || document.body,
+					document.getElementById("fullscreen_image") || document.body,
 				)}
 		</>
 	);

@@ -24,12 +24,7 @@ export const AnimeInfo = () => {
 
 	return (
 		<div className={styles.anime_info}>
-			<ImageView
-				src={anime?.poster.mainUrl}
-				radius="1"
-				width="230px"
-				height="340px"
-			/>
+			<ImageView src={anime?.poster.mainUrl} className={styles.anime_image} />
 			<div className={styles.anime_info_left}>
 				<span className={styles.name}>{anime?.name}</span>
 				<AnimeInfoLine>
