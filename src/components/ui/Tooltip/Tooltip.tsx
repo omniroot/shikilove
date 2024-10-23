@@ -4,11 +4,13 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 
 interface ITooltipProps {
+	className?: string;
 	children: ReactNode;
 	title?: string;
 	position?: "top" | "bottom";
 }
 export const Tooltip: FC<ITooltipProps> = ({
+	className,
 	children,
 	title,
 	position = "top",
@@ -22,9 +24,11 @@ export const Tooltip: FC<ITooltipProps> = ({
 		setIsHover(false);
 	};
 
+	const _class = clsx(styles.tooltip_container, className);
+
 	return (
 		<div
-			className={styles.tooltip_container}
+			className={_class}
 			onMouseEnter={onTooltipMouseEnter}
 			onMouseLeave={onTooltipMouseLeave}
 		>
