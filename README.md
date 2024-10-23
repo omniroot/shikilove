@@ -74,3 +74,10 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 ## Special thanks
 
 - Shikimori - for their significant contribution to the popularization of anime in Russia, the wonderful graphql api and the terrible rest api :)
+
+## before optimization
+
+dist/assets/proxy-DqgqhQB7.js 110.35 kB │ gzip: 36.14 kB
+dist/assets/index-Yumdr02b.js 371.34 kB │ gzip: 118.06 kB
+
+## after optimization
