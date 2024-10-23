@@ -1,4 +1,4 @@
-import { ImageView } from "@ui/ImageView/ImageView";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import styles from "./AnimeCard.module.scss";
 
 import type { FC } from "react";

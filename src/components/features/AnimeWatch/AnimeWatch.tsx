@@ -1,7 +1,7 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById";
-import { openAnimeExternal } from "@/shared/utils/openAnimeSites";
-import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection";
-import { Button } from "@ui/Button/Button";
+import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { openAnimeExternal } from "@/shared/utils/openAnimeSites.ts";
+import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection.tsx";
+import { Button } from "@ui/Button/Button.tsx";
 import { useParams } from "react-router-dom";
 import styles from "./AnimeWatch.module.scss";
 

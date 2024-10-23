@@ -1,7 +1,7 @@
 import Select, { SingleValue } from "react-select";
 import styles from "./AnimeStatusSelect.module.scss";
 import { type FC, useState } from "react";
-import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface";
+import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 
 export type IAnimeStatusSelectOption = {
 	value: IUserRateAnimeStatus;

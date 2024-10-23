@@ -1,14 +1,14 @@
-import { useAuthorization } from "@/shared/hooks/useAuthorization";
-import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser";
-import { Outlet } from "react-router-dom";
-import styles from "./GlobalLayout.module.scss";
-import { Sidebar } from "@widgets/Sidebar/Sidebar";
-import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
-import { useGlobalStore } from "@/shared/store/store";
+import LoginPage from "@/app/pages/LoginPage/LoginPage.tsx";
+import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
+import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser.tsx";
+import { useGlobalStore } from "@/shared/store/store.tsx";
+import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation.tsx";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import { Sidebar } from "@widgets/Sidebar/Sidebar.tsx";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import { Outlet } from "react-router-dom";
+import styles from "./GlobalLayout.module.scss";
 
 const GlobalLayout = () => {
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");

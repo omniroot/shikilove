@@ -1,10 +1,10 @@
-import { CONSTS } from "@/shared/consts/consts";
-import { useAuthorization } from "@/shared/hooks/useAuthorization";
+import { CONSTS } from "@/shared/consts/consts.ts";
+import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
+import { ShikimoriIcon } from "@/shared/icons/index.tsx";
+import { Button } from "@ui/Button/Button.tsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { useSearchParams } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
-import { Button } from "@ui/Button/Button";
-import { ShikimoriIcon } from "@/shared/icons";
-import { ImageView } from "@ui/ImageView/ImageView";
 
 export const LoginPage = () => {
 	const [searchParams] = useSearchParams();

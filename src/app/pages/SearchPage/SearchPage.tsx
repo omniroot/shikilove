@@ -1,10 +1,10 @@
-import { FilterIcon, SearchIcon } from "@/shared/icons";
+import { useSearchAnime } from "@/shared/hooks/useSearchAnime.tsx";
+import { SearchIcon, FilterIcon } from "@/shared/icons/index.tsx";
+import { useGlobalStore } from "@/shared/store/store.tsx";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { useState, useEffect } from "react";
 import styles from "./SearchPage.module.scss";
-import { useGlobalStore } from "@/shared/store/store";
-import { useEffect, useState } from "react";
-import { useSearchAnime } from "@/shared/hooks/useSearchAnime";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard";
-import { AnimeList } from "@features/AnimeList/AnimeList";
 
 export const SearchPage = () => {
 	const { setRightSidebarContent, toggleRightSidebar } = useGlobalStore(

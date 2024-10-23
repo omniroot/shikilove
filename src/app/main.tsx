@@ -1,14 +1,13 @@
-import { createRoot } from "react-dom/client";
-
+import { router } from "@/app/router.tsx";
 import "@/app/styles/main.scss";
-import { router } from "@/app/router";
-import { CONSTS } from "@/shared/consts/consts";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { RouterProvider } from "react-router-dom";
-import { StrictMode } from "react";
+import { CONSTS } from "@/shared/consts/consts.ts";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { StrictMode, Suspense } from "react";
+import { createRoot } from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
 
 dayjs().locale("en");
 dayjs.extend(relativeTime);
@@ -33,7 +32,9 @@ const client = new ApolloClient({
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<ApolloProvider client={client}>
-			<RouterProvider router={router} />
+			<Suspense fallback={<div>Loading...</div>}>
+				<RouterProvider router={router} />
+			</Suspense>
 			{/* <TestPage /> */}
 		</ApolloProvider>
 	</StrictMode>,

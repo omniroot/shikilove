@@ -1,4 +1,4 @@
-import { api } from "@/shared/services/api";
+import { api } from "@/shared/services/api.ts";
 import { useEffect, useState } from "react";
 
 export interface ISimilarAnime {

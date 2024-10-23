@@ -6,26 +6,30 @@ import {
 } from "react-router-dom";
 
 const GlobalLayout = React.lazy(
-	() => import("@/app/layouts/GlobalLayout/GlobalLayout"),
+	() => import("@/app/layouts/GlobalLayout/GlobalLayout.tsx"),
 );
-const AnimePage = React.lazy(() => import("@/app/pages/AnimePage/AnimePage"));
+const AnimePage = React.lazy(
+	() => import("@/app/pages/AnimePage/AnimePage.tsx"),
+);
 const AnimesPage = React.lazy(
-	() => import("@/app/pages/AnimesPage/AnimesPage"),
+	() => import("@/app/pages/AnimesPage/AnimesPage.tsx"),
 );
-const LoginPage = React.lazy(() => import("@/app/pages/LoginPage/LoginPage"));
+const LoginPage = React.lazy(
+	() => import("@/app/pages/LoginPage/LoginPage.tsx"),
+);
 const NotFoundPage = React.lazy(
-	() => import("@/app/pages/NotFoundPage/NotFoundPage"),
+	() => import("@/app/pages/NotFoundPage/NotFoundPage.tsx"),
 );
 const ProfilePage = React.lazy(
-	() => import("@/app/pages/ProfilePage/ProfilePage"),
+	() => import("@/app/pages/ProfilePage/ProfilePage.tsx"),
 );
 const SearchPage = React.lazy(
-	() => import("@/app/pages/SearchPage/SearchPage"),
+	() => import("@/app/pages/SearchPage/SearchPage.tsx"),
 );
-const TestPage = React.lazy(() => import("@/app/pages/TestPage/TestPage"));
+const TestPage = React.lazy(() => import("@/app/pages/TestPage/TestPage.tsx"));
 
 const SettingsPage = React.lazy(
-	() => import("@/app/pages/SettingsPage/SettingsPage"),
+	() => import("@/app/pages/SettingsPage/SettingsPage.tsx"),
 );
 
 export const router = createBrowserRouter(

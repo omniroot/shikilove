@@ -1,6 +1,6 @@
-import { Tooltip } from "@ui/Tooltip/Tooltip";
-import { IconButton } from "@ui/IconButton/IconButton";
-import { ProfileIcon, SettingsIcon } from "@/shared/icons";
+import { ProfileIcon, SettingsIcon } from "@/shared/icons/index.tsx";
+import { IconButton } from "@ui/IconButton/IconButton.tsx";
+import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import styles from "./TestPage.module.scss";
 
 export const TestPage = () => {

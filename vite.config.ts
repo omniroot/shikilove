@@ -7,12 +7,12 @@ export default defineConfig({
 	plugins: [
 		react(),
 		svgr({
-			svgrOptions: {
-				plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-				svgoConfig: {
-					floatPrecision: 2,
-				},
-			},
+			// svgrOptions: {
+			// 	plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
+			// 	svgoConfig: {
+			// 		floatPrecision: 5,
+			// 	},
+			// },
 		}),
 	],
 	css: {
@@ -22,7 +22,9 @@ export default defineConfig({
 			},
 		},
 	},
-
+	build: {
+		cssMinify: "lightningcss",
+	},
 	resolve: {
 		alias: {
 			"@features": path.resolve(__dirname, "src", "components", "features"),
