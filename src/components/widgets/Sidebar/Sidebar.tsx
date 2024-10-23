@@ -1,6 +1,14 @@
-import { AnimeIcon, LogoutIcon, ProfileIcon, SearchIcon, SettingsIcon, ShikimoriIcon } from "@/shared/icons";
+import {
+	AnimeIcon,
+	LogoutIcon,
+	ProfileIcon,
+	SearchIcon,
+	SettingsIcon,
+	ShikimoriIcon,
+} from "@/shared/icons";
 import { NavBar } from "@features/NavBar/NavBar";
 import styles from "./Sidebar.module.scss";
+import { useLocation } from "react-router-dom";
 
 const start_pages = [
 	{
@@ -34,6 +42,12 @@ const end_pages = [
 ];
 
 export const Sidebar = () => {
+	const currentPage = useLocation().pathname;
+
+	if (currentPage === "/login/") {
+		return null;
+	}
+
 	return (
 		<div className={styles.sidebar_container}>
 			<div className={styles.sidebar}>

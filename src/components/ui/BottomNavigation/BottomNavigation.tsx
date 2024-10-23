@@ -1,4 +1,10 @@
-import { ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, LogoutIcon } from "@/shared/icons";
+import {
+	ProfileIcon,
+	AnimeIcon,
+	SearchIcon,
+	SettingsIcon,
+	LogoutIcon,
+} from "@/shared/icons";
 import { NavBar } from "@features/NavBar/NavBar";
 import styles from "./BottomNavigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
@@ -46,12 +52,21 @@ export const BottomNavigation = () => {
 		console.log(_currentPage, _nextPage, "===> false");
 		return false;
 	};
+	console.log(currentPage);
+	if (currentPage === "/login/") {
+		return null;
+	}
+
 	return (
 		<div className={styles.bottom_navigation}>
 			{pages.map((page) => {
 				if (isCurrentPage(page)) {
 					return (
-						<Link className={clsx(styles.navitem, styles.active)} to={page.path} key={page.name}>
+						<Link
+							className={clsx(styles.navitem, styles.active)}
+							to={page.path}
+							key={page.name}
+						>
 							{page.icon}
 						</Link>
 					);
