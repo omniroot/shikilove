@@ -35,14 +35,14 @@
 				font-size: var(--text-size-h5);
 				color: var(--color-text-secondary);
 			}
-
-			.dev_mode {
-				padding: var(--padding);
-				font-size: var(--text-size-h5);
-				color: var(--color-accent);
-				background-color: var(--color-secondary);
-				border-radius: var(--radius);
-			}
+		}
+		.dev_mode {
+			width: fit-content;
+			padding: var(--padding);
+			font-size: var(--text-size-h5);
+			color: var(--color-accent);
+			background-color: var(--color-secondary);
+			border-radius: var(--radius);
 		}
 	}
 }

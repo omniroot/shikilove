@@ -25,8 +25,8 @@ export const UserInfoCard = () => {
 				</div>
 				<div className={styles.second_line}>
 					<span className={styles.about}>I love anime</span>
-					<span className={styles.dev_mode}>{import.meta.env.MODE} mode</span>
 				</div>
+				<span className={styles.dev_mode}>{import.meta.env.MODE} mode</span>
 			</div>
 		</div>
 	);
