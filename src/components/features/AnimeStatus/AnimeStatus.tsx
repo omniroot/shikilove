@@ -23,6 +23,8 @@ export const AnimeStatus = () => {
 			return {};
 		}) || null;
 
+	const selectedEpisode = anime?.userRate?.episodes || 0;
+
 	const onAnimeUserStatusSelected = (item: IAnimeStatusSelectOption) => {
 		if (anime?.userRate && item) {
 			changeAnimeUserStatus(anime.userRate.id, item.value);
@@ -34,8 +36,6 @@ export const AnimeStatus = () => {
 			changeAnimeUserEpisodes(anime.userRate.id, episode);
 		}
 	};
-
-	const selectedEpisode = anime?.userRate?.episodes || 0;
 
 	if (!anime) return <div>Anime status loading...</div>;
 

@@ -1,4 +1,4 @@
-import { NavBar } from "@features/NavBar/NavBar";
+import { NavBar } from "@ui/NavBar/NavBar";
 import styles from "./Sidebar.module.scss";
 import { useLocation } from "react-router-dom";
 import { PAGES } from "@/shared/consts/pages";
