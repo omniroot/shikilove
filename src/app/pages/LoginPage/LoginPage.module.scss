@@ -69,3 +69,11 @@
 		}
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.login_page {
+		.login_card {
+			width: 85vw;
+		}
+	}
+}
