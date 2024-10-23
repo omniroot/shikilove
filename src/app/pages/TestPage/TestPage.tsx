@@ -1,7 +1,7 @@
 import { Tooltip } from "@ui/Tooltip/Tooltip";
-import styles from "./TestPage.module.scss";
 import { IconButton } from "@ui/IconButton/IconButton";
 import { ProfileIcon, SettingsIcon } from "@/shared/icons";
+import styles from "./TestPage.module.scss";
 
 export const TestPage = () => {
 	// useEffect(() => {
