@@ -3,14 +3,19 @@ import {
 	AnimeIcon,
 	SearchIcon,
 	SettingsIcon,
-	LogoutIcon,
 } from "@/shared/icons";
-import { NavBar } from "@features/NavBar/NavBar";
 import styles from "./BottomNavigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
+import { ReactNode } from "react";
 
-const pages = [
+interface IPage {
+	name: string;
+	path: string;
+	icon: ReactNode;
+}
+
+const pages: IPage[] = [
 	{
 		name: "Profile",
 		path: "/",
