@@ -4,6 +4,12 @@
 	gap: var(--gap);
 	width: 100%;
 
+	.anime_filters {
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+		overflow-x: scroll;
+	}
+
 	.anime_card {
 		display: flex;
 		flex-direction: column;
