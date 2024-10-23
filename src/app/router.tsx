@@ -5,8 +5,13 @@ import { LoginPage } from "@/app/pages/LoginPage/LoginPage";
 import { NotFoundPage } from "@/app/pages/NotFoundPage/NotFoundPage";
 import { ProfilePage } from "@/app/pages/ProfilePage/ProfilePage";
 import { SearchPage } from "@/app/pages/SearchPage/SearchPage";
+import { SettingsPage } from "@/app/pages/SettingsPage/SettingsPage";
 import { TestPage } from "@/app/pages/TestPage/TestPage";
-import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import {
+	Route,
+	createBrowserRouter,
+	createRoutesFromElements,
+} from "react-router-dom";
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -17,7 +22,7 @@ export const router = createBrowserRouter(
 			<Route path="/animes/:animeId" element={<AnimePage />} />
 
 			<Route path="/test" element={<TestPage />} />
-			{/* <Route path="/settings" element={<SettingsPage />} /> */}
+			<Route path="/settings" element={<SettingsPage />} />
 			<Route path="/login" element={<LoginPage />} />
 			{/* <Route path="/logout" element={<LogoutPage />} /> */}
 			<Route path="*" element={<NotFoundPage />} />
