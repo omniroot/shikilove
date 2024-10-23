@@ -8,10 +8,16 @@ interface IElement {
 }
 interface IButtonGroupProps {
 	elements?: IElement[];
+	className?: string;
 	deafultActive: string;
 	onClick?: (activeId: string) => void;
 }
-export const ButtonGroup: FC<IButtonGroupProps> = ({ elements, deafultActive, onClick = () => {} }) => {
+export const ButtonGroup: FC<IButtonGroupProps> = ({
+	className,
+	elements,
+	deafultActive,
+	onClick = () => {},
+}) => {
 	const [active, setActive] = useState(deafultActive);
 
 	const onGroupItemClick = (element: IElement) => {
@@ -19,8 +25,10 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({ elements, deafultActive, on
 		onClick(element.id);
 	};
 
+	const _class = clsx(styles.button_group, className);
+
 	return (
-		<div className={styles.button_group}>
+		<div className={_class}>
 			{elements?.map((element) => {
 				return (
 					<div
