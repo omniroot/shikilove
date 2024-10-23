@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import styles from "./ImageView.module.scss";
 
 interface IImageViewProps {
+	className?: string;
 	src?: string;
 	full?: string;
 	allowFullscreen?: boolean;
@@ -16,6 +17,7 @@ interface IImageViewProps {
 }
 
 export const ImageView: FC<IImageViewProps> = ({
+	className,
 	width = "100%",
 	height = "100%",
 	radius = "none",
@@ -51,9 +53,11 @@ export const ImageView: FC<IImageViewProps> = ({
 		${allowFullscreen && "cursor:pointer;"}
 	`;
 
+	const _class = clsx(_style, className);
+
 	return (
 		<>
-			<img src={src} alt={alt} className={_style} onClick={onImageClick} />
+			<img src={src} alt={alt} className={_class} onClick={onImageClick} />
 			{allowFullscreen === true &&
 				isModal === true &&
 				createPortal(
