@@ -2,21 +2,22 @@ import styles from "./BottomNavigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { IPage, PAGES } from "@/shared/consts/pages";
+import { FC } from "react";
 
 const isCurrentPage = (currentPage: string, page: IPage) => {
-	// console.log(currentLink, page.path);
 	const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
 	const _nextPage = page.path.replaceAll("/", "");
 
 	if (_currentPage === _nextPage) {
-		console.log(_currentPage, _nextPage, "===> true");
 		return true;
 	}
-	console.log(_currentPage, _nextPage, "===> false");
 	return false;
 };
 
-export const BottomNavigation = () => {
+interface IBottomNavigationProps {
+	className?: string;
+}
+export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	const currentPage = useLocation().pathname;
 	const pages = PAGES.bottomNavigation;
 
@@ -24,22 +25,19 @@ export const BottomNavigation = () => {
 		return null;
 	}
 
+	const _class = clsx(styles.bottom_navigation, className);
+
 	return (
-		<div className={styles.bottom_navigation}>
+		<div className={_class}>
 			{pages.map((page) => {
-				if (isCurrentPage(currentPage, page)) {
-					return (
-						<Link
-							className={clsx(styles.navitem, styles.active)}
-							to={page.path}
-							key={page.name}
-						>
-							{page.icon}
-						</Link>
-					);
-				}
 				return (
-					<Link className={styles.navitem} to={page.path} key={page.name}>
+					<Link
+						className={clsx(styles.navitem, {
+							[styles.active]: isCurrentPage(currentPage, page),
+						})}
+						to={page.path}
+						key={page.name}
+					>
 						{page.icon}
 					</Link>
 				);
