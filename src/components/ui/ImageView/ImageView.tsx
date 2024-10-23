@@ -44,6 +44,9 @@ export const ImageView: FC<IImageViewProps> = ({
 		width: ${width};
 		height: ${height};
 
+		max-width: ${width};
+		max-height: ${height};
+
 		${`border-radius: var(--radius-${radius});`};
 		${allowFullscreen && "cursor:pointer;"}
 	`;
