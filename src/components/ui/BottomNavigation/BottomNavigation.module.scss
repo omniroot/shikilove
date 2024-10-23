@@ -1,6 +1,7 @@
 .bottom_navigation {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	position: fixed;
 	bottom: 10px;
 	left: 50%;
@@ -10,26 +11,31 @@
 	height: 70px;
 	padding: var(--padding);
 	border: var(--border);
-	border-radius: var(--radius);
-	background-color: var(--color-primary);
+	border-radius: var(--radius-2);
+	background-color: var(--color-secondary);
 
 	.navitem {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		width: 70px;
+		height: 45px;
 		padding: var(--padding-1);
 		color: var(--color-text);
 		cursor: pointer;
-		background-color: var(--color-primary);
-
-		@include card;
 
 		border: var(--border-transparent);
+		border-radius: var(--radius-2);
+		transition: all 200ms;
 
-		@include clickable;
+		&:hover {
+			background-color: var(--color-ternary);
+		}
 	}
 
 	.active {
-		border: var(--border-active);
+		width: 100px;
+		background-color: var(--color-ternary);
+		padding: var(--padding-1);
 	}
 }
