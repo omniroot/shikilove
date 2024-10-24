@@ -77,7 +77,13 @@ Shikilove - is a convenient tool for tracking anime, based on the Shikimori plat
 
 ## before optimization
 
-dist/assets/proxy-DqgqhQB7.js 110.35 kB │ gzip: 36.14 kB
-dist/assets/index-Yumdr02b.js 371.34 kB │ gzip: 118.06 kB
+dist/assets/ProfilePage-DoaFBpWC.js 8.46 kB │ gzip: 3.41 kB
+dist/assets/GlobalLayout-CgoHViWO.js 9.89 kB │ gzip: 4.21 kB
+dist/assets/LoginPage-Df1aT2Zd.js 21.66 kB │ gzip: 9.69 kB
+dist/assets/Button-BmCQ9KPk.js 35.56 kB │ gzip: 14.32 kB
+dist/assets/useQuery-CAE5pBCE.js 36.21 kB │ gzip: 10.32 kB
+dist/assets/AnimePage-CW-vJVjy.js 99.82 kB │ gzip: 35.90 kB
+dist/assets/proxy-DdvPhqVr.js 110.35 kB │ gzip: 36.14 kB
+dist/assets/index-BxqmWD6u.js 371.42 kB │ gzip: 118.10 kB
 
 ## after optimization
