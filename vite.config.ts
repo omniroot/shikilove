@@ -24,6 +24,12 @@ export default defineConfig({
 	},
 	build: {
 		cssMinify: "lightningcss",
+		minify: "esbuild",
+		rollupOptions: {
+			treeshake: {
+				preset: "recommended",
+			},
+		},
 	},
 	resolve: {
 		alias: {
