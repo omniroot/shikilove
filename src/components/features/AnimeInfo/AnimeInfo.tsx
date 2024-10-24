@@ -38,8 +38,8 @@ export const AnimeInfo = () => {
 					<AnimeRateIcon /> {anime?.score}
 				</AnimeInfoLine>
 				<AnimeGenres />
-				<Divider orientation="vertical" />
 			</div>
+			<Divider orientation="vertical" />
 			<div className={styles.anime_info_right}>
 				<AnimeStatus />
 				<AnimeWatch />

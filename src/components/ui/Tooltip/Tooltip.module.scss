@@ -11,7 +11,8 @@
 		text-wrap-mode: nowrap;
 		word-wrap: normal;
 		position: absolute;
-		background-color: var(--color-secondary);
+		background-color: hexOpacity($color-secondary, 0.8);
+		backdrop-filter: blur(5px);
 		border-radius: var(--radius);
 		padding: var(--padding);
 		z-index: 10;

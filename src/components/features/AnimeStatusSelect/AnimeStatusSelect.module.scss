@@ -16,6 +16,7 @@
 	border-radius: var(--radius);
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
+	background-color: $color-secondary;
 }
 
 .select_input_control_closed {
@@ -24,10 +25,11 @@
 	cursor: pointer;
 	border: var(--border);
 	border-radius: var(--radius);
+	background-color: $color-ternary;
 }
 
 .placeholder {
-	color: var(--color-text-secondary);
+	color: $color-subtext;
 }
 
 .select_menu {
@@ -61,12 +63,12 @@
 
 	.select_menu_option_selected {
 		padding: 10px 5px;
-		color: var(--color-accent);
+		color: var(--color-primary);
 		cursor: pointer;
 
-		// background-color: var(--color-accent);
-		border-inline-start: 3px solid var(--color-accent);
-		border-radius: 5px;
+		// background-color: var(--color-primary);
+		border: var(--border-active);
+		border-radius: var(--radius);
 
 		&:hover {
 			background-color: var(--color-secondary-transparent);

@@ -28,7 +28,7 @@
 
 			.last_online_at {
 				font-size: var(--text-size-h5);
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 			}
 		}
 
@@ -38,14 +38,14 @@
 
 			.about {
 				font-size: var(--text-size-h5);
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 			}
 		}
 		.dev_mode {
 			width: fit-content;
 			padding: var(--padding);
 			font-size: var(--text-size-h5);
-			color: var(--color-accent);
+			color: var(--color-primary);
 			background-color: var(--color-secondary);
 			border-radius: var(--radius);
 		}

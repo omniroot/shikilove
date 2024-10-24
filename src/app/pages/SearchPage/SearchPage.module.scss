@@ -17,7 +17,8 @@
 		width: fit-content;
 		height: 55px;
 		padding: 5px;
-		background-color: var(--color-secondary);
+		background-color: var(--color-ternary);
+		border: var(--border);
 		border-radius: 12px;
 
 		.left {
@@ -29,7 +30,7 @@
 			padding: 5px;
 
 			.search_icon {
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 			}
 
 			.search_input {
@@ -44,7 +45,7 @@
 
 				&::placeholder {
 					font-size: var(--text-size-h6);
-					color: var(--color-text-secondary);
+					color: $color-subtext;
 				}
 			}
 		}
@@ -62,13 +63,13 @@
 				align-items: center;
 				justify-content: center;
 				height: 100%;
-				padding: 2px 5px;
+				padding: 4px 5px;
 				font-family: inherit;
 				font-weight: 600;
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 				cursor: pointer;
 				background-color: transparent;
-				border: 2px solid var(--color-ternary);
+				border: 2px solid var(--color-secondary);
 				border-radius: 5px;
 				transition: all 200ms;
 			}
@@ -81,41 +82,13 @@
 				padding: 2px 5px;
 				font-family: inherit;
 				font-weight: 600;
-				color: var(--color-primary);
+				color: var(--color-alt);
 				cursor: pointer;
-				background-color: var(--color-accent);
-				border: 2px solid var(--color-ternary);
+				background-color: var(--color-primary);
+				border: 2px solid var(--color-transparent);
 				border-left: 0;
 				border-radius: 5px;
 				transition: all 200ms;
-			}
-		}
-	}
-
-	.search_results {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-		justify-content: space-between;
-		width: 100%;
-
-		// transition: all 200ms;
-
-		@include card;
-
-		.anime_card {
-			color: var(--color-text);
-
-			@include card;
-			@include clickable;
-
-			text-decoration: none;
-
-			.anime_title {
-				display: -webkit-box;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				-webkit-line-clamp: 2;
-				-moz-box-orient: vertical;
 			}
 		}
 	}

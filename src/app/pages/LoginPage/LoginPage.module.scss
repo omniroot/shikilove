@@ -39,7 +39,7 @@
 			}
 
 			.login_about {
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 				font-weight: bold;
 				text-align: center;
 			}
@@ -62,12 +62,12 @@
 				justify-content: center;
 				font-size: var(--text-size-h5);
 
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 			}
 		}
 
 		.litemode_info {
-			color: var(--color-text-secondary);
+			color: $color-subtext;
 			font-size: var(--text-size-h6);
 			text-align: center;
 			font-weight: bold;

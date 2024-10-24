@@ -3,7 +3,7 @@
 	align-items: center;
 	gap: var(--gap);
 	.add_to_text {
-		color: var(--color-text-secondary);
+		color: $color-subtext;
 	}
 
 	.add_to_select {

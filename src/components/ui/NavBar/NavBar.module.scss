@@ -9,16 +9,17 @@
 		padding: var(--padding-1);
 		color: var(--color-text);
 		cursor: pointer;
-		background-color: var(--color-primary);
-
-		@include card;
+		background-color: var(--color-transparent);
 
 		border: var(--border-transparent);
+		border-radius: var(--radius);
 
-		@include clickable;
+		&:hover {
+			background-color: var(--color-secondary);
+		}
 	}
 
 	.active {
-		border: var(--border-active);
+		background-color: $color-secondary;
 	}
 }

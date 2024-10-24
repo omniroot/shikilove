@@ -9,13 +9,13 @@
 	border: none;
 	gap: var(--gap);
 	color: var(--color-primary);
-	background-color: var(--color-accent);
+	background-color: var(--color-primary);
 	transition: all 200ms;
 	font-weight: 600;
 	cursor: pointer;
 
 	&:hover {
-		color: var(--color-accent);
+		color: var(--color-primary);
 		background-color: var(--color-secondary-transparent);
 	}
 
