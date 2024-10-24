@@ -13,11 +13,14 @@
 		cursor: pointer;
 		color: var(--color-text);
 		font-weight: inherit;
-		background-color: var(--color-primary);
+		background-color: var(--color-transparent);
 		border: var(--border);
 		border-radius: var(--radius);
 		gap: var(--gap);
-		@include hoverable;
+
+		&:hover {
+			background-color: var(--color-secondary);
+		}
 	}
 
 	.active {
