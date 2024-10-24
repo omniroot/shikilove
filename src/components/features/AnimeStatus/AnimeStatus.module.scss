@@ -1,3 +1,48 @@
+.add_to_container {
+	display: flex;
+	align-items: center;
+	gap: var(--gap);
+	.add_to_text {
+		color: var(--color-text-secondary);
+	}
+
+	.add_to_select {
+		background-color: var(--color-secondary);
+		border-radius: var(--radius-2);
+		padding: var(--padding);
+		transition: all 400ms !important;
+
+		* {
+			transition: all 400ms !important;
+		}
+
+		& > button {
+			width: min-content;
+			height: 35px !important;
+			background-color: transparent !important;
+			border: var(--border-transparent);
+			border-radius: var(--radius-2);
+			transition: all 400ms !important;
+
+			& > span {
+				width: 0;
+				opacity: 0;
+			}
+		}
+
+		& > button:hover {
+			background-color: var(--color-ternary) !important;
+			border: var(--border-transparent);
+			border-radius: var(--radius-2);
+
+			& > span {
+				width: 55px;
+				opacity: 1;
+			}
+		}
+	}
+}
+
 .user_selects {
 	width: 100%;
 	display: flex;

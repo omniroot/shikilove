@@ -11,13 +11,15 @@ const GET_CURRENT_USER = gql`
 	}
 `;
 
+interface ICurrentUser {
+	id: string;
+	avatarUrl: string;
+	nickname: string;
+	lastOnlineAt: string;
+}
+
 interface IResponse {
-	currentUser: {
-		id: string;
-		avatarUrl: string;
-		nickname: string;
-		lastOnlineAt: string;
-	};
+	currentUser: ICurrentUser;
 }
 
 export const useFetchCurrentUser = () => {
@@ -25,7 +27,12 @@ export const useFetchCurrentUser = () => {
 
 	if (!data?.currentUser) return { data, loading: loading, error: error };
 
+	const saveUserToLocalStorage = (user: ICurrentUser) => {
+		localStorage.setItem("user_id", user.id);
+	};
+
 	if (data) {
+		saveUserToLocalStorage(data.currentUser);
 		return {
 			userId: data.currentUser.id,
 			avatarUrl: data.currentUser.avatarUrl,

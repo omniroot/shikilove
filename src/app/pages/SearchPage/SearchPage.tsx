@@ -27,6 +27,7 @@ export const SearchPage = () => {
 	const onSearchButtonClick = () => {
 		searchAnime?.(searchValue);
 	};
+	console.log("@", animes);
 
 	useEffect(() => {
 		setRightSidebarContent(rightSideBar);
@@ -67,7 +68,6 @@ export const SearchPage = () => {
 			<AnimeList>
 				{!!animes &&
 					animes.map((anime) => {
-						console.log("@", anime);
 						return (
 							<AnimeCard
 								key={anime.id}

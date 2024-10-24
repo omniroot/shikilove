@@ -184,13 +184,24 @@ interface IResponse {
 }
 
 export const useFetchAnimeById = (id: string) => {
-	const { loading, data, error } = useQuery<IResponse>(GET_ANIME_BY_ID, {
-		variables: {
-			ids: id,
+	const { loading, data, error, refetch } = useQuery<IResponse>(
+		GET_ANIME_BY_ID,
+		{
+			variables: {
+				ids: id,
+			},
 		},
-	});
+	);
 
-	if (!data?.animes) return { data, loading: loading, error: error };
+	if (!data?.animes)
+		return { data, loading: loading, error: error, refetchAnime: refetch };
 
-	return { anime: data.animes[0], loading: loading, error: error };
+	console.log("returned fetchanime by id, ", data);
+
+	return {
+		anime: data.animes[0],
+		loading: loading,
+		error: error,
+		refetchAnime: refetch,
+	};
 };
