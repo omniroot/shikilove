@@ -23,7 +23,7 @@ export const UserInfoCard = () => {
 					<span className={styles.last_online_at}>{_lastOnline}</span>
 				</div>
 				<div className={styles.second_line}>
-					<span className={styles.about}>I love anime</span>
+					<span className={styles.about}></span>
 				</div>
 				<span className={styles.dev_mode}>{import.meta.env.MODE} mode</span>
 			</div>
