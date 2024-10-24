@@ -14,11 +14,11 @@ body {
 	display: flex;
 	height: 100%;
 	font-family: "Open Sans", sans-serif;
-	color: var(--color-text);
-	background-color: var(--color-background, red) !important;
+	color: $color-text;
+	background-color: $color-background !important;
 	touch-action: pan-x pan-y;
 	scrollbar-width: auto;
-	scrollbar-color: var(--color-primary) var(--color-background);
+	scrollbar-color: $color-primary $color-background;
 }
 
 #modal {

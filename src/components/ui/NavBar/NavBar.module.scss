@@ -1,21 +1,21 @@
 .navbar {
 	display: flex;
 	flex-direction: column;
-	gap: var(--gap);
+	gap: $gap;
 
 	.navitem {
 		display: flex;
 		width: 100%;
-		padding: var(--padding-1);
-		color: var(--color-text);
+		padding: $padding-1;
+		color: $color-text;
 		cursor: pointer;
-		background-color: var(--color-transparent);
+		background-color: transparent;
 
-		border: var(--border-transparent);
-		border-radius: var(--radius);
+		border: $border-transparent;
+		border-radius: $radius;
 
 		&:hover {
-			background-color: var(--color-secondary);
+			background-color: $color-secondary;
 		}
 	}
 

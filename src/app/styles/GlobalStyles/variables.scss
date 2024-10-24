@@ -6,68 +6,40 @@ $color-text: #f2f4f3;
 $color-subtext: #afafaf;
 $color-text-alt: #131111;
 
-:root {
-	/* Размер для h1 */
-	--text-size-h1: 2rem;
+$color-shikimori: #cdd2d0;
+$color-shikimori-hover: #a9abab;
+$color-animego: #c33d37;
+$color-animego-hover: #b03832;
+$color-hanime: #d19c2e;
+$color-hanime-hover: #b68628;
+$color-nhentai: #ad0e33;
+$color-nhentai-hover: #910f2d;
 
-	/* Размер для h2 */
-	--text-size-h2: 1.75rem;
+$text-size-h1: 2rem;
+$text-size-h2: 1.75rem;
+$text-size-h3: 1.5rem;
+$text-size-h4: 1.25rem;
+$text-size-h5: 1rem;
+$text-size-h6: 0.875rem;
 
-	/* Размер для h3 */
-	--text-size-h3: 1.5rem;
+$border-none: none;
+$border-transparent: 0.2rem solid transparent;
+$border-default: 0.2rem solid $color-secondary;
+$border-active: 0.2rem solid $color-primary;
+$border: $border-default;
 
-	/* Размер для h4 */
-	--text-size-h4: 1.25rem;
+$margin-1: 0.5rem;
+$margin-2: 1rem;
+$margin: $margin-1;
 
-	/* Размер для h5 */
-	--text-size-h5: 1rem;
+$padding-1: 0.5rem;
+$padding-2: 1rem;
+$padding: $padding-1;
 
-	/* Размер для h6 */
-	--text-size-h6: 0.875rem;
+$radius-1: 1rem;
+$radius-2: 2rem;
+$radius: $radius-1;
 
-	// Project colors
-	--color-primary: #cfddbc;
-	--color-secondary: #242625;
-	--color-ternary: #151614;
-	--color-background: #111312;
-	--color-text: #f2f4f3;
-	--color-subtext: #afafaf;
-	--color-text-alt: #131111;
-
-	// Project variables
-	--padding-1: 0.5rem;
-	--padding-2: 1rem;
-	--padding: var(--padding-1);
-	--margin-1: 0.5rem;
-	--margin-2: 1rem;
-	--margin: var(--margin-1);
-	--radius-1: 1rem;
-	--radius-2: 2rem;
-	--radius: var(--radius-1);
-	--gap-1: 0.5rem;
-	--gap-2: 1rem;
-	--gap: var(--gap-1);
-	--border-none: none;
-	--border-transparent: 0.2rem solid transparent;
-	--border-default: 0.2rem solid var(--color-secondary);
-	--border-active: 0.2rem solid var(--color-primary);
-	--border: var(--border-default);
-
-	--color-transparent: transparent;
-	--color-red: #ba252f;
-	--color-violet: slateblue;
-	--color-blue: #aec5eb;
-	--color-green: #a7f098;
-	--color-yellow: #f3c669;
-	--color-white: white;
-	--color-black: black;
-
-	--color-shikimori: #cdd2d0;
-	--color-shikimori-hover: #a9abab;
-	--color-animego: #c33d37;
-	--color-animego-hover: #b03832;
-	--color-hanime: #d19c2e;
-	--color-hanime-hover: #b68628;
-	--color-nhentai: #ad0e33;
-	--color-nhentai-hover: #910f2d;
-}
+$gap-1: 0.5rem;
+$gap-2: 1rem;
+$gap: $gap-1;

@@ -4,18 +4,18 @@
 	width: fit-content;
 	height: 40px;
 
-	padding: var(--padding);
+	padding: $padding;
 	border-radius: 12px;
 	border: none;
-	gap: var(--gap);
-	color: var(--color-primary);
-	background-color: var(--color-primary);
+	gap: $gap;
+	color: $color-primary;
+	background-color: $color-primary;
 	transition: all 200ms;
 	font-weight: 600;
 	cursor: pointer;
 
 	&:hover {
-		color: var(--color-primary);
+		color: $color-primary;
 		background-color: var(--color-secondary-transparent);
 	}
 
@@ -25,49 +25,49 @@
 }
 
 .secondary {
-	color: var(--color-text);
-	background-color: var(--color-secondary);
+	color: $color-text;
+	background-color: $color-secondary;
 
 	&:hover {
-		color: var(--color-text);
+		color: $color-text;
 		background-color: var(--color-secondary-transparent);
 	}
 }
 
 .animego {
-	color: var(--color-text);
-	background-color: var(--color-animego);
+	color: $color-text;
+	background-color: $color-animego;
 
 	&:hover {
-		color: var(--color-text);
-		background-color: var(--color-animego-hover);
+		color: $color-text;
+		background-color: $color-animego-hover;
 	}
 }
 .hanime {
-	color: var(--color-text);
-	background-color: var(--color-hanime);
+	color: $color-text;
+	background-color: $color-hanime;
 
 	&:hover {
-		color: var(--color-text);
-		background-color: var(--color-hanime-hover);
+		color: $color-text;
+		background-color: $color-hanime-hover;
 	}
 }
 .nhentai {
-	color: var(--color-text);
-	background-color: var(--color-nhentai);
+	color: $color-text;
+	background-color: $color-nhentai;
 
 	&:hover {
-		color: var(--color-text);
-		background-color: var(--color-nhentai-hover);
+		color: $color-text;
+		background-color: $color-nhentai-hover;
 	}
 }
 
 .shikimori {
-	color: var(--color-primary);
-	background-color: var(--color-shikimori);
+	color: $color-primary;
+	background-color: $color-shikimori;
 
 	&:hover {
-		color: var(--color-primary);
-		background-color: var(--color-shikimori-hover);
+		color: $color-primary;
+		background-color: $color-shikimori-hover;
 	}
 }

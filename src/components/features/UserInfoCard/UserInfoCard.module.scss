@@ -1,15 +1,15 @@
 .user_info_card {
 	display: flex;
-	gap: var(--gap);
+	gap: $gap;
 	width: 100%;
 	height: fit-content;
-	padding: var(--padding);
-	border: var(--border);
-	border-radius: var(--radius);
+	padding: $padding;
+	border: $border;
+	border-radius: $radius;
 
 	.user_image {
 		width: 250px;
-		border-radius: var(--radius);
+		border-radius: $radius;
 	}
 
 	.info {
@@ -22,12 +22,12 @@
 			justify-content: space-between;
 
 			.nickname {
-				font-size: var(--text-size-h3);
+				font-size: $text-size-h3;
 				font-weight: bold;
 			}
 
 			.last_online_at {
-				font-size: var(--text-size-h5);
+				font-size: $text-size-h5;
 				color: $color-subtext;
 			}
 		}
@@ -37,17 +37,17 @@
 			justify-content: space-between;
 
 			.about {
-				font-size: var(--text-size-h5);
+				font-size: $text-size-h5;
 				color: $color-subtext;
 			}
 		}
 		.dev_mode {
 			width: fit-content;
-			padding: var(--padding);
-			font-size: var(--text-size-h5);
-			color: var(--color-primary);
-			background-color: var(--color-secondary);
-			border-radius: var(--radius);
+			padding: $padding;
+			font-size: $text-size-h5;
+			color: $color-primary;
+			background-color: $color-secondary;
+			border-radius: $radius;
 		}
 	}
 }

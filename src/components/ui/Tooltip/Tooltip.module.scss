@@ -13,8 +13,8 @@
 		position: absolute;
 		background-color: hexOpacity($color-secondary, 0.8);
 		backdrop-filter: blur(5px);
-		border-radius: var(--radius);
-		padding: var(--padding);
+		border-radius: $radius;
+		padding: $padding;
 		z-index: 10;
 	}
 

@@ -1,15 +1,15 @@
 .add_to_container {
 	display: flex;
 	align-items: center;
-	gap: var(--gap);
+	gap: $gap;
 	.add_to_text {
 		color: $color-subtext;
 	}
 
 	.add_to_select {
-		background-color: var(--color-secondary);
-		border-radius: var(--radius-2);
-		padding: var(--padding);
+		background-color: $color-secondary;
+		border-radius: $radius-2;
+		padding: $padding;
 		transition: all 400ms !important;
 
 		* {
@@ -20,8 +20,8 @@
 			width: min-content;
 			height: 35px !important;
 			background-color: transparent !important;
-			border: var(--border-transparent);
-			border-radius: var(--radius-2);
+			border: $border-transparent;
+			border-radius: $radius-2;
 			transition: all 400ms !important;
 
 			& > span {
@@ -31,9 +31,9 @@
 		}
 
 		& > button:hover {
-			background-color: var(--color-ternary) !important;
-			border: var(--border-transparent);
-			border-radius: var(--radius-2);
+			background-color: $color-ternary !important;
+			border: $border-transparent;
+			border-radius: $radius-2;
 
 			& > span {
 				width: 55px;
@@ -46,5 +46,5 @@
 .user_selects {
 	width: 100%;
 	display: flex;
-	gap: var(--gap);
+	gap: $gap;
 }

@@ -1,7 +1,7 @@
 .anime_info_line {
 	display: flex;
-	gap: var(--gap);
+	gap: $gap;
 	align-items: center;
-	font-size: var(--text-size-h4);
+	font-size: $text-size-h4;
 	flex-wrap: wrap;
 }

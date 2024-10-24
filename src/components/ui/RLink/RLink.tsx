@@ -29,9 +29,9 @@
 // 		<Flex
 // 			as={Link}
 // 			to={to}
-// 			bgColor="var(--color-secondary)"
-// 			padding={"var(--padding)"}
-// 			borderRadius={"var(--radius)"}
+// 			bgColor="$color-secondary"
+// 			padding={"$padding"}
+// 			borderRadius={"$radius"}
 // 			justifyContent={"center"}
 // 			alignItems={"center"}
 // 		>

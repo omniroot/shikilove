@@ -1,6 +1,6 @@
 .anime_screenshots_container {
 	display: flex;
-	gap: var(--gap);
+	gap: $gap;
 	overflow-x: scroll;
 
 	.anime_screenshot_image {
@@ -9,6 +9,6 @@
 		max-width: 100%;
 		max-height: 100%;
 
-		border-radius: var(--radius);
+		border-radius: $radius;
 	}
 }
