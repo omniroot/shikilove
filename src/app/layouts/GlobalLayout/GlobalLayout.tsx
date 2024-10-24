@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Outlet } from "react-router-dom";
 import styles from "./GlobalLayout.module.scss";
 
-const GlobalLayout = () => {
+export const GlobalLayout = () => {
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 	const isTablet = useMediaQuery(
 		"only screen and (min-width: 769px) and (max-width: 1024px)",
@@ -33,7 +33,7 @@ const GlobalLayout = () => {
 		return false;
 	};
 
-	if (loading) return "loading...";
+	if (loading) return <div></div>;
 	if (error?.networkError?.message.includes("401") === true) {
 		if (localStorage.getItem("refresh_token")) {
 			refreshAndSaveTokens();
