@@ -1,40 +1,18 @@
 import React, { Suspense } from "react";
-import {
-	createBrowserRouter,
-	createRoutesFromElements,
-	Route,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 
 import { GlobalLayout } from "@/app/layouts/GlobalLayout/GlobalLayout.tsx";
-const AnimePageLazy = React.lazy(
-	() => import("@/app/pages/AnimePage/AnimePage.tsx"),
-);
-const AnimesPageLazy = React.lazy(
-	() => import("@/app/pages/AnimesPage/AnimesPage.tsx"),
-);
-const LoginPageLazy = React.lazy(
-	() => import("@/app/pages/LoginPage/LoginPage.tsx"),
-);
-const NotFoundPageLazy = React.lazy(
-	() => import("@/app/pages/NotFoundPage/NotFoundPage.tsx"),
-);
-const ProfilePageLazy = React.lazy(
-	() => import("@/app/pages/ProfilePage/ProfilePage.tsx"),
-);
-const SearchPageLazy = React.lazy(
-	() => import("@/app/pages/SearchPage/SearchPage.tsx"),
-);
-const TestPageLazy = React.lazy(
-	() => import("@/app/pages/TestPage/TestPage.tsx"),
-);
+const AnimePageLazy = React.lazy(() => import("@/app/pages/AnimePage/AnimePage.tsx"));
+const AnimesPageLazy = React.lazy(() => import("@/app/pages/AnimesPage/AnimesPage.tsx"));
+const LoginPageLazy = React.lazy(() => import("@/app/pages/LoginPage/LoginPage.tsx"));
+const NotFoundPageLazy = React.lazy(() => import("@/app/pages/NotFoundPage/NotFoundPage.tsx"));
+const ProfilePageLazy = React.lazy(() => import("@/app/pages/ProfilePage/ProfilePage.tsx"));
+const SearchPageLazy = React.lazy(() => import("@/app/pages/SearchPage/SearchPage.tsx"));
+const TestPageLazy = React.lazy(() => import("@/app/pages/TestPage/TestPage.tsx"));
 
-const SettingsPageLazy = React.lazy(
-	() => import("@/app/pages/SettingsPage/SettingsPage.tsx"),
-);
+const SettingsPageLazy = React.lazy(() => import("@/app/pages/SettingsPage/SettingsPage.tsx"));
 
-const LogoutPageLazy = React.lazy(
-	() => import("@/app/pages/LogoutPage/LogoutPage.tsx"),
-);
+const LogoutPageLazy = React.lazy(() => import("@/app/pages/LogoutPage/LogoutPage.tsx"));
 
 const Loading = <div>loading</div>;
 
