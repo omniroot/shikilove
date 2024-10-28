@@ -34,13 +34,14 @@ export const GlobalLayout = () => {
 	};
 
 	if (isLoading) return <div></div>;
-	// @ts-expect-error because i eblan
 	// TODO FIX TYPES ERROR ON REQUESTS !!!!
-	if (error?.networkError?.message.includes("401") === true) {
+	if (error) {
 		if (localStorage.getItem("refresh_token")) {
+			console.log("Refresh token exist, refreshing...");
 			refreshAndSaveTokens();
 			return null;
 		}
+		console.log("Refresh token not found, redirecting to login...");
 		return <LoginPage />;
 	}
 
