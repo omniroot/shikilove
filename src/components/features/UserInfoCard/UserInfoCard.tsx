@@ -2,6 +2,7 @@ import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import styles from "./UserInfoCard.module.scss";
 import dayjs from "dayjs";
 import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
+import { getVersion } from "@/shared/utils/getVersion.ts";
 
 export const UserInfoCard = () => {
 	const { currentUser } = useAuthorization();
@@ -26,7 +27,9 @@ export const UserInfoCard = () => {
 				<div className={styles.second_line}>
 					<span className={styles.about}></span>
 				</div>
-				<span className={styles.dev_mode}>{import.meta.env.MODE} mode</span>
+				<span className={styles.dev_mode}>
+					{import.meta.env.MODE} mode | version {getVersion()}
+				</span>
 			</div>
 		</div>
 	);
