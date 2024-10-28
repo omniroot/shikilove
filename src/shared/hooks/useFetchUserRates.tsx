@@ -1,8 +1,9 @@
 import { api } from "@/shared/services/api.ts";
+import { graphql } from "@/shared/services/graphql.ts";
 import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@tanstack/react-query";
 
-const GET_USER_RATES = gql`
+const GET_USER_RATES = `
 	{
 		userRates(
 			page: 1
@@ -44,7 +45,15 @@ interface IResponse {
 }
 
 export const useFetchUserRates = () => {
-	const { loading, data, error } = useQuery<IResponse>(GET_USER_RATES);
+	const {
+		isLoading,
+		data,
+		error,
+		refetch: refetchUserRates,
+	} = useQuery<IResponse>({
+		queryKey: ["userRates"],
+		queryFn: () => graphql<IResponse>(GET_USER_RATES),
+	});
 
 	const addToUserRate = async (
 		animeId: string,
@@ -63,11 +72,13 @@ export const useFetchUserRates = () => {
 	};
 
 	console.log(data);
-	if (!data?.userRates) return { data, loading: loading, error: error };
+	if (!data?.userRates)
+		return { data, isLoading: isLoading, error: error, refetchUserRates };
 	return {
 		userRates: data.userRates,
 		addToUserRate,
-		loading: loading,
+		isLoading: isLoading,
 		error: error,
+		refetchUserRates,
 	};
 };

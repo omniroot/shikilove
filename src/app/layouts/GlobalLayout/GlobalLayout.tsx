@@ -19,7 +19,7 @@ export const GlobalLayout = () => {
 	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore(
 		(state) => state,
 	);
-	const { loading, error, ...rest } = useFetchCurrentUser();
+	const { isLoading, error, ...rest } = useFetchCurrentUser();
 	const { refreshTokens } = useAuthorization();
 
 	const refreshAndSaveTokens = async () => {
@@ -33,7 +33,8 @@ export const GlobalLayout = () => {
 		return false;
 	};
 
-	if (loading) return <div></div>;
+	if (isLoading) return <div></div>;
+	// @ts-expect-error because i eblan TODO:FIX TYPES ERROR ON REQUESTS !!!!
 	if (error?.networkError?.message.includes("401") === true) {
 		if (localStorage.getItem("refresh_token")) {
 			refreshAndSaveTokens();
@@ -42,7 +43,6 @@ export const GlobalLayout = () => {
 		return <LoginPage />;
 	}
 
-	console.log("@ loading", loading);
 	console.log("@ rest", rest);
 	return (
 		<div className={styles.global_layout}>

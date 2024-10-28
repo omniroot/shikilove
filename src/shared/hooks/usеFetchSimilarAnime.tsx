@@ -1,5 +1,5 @@
 import { api } from "@/shared/services/api.ts";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export interface ISimilarAnime {
 	id: string;
@@ -21,20 +21,18 @@ export interface ISimilarAnime {
 	released_on: string;
 }
 
-type IResponse = ISimilarAnime;
+type IResponse = ISimilarAnime[];
 
 export const useFetchSimilarAnime = (animeId: string) => {
-	const [response, setResponse] = useState<IResponse[] | null>(null);
+	const { isLoading, data, error } = useQuery<IResponse>({
+		queryKey: ["similarAnime", animeId],
+		queryFn: async () => {
+			const _response = await api.get<IResponse>(`animes/${animeId}/similar`);
+			return _response.data;
+		},
+	});
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const _response = await api.get<IResponse[]>(`animes/${animeId}/similar`);
-			if (_response.data) {
-				setResponse(_response.data);
-			}
-		};
-		fetchData();
-	}, [animeId]);
+	if (!data) return { data, isLoading, error: error };
 
-	return { similarAnimes: response };
+	return { similarAnimes: data };
 };

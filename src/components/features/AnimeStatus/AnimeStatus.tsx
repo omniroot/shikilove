@@ -55,7 +55,7 @@ const addToElements = [
 export const AnimeStatus = () => {
 	const { animeId } = useParams();
 	const { anime, refetchAnime } = useFetchAnimeById(animeId || "1");
-	const { addToUserRate } = useFetchUserRates();
+	const { addToUserRate, refetchUserRates } = useFetchUserRates();
 
 	const { changeAnimeUserStatus, changeAnimeUserEpisodes } =
 		useChangeAnimeUserRate();
@@ -72,12 +72,16 @@ export const AnimeStatus = () => {
 	const onAnimeUserStatusSelected = (item: IAnimeStatusSelectOption) => {
 		if (anime?.userRate && item) {
 			changeAnimeUserStatus(anime.userRate.id, item.value);
+			refetchAnime();
+			refetchUserRates();
 		}
 	};
 
 	const onAnimeUserEpisodeSelected = (episode: number) => {
 		if (anime?.userRate && episode) {
 			changeAnimeUserEpisodes(anime.userRate.id, episode);
+			refetchAnime();
+			refetchUserRates();
 		}
 	};
 
@@ -85,6 +89,7 @@ export const AnimeStatus = () => {
 		if (addToUserRate && animeId && id) {
 			addToUserRate(animeId, id as IUserRateAnimeStatus);
 			refetchAnime();
+			refetchUserRates();
 		}
 	};
 

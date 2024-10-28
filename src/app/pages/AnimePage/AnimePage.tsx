@@ -14,8 +14,8 @@ export const AnimePage = () => {
 
 	// console.log("@userRate ", anime?.userRate);
 	// console.log("@anime ", anime);
-
 	if (!anime) return null;
+
 	changeTitle(anime.russian);
 	return (
 		<div className={styles.anime_page}>
@@ -27,7 +27,7 @@ export const AnimePage = () => {
 				<AnimeScreenshots screenshots={anime?.screenshots} />
 			</AnimeInfoSection>
 			<AnimeInfoSection title="Similar">
-				<AnimeSimilarList animeId={animeId} />
+				<AnimeSimilarList />
 			</AnimeInfoSection>
 		</div>
 	);

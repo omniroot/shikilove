@@ -1,6 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { graphql } from "@/shared/services/graphql";
+import { useQuery } from "@tanstack/react-query";
 
-const GET_ANIME_BY_ID = gql`
+const GET_ANIME_BY_ID = `
 	query ($ids: String) {
 		animes(ids: $ids, limit: 1, kind: "!special") {
 			id
@@ -184,24 +185,28 @@ interface IResponse {
 }
 
 export const useFetchAnimeById = (id: string) => {
-	const { loading, data, error, refetch } = useQuery<IResponse>(
-		GET_ANIME_BY_ID,
-		{
-			variables: {
+	const { isLoading, data, error, refetch } = useQuery<IResponse>({
+		queryKey: ["animeById", id],
+		queryFn: () =>
+			graphql<IResponse>(GET_ANIME_BY_ID, {
 				ids: id,
-			},
-		},
-	);
+			}),
+	});
+
+	// useEffect(() => {
+	// 	console.log("REfetching anime by id, ", id);
+	// 	refetch();
+	// }, [id]);
 
 	if (!data?.animes)
-		return { data, loading: loading, error: error, refetchAnime: refetch };
+		return { data, isLoading, error: error, refetchAnime: refetch };
 
 	console.log("returned fetchanime by id, ", data);
 
 	return {
 		anime: data.animes[0],
-		loading: loading,
 		error: error,
+		isLoading,
 		refetchAnime: refetch,
 	};
 };
