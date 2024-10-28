@@ -1,15 +1,15 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { userRateApi } from "@/shared/services/userRate/userRate.api.ts";
 import {
-	IUserRateAdd,
-	IUserRate,
 	IUserRates,
+	IUserRate,
+	IUserRateAdd,
 	IUserRateUpdate,
 	IUserRateDelete,
 } from "@/shared/services/userRate/userRate.interface.ts";
-import { userRateApi } from "@/shared/services/userRate/userRate.api.ts";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useUserRate = (userRateId?: number) => {
-	// const queryClient = useQueryClient();
+	const queryClient = useQueryClient();
 	const {
 		isLoading: isUserRatesLoading,
 		data: userRates,
@@ -22,6 +22,11 @@ export const useUserRate = (userRateId?: number) => {
 	const { mutate: addUserRate } = useMutation<IUserRate, unknown, IUserRateAdd>({
 		mutationKey: ["addUserRate", userRateId],
 		mutationFn: (variables) => userRateApi.addUserRate(variables),
+		onSuccess: () => {
+			queryClient.refetchQueries({
+				queryKey: ["userRates"],
+			});
+		},
 	});
 
 	const { mutate: updateUserRate } = useMutation<IUserRate, unknown, IUserRateUpdate>({

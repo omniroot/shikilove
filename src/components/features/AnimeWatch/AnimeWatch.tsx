@@ -1,4 +1,4 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { useAnime } from "@/shared/hooks/useAnime";
 import { openAnimeExternal } from "@/shared/utils/openAnimeSites.ts";
 import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection.tsx";
 import { Button } from "@ui/Button/Button.tsx";
@@ -8,7 +8,7 @@ import styles from "./AnimeWatch.module.scss";
 export const AnimeWatch = () => {
 	const { animeId } = useParams();
 
-	const { anime } = useFetchAnimeById(animeId || "1");
+	const { anime } = useAnime(animeId || "1");
 	const onAnimegoButtonClick = () => {
 		if (anime?.russian) openAnimeExternal(anime.russian, "animego");
 	};

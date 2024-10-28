@@ -1,4 +1,4 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { useAnime } from "@/shared/hooks/useAnime";
 import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect.tsx";
 import {
 	AnimeStatusSelect,
@@ -54,7 +54,7 @@ const addToElements = [
 
 export const AnimeStatus = () => {
 	const { animeId } = useParams();
-	const { anime } = useFetchAnimeById(animeId || "1");
+	const { anime } = useAnime(animeId || "1");
 	const { addUserRate, updateUserRate, deleteUserRate } = useUserRate();
 
 	const selectedStatus =
