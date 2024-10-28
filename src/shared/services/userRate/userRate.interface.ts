@@ -14,11 +14,11 @@ export interface IUserRate {
 	createdAt: string;
 }
 
-export interface IUserRatesQuery {
-	userRates: IUserRate[];
-}
-
 export type IUserRates = IUserRate[];
+
+export interface IUserRatesResponse {
+	userRates: IUserRates;
+}
 
 export interface IUserRateAdd {
 	animeId: string;

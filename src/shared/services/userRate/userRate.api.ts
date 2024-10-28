@@ -4,14 +4,14 @@ import { GET_USER_RATES } from "@/shared/services/userRate/userRate.graphql.ts";
 import {
 	IUserRateAdd,
 	IUserRate,
-	IUserRatesQuery,
+	IUserRatesResponse,
 	IUserRateUpdate,
 	IUserRateDelete,
 } from "@/shared/services/userRate/userRate.interface.ts";
 
 export const userRateApi = {
 	getUserRates: async () => {
-		const userRates = await graphql<IUserRatesQuery>(GET_USER_RATES);
+		const userRates = await graphql<IUserRatesResponse>(GET_USER_RATES);
 		return userRates.userRates;
 	},
 	addUserRate: async ({ animeId, status = "planned" }: IUserRateAdd) => {
