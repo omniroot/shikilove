@@ -1,28 +1,29 @@
 import { CONSTS } from "@/shared/consts/consts.ts";
-import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
 import { ShikimoriIcon } from "@/shared/icons/index.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { useSearchParams } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
+import { useEffect } from "react";
+import { authApi } from "@/shared/services/auth/auth.api.ts";
+import { saveTokens } from "@/shared/utils/saveTokens.ts";
 
 export const LoginPage = () => {
 	const [searchParams] = useSearchParams();
-	const { fetchTokens } = useAuthorization();
 	const code = searchParams.get("code");
 
-	const getAndSaveTokens = async (code: string) => {
-		const response = await fetchTokens(code);
-		if (response) {
-			localStorage.setItem("access_token", response.access_token);
-			localStorage.setItem("refresh_token", response.refresh_token);
-			window.open(CONSTS.URL, "_self");
-		}
-	};
-
-	if (code) {
-		getAndSaveTokens(code);
-	}
+	useEffect(() => {
+		const fetchData = async () => {
+			if (code && code?.length > 1) {
+				const response = await authApi.fetchTokens(code);
+				if (response) {
+					saveTokens(response);
+					window.open(CONSTS.URL, "_self");
+				}
+			}
+		};
+		fetchData();
+	}, [code]);
 
 	const onLoginButtonClick = () => {
 		window.open(CONSTS.OAUTH_URL, "_self");
@@ -60,8 +61,8 @@ export const LoginPage = () => {
 					</Button>
 				</div>
 				<span className={styles.litemode_info}>
-					Lite mode - option that does not require authorization, but has a
-					number of limitations and errors.
+					Lite mode - option that does not require authorization, but has a number of limitations
+					and errors.
 				</span>
 			</div>
 		</div>

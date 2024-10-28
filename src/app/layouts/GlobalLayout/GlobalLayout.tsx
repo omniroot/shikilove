@@ -1,6 +1,5 @@
 import LoginPage from "@/app/pages/LoginPage/LoginPage.tsx";
 import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
-import { useFetchCurrentUser } from "@/shared/hooks/useFetchCurrentUser.tsx";
 import { useGlobalStore } from "@/shared/store/store.tsx";
 import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation.tsx";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -11,41 +10,18 @@ import { Outlet } from "react-router-dom";
 import styles from "./GlobalLayout.module.scss";
 
 export const GlobalLayout = () => {
+	const { currentUserError, isCurrentUserLoading } = useAuthorization();
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-	const isTablet = useMediaQuery(
-		"only screen and (min-width: 769px) and (max-width: 1024px)",
-	);
+	const isTablet = useMediaQuery("only screen and (min-width: 769px) and (max-width: 1024px)");
 	const isDesktop = useMediaQuery("only screen and (min-width: 1025px)");
-	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore(
-		(state) => state,
-	);
-	const { isLoading, error, ...rest } = useFetchCurrentUser();
-	const { refreshTokens } = useAuthorization();
+	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore((state) => state);
 
-	const refreshAndSaveTokens = async () => {
-		const respose = await refreshTokens();
-		if (respose) {
-			localStorage.setItem("access_token", respose.access_token);
-			localStorage.setItem("refresh_token", respose.refresh_token);
-			window.location.reload();
-			return true;
-		}
-		return false;
-	};
-
-	if (isLoading) return <div></div>;
-	// TODO FIX TYPES ERROR ON REQUESTS !!!!
-	if (error) {
-		if (localStorage.getItem("refresh_token")) {
-			console.log("Refresh token exist, refreshing...");
-			refreshAndSaveTokens();
-			return null;
-		}
-		console.log("Refresh token not found, redirecting to login...");
+	if (isCurrentUserLoading) return <div>Loading...</div>;
+	if (currentUserError) {
+		console.log("Error while getting current user, try relogin", currentUserError);
 		return <LoginPage />;
 	}
 
-	console.log("@ rest", rest);
 	return (
 		<div className={styles.global_layout}>
 			{(isTablet || isDesktop) && <Sidebar />}

@@ -1,51 +1,33 @@
-import { graphql } from "@/shared/services/graphql.ts";
-import { useQuery } from "@tanstack/react-query";
+// import { graphql } from "@/shared/services/graphql.ts";
+// import { useQuery } from "@tanstack/react-query";
 
-const GET_CURRENT_USER = `
-	{
-		currentUser {
-			id
-			avatarUrl
-			nickname
-			lastOnlineAt
-		}
-	}
-`;
+// interface IResponse {
+// 	currentUser: ICurrentUser;
+// }
 
-interface ICurrentUser {
-	id: string;
-	avatarUrl: string;
-	nickname: string;
-	lastOnlineAt: string;
-}
+// export const useFetchCurrentUser = () => {
+// 	const { isLoading, data, error } = useQuery<IResponse>({
+// 		queryKey: ["currentUser"],
+// 		queryFn: () => graphql<IResponse>(GET_CURRENT_USER),
+// 	});
 
-interface IResponse {
-	currentUser: ICurrentUser;
-}
+// 	if (!data?.currentUser) return { data, isLoading, error: error };
 
-export const useFetchCurrentUser = () => {
-	const { isLoading, data, error } = useQuery<IResponse>({
-		queryKey: ["currentUser"],
-		queryFn: () => graphql<IResponse>(GET_CURRENT_USER),
-	});
+// 	const saveUserToLocalStorage = (user: ICurrentUser) => {
+// 		localStorage.setItem("user_id", user.id);
+// 	};
 
-	if (!data?.currentUser) return { data, isLoading, error: error };
+// 	if (data) {
+// 		saveUserToLocalStorage(data.currentUser);
+// 		return {
+// 			userId: data.currentUser.id,
+// 			avatarUrl: data.currentUser.avatarUrl,
+// 			nickname: data.currentUser.nickname,
+// 			lastOnlineAt: data.currentUser.lastOnlineAt,
+// 			isLoading,
+// 			error: error,
+// 		};
+// 	}
 
-	const saveUserToLocalStorage = (user: ICurrentUser) => {
-		localStorage.setItem("user_id", user.id);
-	};
-
-	if (data) {
-		saveUserToLocalStorage(data.currentUser);
-		return {
-			userId: data.currentUser.id,
-			avatarUrl: data.currentUser.avatarUrl,
-			nickname: data.currentUser.nickname,
-			lastOnlineAt: data.currentUser.lastOnlineAt,
-			isLoading,
-			error: error,
-		};
-	}
-
-	return { data, isLoading, error: error };
-};
+// 	return { data, isLoading, error: error };
+// };
