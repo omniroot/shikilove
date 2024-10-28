@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./AnimeUserRates.module.scss";
-import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates.tsx";
+import { useUserRate } from "@/shared/hooks/useUserRate";
 import {
 	WatchingIcon,
 	PlannedIcon,
@@ -53,7 +53,7 @@ const elements = [
 	},
 ];
 export const AnimeUserRates = () => {
-	const { userRates } = useFetchUserRates();
+	const { userRates } = useUserRate();
 	const [activeFilter, setActiveFilter] = useState<IPages>("watching");
 
 	const onButtonGroupClick = (id: IPages) => {
