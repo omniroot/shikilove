@@ -23,20 +23,27 @@ export const useUserRate = (userRateId?: number) => {
 		mutationKey: ["addUserRate", userRateId],
 		mutationFn: (variables) => userRateApi.addUserRate(variables),
 		onSuccess: () => {
-			queryClient.refetchQueries({
-				queryKey: ["userRates"],
-			});
+			queryClient.invalidateQueries({ queryKey: ["getAnime"] });
+			queryClient.invalidateQueries({ queryKey: ["userRates"] });
 		},
 	});
 
 	const { mutate: updateUserRate } = useMutation<IUserRate, unknown, IUserRateUpdate>({
 		mutationKey: ["updateUserRate", userRateId],
 		mutationFn: (variables) => userRateApi.updateUserRate(variables),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["getAnime"] });
+			queryClient.invalidateQueries({ queryKey: ["userRates"] });
+		},
 	});
 
 	const { mutate: deleteUserRate } = useMutation<IUserRate, unknown, IUserRateDelete>({
 		mutationKey: ["deleteToUserRate", userRateId],
 		mutationFn: (variables) => userRateApi.deleteUserRate(variables),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["getAnime"] });
+			queryClient.invalidateQueries({ queryKey: ["userRates"] });
+		},
 	});
 
 	return {
