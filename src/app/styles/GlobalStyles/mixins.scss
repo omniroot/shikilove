@@ -4,7 +4,7 @@
 	&:hover {
 		cursor: pointer;
 		background-color: var(--color-secondary-transparent);
-		border-radius: var(--radius);
+		border-radius: $radius;
 		transform: scale(0.98);
 	}
 }
@@ -20,8 +20,8 @@
 }
 
 @mixin card {
-	gap: var(--gap);
-	padding: var(--padding);
-	border: var(--border);
-	border-radius: var(--radius);
+	gap: $gap;
+	padding: $padding;
+	border: $border;
+	border-radius: $radius;
 }

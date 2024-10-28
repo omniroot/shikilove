@@ -1,7 +1,7 @@
 .anime_similar_list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--gap);
+	gap: $gap;
 	width: 100%;
 	overflow-x: scroll;
 
@@ -10,7 +10,7 @@
 		flex-direction: column;
 		width: 240px;
 		height: 400px;
-		color: var(--color-text);
+		color: $color-text;
 		text-decoration: none;
 
 		@include card;
@@ -18,7 +18,7 @@
 
 		.anime_title {
 			width: 100%;
-			font-size: var(--text-size-h5);
+			font-size: $text-size-h5;
 			font-weight: bold;
 			text-align: center;
 		}

@@ -16,10 +16,10 @@
 		height: 400px;
 		display: flex;
 		flex-direction: column;
-		gap: var(--gap);
-		border: var(--border);
-		border-radius: var(--radius);
-		padding: var(--padding);
+		gap: $gap;
+		border: $border;
+		border-radius: $radius;
+		padding: $padding;
 
 		.login_header {
 			width: 100%;
@@ -28,18 +28,18 @@
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
-			background-color: var(--color-secondary);
-			padding: var(--padding);
-			border-radius: var(--radius);
+			background-color: $color-secondary;
+			padding: $padding;
+			border-radius: $radius;
 
 			.login_text {
 				width: fit-content;
-				font-size: var(--text-size-h3);
+				font-size: $text-size-h3;
 				font-weight: bold;
 			}
 
 			.login_about {
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 				font-weight: bold;
 				text-align: center;
 			}
@@ -47,28 +47,28 @@
 		.login_actions {
 			display: flex;
 			flex-direction: column;
-			gap: var(--gap);
+			gap: $gap;
 			margin-top: auto;
 
 			.shikimori_button {
 				width: 100%;
 				justify-content: center;
 				font-weight: 600;
-				font-size: var(--text-size-h4);
+				font-size: $text-size-h4;
 			}
 
 			.litemode_button {
 				width: 100%;
 				justify-content: center;
-				font-size: var(--text-size-h5);
+				font-size: $text-size-h5;
 
-				color: var(--color-text-secondary);
+				color: $color-subtext;
 			}
 		}
 
 		.litemode_info {
-			color: var(--color-text-secondary);
-			font-size: var(--text-size-h6);
+			color: $color-subtext;
+			font-size: $text-size-h6;
 			text-align: center;
 			font-weight: bold;
 		}

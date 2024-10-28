@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Outlet } from "react-router-dom";
 import styles from "./GlobalLayout.module.scss";
 
-const GlobalLayout = () => {
+export const GlobalLayout = () => {
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 	const isTablet = useMediaQuery(
 		"only screen and (min-width: 769px) and (max-width: 1024px)",
@@ -19,7 +19,7 @@ const GlobalLayout = () => {
 	const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore(
 		(state) => state,
 	);
-	const { loading, error, ...rest } = useFetchCurrentUser();
+	const { isLoading, error, ...rest } = useFetchCurrentUser();
 	const { refreshTokens } = useAuthorization();
 
 	const refreshAndSaveTokens = async () => {
@@ -33,7 +33,8 @@ const GlobalLayout = () => {
 		return false;
 	};
 
-	if (loading) return "loading...";
+	if (isLoading) return <div></div>;
+	// @ts-expect-error because i eblan TODO:FIX TYPES ERROR ON REQUESTS !!!!
 	if (error?.networkError?.message.includes("401") === true) {
 		if (localStorage.getItem("refresh_token")) {
 			refreshAndSaveTokens();
@@ -42,7 +43,6 @@ const GlobalLayout = () => {
 		return <LoginPage />;
 	}
 
-	console.log("@ loading", loading);
 	console.log("@ rest", rest);
 	return (
 		<div className={styles.global_layout}>

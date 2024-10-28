@@ -1,7 +1,7 @@
 .button_group {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--gap);
+	gap: $gap;
 
 	.button {
 		display: flex;
@@ -9,18 +9,21 @@
 		justify-content: center;
 		width: fit-content;
 		height: 42px;
-		padding: var(--padding);
+		padding: $padding;
 		cursor: pointer;
-		color: var(--color-text);
+		color: $color-text;
 		font-weight: inherit;
-		background-color: var(--color-primary);
-		border: var(--border);
-		border-radius: var(--radius);
-		gap: var(--gap);
-		@include hoverable;
+		background-color: transparent;
+		border: $border;
+		border-radius: $radius;
+		gap: $gap;
+
+		&:hover {
+			background-color: $color-secondary;
+		}
 	}
 
 	.active {
-		border: var(--border-active);
+		border: $border-active;
 	}
 }

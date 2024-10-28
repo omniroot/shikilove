@@ -1,36 +1,114 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
 	createBrowserRouter,
 	createRoutesFromElements,
 	Route,
 } from "react-router-dom";
 
-const GlobalLayout = React.lazy(
-	() => import("@/app/layouts/GlobalLayout/GlobalLayout.tsx"),
-);
-const AnimePage = React.lazy(
+import { GlobalLayout } from "@/app/layouts/GlobalLayout/GlobalLayout.tsx";
+const AnimePageLazy = React.lazy(
 	() => import("@/app/pages/AnimePage/AnimePage.tsx"),
 );
-const AnimesPage = React.lazy(
+const AnimesPageLazy = React.lazy(
 	() => import("@/app/pages/AnimesPage/AnimesPage.tsx"),
 );
-const LoginPage = React.lazy(
+const LoginPageLazy = React.lazy(
 	() => import("@/app/pages/LoginPage/LoginPage.tsx"),
 );
-const NotFoundPage = React.lazy(
+const NotFoundPageLazy = React.lazy(
 	() => import("@/app/pages/NotFoundPage/NotFoundPage.tsx"),
 );
-const ProfilePage = React.lazy(
+const ProfilePageLazy = React.lazy(
 	() => import("@/app/pages/ProfilePage/ProfilePage.tsx"),
 );
-const SearchPage = React.lazy(
+const SearchPageLazy = React.lazy(
 	() => import("@/app/pages/SearchPage/SearchPage.tsx"),
 );
-const TestPage = React.lazy(() => import("@/app/pages/TestPage/TestPage.tsx"));
+const TestPageLazy = React.lazy(
+	() => import("@/app/pages/TestPage/TestPage.tsx"),
+);
 
-const SettingsPage = React.lazy(
+const SettingsPageLazy = React.lazy(
 	() => import("@/app/pages/SettingsPage/SettingsPage.tsx"),
 );
+
+const LogoutPageLazy = React.lazy(
+	() => import("@/app/pages/LogoutPage/LogoutPage.tsx"),
+);
+
+const Loading = <div>loading</div>;
+
+const ProfilePage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<ProfilePageLazy />
+		</Suspense>
+	);
+};
+
+const SearchPage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<SearchPageLazy />
+		</Suspense>
+	);
+};
+
+const AnimesPage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<AnimesPageLazy />
+		</Suspense>
+	);
+};
+
+const AnimePage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<AnimePageLazy />
+		</Suspense>
+	);
+};
+
+const SettingsPage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<SettingsPageLazy />
+		</Suspense>
+	);
+};
+
+const LoginPage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<LoginPageLazy />
+		</Suspense>
+	);
+};
+
+const NotFoundPage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<NotFoundPageLazy />
+		</Suspense>
+	);
+};
+
+const TestPage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<TestPageLazy />
+		</Suspense>
+	);
+};
+
+const LogoutPage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<LogoutPageLazy />
+		</Suspense>
+	);
+};
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -43,7 +121,7 @@ export const router = createBrowserRouter(
 			<Route path="/test" element={<TestPage />} />
 			<Route path="/settings" element={<SettingsPage />} />
 			<Route path="/login" element={<LoginPage />} />
-			{/* <Route path="/logout" element={<LogoutPage />} /> */}
+			<Route path="/logout" element={<LogoutPage />} />
 			<Route path="*" element={<NotFoundPage />} />
 		</Route>,
 	),

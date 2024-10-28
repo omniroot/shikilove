@@ -6,13 +6,13 @@
 	bottom: 10px;
 	left: 50%;
 	translate: -50%;
-	gap: var(--gap-2);
+	gap: $gap-2;
 	max-width: 90%;
 	height: 70px;
-	padding: var(--padding);
-	border: var(--border);
-	border-radius: var(--radius-2);
-	background-color: var(--color-secondary);
+	padding: $padding;
+	border: $border;
+	border-radius: $radius-2;
+	background-color: $color-secondary;
 
 	.navitem {
 		display: flex;
@@ -20,22 +20,22 @@
 		align-items: center;
 		width: 70px;
 		height: 45px;
-		padding: var(--padding-1);
-		color: var(--color-text);
+		padding: $padding-1;
+		color: $color-text;
 		cursor: pointer;
 
-		border: var(--border-transparent);
-		border-radius: var(--radius-2);
+		border: $border-transparent;
+		border-radius: $radius-2;
 		transition: all 200ms;
 
 		&:hover {
-			background-color: var(--color-ternary);
+			background-color: $color-ternary;
 		}
 	}
 
 	.active {
 		width: 100px;
-		background-color: var(--color-ternary);
-		padding: var(--padding-1);
+		background-color: $color-ternary;
+		padding: $padding-1;
 	}
 }

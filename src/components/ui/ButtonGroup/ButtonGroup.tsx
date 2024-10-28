@@ -36,11 +36,12 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 						className={clsx(styles.button, {
 							[styles.active]: active === element.id,
 						})}
+						data-active={active === element.id}
 						key={element.id}
 						onClick={() => onGroupItemClick(element)}
 					>
 						{element.icon}
-						{element.title}
+						<span>{element.title}</span>
 					</button>
 				);
 			})}

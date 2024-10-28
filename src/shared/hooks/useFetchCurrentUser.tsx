@@ -1,6 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { graphql } from "@/shared/services/graphql.ts";
+import { useQuery } from "@tanstack/react-query";
 
-const GET_CURRENT_USER = gql`
+const GET_CURRENT_USER = `
 	{
 		currentUser {
 			id
@@ -11,30 +12,40 @@ const GET_CURRENT_USER = gql`
 	}
 `;
 
+interface ICurrentUser {
+	id: string;
+	avatarUrl: string;
+	nickname: string;
+	lastOnlineAt: string;
+}
+
 interface IResponse {
-	currentUser: {
-		id: string;
-		avatarUrl: string;
-		nickname: string;
-		lastOnlineAt: string;
-	};
+	currentUser: ICurrentUser;
 }
 
 export const useFetchCurrentUser = () => {
-	const { loading, data, error } = useQuery<IResponse>(GET_CURRENT_USER);
+	const { isLoading, data, error } = useQuery<IResponse>({
+		queryKey: ["currentUser"],
+		queryFn: () => graphql<IResponse>(GET_CURRENT_USER),
+	});
 
-	if (!data?.currentUser) return { data, loading: loading, error: error };
+	if (!data?.currentUser) return { data, isLoading, error: error };
+
+	const saveUserToLocalStorage = (user: ICurrentUser) => {
+		localStorage.setItem("user_id", user.id);
+	};
 
 	if (data) {
+		saveUserToLocalStorage(data.currentUser);
 		return {
 			userId: data.currentUser.id,
 			avatarUrl: data.currentUser.avatarUrl,
 			nickname: data.currentUser.nickname,
 			lastOnlineAt: data.currentUser.lastOnlineAt,
-			loading: loading,
+			isLoading,
 			error: error,
 		};
 	}
 
-	return { data, loading: loading, error: error };
+	return { data, isLoading, error: error };
 };

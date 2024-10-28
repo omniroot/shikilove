@@ -1,24 +1,25 @@
 .navbar {
 	display: flex;
 	flex-direction: column;
-	gap: var(--gap);
+	gap: $gap;
 
 	.navitem {
 		display: flex;
 		width: 100%;
-		padding: var(--padding-1);
-		color: var(--color-text);
+		padding: $padding-1;
+		color: $color-text;
 		cursor: pointer;
-		background-color: var(--color-primary);
+		background-color: transparent;
 
-		@include card;
+		border: $border-transparent;
+		border-radius: $radius;
 
-		border: var(--border-transparent);
-
-		@include clickable;
+		&:hover {
+			background-color: $color-secondary;
+		}
 	}
 
 	.active {
-		border: var(--border-active);
+		background-color: $color-secondary;
 	}
 }

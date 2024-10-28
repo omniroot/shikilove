@@ -1,7 +1,8 @@
-import { gql, useQuery } from "@apollo/client";
+import { graphql } from "@/shared/services/graphql.ts";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-const GET_SEARCH_ANIME = gql`
+const GET_SEARCH_ANIME = `
 	query ($name: String) {
 		animes(search: $name, limit: 15, kind: "!special") {
 			id
@@ -39,21 +40,22 @@ interface IResponse {
 
 export const useSearchAnime = () => {
 	const [name, setName] = useState("naruto");
-	const { loading, data, error } = useQuery<IResponse>(GET_SEARCH_ANIME, {
-		variables: { name: name },
+	const { isLoading, data, error } = useQuery<IResponse>({
+		queryKey: ["searchAnime", name],
+		queryFn: () => graphql<IResponse>(GET_SEARCH_ANIME, { name }),
 	});
 
-	if (loading) {
-		return { loading: loading, error: error };
+	if (isLoading) {
+		return { isLoading, error: error };
 	}
 	if (error) {
-		return { loading: loading, error: error };
+		return { isLoading, error: error };
 	}
 
-	if (!data) return { loading: loading, error: error };
+	if (!data) return { isLoading, error: error };
 	const searchAnime = (name = "naruto") => {
 		setName(name);
 	};
 
-	return { searchAnime, loading: loading, error: error, animes: data.animes };
+	return { searchAnime, isLoading, error: error, animes: data.animes };
 };

@@ -6,7 +6,7 @@ interface IButtonProps {
 	children?: ReactNode;
 	className?: string;
 	variant?:
-		| "accent"
+		| "primary"
 		| "secondary"
 		| "animego"
 		| "hanime"
@@ -17,7 +17,7 @@ interface IButtonProps {
 export const Button: FC<IButtonProps> = ({
 	children,
 	className,
-	variant = "accent",
+	variant = "primary",
 	...rest
 }) => {
 	const _class = clsx(styles.button, className, {

@@ -1,7 +1,7 @@
 .genres_list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--gap);
+	gap: $gap;
 	margin-top: auto;
 
 	.genre {

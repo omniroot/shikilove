@@ -5,3 +5,5 @@ export const LogoutPage = () => {
 		</div>
 	);
 };
+
+export default LogoutPage;

@@ -11,47 +11,49 @@
 .select_input_control_opened {
 	width: 80px;
 	padding: 15px 10px;
-	border: var(--border);
+	border: $border;
 	border-bottom: none;
-	border-radius: var(--radius);
+	border-radius: $radius;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
+	background-color: $color-secondary;
 }
 
 .select_input_control_closed {
 	width: 80px;
 	padding: 15px 10px;
 	cursor: pointer;
-	border: var(--border);
-	border-radius: var(--radius);
+	border: $border;
+	border-radius: $radius;
+	background-color: $color-ternary;
 }
 
 .placeholder {
-	color: var(--color-text-secondary);
+	color: $color-subtext;
 }
 
 .select_menu {
 	max-width: 80px;
 	padding: 0;
 	margin-top: -7px;
-	border: var(--border);
+	border: $border;
 	border-top: 0;
-	border-radius: var(--radius);
+	border-radius: $radius;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
-	background-color: var(--color-secondary);
+	background-color: $color-secondary;
 }
 
 .select_menu_list {
 	display: flex;
 	flex-direction: column;
 	gap: 3px;
-	padding: var(--padding);
+	padding: $padding;
 
 	.select_menu_option {
 		padding: 10px 5px;
 		cursor: pointer;
-		border-radius: var(--radius);
+		border-radius: $radius;
 
 		&:hover {
 			background-color: var(--color-secondary-transparent);
@@ -60,11 +62,11 @@
 
 	.select_menu_option_selected {
 		padding: 10px 5px;
-		color: var(--color-accent);
+		color: $color-primary;
 		cursor: pointer;
 
-		// background-color: var(--color-accent);
-		border: 2px solid var(--color-accent);
+		// background-color: $color-primary;
+		border: 2px solid $color-primary;
 		border-radius: 12px;
 
 		&:hover {
