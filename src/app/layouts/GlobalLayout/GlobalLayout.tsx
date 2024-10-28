@@ -34,7 +34,8 @@ export const GlobalLayout = () => {
 	};
 
 	if (isLoading) return <div></div>;
-	// @ts-expect-error because i eblan TODO:FIX TYPES ERROR ON REQUESTS !!!!
+	// @ts-expect-error because i eblan
+	// TODO FIX TYPES ERROR ON REQUESTS !!!!
 	if (error?.networkError?.message.includes("401") === true) {
 		if (localStorage.getItem("refresh_token")) {
 			refreshAndSaveTokens();
