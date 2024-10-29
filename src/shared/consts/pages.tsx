@@ -1,10 +1,5 @@
-import {
-	ProfileIcon,
-	AnimeIcon,
-	SearchIcon,
-	SettingsIcon,
-	LogoutIcon,
-} from "@/shared/icons";
+import ProfilePage from "@/app/pages/ProfilePage/ProfilePage.tsx";
+import { ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, HomeIcon } from "@/shared/icons";
 import { ReactNode } from "react";
 
 export interface IPage {
@@ -16,9 +11,9 @@ export interface IPage {
 export const PAGES = {
 	sidebar_start: [
 		{
-			name: "Profile",
+			name: "Home",
 			path: "/",
-			icon: <ProfileIcon />,
+			icon: <HomeIcon />,
 		},
 		{
 			name: "Animes",
@@ -33,22 +28,22 @@ export const PAGES = {
 	],
 	sidebar_end: [
 		{
+			name: "Profile",
+			path: "/profile",
+			icon: <ProfileIcon />,
+		},
+		{
 			name: "Settings",
 			path: "/settings",
 			icon: <SettingsIcon />,
-		},
-		{
-			name: "Logout",
-			path: "/logout",
-			icon: <LogoutIcon />,
 		},
 	],
 
 	bottomNavigation: [
 		{
-			name: "Profile",
+			name: "Home",
 			path: "/",
-			icon: <ProfileIcon />,
+			icon: <HomeIcon />,
 		},
 		{
 			name: "Animes",
@@ -61,9 +56,9 @@ export const PAGES = {
 			icon: <SearchIcon />,
 		},
 		{
-			name: "Settings",
-			path: "/settings",
-			icon: <SettingsIcon />,
+			name: "Profile",
+			path: "/profile",
+			icon: <ProfilePage />,
 		},
 	] as IPage[],
 };

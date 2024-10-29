@@ -7,14 +7,21 @@ const AnimesPageLazy = React.lazy(() => import("@/app/pages/AnimesPage/AnimesPag
 const LoginPageLazy = React.lazy(() => import("@/app/pages/LoginPage/LoginPage.tsx"));
 const NotFoundPageLazy = React.lazy(() => import("@/app/pages/NotFoundPage/NotFoundPage.tsx"));
 const ProfilePageLazy = React.lazy(() => import("@/app/pages/ProfilePage/ProfilePage.tsx"));
+const HomePageLazy = React.lazy(() => import("@/app/pages/HomePage/HomePage.tsx"));
 const SearchPageLazy = React.lazy(() => import("@/app/pages/SearchPage/SearchPage.tsx"));
 const TestPageLazy = React.lazy(() => import("@/app/pages/TestPage/TestPage.tsx"));
 
 const SettingsPageLazy = React.lazy(() => import("@/app/pages/SettingsPage/SettingsPage.tsx"));
 
-const LogoutPageLazy = React.lazy(() => import("@/app/pages/LogoutPage/LogoutPage.tsx"));
-
 const Loading = <div>loading</div>;
+
+const HomePage = () => {
+	return (
+		<Suspense fallback={Loading}>
+			<HomePageLazy />
+		</Suspense>
+	);
+};
 
 const ProfilePage = () => {
 	return (
@@ -80,18 +87,10 @@ const TestPage = () => {
 	);
 };
 
-const LogoutPage = () => {
-	return (
-		<Suspense fallback={Loading}>
-			<LogoutPageLazy />
-		</Suspense>
-	);
-};
-
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<GlobalLayout />}>
-			<Route path="/" element={<ProfilePage />} />
+			<Route path="/" element={<HomePage />} />
 			<Route path="/search" element={<SearchPage />} />
 			<Route path="/animes/" element={<AnimesPage />} />
 			<Route path="/animes/:animeId" element={<AnimePage />} />
@@ -99,7 +98,7 @@ export const router = createBrowserRouter(
 			<Route path="/test" element={<TestPage />} />
 			<Route path="/settings" element={<SettingsPage />} />
 			<Route path="/login" element={<LoginPage />} />
-			<Route path="/logout" element={<LogoutPage />} />
+			<Route path="/profile" element={<ProfilePage />} />
 			<Route path="*" element={<NotFoundPage />} />
 		</Route>,
 	),
