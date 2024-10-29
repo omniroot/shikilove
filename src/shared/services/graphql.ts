@@ -12,13 +12,10 @@ export const _graphql = axios.create({
 });
 
 interface IVariables {
-	[key: string]: string | number;
+	[key: string]: string | number | undefined;
 }
 
-export const graphql = async <T>(
-	query: string,
-	variables?: IVariables,
-): Promise<T> => {
+export const graphql = async <T>(query: string, variables?: IVariables): Promise<T> => {
 	try {
 		const response = await _graphql.post<{ data: T }>("", {
 			query: query,

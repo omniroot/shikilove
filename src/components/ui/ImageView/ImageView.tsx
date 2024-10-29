@@ -9,11 +9,13 @@ interface IImageViewProps {
 	src?: string;
 	full?: string;
 	allowFullscreen?: boolean;
+	loading?: "lazy" | "eager";
 	alt?: string;
 }
 export const ImageView: FC<IImageViewProps> = ({
 	className,
 	alt = "alt text",
+	loading = "lazy",
 	src,
 	allowFullscreen = false,
 	full,
@@ -40,7 +42,7 @@ export const ImageView: FC<IImageViewProps> = ({
 
 	return (
 		<>
-			<img src={src} alt={alt} className={_class} onClick={onImageClick} />
+			<img src={src} alt={alt} className={_class} onClick={onImageClick} loading={loading} />
 			{allowFullscreen === true &&
 				isModal === true &&
 				createPortal(

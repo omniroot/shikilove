@@ -1,4 +1,4 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { useAnime } from "@/shared/hooks/useAnime";
 import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect.tsx";
 import {
 	AnimeStatusSelect,
@@ -7,7 +7,6 @@ import {
 } from "@features/AnimeStatusSelect/AnimeStatusSelect.tsx";
 import { useParams } from "react-router-dom";
 import styles from "./AnimeStatus.module.scss";
-import { useChangeAnimeUserRate } from "@/shared/hooks/useChangeAnimeUserRate.tsx";
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import {
 	DroppedIcon,
@@ -16,8 +15,9 @@ import {
 	WatchedIcon,
 	WatchingIcon,
 } from "@/shared/icons/index.tsx";
-import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates.tsx";
+import { useUserRate } from "@/shared/hooks/useUserRate";
 import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
+import { Button } from "@ui/Button/Button.tsx";
 
 const addToElements = [
 	{
@@ -54,11 +54,9 @@ const addToElements = [
 
 export const AnimeStatus = () => {
 	const { animeId } = useParams();
-	const { anime, refetchAnime } = useFetchAnimeById(animeId || "1");
-	const { addToUserRate, refetchUserRates } = useFetchUserRates();
+	const { anime } = useAnime(animeId || "1");
+	const { addUserRate, updateUserRate, deleteUserRate } = useUserRate();
 
-	const { changeAnimeUserStatus, changeAnimeUserEpisodes } =
-		useChangeAnimeUserRate();
 	const selectedStatus =
 		animeStatusSelectOptions.find((option) => {
 			if (anime?.userRate !== null) {
@@ -71,25 +69,28 @@ export const AnimeStatus = () => {
 
 	const onAnimeUserStatusSelected = (item: IAnimeStatusSelectOption) => {
 		if (anime?.userRate && item) {
-			changeAnimeUserStatus(anime.userRate.id, item.value);
-			refetchAnime();
-			refetchUserRates();
+			updateUserRate({ userRateId: anime.userRate.id, status: item.value });
 		}
 	};
 
 	const onAnimeUserEpisodeSelected = (episode: number) => {
 		if (anime?.userRate && episode) {
-			changeAnimeUserEpisodes(anime.userRate.id, episode);
-			refetchAnime();
-			refetchUserRates();
+			updateUserRate({ userRateId: anime.userRate.id, episodes: episode });
 		}
 	};
 
-	const onAddToSelectChanged = (id: string) => {
-		if (addToUserRate && animeId && id) {
-			addToUserRate(animeId, id as IUserRateAnimeStatus);
-			refetchAnime();
-			refetchUserRates();
+	const onAddToSelectChanged = (selectedId: string) => {
+		if (animeId && selectedId) {
+			addUserRate({
+				animeId: animeId,
+				status: selectedId as IUserRateAnimeStatus,
+			});
+		}
+	};
+
+	const onDeleteButtonClick = () => {
+		if (anime?.userRate) {
+			deleteUserRate({ userRateId: anime.userRate.id });
 		}
 	};
 
@@ -110,9 +111,7 @@ export const AnimeStatus = () => {
 			) : (
 				<div className={styles.user_selects}>
 					<AnimeEpisodeSelect
-						eipsodesCount={
-							anime.episodes > 0 ? anime.episodes : anime.episodesAired
-						}
+						eipsodesCount={anime.episodes > 0 ? anime.episodes : anime.episodesAired}
 						defaultValue={{
 							label: selectedEpisode,
 							value: selectedEpisode,
@@ -123,6 +122,7 @@ export const AnimeStatus = () => {
 						defaultValue={selectedStatus}
 						onOptionSelected={onAnimeUserStatusSelected}
 					/>
+					<Button onClick={onDeleteButtonClick}>Delete</Button>
 				</div>
 			)}
 		</div>

@@ -33,6 +33,22 @@
 		}
 	}
 
+	.profile {
+		width: 70px;
+		height: 45px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+
+		.profile_image {
+			width: 40px;
+			height: 40px;
+			border-radius: $radius;
+			background-color: transparent;
+		}
+	}
+
 	.active {
 		width: 100px;
 		background-color: $color-ternary;

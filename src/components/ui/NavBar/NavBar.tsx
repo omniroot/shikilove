@@ -2,6 +2,8 @@ import type { FC, ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 import clsx from "clsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
+import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
 
 interface IPage {
 	name: string;
@@ -14,6 +16,7 @@ interface INavBarProps {
 
 export const NavBar: FC<INavBarProps> = ({ pages }) => {
 	const currentPage = useLocation().pathname;
+	const { currentUser } = useAuthorization();
 
 	const isCurrentPage = (page: IPage) => {
 		// console.log(currentLink, page.path);
@@ -31,15 +34,25 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 	return (
 		<div className={styles.navbar}>
 			{pages.map((page) => {
-				if (isCurrentPage(page)) {
+				if (page.path === "/profile") {
 					return (
-						<Link className={clsx(styles.navitem, styles.active)} to={page.path} key={page.name}>
-							{page.icon}
+						<Link
+							className={clsx(styles.navitem, styles.profile, {
+								[styles.active]: isCurrentPage(page),
+							})}
+							to={page.path}
+							key={page.name}
+						>
+							<ImageView src={currentUser?.avatarUrl} className={styles.profile_image} />
 						</Link>
 					);
 				}
 				return (
-					<Link className={styles.navitem} to={page.path} key={page.name}>
+					<Link
+						className={clsx(styles.navitem, { [styles.active]: isCurrentPage(page) })}
+						to={page.path}
+						key={page.name}
+					>
 						{page.icon}
 					</Link>
 				);

@@ -1,4 +1,4 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
+import { useAnime } from "@/shared/hooks/useAnime";
 import { AnimeInfo } from "@features/AnimeInfo/AnimeInfo.tsx";
 import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection.tsx";
 import { AnimeScreenshots } from "@features/AnimeScreenshots/AnimeScreenshots.tsx";
@@ -10,7 +10,7 @@ import { useChangeTitle } from "@/shared/hooks/useChangeTitle.tsx";
 export const AnimePage = () => {
 	const { animeId } = useParams();
 	const { changeTitle } = useChangeTitle();
-	const { anime } = useFetchAnimeById(animeId || "1");
+	const { anime } = useAnime(animeId || "1");
 
 	// console.log("@userRate ", anime?.userRate);
 	// console.log("@anime ", anime);

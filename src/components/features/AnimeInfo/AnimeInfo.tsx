@@ -1,9 +1,5 @@
-import { useFetchAnimeById } from "@/shared/hooks/useFetchAnimeById.tsx";
-import {
-	AnimeStatusIcon,
-	AnimeEpisodeIcon,
-	AnimeRateIcon,
-} from "@/shared/icons/index.tsx";
+import { useAnime } from "@/shared/hooks/useAnime";
+import { AnimeStatusIcon, AnimeEpisodeIcon, AnimeRateIcon } from "@/shared/icons/index.tsx";
 import { AnimeGenres } from "@features/AnimeGenres/AnimeGenres.tsx";
 import { AnimeInfoLine } from "@features/AnimeInfoLine/AnimeInfoLine.tsx";
 import { AnimeStatus } from "@features/AnimeStatus/AnimeStatus.tsx";
@@ -16,7 +12,7 @@ import styles from "./AnimeInfo.module.scss";
 export const AnimeInfo = () => {
 	const { animeId } = useParams();
 
-	const { anime } = useFetchAnimeById(animeId || "1");
+	const { anime } = useAnime(animeId || "1");
 
 	console.log("reredner animeinfo");
 
@@ -24,18 +20,18 @@ export const AnimeInfo = () => {
 
 	return (
 		<div className={styles.anime_info}>
-			<ImageView src={anime?.poster.mainUrl} className={styles.anime_image} />
+			<ImageView src={anime.poster.mainUrl} className={styles.anime_image} />
 			<div className={styles.anime_info_left}>
-				<span className={styles.name}>{anime?.name}</span>
+				<span className={styles.name}>{anime.name}</span>
 				<AnimeInfoLine>
-					<AnimeStatusIcon /> {anime?.status}
+					<AnimeStatusIcon /> {anime.status}
 				</AnimeInfoLine>
 				<AnimeInfoLine>
 					<AnimeEpisodeIcon />
 					{anime.episodes > 0 ? anime.episodes : anime.episodesAired} episodes
 				</AnimeInfoLine>
 				<AnimeInfoLine>
-					<AnimeRateIcon /> {anime?.score}
+					<AnimeRateIcon /> {anime.score}
 				</AnimeInfoLine>
 				<AnimeGenres />
 			</div>

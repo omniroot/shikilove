@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./AnimeUserRates.module.scss";
-import { useFetchUserRates } from "@/shared/hooks/useFetchUserRates.tsx";
+import { useUserRate } from "@/shared/hooks/useUserRate";
 import {
 	WatchingIcon,
 	PlannedIcon,
@@ -11,14 +11,9 @@ import {
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
+import { useSearchParams } from "react-router-dom";
 
-type IPages =
-	| "watching"
-	| "planned"
-	| "completed"
-	| "rewatching"
-	| "on_hold"
-	| "dropped";
+type IPages = "watching" | "planned" | "completed" | "rewatching" | "on_hold" | "dropped";
 
 const elements = [
 	{
@@ -53,13 +48,16 @@ const elements = [
 	},
 ];
 export const AnimeUserRates = () => {
-	const { userRates } = useFetchUserRates();
-	const [activeFilter, setActiveFilter] = useState<IPages>("watching");
+	const [searchParams, setSearchParams] = useSearchParams();
+	const status = searchParams.get("status") as IPages;
+	const { userRates } = useUserRate();
+	const [activeFilter, setActiveFilter] = useState<IPages>(status);
 
-	const onButtonGroupClick = (id: IPages) => {
+	const onButtonGroupClick = (nextFilter: IPages) => {
 		for (const element of elements) {
-			if (element.id === id) {
-				setActiveFilter(id);
+			if (element.id === nextFilter) {
+				setSearchParams({ status: nextFilter });
+				setActiveFilter(nextFilter);
 			}
 		}
 	};
@@ -68,7 +66,7 @@ export const AnimeUserRates = () => {
 			<ButtonGroup
 				className={styles.anime_filters}
 				elements={elements}
-				deafultActive="watching"
+				deafultActive={activeFilter}
 				onClick={(activeId) => {
 					onButtonGroupClick(activeId as IPages);
 				}}

@@ -21,6 +21,11 @@ body {
 	scrollbar-color: $color-primary $color-background;
 }
 
+::selection {
+	background-color: $color-primary;
+	color: $color-text;
+}
+
 #modal {
 	position: fixed;
 	top: 0;

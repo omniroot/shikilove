@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { FC } from "react";
 import { IPage, PAGES } from "@/shared/consts/pages.tsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
+import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
 
 const isCurrentPage = (currentPage: string, page: IPage) => {
 	const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
@@ -19,6 +21,7 @@ interface IBottomNavigationProps {
 }
 export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	const currentPage = useLocation().pathname;
+	const { currentUser } = useAuthorization();
 	const pages = PAGES.bottomNavigation;
 
 	if (currentPage === "/login/") {
@@ -30,6 +33,19 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	return (
 		<div className={_class}>
 			{pages.map((page) => {
+				if (page.path === "/profile") {
+					return (
+						<Link
+							className={clsx(styles.navitem, styles.profile, {
+								[styles.active]: isCurrentPage(currentPage, page),
+							})}
+							to={page.path}
+							key={page.name}
+						>
+							<ImageView src={currentUser?.avatarUrl} className={styles.profile_image} />
+						</Link>
+					);
+				}
 				return (
 					<Link
 						className={clsx(styles.navitem, {
