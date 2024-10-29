@@ -1,11 +1,12 @@
 // Site Page Icons
+import HomeIcon from "./svg/home-icon.svg?react";
 import ProfileIcon from "./svg/profile-icon.svg?react";
 import AnimeIcon from "./svg/anime-page-icon.svg?react";
 import SearchIcon from "./svg/search-icon.svg?react";
 import SettingsIcon from "./svg/settings-icon.svg?react";
 import LogoutIcon from "./svg/logout-icon.svg?react";
 
-export { ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, LogoutIcon };
+export { HomeIcon, ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, LogoutIcon };
 
 // Anime User Rate Filter Icons
 import WatchingIcon from "./svg/watching-icon.svg?react";

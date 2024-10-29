@@ -2,10 +2,11 @@ import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import styles from "./UserInfoCard.module.scss";
 import dayjs from "dayjs";
 import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
-import { getVersion } from "@/shared/utils/getVersion.ts";
+import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
 
 export const UserInfoCard = () => {
 	const { currentUser } = useAuthorization();
+	const { packageVersion } = usePackageInfo();
 
 	if (!currentUser) return <div>User info loading...</div>;
 	const _lastOnline = dayjs(currentUser.lastOnlineAt).fromNow();
@@ -28,7 +29,7 @@ export const UserInfoCard = () => {
 					<span className={styles.about}></span>
 				</div>
 				<span className={styles.dev_mode}>
-					{import.meta.env.MODE} mode | version {getVersion()}
+					{import.meta.env.MODE} mode | version {packageVersion}
 				</span>
 			</div>
 		</div>
