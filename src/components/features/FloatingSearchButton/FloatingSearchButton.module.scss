@@ -1,0 +1,23 @@
+.floating_search_button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background-color: $color-ternary;
+	display: flex;
+	cursor: pointer;
+	transition: all 200ms;
+	border: $border-transparent;
+
+	&:hover {
+		color: $color-primary;
+		// border: $border-active;
+		box-shadow: 0 0 20px 4px hexOpacity($color-primary, 0.2);
+		transform: scale(1.1);
+	}
+}

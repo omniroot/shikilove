@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { Outlet } from "react-router-dom";
 import styles from "./GlobalLayout.module.scss";
+import { FloatingSearchButton } from "@features/FloatingSearchButton/FloatingSearchButton.tsx";
 import { FloatingSearchBar } from "@features/FloatingSearchBar/FloatingSearchBar.tsx";
 
 export const GlobalLayout = () => {
@@ -26,6 +27,7 @@ export const GlobalLayout = () => {
 	return (
 		<div className={styles.global_layout}>
 			{(isTablet || isDesktop) && <Sidebar />}
+			<FloatingSearchButton />
 			<FloatingSearchBar />
 			<main className={styles.main}>
 				<Outlet />
