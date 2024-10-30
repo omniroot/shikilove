@@ -25,10 +25,10 @@ import AnimeAchievementIcon from "./svg/anime-achievement-icon.svg?react";
 
 export { AnimeStatusIcon, AnimeEpisodeIcon, AnimeRateIcon, AnimeAchievementIcon };
 
-import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
-
 import FilterIcon from "./svg/filter-icon.svg?react";
+import PlusIcon from "./svg/plus-icon.svg?react";
 
-export { FilterIcon };
+export { FilterIcon, PlusIcon };
 
+import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
 export { ShikimoriIcon };
