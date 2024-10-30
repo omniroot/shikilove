@@ -16,12 +16,36 @@
 	}
 	.right {
 		display: flex;
+		gap: $gap;
+		padding: $padding;
+
+		.settings_button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 45px;
+			height: fit-content;
+			color: $color-text;
+			border: $border;
+			background-color: $color-ternary;
+			padding: $padding;
+			border-radius: $radius;
+
+			&:hover {
+				background-color: $color-secondary;
+			}
+		}
 
 		.search_button {
-			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 45px;
+			height: fit-content;
 			color: $color-text;
 			background-color: $color-ternary;
 			border: $border;
+			border-radius: $radius;
 
 			&:hover {
 				background-color: $color-secondary;
