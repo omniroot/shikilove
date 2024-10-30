@@ -10,6 +10,7 @@ import { Outlet } from "react-router-dom";
 import styles from "./GlobalLayout.module.scss";
 import { FloatingSearchButton } from "@features/FloatingSearchButton/FloatingSearchButton.tsx";
 import { FloatingSearchBar } from "@features/FloatingSearchBar/FloatingSearchBar.tsx";
+import { Header } from "@widgets/Header/Header.tsx";
 
 export const GlobalLayout = () => {
 	const { currentUser, currentUserError, isCurrentUserLoading } = useAuthorization();
@@ -27,7 +28,8 @@ export const GlobalLayout = () => {
 	return (
 		<div className={styles.global_layout}>
 			{(isTablet || isDesktop) && <Sidebar />}
-			<FloatingSearchButton />
+			{(isTablet || isDesktop) && <FloatingSearchButton />}
+			{isMobile && <Header />}
 			<FloatingSearchBar />
 			<main className={styles.main}>
 				<Outlet />

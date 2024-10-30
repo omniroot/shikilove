@@ -1,0 +1,31 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 70px;
+	border: $border;
+	border-radius: $radius;
+	padding: $padding;
+	gap: $gap;
+
+	.left {
+		display: flex;
+		.logo {
+			font-weight: bold;
+		}
+	}
+	.right {
+		display: flex;
+
+		.search_button {
+			height: 100%;
+			color: $color-text;
+			background-color: $color-ternary;
+			border: $border;
+
+			&:hover {
+				background-color: $color-secondary;
+			}
+		}
+	}
+}

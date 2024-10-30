@@ -20,6 +20,7 @@
 	.global_layout {
 		flex-direction: column;
 		padding: $padding-1;
+		gap: $gap;
 	}
 
 	.main {
