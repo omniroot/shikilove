@@ -32,7 +32,7 @@ const client = new QueryClient({
 			refetchInterval: 360000,
 			refetchOnWindowFocus: false,
 			retryDelay: 1000,
-			retry: 1, // TODO its temporaty fix, after adding intereeceptor in api, chage it to 2-3
+			retry: 1, // TODO its temporary fix, after adding intereeceptor in api, chage it to 2-3
 		},
 	},
 });
@@ -42,5 +42,6 @@ createRoot(document.getElementById("root")!).render(
 		<QueryClientProvider client={client}>
 			<RouterProvider router={router} />
 		</QueryClientProvider>
+		,
 	</StrictMode>,
 );
