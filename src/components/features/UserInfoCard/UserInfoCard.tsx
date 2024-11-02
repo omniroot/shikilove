@@ -3,13 +3,38 @@ import styles from "./UserInfoCard.module.scss";
 import dayjs from "dayjs";
 import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
+import { UserRatesChart } from "@features/UserRatesChart/UserRatesChart.tsx";
+
+type IGetUserRateChartData =
+	| { id: number; grouped_id: string; name: string; size: number; type: string }[]
+	| undefined;
+
+const getUserRateChartData = (datas: IGetUserRateChartData): [string[], number[]] => {
+	const _labels: string[] = [];
+	const _datas: number[] = [];
+
+	if (datas) {
+		datas.map((item) => {
+			if (item.size > 0) {
+				_labels.push(item.name);
+				_datas.push(item.size);
+			}
+		});
+	}
+	return [_labels, _datas];
+};
 
 export const UserInfoCard = () => {
-	const { currentUser } = useAuthorization();
+	const { fullCurrentUser, currentUser } = useAuthorization();
 	const { packageVersion } = usePackageInfo();
+	const [userRateLabels, userRateData] = getUserRateChartData(
+		fullCurrentUser?.stats.full_statuses.anime,
+	);
 
 	if (!currentUser) return <div>User info loading...</div>;
 	const _lastOnline = dayjs(currentUser.lastOnlineAt).fromNow();
+
+	console.log(userRateLabels, userRateData);
 
 	return (
 		<div className={styles.user_info_card}>
@@ -19,7 +44,6 @@ export const UserInfoCard = () => {
 				full={currentUser.avatarUrl}
 				allowFullscreen
 			/>
-			{/* <Divide orientation="vertical" width="170px" /> */}
 			<div className={styles.info}>
 				<div className={styles.first_line}>
 					<span className={styles.nickname}>{currentUser.nickname}</span>
@@ -31,6 +55,11 @@ export const UserInfoCard = () => {
 				<span className={styles.dev_mode}>
 					{import.meta.env.MODE} mode | version {packageVersion}
 				</span>
+			</div>
+			<div>
+				{fullCurrentUser?.stats.full_statuses.anime && (
+					<UserRatesChart labels={userRateLabels} data={userRateData} />
+				)}
 			</div>
 		</div>
 	);
