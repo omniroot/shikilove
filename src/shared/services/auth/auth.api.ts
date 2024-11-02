@@ -1,6 +1,7 @@
 import { CONSTS } from "@/shared/consts/consts.ts";
+import { api } from "@/shared/services/api.ts";
 import { GET_CURRENT_USER } from "@/shared/services/auth/auth.graphql.ts";
-import { IAuthResponse } from "@/shared/services/auth/auth.interface.ts";
+import { IAuthResponse, IFullCurrentUser } from "@/shared/services/auth/auth.interface.ts";
 import { graphql } from "@/shared/services/graphql.ts";
 import { saveTokens } from "@/shared/utils/saveTokens.ts";
 import axios from "axios";
@@ -39,6 +40,14 @@ export const authApi = {
 				console.log("Refresh token not found, redirecting to login...");
 				throw error;
 			}
+		}
+	},
+	getFullCurrentUser: async () => {
+		try {
+			const response = await api.get<IFullCurrentUser>(`users/${localStorage.getItem("user_id")}`);
+			return response.data;
+		} catch (error) {
+			if (error) throw error;
 		}
 	},
 	fetchTokens: async (authorizationCode: string) => {
