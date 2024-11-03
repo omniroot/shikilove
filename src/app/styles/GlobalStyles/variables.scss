@@ -6,6 +6,11 @@ $color-text: #f2f4f3;
 $color-subtext: #afafaf;
 $color-text-alt: #131111;
 
+$color-primary: #b4befe;
+$color-ternary: #2b2332;
+$color-secondary: #3a2d47;
+$color-background: #241e2a;
+
 $color-shikimori: #cdd2d0;
 $color-shikimori-hover: #1a4646;
 $color-animego: #c33d37;
@@ -24,9 +29,11 @@ $text-size-h6: 0.875rem;
 
 $border-none: none;
 $border-transparent: 0.2rem solid transparent;
-$border-default: 0.2rem solid $color-secondary;
-$border-active: 0.2rem solid $color-primary;
-$border: $border-default;
+$border-ternary: 0.2rem solid $color-ternary;
+$border-secondary: 0.2rem solid $color-secondary;
+$border-primary: 0.2rem solid $color-primary;
+$border-active: $border-primary;
+$border: $border-ternary;
 
 $margin-1: 0.5rem;
 $margin-2: 1rem;

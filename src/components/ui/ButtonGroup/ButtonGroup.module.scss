@@ -24,6 +24,7 @@
 	}
 
 	.active {
-		border: $border-active;
+		border: $border-secondary;
+		background-color: $color-ternary;
 	}
 }

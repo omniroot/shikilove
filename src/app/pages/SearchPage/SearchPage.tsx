@@ -7,27 +7,26 @@ import { useState, useEffect } from "react";
 import styles from "./SearchPage.module.scss";
 
 export const SearchPage = () => {
-	const { setRightSidebarContent, toggleRightSidebar } = useGlobalStore(
-		(state) => state,
-	);
+	const { setRightSidebarContent, toggleRightSidebar } = useGlobalStore((state) => state);
 	const [searchValue, setSearchValue] = useState("");
-	const { searchAnime, animes } = useSearchAnime();
+	const { refetchSearchAnimes, searchAnimes, setSearchAnimesQuery } = useSearchAnime();
 
 	const rightSideBar = <div>sidebar</div>;
 
 	const onSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(event.target.value);
+		setSearchAnimesQuery(event.target.value);
 	};
 
 	const onSearchFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		searchAnime?.(searchValue);
+		refetchSearchAnimes?.();
 	};
 
 	const onSearchButtonClick = () => {
-		searchAnime?.(searchValue);
+		refetchSearchAnimes?.();
 	};
-	console.log("@", animes);
+	console.log("@", searchAnimes);
 
 	useEffect(() => {
 		setRightSidebarContent(rightSideBar);
@@ -44,30 +43,23 @@ export const SearchPage = () => {
 						type="text"
 						className={styles.search_input}
 						placeholder="Name:"
+						value={searchValue}
 						onChange={onSearchInputChange}
 					/>
 				</div>
 				<div className={styles.right}>
-					<button
-						type="button"
-						onClick={toggleRightSidebar}
-						className={styles.filter_button}
-					>
+					<button type="button" onClick={toggleRightSidebar} className={styles.filter_button}>
 						<FilterIcon width={24} height={24} />
 						filters
 					</button>
-					<button
-						type="button"
-						onClick={onSearchButtonClick}
-						className={styles.search_button}
-					>
+					<button type="button" onClick={onSearchButtonClick} className={styles.search_button}>
 						<SearchIcon width={24} height={24} />
 					</button>
 				</div>
 			</form>
 			<AnimeList>
-				{!!animes &&
-					animes.map((anime) => {
+				{!!searchAnimes &&
+					searchAnimes.map((anime) => {
 						return (
 							<AnimeCard
 								key={anime.id}

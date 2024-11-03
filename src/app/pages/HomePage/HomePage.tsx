@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 
 export const HomePage = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
+
 	const status = searchParams.get("status");
 
 	useLayoutEffect(() => {

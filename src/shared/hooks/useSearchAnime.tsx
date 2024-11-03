@@ -21,41 +21,46 @@ const GET_SEARCH_ANIME = `
 	}
 `;
 
+interface IAnime {
+	id: string;
+	name: string;
+	poster: {
+		main2xUrl: string;
+	};
+	userRate: {
+		status: string;
+		score: number;
+		text: string | null;
+		chapters: number;
+		episodes: number;
+	} | null;
+}
+
 interface IResponse {
-	animes: {
-		id: string;
-		name: string;
-		poster: {
-			main2xUrl: string;
-		};
-		userRate: {
-			status: string;
-			score: number;
-			text: string | null;
-			chapters: number;
-			episodes: number;
-		} | null;
-	}[];
+	animes: IAnime[];
 }
 
 export const useSearchAnime = () => {
-	const [name, setName] = useState("naruto");
-	const { isLoading, data, error } = useQuery<IResponse>({
-		queryKey: ["searchAnime", name],
-		queryFn: () => graphql<IResponse>(GET_SEARCH_ANIME, { name }),
+	const [searchAnimesQuery, setSearchAnimesQuery] = useState("");
+	const {
+		refetch: refetchSearchAnimes,
+		isLoading: searchAnimesIsLoading,
+		data: searchAnimes,
+		error: searchAnimesError,
+	} = useQuery<IAnime[]>({
+		queryKey: ["searchAnime"],
+		enabled: false,
+		queryFn: async () => {
+			const { animes } = await graphql<IResponse>(GET_SEARCH_ANIME, { name: searchAnimesQuery });
+			return animes;
+		},
 	});
 
-	if (isLoading) {
-		return { isLoading, error: error };
-	}
-	if (error) {
-		return { isLoading, error: error };
-	}
-
-	if (!data) return { isLoading, error: error };
-	const searchAnime = (name = "naruto") => {
-		setName(name);
+	return {
+		refetchSearchAnimes,
+		searchAnimesIsLoading,
+		searchAnimes,
+		searchAnimesError,
+		setSearchAnimesQuery,
 	};
-
-	return { searchAnime, isLoading, error: error, animes: data.animes };
 };

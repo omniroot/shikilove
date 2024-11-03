@@ -1,0 +1,131 @@
+{
+	"id": 1026254,
+	"nickname": "omniroot",
+	"avatar": "https://desu.shikimori.one/system/users/x48/1026254.png?1726435794",
+	"image": {
+		"x160": "https://desu.shikimori.one/system/users/x160/1026254.png?1726435794",
+		"x148": "https://desu.shikimori.one/system/users/x148/1026254.png?1726435794",
+		"x80": "https://desu.shikimori.one/system/users/x80/1026254.png?1726435794",
+		"x64": "https://desu.shikimori.one/system/users/x64/1026254.png?1726435794",
+		"x48": "https://desu.shikimori.one/system/users/x48/1026254.png?1726435794",
+		"x32": "https://desu.shikimori.one/system/users/x32/1026254.png?1726435794",
+		"x16": "https://desu.shikimori.one/system/users/x16/1026254.png?1726435794"
+	},
+	"last_online_at": "2024-10-31T00:08:27.000+03:00",
+	"url": "https://shikimori.one/omniroot",
+	"name": null,
+	"sex": "male",
+	"full_years": 29,
+	"last_online": "сейчас на сайте",
+	"website": "",
+	"location": null,
+	"banned": false,
+	"about": "o sebe",
+	"about_html": "o sebe",
+	"common_info": [
+		"муж.",
+		"29 лет",
+		"на сайте с \u003cspan class='b-tooltipped dotted mobile unprocessed' data-direction='right' title='16 декабря 2021 г.'\u003e2021 г.\u003c/span\u003e"
+	],
+	"show_comments": true,
+	"in_friends": false,
+	"is_ignored": false,
+	"stats": {
+		"statuses": {
+			"anime": [
+				{ "id": 0, "grouped_id": "planned", "name": "planned", "size": 9, "type": "Anime" },
+				{
+					"id": 1,
+					"grouped_id": "watching,rewatching",
+					"name": "watching",
+					"size": 2,
+					"type": "Anime"
+				},
+				{ "id": 2, "grouped_id": "completed", "name": "completed", "size": 9, "type": "Anime" },
+				{ "id": 3, "grouped_id": "on_hold", "name": "on_hold", "size": 0, "type": "Anime" },
+				{ "id": 4, "grouped_id": "dropped", "name": "dropped", "size": 0, "type": "Anime" }
+			],
+			"manga": [
+				{ "id": 0, "grouped_id": "planned", "name": "planned", "size": 0, "type": "Manga" },
+				{
+					"id": 1,
+					"grouped_id": "watching,rewatching",
+					"name": "watching",
+					"size": 1,
+					"type": "Manga"
+				},
+				{ "id": 2, "grouped_id": "completed", "name": "completed", "size": 0, "type": "Manga" },
+				{ "id": 3, "grouped_id": "on_hold", "name": "on_hold", "size": 0, "type": "Manga" },
+				{ "id": 4, "grouped_id": "dropped", "name": "dropped", "size": 0, "type": "Manga" }
+			]
+		},
+		"full_statuses": {
+			"anime": [
+				{ "id": 0, "grouped_id": "planned", "name": "planned", "size": 9, "type": "Anime" },
+				{ "id": 1, "grouped_id": "watching", "name": "watching", "size": 2, "type": "Anime" },
+				{ "id": 9, "grouped_id": "rewatching", "name": "rewatching", "size": 0, "type": "Anime" },
+				{ "id": 2, "grouped_id": "completed", "name": "completed", "size": 9, "type": "Anime" },
+				{ "id": 3, "grouped_id": "on_hold", "name": "on_hold", "size": 0, "type": "Anime" },
+				{ "id": 4, "grouped_id": "dropped", "name": "dropped", "size": 0, "type": "Anime" }
+			],
+			"manga": [
+				{ "id": 0, "grouped_id": "planned", "name": "planned", "size": 0, "type": "Manga" },
+				{ "id": 1, "grouped_id": "watching", "name": "watching", "size": 1, "type": "Manga" },
+				{ "id": 9, "grouped_id": "rewatching", "name": "rewatching", "size": 0, "type": "Manga" },
+				{ "id": 2, "grouped_id": "completed", "name": "completed", "size": 0, "type": "Manga" },
+				{ "id": 3, "grouped_id": "on_hold", "name": "on_hold", "size": 0, "type": "Manga" },
+				{ "id": 4, "grouped_id": "dropped", "name": "dropped", "size": 0, "type": "Manga" }
+			]
+		},
+		"scores": { "anime": [{ "name": "10", "value": 3 }], "manga": [] },
+		"types": {
+			"anime": [
+				{ "name": "Сериал", "value": 10 },
+				{ "name": "OVA", "value": 1 }
+			],
+			"manga": [{ "name": "Додзинси", "value": 1 }]
+		},
+		"ratings": {
+			"anime": [
+				{ "name": "PG-13", "value": 6 },
+				{ "name": "R-17", "value": 3 },
+				{ "name": "R+", "value": 1 },
+				{ "name": "Rx", "value": 1 }
+			]
+		},
+		"has_anime?": true,
+		"has_manga?": true,
+		"genres": [],
+		"studios": [],
+		"publishers": [],
+		"activity": [
+			{ "name": [1639602000, 1643084583], "value": 1 },
+			{ "name": [1643084584, 1646567167], "value": 0 },
+			{ "name": [1646567168, 1650049751], "value": 0 },
+			{ "name": [1650049752, 1653532335], "value": 0 },
+			{ "name": [1653532336, 1657014919], "value": 0 },
+			{ "name": [1657014920, 1660497503], "value": 0 },
+			{ "name": [1660497504, 1663980087], "value": 0 },
+			{ "name": [1663980088, 1667462671], "value": 0 },
+			{ "name": [1667462672, 1670945255], "value": 0 },
+			{ "name": [1670945256, 1674427839], "value": 0 },
+			{ "name": [1674427840, 1677910423], "value": 0 },
+			{ "name": [1677910424, 1681393007], "value": 0 },
+			{ "name": [1681393008, 1684875591], "value": 0 },
+			{ "name": [1684875592, 1688358175], "value": 0 },
+			{ "name": [1688358176, 1691840759], "value": 0 },
+			{ "name": [1691840760, 1695323343], "value": 0 },
+			{ "name": [1695323344, 1698805927], "value": 0 },
+			{ "name": [1698805928, 1702288511], "value": 0 },
+			{ "name": [1702288512, 1705771095], "value": 0 },
+			{ "name": [1705771096, 1709253679], "value": 1 },
+			{ "name": [1709253680, 1712736263], "value": 0 },
+			{ "name": [1712736264, 1716218847], "value": 0 },
+			{ "name": [1716218848, 1719701431], "value": 0 },
+			{ "name": [1719701432, 1723184015], "value": 0 },
+			{ "name": [1723184016, 1726666599], "value": 5 },
+			{ "name": [1726666600, 1730149183], "value": 136 }
+		]
+	},
+	"style_id": 967604
+}

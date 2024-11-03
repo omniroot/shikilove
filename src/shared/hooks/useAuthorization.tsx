@@ -7,13 +7,26 @@ export const useAuthorization = () => {
 		data: currentUser,
 		error: currentUserError,
 	} = useQuery({
-		queryKey: ["auth"],
+		queryKey: ["currentUser"],
 		queryFn: () => authApi.getCurrentUser(),
+	});
+
+	const {
+		isLoading: isFullCurrentUserLoading,
+		data: fullCurrentUser,
+		error: fullCurrentUserError,
+	} = useQuery({
+		queryKey: ["fullCurrentUser"],
+		queryFn: () => authApi.getFullCurrentUser(),
 	});
 
 	return {
 		isCurrentUserLoading,
 		currentUser,
 		currentUserError,
+
+		isFullCurrentUserLoading,
+		fullCurrentUser,
+		fullCurrentUserError,
 	};
 };
