@@ -9,13 +9,7 @@ import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 export const FloatingSearchBar = () => {
 	const { isFloatingSearchBarOpened, toggleFloatingSearchBar } = useFloatingSearchBar();
 	const [searchValue, setSearchValue] = useState("");
-	const {
-		refetchSearchAnimes,
-		searchAnimes,
-		searchAnimesIsLoading,
-		searchAnimesError,
-		setSearchAnimesQuery,
-	} = useSearchAnime();
+	const { refetchSearchAnimes, searchAnimes, setSearchAnimesQuery } = useSearchAnime();
 
 	const onSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(event.target.value);
