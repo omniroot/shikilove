@@ -1,9 +1,9 @@
 import { useAnime } from "@/shared/hooks/useAnime";
 import { AnimeStatusIcon, AnimeEpisodeIcon, AnimeRateIcon } from "@/shared/icons/index.tsx";
-import { AnimeGenres } from "@features/AnimeGenres/AnimeGenres.tsx";
+import { AnimeGenres } from "@/app/pages/AnimePage/AnimeGenres/AnimeGenres";
 import { AnimeInfoLine } from "@features/AnimeInfoLine/AnimeInfoLine.tsx";
-import { AnimeStatus } from "@features/AnimeStatus/AnimeStatus.tsx";
-import { AnimeWatch } from "@features/AnimeWatch/AnimeWatch.tsx";
+import { AnimeStatus } from "@/app/pages/AnimePage/AnimeStatus/AnimeStatus";
+import { AnimeWatch } from "@/app/pages/AnimePage/AnimeWatch/AnimeWatch";
 import { Divider } from "@ui/Divider/Divider.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { useParams } from "react-router-dom";

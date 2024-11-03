@@ -1,10 +1,10 @@
 import { useAnime } from "@/shared/hooks/useAnime";
-import { AnimeEpisodeSelect } from "@features/AnimeEpisodeSelect/AnimeEpisodeSelect.tsx";
+import { AnimeEpisodeSelect } from "@/app/pages/AnimePage/AnimeEpisodeSelect/AnimeEpisodeSelect";
 import {
 	AnimeStatusSelect,
 	animeStatusSelectOptions,
 	IAnimeStatusSelectOption,
-} from "@features/AnimeStatusSelect/AnimeStatusSelect.tsx";
+} from "@/app/pages/AnimePage/AnimeStatusSelect/AnimeStatusSelect";
 import { useParams } from "react-router-dom";
 import styles from "./AnimeStatus.module.scss";
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";

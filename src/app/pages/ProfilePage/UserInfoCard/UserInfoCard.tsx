@@ -3,7 +3,7 @@ import styles from "./UserInfoCard.module.scss";
 import dayjs from "dayjs";
 import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
-import { UserRatesChart } from "@features/UserRatesChart/UserRatesChart.tsx";
+import { UserRatesChart } from "@/app/pages/ProfilePage/UserRatesChart/UserRatesChart";
 
 type IGetUserRateChartData =
 	| { id: number; grouped_id: string; name: string; size: number; type: string }[]

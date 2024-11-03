@@ -1,11 +1,11 @@
-import { UserInfoCard } from "@features/UserInfoCard/UserInfoCard.tsx";
 import styles from "./ProfilePage.module.scss";
-import { AnimeUserRates } from "@features/AnimeUserRates/AnimeUserRates.tsx";
+import { AnimeUserRates } from "@/app/pages/ProfilePage/AnimeUserRates/AnimeUserRates";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection.tsx";
 import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
-import { UserActivityChart } from "@features/UserActivityChart/UserActivityChart.tsx";
+import { UserActivityChart } from "@/app/pages/ProfilePage/UserActivityChart/UserActivityChart";
+import { UserInfoCard } from "@/app/pages/ProfilePage/UserInfoCard/UserInfoCard.tsx";
 
 interface IGetUserActivityChartData {
 	name: number[];

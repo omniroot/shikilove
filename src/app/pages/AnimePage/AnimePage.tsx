@@ -1,8 +1,8 @@
 import { useAnime } from "@/shared/hooks/useAnime";
-import { AnimeInfo } from "@features/AnimeInfo/AnimeInfo.tsx";
+import { AnimeInfo } from "@/app/pages/AnimePage/AnimeInfo/AnimeInfo";
 import { AnimeInfoSection } from "@features/AnimeInfoSection/AnimeInfoSection.tsx";
-import { AnimeScreenshots } from "@features/AnimeScreenshots/AnimeScreenshots.tsx";
-import { AnimeSimilarList } from "@features/AnimeSimilarList/AnimeSimilarList.tsx";
+import { AnimeScreenshots } from "@/app/pages/AnimePage/AnimeScreenshots/AnimeScreenshots";
+import { AnimeSimilarList } from "@/app/pages/AnimePage/AnimeSimilarList/AnimeSimilarList";
 import { useParams } from "react-router-dom";
 import styles from "./AnimePage.module.scss";
 import { useChangeTitle } from "@/shared/hooks/useChangeTitle.tsx";
