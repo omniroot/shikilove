@@ -1,4 +1,4 @@
-// Site Page Icons
+// Pages Icons
 import HomeIcon from "./svg/home-icon.svg?react";
 import ProfileIcon from "./svg/profile-icon.svg?react";
 import AnimeIcon from "./svg/anime-page-icon.svg?react";
@@ -25,10 +25,13 @@ import AnimeAchievementIcon from "./svg/anime-achievement-icon.svg?react";
 
 export { AnimeStatusIcon, AnimeEpisodeIcon, AnimeRateIcon, AnimeAchievementIcon };
 
+// Other icons
 import FilterIcon from "./svg/filter-icon.svg?react";
 import PlusIcon from "./svg/plus-icon.svg?react";
+import RightArrowIcon from "./svg/right-arrow-icon.svg?react";
+import TrashIcon from "./svg/trash-icon.svg?react";
 
-export { FilterIcon, PlusIcon };
+export { FilterIcon, PlusIcon, RightArrowIcon, TrashIcon };
 
 import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
 export { ShikimoriIcon };
