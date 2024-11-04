@@ -30,8 +30,9 @@ import FilterIcon from "./svg/filter-icon.svg?react";
 import PlusIcon from "./svg/plus-icon.svg?react";
 import RightArrowIcon from "./svg/right-arrow-icon.svg?react";
 import TrashIcon from "./svg/trash-icon.svg?react";
+import StarIcon from "./svg/star-icon.svg?react";
 
-export { FilterIcon, PlusIcon, RightArrowIcon, TrashIcon };
+export { FilterIcon, PlusIcon, RightArrowIcon, TrashIcon, StarIcon };
 
 import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
 export { ShikimoriIcon };
