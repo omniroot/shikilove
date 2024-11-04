@@ -74,17 +74,7 @@ export const AnimeUserRates = () => {
 			<AnimeList>
 				{userRates?.map((rate) => {
 					if (rate.status === activeFilter) {
-						return (
-							<AnimeCard
-								variant="vertical"
-								key={rate.anime.id}
-								id={rate.anime.id}
-								image={rate.anime.poster.main2xUrl}
-								title={rate.anime.name}
-								userStatus={rate.status}
-								userEpisodes={rate.episodes}
-							/>
-						);
+						return <AnimeCard variant="vertical" userRateAnime={rate} key={rate.id} />;
 					}
 				})}
 			</AnimeList>

@@ -10,6 +10,16 @@ export const GET_USER_RATES = `
 			anime {
 				id
 				name
+        episodes
+        episodesAired
+				score
+				kind
+				releasedOn {
+        	year
+      	}
+				airedOn {
+					year
+				}
 				poster {
 					main2xUrl
 				}

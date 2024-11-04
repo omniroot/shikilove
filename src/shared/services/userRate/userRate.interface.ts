@@ -5,6 +5,16 @@ export interface IUserRate {
 	anime: {
 		id: string;
 		name: string;
+		episodes: number;
+		episodesAired: number;
+		score: number;
+		kind: string;
+		releasedOn: {
+			year: number;
+		};
+		airedOn: {
+			year: number;
+		};
 		poster: {
 			main2xUrl: string;
 		};
