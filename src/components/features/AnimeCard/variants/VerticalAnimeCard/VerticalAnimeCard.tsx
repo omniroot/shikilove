@@ -3,23 +3,15 @@ import styles from "./VerticalAnimeCard.module.scss";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Link } from "react-router-dom";
 import { PlusIcon, RightArrowIcon, TrashIcon, WatchingIcon } from "@/shared/icons/index.tsx";
-import { AnimatePresence, motion, PresenceContext } from "framer-motion";
+import { motion } from "framer-motion";
+import { IUserRate } from "@/shared/services/userRate/userRate.interface.ts";
+import { title } from "process";
 
 interface IVerticalAnimeCardProps {
-	id?: string;
-	title?: string;
-	image?: string;
-	userStatus?: string | null;
-	userEpisodes?: number | null;
+	userRateAnime: IUserRate;
 }
 
-export const VerticalAnimeCard: FC<IVerticalAnimeCardProps> = ({
-	id,
-	image,
-	title,
-	userEpisodes,
-	userStatus,
-}) => {
+export const VerticalAnimeCard: FC<IVerticalAnimeCardProps> = ({ userRateAnime }) => {
 	const [contextMenuVisible, setContextMenuVisible] = useState(false);
 	const [contextMenuСoordinates, setСontextMenuСoordinates] = useState([0, 0]);
 
@@ -67,16 +59,24 @@ export const VerticalAnimeCard: FC<IVerticalAnimeCardProps> = ({
 	return (
 		<>
 			<Link
-				to={`/animes/${id}`}
+				to={`/animes/${userRateAnime.anime.id}`}
 				className={styles.anime_card}
-				key={id}
+				key={userRateAnime.id}
 				onContextMenu={onContextMenuClick}
 			>
 				<div className={styles.info_container}>
-					{!!userStatus && <span className={styles.user_status}>{userStatus}</span>}
-					{!!userEpisodes && <span className={styles.user_episodes}>{userEpisodes}</span>}
+					{!!userRateAnime.status && (
+						<span className={styles.user_status}>{userRateAnime.status}</span>
+					)}
+					{!!userRateAnime.episodes && (
+						<span className={styles.user_episodes}>{userRateAnime.episodes}</span>
+					)}
 				</div>
-				<ImageView src={image} alt={title} className={styles.anime_image} />
+				<ImageView
+					src={userRateAnime.anime.poster.main2xUrl}
+					alt={title}
+					className={styles.anime_image}
+				/>
 				<span className={styles.anime_title}>{title}</span>
 			</Link>
 
