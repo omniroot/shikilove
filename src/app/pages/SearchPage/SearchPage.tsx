@@ -60,16 +60,7 @@ export const SearchPage = () => {
 			<AnimeList>
 				{!!searchAnimes &&
 					searchAnimes.map((anime) => {
-						return (
-							<AnimeCard
-								key={anime.id}
-								id={anime.id}
-								image={anime.poster.main2xUrl}
-								title={anime.name}
-								userEpisodes={anime.userRate && anime.userRate.episodes}
-								userStatus={anime.userRate && anime.userRate.status}
-							/>
-						);
+						return <AnimeCard key={anime.id} variant="search" searchAnime={anime} />;
 					})}
 			</AnimeList>
 		</div>

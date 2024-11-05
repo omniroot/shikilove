@@ -65,14 +65,7 @@ export const FloatingSearchBar = () => {
 						<div className={styles.search_results}>
 							<AnimeList>
 								{searchAnimes?.map((anime) => (
-									<AnimeCard
-										id={anime.id}
-										image={anime.poster.main2xUrl}
-										key={anime.id}
-										title={anime.name}
-										userEpisodes={anime.userRate?.episodes}
-										userStatus={anime.userRate?.status}
-									/>
+									<AnimeCard key={anime.id} variant="horizontal" userRateAnime={anime} />
 								))}
 							</AnimeList>
 						</div>
