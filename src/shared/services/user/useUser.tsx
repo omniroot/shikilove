@@ -11,7 +11,7 @@ export const useUser = () => {
 		queryFn: () => userApi.getCurrentUser(),
 	});
 
-	console.log("currentUser", currentUser);
+	// console.log("currentUser", currentUser);
 
 	return {
 		currentUser,

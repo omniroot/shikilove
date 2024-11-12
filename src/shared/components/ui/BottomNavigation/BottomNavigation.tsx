@@ -12,10 +12,10 @@ const isCurrentPage = (currentPage: string, page: IPage) => {
 	const _nextPage = page.path.replaceAll("/", "");
 
 	if (_currentPage === _nextPage || _currentPage.includes(page.path)) {
-		console.log(_currentPage, _nextPage, "===> true");
+		// console.log(_currentPage, _nextPage, "===> true");
 		return true;
 	}
-	console.log(_currentPage, _nextPage, "===> false");
+	// console.log(_currentPage, _nextPage, "===> false");
 	return false;
 };
 
@@ -36,10 +36,10 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	return (
 		<div className={_class}>
 			{pages.map((page) => {
-				console.log(page);
+				// console.log(page);
 
 				if (page.path === `/users/${currentUser?.id}`) {
-					console.log("####", page);
+					// console.log("####", page);
 					return (
 						<Link
 							className={clsx(styles.navitem, styles.profile, {
