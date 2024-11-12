@@ -1,4 +1,3 @@
-import ProfilePage from "@/app/pages/ProfilePage/ProfilePage.tsx";
 import { ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, HomeIcon } from "@/shared/icons";
 import { ReactNode } from "react";
 
@@ -58,7 +57,7 @@ export const PAGES = {
 		{
 			name: "Profile",
 			path: "/profile",
-			icon: <ProfilePage />,
+			icon: <ProfileIcon />,
 		},
 	] as IPage[],
 };

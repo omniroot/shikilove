@@ -31,8 +31,20 @@ import PlusIcon from "./svg/plus-icon.svg?react";
 import RightArrowIcon from "./svg/right-arrow-icon.svg?react";
 import TrashIcon from "./svg/trash-icon.svg?react";
 import StarIcon from "./svg/star-icon.svg?react";
+import MoreIcon from "./svg/more-icon.svg?react";
+import MessageIcon from "./svg/message-icon.svg?react";
+import ArrowLeftIcon from "./svg/arrow-left-icon.svg?react";
 
-export { FilterIcon, PlusIcon, RightArrowIcon, TrashIcon, StarIcon };
+export {
+	FilterIcon,
+	PlusIcon,
+	RightArrowIcon,
+	TrashIcon,
+	StarIcon,
+	MoreIcon,
+	MessageIcon,
+	ArrowLeftIcon,
+};
 
 import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
 export { ShikimoriIcon };

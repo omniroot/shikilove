@@ -1,0 +1,47 @@
+@keyframes pulse-element {
+	0% {
+		background-color: #e0e0e030;
+	}
+	50% {
+		background-color: #d0d0d084;
+	}
+	100% {
+		background-color: #e0e0e030;
+	}
+}
+
+@keyframes pulse-container {
+	0% {
+		border: 2px solid #e0e0e030;
+	}
+	50% {
+		border: 2px solid #d0d0d084;
+	}
+	100% {
+		border: 2px solid #e0e0e030;
+	}
+}
+
+.skeleton {
+	// background-color: gray;
+}
+
+.skeleton[data-variant="container"] {
+	display: flex;
+	animation: pulse-container 3s infinite;
+}
+
+.skeleton[data-variant="element"] {
+	animation: pulse-element 3s infinite;
+}
+
+.image {
+	width: 40px;
+	height: 40px;
+	border-radius: $radius;
+}
+
+.title {
+	width: 100px;
+	height: 20px;
+}

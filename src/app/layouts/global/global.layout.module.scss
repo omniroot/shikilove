@@ -1,0 +1,28 @@
+.global_layout {
+	display: flex;
+	gap: $gap-2;
+	width: 100dvw;
+	min-height: 100dvh;
+	padding: $padding-2;
+	overflow-x: hidden;
+
+	.main {
+		width: 100%;
+	}
+
+	.right_sidebar {
+		@include card;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.global_layout {
+		flex-direction: column;
+		padding: $padding-1;
+		gap: $gap;
+	}
+
+	.main {
+		margin-bottom: 70px;
+	}
+}

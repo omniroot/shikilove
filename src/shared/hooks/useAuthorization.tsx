@@ -20,6 +20,9 @@ export const useAuthorization = () => {
 		queryFn: () => authApi.getFullCurrentUser(),
 	});
 
+	console.log("currentUser", currentUser);
+	console.log("fullCurrentUser", fullCurrentUser);
+
 	return {
 		isCurrentUserLoading,
 		currentUser,
