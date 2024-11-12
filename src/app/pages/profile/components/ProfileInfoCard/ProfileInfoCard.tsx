@@ -1,13 +1,13 @@
-import { FC } from "react";
-import styles from "./ProfileInfoCard.module.scss";
-import clsx from "clsx";
+import { MessageIcon, MoreIcon } from "@/shared/icons/index.tsx";
 import { IUser } from "@/shared/services/auth/auth.interface.ts";
 import { ProfileInfoCardSkeleton } from "@pages/profile/components/ProfileInfoCard/ProfileInfoCard.skeleton.tsx";
-import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { MessageIcon, MoreIcon } from "@/shared/icons/index.tsx";
 import { IconButton } from "@ui/IconButton/IconButton.tsx";
-import dayjs from "dayjs";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
+import clsx from "clsx";
+import dayjs from "dayjs";
+import { FC } from "react";
+import styles from "./ProfileInfoCard.module.scss";
 
 interface IProfileInfoCardProps {
 	className?: string;
