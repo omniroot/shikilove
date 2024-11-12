@@ -1,4 +1,4 @@
-import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
+import { useAuthorization } from "@/shared/services/auth/useAuthorization";
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import dayjs from "dayjs";

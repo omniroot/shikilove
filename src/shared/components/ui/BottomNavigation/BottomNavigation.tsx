@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { FC } from "react";
 import { IPage, PAGES } from "@/shared/consts/pages.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
+import { useAuthorization } from "@/shared/services/auth/useAuthorization";
 
 const isCurrentPage = (currentPage: string, page: IPage) => {
 	// console.log(currentLink, page.path);

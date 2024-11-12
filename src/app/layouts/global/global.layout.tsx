@@ -1,5 +1,5 @@
 // import LoginPage from "@/app/pages/LoginPage/LoginPage.tsx";
-import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
+import { useAuthorization } from "@/shared/services/auth/useAuthorization";
 import { Outlet } from "react-router-dom";
 import styles from "./global.layout.module.scss";
 import { Header } from "@/shared/components/widgets/Header/Header.tsx";

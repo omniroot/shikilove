@@ -1,4 +1,4 @@
-import { useAuthorization } from "@/shared/hooks/useAuthorization.tsx";
+import { useAuthorization } from "@/shared/services/auth/useAuthorization";
 import { ProfileEditButton } from "@pages/profile/components/ProfileEditButton/ProfileEditButton.tsx";
 import { ProfileInfoCard } from "@pages/profile/components/ProfileInfoCard/ProfileInfoCard.tsx";
 import { FC, ReactNode } from "react";
