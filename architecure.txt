@@ -29,6 +29,11 @@ shared
         ui
     assets
     services
+        user
+            user.interface.ts - IUser
+            user.graphql.ts
+            user.api.ts
+            useUser.ts
         auth
             auth.interface.ts
             auth.graphql.ts
@@ -36,6 +41,7 @@ shared
             useAuth.ts
     hooks
     consts
+    types - IUser
     utils
     store
 
