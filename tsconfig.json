@@ -21,9 +21,10 @@
 		"noFallthroughCasesInSwitch": true,
 		"baseUrl": ".",
 		"paths": {
-			"@features/*": ["./src/components/features/*"],
-			"@widgets/*": ["./src/components/widgets/*"],
-			"@ui/*": ["./src/components/ui/*"],
+			"@pages/*": ["./src/app/pages/*"],
+			"@features/*": ["./src/shared/components/features/*"],
+			"@widgets/*": ["./src/shared/components/widgets/*"],
+			"@ui/*": ["./src/shared/components/ui/*"],
 			"@/*": ["./src/*"],
 			"/*": ["./*"]
 		}
