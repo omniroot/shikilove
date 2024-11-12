@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { FC } from "react";
 import { IPage, PAGES } from "@/shared/consts/pages.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { useAuthorization } from "@/shared/services/auth/useAuthorization";
+import { useUser } from "@/shared/services/user/useUser.tsx";
 
 const isCurrentPage = (currentPage: string, page: IPage) => {
 	// console.log(currentLink, page.path);
@@ -24,7 +24,7 @@ interface IBottomNavigationProps {
 }
 export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	const currentPage = useLocation().pathname;
-	const { currentUser } = useAuthorization();
+	const { currentUser } = useUser();
 	const pages = PAGES.bottomNavigation;
 
 	if (currentPage === "/login/") {
@@ -49,7 +49,7 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 							key={page.name}
 						>
 							<ImageView
-								src={currentUser?.avatarUrl}
+								src={currentUser?.avatar}
 								className={styles.profile_image}
 								loading="eager"
 							/>
