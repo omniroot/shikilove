@@ -1,13 +1,13 @@
 // import LoginPage from "@/app/pages/LoginPage/LoginPage.tsx";
-import { useAuthorization } from "@/shared/services/auth/useAuthorization";
 import { Outlet } from "react-router-dom";
 import styles from "./global.layout.module.scss";
 import { Header } from "@/shared/components/widgets/Header/Header.tsx";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation.tsx";
+import { useUser } from "@/shared/services/user/useUser.tsx";
 
 export const GlobalLayout = () => {
-	const { currentUserError } = useAuthorization();
+	const { currentUserError } = useUser();
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 	// const isTablet = useMediaQuery("only screen and (min-width: 769px) and (max-width: 1024px)");
 	// const isDesktop = useMediaQuery("only screen and (min-width: 1025px)");
