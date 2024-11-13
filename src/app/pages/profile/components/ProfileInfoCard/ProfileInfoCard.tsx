@@ -1,13 +1,13 @@
-import { MessageIcon, MoreIcon } from "@/shared/icons/index.tsx";
+import { MessageIcon, ProfileEditIcon } from "@/shared/icons/index.tsx";
 import { IUser } from "@/shared/services/user/user.interface.ts";
-import { IconButton } from "@ui/IconButton/IconButton.tsx";
+import { ProfileInfoCardSkeleton } from "@pages/profile/components/ProfileInfoCard/ProfileInfoCard.skeleton.tsx";
+import { Button } from "@ui/Button/Button.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import { FC } from "react";
 import styles from "./ProfileInfoCard.module.scss";
-import { ProfileInfoCardSkeleton } from "@pages/profile/components/ProfileInfoCard/ProfileInfoCard.skeleton.tsx";
 
 interface IProfileInfoCardProps {
 	className?: string;
@@ -24,8 +24,8 @@ export const ProfileInfoCard: FC<IProfileInfoCardProps> = ({ className, currentU
 	return (
 		<div className={_class}>
 			<ImageView
-				src={currentUser.avatar}
-				full={currentUser.avatar}
+				src={currentUser.image.x80}
+				full={currentUser.image.x160}
 				allowFullscreen
 				className={styles.user_image}
 			/>
@@ -41,12 +41,12 @@ export const ProfileInfoCard: FC<IProfileInfoCardProps> = ({ className, currentU
 				</div>
 			</div>
 			<div className={styles.user_actions}>
-				<IconButton className={styles.message_button}>
+				<Button as="Link" to="edit" className={styles.message_button}>
 					<MessageIcon />
-				</IconButton>
-				<IconButton className={styles.more_button}>
-					<MoreIcon />
-				</IconButton>
+				</Button>
+				<Button as="Link" to="edit" className={styles.profile_edit_button}>
+					<ProfileEditIcon />
+				</Button>
 			</div>
 		</div>
 	);
