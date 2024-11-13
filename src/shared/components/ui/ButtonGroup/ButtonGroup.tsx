@@ -40,8 +40,8 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 						key={element.id}
 						onClick={() => onGroupItemClick(element)}
 					>
-						{element.icon}
-						<span>{element.title}</span>
+						{element.icon && element.icon}
+						{element.title && <span>{element.title}</span>}
 					</button>
 				);
 			})}
