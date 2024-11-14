@@ -1,6 +1,6 @@
 import { MessageIcon, ProfileEditIcon } from "@/shared/icons/index.tsx";
 import { IUser } from "@/shared/services/user/user.interface.ts";
-import { ProfileInfoCardSkeleton } from "@pages/profile/components/ProfileInfoCard/ProfileInfoCard.skeleton.tsx";
+import { ProfileInfoCardSkeleton } from "@pages/profile/_components/ProfileInfoCard/ProfileInfoCard.skeleton";
 import { Button } from "@ui/Button/Button.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
