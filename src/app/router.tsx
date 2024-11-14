@@ -3,10 +3,9 @@ import { createBrowserRouter, createRoutesFromElements, Route } from "react-rout
 
 import { GlobalLayout } from "@/app/layouts/global/global.layout";
 import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
+import LoginPage from "@pages/login/login.page.tsx";
 const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
-const ProfileEditPage = React.lazy(
-	() => import("@/app/pages/profile/pages/ProfileEdit/ProfileEdit.tsx"),
-);
+const ProfileEditPage = React.lazy(() => import("@pages/profile/_pages/ProfileEdit/ProfileEdit"));
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -25,6 +24,14 @@ export const router = createBrowserRouter(
 				element={
 					<Suspense fallback={<ProfilePageSkeleton />}>
 						<ProfileEditPage />
+					</Suspense>
+				}
+			/>
+			<Route
+				path="/login"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<LoginPage />
 					</Suspense>
 				}
 			/>

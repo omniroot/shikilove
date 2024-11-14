@@ -5,6 +5,7 @@ import { Header } from "@/shared/components/widgets/Header/Header.tsx";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation.tsx";
 import { useUser } from "@/shared/services/user/useUser.tsx";
+import LoginPage from "@pages/login/login.page.tsx";
 
 export const GlobalLayout = () => {
 	const { currentUserError } = useUser();
@@ -16,7 +17,7 @@ export const GlobalLayout = () => {
 	// if (!currentUser && isCurrentUserLoading) return <div>Loading...</div>;
 	if (currentUserError) {
 		console.log("Error while getting current user, try relogin", currentUserError);
-		// return <LoginPage />;
+		return <LoginPage />;
 		return null;
 	}
 
