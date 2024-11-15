@@ -5,7 +5,9 @@ import { GlobalLayout } from "@/app/layouts/global/global.layout";
 import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
 const LoginPage = React.lazy(() => import("@/app/pages/login/login.page.tsx"));
 const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
-const ProfileEditPage = React.lazy(() => import("@pages/profile/_pages/ProfileEdit/ProfileEdit"));
+const ProfileEditPage = React.lazy(
+	() => import("@pages/profile/_pages/profile_edit/profile_edit.page.tsx"),
+);
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
