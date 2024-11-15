@@ -3,7 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from "react-rout
 
 import { GlobalLayout } from "@/app/layouts/global/global.layout";
 import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
-import LoginPage from "@pages/login/login.page.tsx";
+const LoginPage = React.lazy(() => import("@/app/pages/login/login.page.tsx"));
 const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
 const ProfileEditPage = React.lazy(() => import("@pages/profile/_pages/ProfileEdit/ProfileEdit"));
 
@@ -35,6 +35,7 @@ export const router = createBrowserRouter(
 					</Suspense>
 				}
 			/>
+
 			{/* <Route path="*" element={<NotFoundPage />} /> */}
 		</Route>,
 	),
