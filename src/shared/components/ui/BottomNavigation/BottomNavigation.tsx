@@ -1,21 +1,20 @@
-import styles from "./BottomNavigation.module.scss";
-import { Link, useLocation } from "react-router-dom";
+import { IPage, PAGES } from "@/shared/consts/pages.tsx";
+import { useUser } from "@/shared/services/user/useUser.tsx";
 import clsx from "clsx";
 import { FC } from "react";
-import { IPage, PAGES } from "@/shared/consts/pages.tsx";
-import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { useUser } from "@/shared/services/user/useUser.tsx";
+import { Link, useLocation } from "react-router-dom";
+import styles from "./BottomNavigation.module.scss";
 
 const isCurrentPage = (currentPage: string, page: IPage) => {
 	// console.log(currentLink, page.path);
 	const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
-	const _nextPage = page.path.replaceAll("/", "");
+	const _nextPage = page.path.split("?")[0].replaceAll("/", "");
 
 	if (_currentPage === _nextPage || _currentPage.includes(page.path)) {
-		// console.log(_currentPage, _nextPage, "===> true");
+		console.log(_currentPage, _nextPage, "===> true");
 		return true;
 	}
-	// console.log(_currentPage, _nextPage, "===> false");
+	console.log(_currentPage, _nextPage, "===> false");
 	return false;
 };
 
@@ -25,7 +24,7 @@ interface IBottomNavigationProps {
 export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	const currentPage = useLocation().pathname;
 	const { currentUser } = useUser();
-	const pages = PAGES.bottomNavigation;
+	const pages = PAGES.sidebar_start.concat(PAGES.sidebar_end);
 
 	if (currentPage === "/login/") {
 		return null;
@@ -36,26 +35,6 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	return (
 		<div className={_class}>
 			{pages.map((page) => {
-				// console.log(page);
-
-				if (page.path === `/users/${currentUser?.id}`) {
-					// console.log("####", page);
-					return (
-						<Link
-							className={clsx(styles.navitem, styles.profile, {
-								[styles.active]: currentPage.includes("users"),
-							})}
-							to={page.path}
-							key={page.name}
-						>
-							<ImageView
-								src={currentUser?.avatar}
-								className={styles.profile_image}
-								loading="eager"
-							/>
-						</Link>
-					);
-				}
 				return (
 					<Link
 						className={clsx(styles.navitem, {
