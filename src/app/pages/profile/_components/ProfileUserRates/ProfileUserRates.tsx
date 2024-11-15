@@ -33,6 +33,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 		<HeadingSection
 			title={capitalizeFirstLetter(userRateFilter)}
 			actionsSlot={
+				// TODO : refactoring Button Group, make it more generic. State should be passed as props
 				<ButtonGroup
 					elements={animeFiltersList}
 					deafultActive={userRateFilter}
