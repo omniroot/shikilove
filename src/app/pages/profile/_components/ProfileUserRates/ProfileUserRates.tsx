@@ -3,7 +3,7 @@ import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 interface IProfileUserRatesProps {
@@ -24,6 +24,10 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 		setSearchParams({ status: nextActiveFilterId });
 		setUserRateFilter(nextActiveFilterId);
 	};
+
+	useEffect(() => {
+		setUserRateFilter(searchParams.get("status") || "watching");
+	}, [searchParams]);
 
 	return (
 		<HeadingSection

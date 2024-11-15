@@ -1,7 +1,6 @@
 import { useUser } from "@/shared/services/user/useUser.tsx";
 import { ProfileInfoCard, ProfileUserRates } from "@pages/profile/_components";
-import { FC, ReactNode, useLayoutEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { FC, ReactNode } from "react";
 import styles from "./profile.page.module.scss";
 
 interface IProfilePageProps {
@@ -10,11 +9,6 @@ interface IProfilePageProps {
 
 export const ProfilePage: FC<IProfilePageProps> = () => {
 	const { currentUser } = useUser();
-	const [searchParams, setSearchParams] = useSearchParams();
-
-	useLayoutEffect(() => {
-		setSearchParams({ status: "watching" });
-	}, [searchParams]);
 
 	return (
 		<div className={styles.profile_page}>
