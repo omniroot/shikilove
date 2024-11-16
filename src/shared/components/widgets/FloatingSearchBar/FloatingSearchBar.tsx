@@ -2,6 +2,7 @@ import { useSearchAnime } from "@/shared/hooks/useSearchAnime.tsx";
 import { SearchIcon } from "@/shared/icons/index.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { useDebounce } from "@uidotdev/usehooks";
+import { motion } from "framer-motion";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import styles from "./FloatingSearchBar.module.scss";
 
@@ -36,8 +37,19 @@ export const FloatingSearchBar = () => {
 	};
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.floating_search_bar}>
+		<motion.div
+			className={styles.container}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.2 }}
+		>
+			<motion.div
+				className={styles.floating_search_bar}
+				initial={{ y: -50 }}
+				animate={{ y: 0 }}
+				transition={{ duration: 0.2 }}
+			>
 				<form className={styles.search_form} onSubmit={onSearchSubmit}>
 					<input
 						className={styles.search_input}
@@ -57,7 +69,7 @@ export const FloatingSearchBar = () => {
 				) : (
 					<span>{searchAnimes?.map((anime) => anime.name)}</span>
 				)}
-			</div>
-		</div>
+			</motion.div>
+		</motion.div>
 	);
 };
