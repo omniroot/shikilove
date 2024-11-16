@@ -1,5 +1,5 @@
 import { useUser } from "@/shared/services/user/useUser.tsx";
-import styles from "./profile_edit.page.module.scss";
+import styles from "./profile_achievements.page.module.scss";
 
 export const ProfileAchievementsPage = () => {
 	const { currentUser } = useUser();
