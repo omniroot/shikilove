@@ -46,14 +46,14 @@ export const VerticalAnimeCard: FC<IVerticalAnimeCardProps> = ({ userRateAnime }
 	}, [contextMenuVisible]);
 
 	const onAddToClick = () => {
-		console.log(`Add to ${id}`);
+		// console.log(`Add to ${id}`);
 	};
 
 	const onDeleteClick = () => {
-		console.log(`Delete ${id}`);
+		// console.log(`Delete ${id}`);
 	};
 	const onWatchClick = () => {
-		console.log(`Watch ${id}`);
+		// console.log(`Watch ${id}`);
 	};
 
 	return (
