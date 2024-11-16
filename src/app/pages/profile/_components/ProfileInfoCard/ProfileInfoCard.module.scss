@@ -1,0 +1,107 @@
+.profile_info_card {
+	display: flex;
+	gap: $gap;
+	width: 100%;
+	height: fit-content;
+	padding: $padding;
+	border: $border;
+	border-radius: 16px;
+
+	.user_image {
+		width: 100px;
+		height: 100px;
+
+		border-radius: $radius;
+	}
+
+	.info {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.first_line {
+			display: flex;
+			justify-content: flex-start;
+			gap: $gap;
+
+			.nickname {
+				font-size: $text-size-h4;
+				font-weight: bold;
+			}
+
+			.last_online_at {
+				width: 200px;
+				height: 200px;
+				font-size: $text-size-h6;
+				font-weight: bold;
+				color: $color-text;
+				background-color: $color-primary;
+				border-radius: $radius;
+				padding: 4px 4px;
+			}
+		}
+
+		.second_line {
+			display: flex;
+			justify-content: space-between;
+
+			.about {
+				font-size: $text-size-h5;
+				color: $color-subtext;
+			}
+		}
+
+		.third_line {
+			display: flex;
+			justify-content: flex-start;
+
+			.about {
+				font-size: $text-size-h5;
+				color: $color-text;
+			}
+		}
+	}
+	.user_actions {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: $gap;
+
+		.message_button {
+			width: 42px;
+			height: 42px;
+			justify-content: center;
+			align-items: center;
+			color: $color-text;
+			border: $border;
+			padding: 0;
+			background-color: transparent;
+
+			&:hover {
+				border: $border-secondary;
+				background-color: $color-ternary;
+			}
+
+			svg {
+				width: 50%;
+				height: 50%;
+			}
+		}
+
+		.profile_edit_button {
+			width: 42px;
+			height: 42px;
+			justify-content: center;
+			align-items: center;
+			color: $color-text;
+			border: $border;
+			padding: 0;
+			background-color: transparent;
+
+			&:hover {
+				border: $border-secondary;
+				background-color: $color-ternary;
+			}
+		}
+	}
+}

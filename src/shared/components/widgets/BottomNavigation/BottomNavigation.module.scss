@@ -1,0 +1,48 @@
+.bottom_navigation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 10px;
+	left: 50%;
+	translate: -50%;
+	gap: $gap-2;
+	max-width: 90%;
+	height: 70px;
+	padding: $padding;
+	border: $border;
+	border-radius: $radius-2;
+	background-color: $color-background;
+	z-index: 1000;
+
+	.navitem {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 70px;
+		height: 45px;
+		padding: $padding-1;
+		color: $color-text;
+		cursor: pointer;
+		text-decoration: none;
+		border: $border-transparent;
+		border-radius: $radius-2;
+		transition: all 200ms;
+
+		.profile_image {
+			width: 40px;
+			height: 40px;
+			border-radius: $radius;
+			background-color: transparent;
+		}
+
+		&:hover {
+			background-color: $color-ternary;
+		}
+	}
+	.active {
+		width: 100px;
+		background-color: $color-ternary;
+		padding: $padding-1;
+	}
+}

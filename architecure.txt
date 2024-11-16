@@ -1,0 +1,56 @@
+
+
+
+app - start points
+    layouts
+    pages
+        profile
+            pages
+                edit_user
+                    edit_user.page.tsx
+            components
+                EditUserProfileButton
+                
+            profile.page.module.scss
+            profile.page.tsx
+    styles
+    main.tsx
+shared
+    components
+        bussines
+            UserInfoCard
+                services
+                variants
+                    MobileVersion
+                    DesktopVersion
+                UserInfoCard.tsx
+                UserInfoCard.module.scss 
+        widgets
+        ui
+    assets
+    services
+        user
+            user.interface.ts - IUser
+            user.graphql.ts
+            user.api.ts
+            useUser.ts
+        auth
+            auth.interface.ts
+            auth.graphql.ts
+            auth.api.ts
+            useAuth.ts
+    hooks
+    consts
+    types - IUser
+    utils
+    store
+
+    
+
+user
+    pages
+    component
+    features
+    ui
+    services
+    model

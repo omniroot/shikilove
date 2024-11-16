@@ -17,7 +17,7 @@ interface IFloatingSearchBarStore {
 	isFloatingSearchBarOpened: boolean;
 	toggleFloatingSearchBar: () => void;
 }
-export const useFloatingSearchBar = create<IFloatingSearchBarStore>((set) => ({
+export const useFloatingSearchBarStore = create<IFloatingSearchBarStore>((set) => ({
 	isFloatingSearchBarOpened: false,
 	toggleFloatingSearchBar: () =>
 		set((state) => ({ isFloatingSearchBarOpened: !state.isFloatingSearchBarOpened })),

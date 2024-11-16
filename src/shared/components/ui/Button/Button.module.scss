@@ -1,0 +1,88 @@
+.button {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	height: 40px;
+
+	padding: $padding;
+	border-radius: 12px;
+	border: none;
+	gap: $gap;
+	color: $color-text-alt;
+	background-color: $color-primary;
+	transition: all 200ms;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+
+	&:hover {
+		color: $color-primary;
+		background-color: $color-secondary;
+	}
+
+	&:active {
+		transform: scale(97%);
+	}
+}
+
+.button[data-variant="ternary"] {
+	justify-content: center;
+	padding: 12px 8px;
+	color: $color-text;
+	background-color: transparent;
+	border: $border-ternary;
+
+	&:hover {
+		color: $color-text;
+		background-color: $color-ternary;
+		border: $border-secondary;
+	}
+}
+
+.button[data-variant="secondary"] {
+	color: $color-text;
+	background-color: $color-secondary;
+
+	&:hover {
+		color: $color-text;
+		background-color: $color-secondary;
+	}
+}
+
+.button[data-variant="animego"] {
+	color: $color-text;
+	background-color: $color-animego;
+
+	&:hover {
+		color: $color-text;
+		background-color: $color-animego-hover;
+	}
+}
+.button[data-variant="hanime"] {
+	color: $color-text;
+	background-color: $color-hanime;
+
+	&:hover {
+		color: $color-text;
+		background-color: $color-hanime-hover;
+	}
+}
+.button[data-variant="nhentai"] {
+	color: $color-text;
+	background-color: $color-nhentai;
+
+	&:hover {
+		color: $color-text;
+		background-color: $color-nhentai-hover;
+	}
+}
+
+.button[data-variant="shikimori"] {
+	color: $color-primary;
+	background-color: $color-shikimori;
+
+	&:hover {
+		color: $color-primary;
+		background-color: $color-shikimori-hover;
+	}
+}

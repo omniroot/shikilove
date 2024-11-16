@@ -12,6 +12,10 @@ import {
 export const userRateApi = {
 	getUserRates: async () => {
 		const userRates = await graphql<IUserRatesResponse>(GET_USER_RATES);
+		userRates.userRates = userRates.userRates.map((rate) => ({
+			...rate,
+			_type: "IUserRate",
+		}));
 		return userRates.userRates;
 	},
 	addUserRate: async ({ animeId, status = "planned" }: IUserRateAdd) => {

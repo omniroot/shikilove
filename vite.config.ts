@@ -35,9 +35,10 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			"@features": path.resolve(__dirname, "src", "components", "features"),
-			"@widgets": path.resolve(__dirname, "src", "components", "widgets"),
-			"@ui": path.resolve(__dirname, "src", "components", "ui"),
+			"@pages": path.resolve(__dirname, "src", "app", "pages"),
+			"@features": path.resolve(__dirname, "src", "shared", "components", "features"),
+			"@widgets": path.resolve(__dirname, "src", "shared", "components", "widgets"),
+			"@ui": path.resolve(__dirname, "src", "shared", "components", "ui"),
 			"@": path.resolve(__dirname, "src"),
 			"/": path.resolve(__dirname),
 		},
