@@ -48,6 +48,7 @@ export const FloatingSearchBar = () => {
 				className={styles.floating_search_bar}
 				initial={{ y: -50 }}
 				animate={{ y: 0 }}
+				exit={{ y: -50 }}
 				transition={{ duration: 0.2 }}
 			>
 				<form className={styles.search_form} onSubmit={onSearchSubmit}>
