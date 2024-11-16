@@ -1,6 +1,9 @@
 import { WatchedIcon, WatchingIcon } from "@/shared/icons/index.tsx";
 import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
+import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { FC, ReactNode, useEffect, useState } from "react";
@@ -41,11 +44,13 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 				/>
 			}
 		>
-			{userRates?.map((rate) => {
-				if (rate.status === userRateFilter) {
-					return <div key={rate.id}>{rate.anime.name}</div>;
-				}
-			})}
+			<AnimeList scroll="vertical">
+				{userRates?.map((rate) => {
+					if (rate.status === userRateFilter) {
+						return <AnimeCard key={rate.id} animeCard={getAnimeCardData(rate)} />;
+					}
+				})}
+			</AnimeList>
 		</HeadingSection>
 	);
 };
