@@ -35,6 +35,7 @@ import MoreIcon from "./svg/more-icon.svg?react";
 import MessageIcon from "./svg/message-icon.svg?react";
 import ArrowLeftIcon from "./svg/arrow-left-icon.svg?react";
 import ProfileEditIcon from "./svg/profile-edit-icon.svg?react";
+import AchievementsIcon from "./svg/achievements-icon.svg?react";
 
 export {
 	FilterIcon,
@@ -46,6 +47,7 @@ export {
 	MessageIcon,
 	ArrowLeftIcon,
 	ProfileEditIcon,
+	AchievementsIcon,
 };
 
 import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
