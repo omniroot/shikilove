@@ -1,12 +1,10 @@
-import { ArrowLeftIcon, SearchIcon, SettingsIcon } from "@/shared/icons/index.tsx";
-import { useFloatingSearchBar } from "@/shared/store/store.tsx";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import styles from "./Header.module.scss";
 import { Button } from "@/shared/components/ui/Button/Button.tsx";
-import { IconButton } from "@/shared/components/ui/IconButton/IconButton.tsx";
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
-import { motion } from "framer-motion";
+import { ArrowLeftIcon, SearchIcon, SettingsIcon } from "@/shared/icons/index.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
+import { motion } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./Header.module.scss";
 
 export const Header = () => {
 	const { packageVersion } = usePackageInfo();
@@ -15,7 +13,7 @@ export const Header = () => {
 
 	const isRootPage = currentLocation === "/";
 
-	const { toggleFloatingSearchBar } = useFloatingSearchBar();
+	// const { toggleFloatingSearchBar } = useFloatingSearchBar();
 	const mode = import.meta.env.MODE === "development" ? "dev" : "prod";
 
 	return (
@@ -42,16 +40,11 @@ export const Header = () => {
 				</span>
 			</div>
 			<div className={styles.right}>
-				<Link to={"/settings"} className={styles.settings_button}>
-					<IconButton>
-						<SettingsIcon />
-					</IconButton>
-				</Link>
-
-				<Button className={styles.search_button} onClick={toggleFloatingSearchBar}>
-					<IconButton>
-						<SearchIcon />
-					</IconButton>
+				<Button as="Link" to="/settings">
+					<SettingsIcon />
+				</Button>
+				<Button as="Link" to="/search">
+					<SearchIcon />
 				</Button>
 			</div>
 		</div>
