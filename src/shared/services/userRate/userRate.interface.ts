@@ -8,6 +8,7 @@ export interface IUserRate {
 	anime: {
 		id: string;
 		name: string;
+		russian: string;
 		episodes: number;
 		episodesAired: number;
 		score: number;
@@ -25,6 +26,7 @@ export interface IUserRate {
 	episodes: number;
 	status: string;
 	createdAt: string;
+	score: number;
 }
 
 export type IUserRates = IUserRate[];

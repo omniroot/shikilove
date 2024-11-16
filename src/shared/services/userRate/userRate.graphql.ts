@@ -10,6 +10,7 @@ export const GET_USER_RATES = `
 			anime {
 				id
 				name
+				russian
         episodes
         episodesAired
 				score
@@ -27,6 +28,7 @@ export const GET_USER_RATES = `
 			episodes
 			status
 			createdAt
+			score
 		}
 	}
 `;
