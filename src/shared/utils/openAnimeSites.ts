@@ -1,12 +1,6 @@
 import axios from "axios";
 
-type IAnimesSites =
-	| "hdrezka"
-	| "anilibria"
-	| "animego"
-	| "anidub"
-	| "hanime"
-	| "nhentai";
+type IAnimesSites = "hdrezka" | "anilibria" | "animego" | "anidub" | "hanime" | "nhentai";
 
 interface IHAnimeResponseJson {
 	slug: string;
@@ -29,19 +23,16 @@ export const openAnimeExternal = async (name: string, site: IAnimesSites) => {
 
 	if (site === "hanime") {
 		link = `https://search.htv-services.com/`;
-		const response = await axios.post<{ hits: string }>(
-			"https://search.htv-services.com/",
-			{
-				search_text: name,
-				blacklist: [],
-				brands: [],
-				order_by: "created_at_unix",
-				ordering: "desc",
-				page: 0,
-				tags: [],
-				tags_mode: "AND",
-			},
-		);
+		const response = await axios.post<{ hits: string }>("https://search.htv-services.com/", {
+			search_text: name,
+			blacklist: [],
+			brands: [],
+			order_by: "created_at_unix",
+			ordering: "desc",
+			page: 0,
+			tags: [],
+			tags_mode: "AND",
+		});
 
 		const { data } = response;
 		if (!data) console.log(response);

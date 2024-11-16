@@ -7,10 +7,7 @@ interface IDivideProps {
 	orientation?: "horizontal" | "vertical";
 }
 
-export const Divider: FC<IDivideProps> = ({
-	className,
-	orientation = "horizontal",
-}) => {
+export const Divider: FC<IDivideProps> = ({ className, orientation = "horizontal" }) => {
 	const _class = clsx(styles.divider, className);
 	return <div className={_class} data-orientation={orientation} />;
 };

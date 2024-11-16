@@ -9,12 +9,7 @@ interface ITooltipProps {
 	title?: string;
 	position?: "top" | "bottom";
 }
-export const Tooltip: FC<ITooltipProps> = ({
-	className,
-	children,
-	title,
-	position = "top",
-}) => {
+export const Tooltip: FC<ITooltipProps> = ({ className, children, title, position = "top" }) => {
 	const [isHover, setIsHover] = useState(false);
 
 	const onTooltipMouseEnter = () => {
@@ -27,11 +22,7 @@ export const Tooltip: FC<ITooltipProps> = ({
 	const _class = clsx(styles.tooltip_container, className);
 
 	return (
-		<div
-			className={_class}
-			onMouseEnter={onTooltipMouseEnter}
-			onMouseLeave={onTooltipMouseLeave}
-		>
+		<div className={_class} onMouseEnter={onTooltipMouseEnter} onMouseLeave={onTooltipMouseLeave}>
 			<motion.div
 				className={clsx(styles.tooltip)}
 				data-position={position}
