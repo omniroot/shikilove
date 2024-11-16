@@ -44,7 +44,7 @@ export const useSearchAnime = () => {
 	const [searchAnimesQuery, setSearchAnimesQuery] = useState("");
 	const {
 		refetch: refetchSearchAnimes,
-		isLoading: searchAnimesIsLoading,
+		isFetching: searchAnimesIsLoading,
 		data: searchAnimes,
 		error: searchAnimesError,
 	} = useQuery<IAnime[]>({
