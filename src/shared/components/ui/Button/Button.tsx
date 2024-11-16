@@ -8,7 +8,7 @@ interface IButtonProps {
 	className?: string;
 	as?: "button" | "Link";
 	to?: string;
-	variant?: "primary" | "secondary" | "animego" | "hanime" | "nhentai" | "shikimori";
+	variant?: "primary" | "ternary" | "secondary" | "animego" | "hanime" | "nhentai" | "shikimori";
 	onClick?: () => void;
 }
 export const Button: FC<IButtonProps> = ({
@@ -16,19 +16,13 @@ export const Button: FC<IButtonProps> = ({
 	className,
 	as = "button",
 	to = "",
-	variant = "primary",
+	variant = "ternary",
 	...rest
 }) => {
-	const _class = clsx(styles.button, className, {
-		[styles.secondary]: variant === "secondary",
-		[styles.animego]: variant === "animego",
-		[styles.hanime]: variant === "hanime",
-		[styles.nhentai]: variant === "nhentai",
-		[styles.shikimori]: variant === "shikimori",
-	});
+	const _class = clsx(styles.button, className);
 	const Component = as === "Link" ? Link : "button";
 	return (
-		<Component className={_class} to={to} {...rest}>
+		<Component className={_class} data-variant={variant} to={to} {...rest}>
 			{children}
 		</Component>
 	);
