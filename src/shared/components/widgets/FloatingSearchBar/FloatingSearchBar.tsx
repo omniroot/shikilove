@@ -5,14 +5,22 @@ import { useDebounce } from "@uidotdev/usehooks";
 import { motion } from "framer-motion";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import styles from "./FloatingSearchBar.module.scss";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 
 export const FloatingSearchBar = () => {
 	const [searchInput, setSearchInput] = useState("");
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const debouncedSearchInput = useDebounce(searchInput, 700);
-	const { searchAnimes, searchAnimesIsLoading, refetchSearchAnimes, setSearchAnimesQuery } =
-		useSearchAnime();
+	const {
+		searchAnimes,
+		searchAnimesIsLoading,
+		refetchSearchAnimes,
+		searchAnimesQuery,
+		setSearchAnimesQuery,
+	} = useSearchAnime("");
 
 	const onSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setSearchInput(event.target.value);
@@ -20,8 +28,11 @@ export const FloatingSearchBar = () => {
 	};
 
 	useEffect(() => {
-		if (debouncedSearchInput !== "") {
+		if (debouncedSearchInput !== "" && searchAnimesQuery !== "") {
+			console.log("SEARCHED", debouncedSearchInput);
+
 			refetchSearchAnimes();
+			localStorage.setItem("last_search", debouncedSearchInput);
 		}
 	}, [debouncedSearchInput]);
 
@@ -34,6 +45,7 @@ export const FloatingSearchBar = () => {
 			event.preventDefault();
 			event.stopPropagation();
 		}
+		refetchSearchAnimes();
 	};
 
 	return (
@@ -55,6 +67,7 @@ export const FloatingSearchBar = () => {
 					<input
 						className={styles.search_input}
 						value={searchInput}
+						placeholder={localStorage.getItem("last_search") || "Search"}
 						onChange={onSearchInputChange}
 						disabled={searchAnimesIsLoading}
 						ref={inputRef}
@@ -68,7 +81,11 @@ export const FloatingSearchBar = () => {
 				{searchAnimesIsLoading ? (
 					<div>Loading</div>
 				) : (
-					<span>{searchAnimes?.map((anime) => anime.name)}</span>
+					<AnimeList scroll="vertical" className={styles.results}>
+						{searchAnimes?.map((anime) => {
+							return <AnimeCard key={anime.id} animeCard={getAnimeCardData(anime)} />;
+						})}
+					</AnimeList>
 				)}
 			</motion.div>
 		</motion.div>
