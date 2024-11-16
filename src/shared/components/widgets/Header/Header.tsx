@@ -1,6 +1,7 @@
 import { Button } from "@/shared/components/ui/Button/Button.tsx";
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
-import { ArrowLeftIcon, SearchIcon, SettingsIcon } from "@/shared/icons/index.tsx";
+import { ArrowLeftIcon, SearchIcon } from "@/shared/icons/index.tsx";
+import { useFloatingSearchBarStore } from "@/shared/store/store.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -8,6 +9,8 @@ import styles from "./Header.module.scss";
 
 export const Header = () => {
 	const { packageVersion } = usePackageInfo();
+	const { toggleFloatingSearchBar } = useFloatingSearchBarStore((state) => state);
+
 	const currentLocation = useLocation().pathname;
 	const navigate = useNavigate();
 
@@ -40,10 +43,7 @@ export const Header = () => {
 				</span>
 			</div>
 			<div className={styles.right}>
-				<Button as="Link" to="/settings">
-					<SettingsIcon />
-				</Button>
-				<Button as="Link" to="/search">
+				<Button onClick={toggleFloatingSearchBar}>
 					<SearchIcon />
 				</Button>
 			</div>
