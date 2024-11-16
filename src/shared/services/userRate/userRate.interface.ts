@@ -1,6 +1,9 @@
+import { IType } from "@/shared/types/_type.interface.ts";
 import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 
 export interface IUserRate {
+	_type: IType;
+
 	id: string;
 	anime: {
 		id: string;

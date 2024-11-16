@@ -1,4 +1,7 @@
+import { IType } from "@/shared/types/_type.interface.ts";
+
 export interface IAnime {
+	_type: IType;
 	id: string;
 	name: string;
 	russian: string;
@@ -88,6 +91,7 @@ export interface IAnime {
 }
 
 export interface ISimilarAnime {
+	_type: IType;
 	id: string;
 	name: string;
 	russian: string;

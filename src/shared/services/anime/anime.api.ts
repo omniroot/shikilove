@@ -12,13 +12,21 @@ export const animeApi = {
 		const response = await graphql<IAnimeResponse>(GET_ANIME_BY_ID, {
 			ids: animeId,
 		});
-		const { animes } = response;
+		let { animes } = response;
+		animes = animes.map((anime) => ({
+			...anime,
+			_type: "IAnime",
+		}));
 		return animes[0];
 	},
 
 	getSimilarAnime: async ({ animeId }: IAnimeGet) => {
 		const response = await api.get<ISimilarAnime[]>(`animes/${animeId}/similar`);
-		const { data } = response;
-		return data;
+		let { data: animes } = response;
+		animes = animes.map((anime) => ({
+			...anime,
+			_type: "ISimilarAnime",
+		}));
+		return animes;
 	},
 };
