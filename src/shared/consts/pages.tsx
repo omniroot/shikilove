@@ -26,7 +26,7 @@ export const PAGES = {
 			name: "Search",
 			path: "/search",
 			icon: <SearchIcon />,
-			inMobile: true,
+			inMobile: false,
 		},
 	],
 	sidebar_end: [

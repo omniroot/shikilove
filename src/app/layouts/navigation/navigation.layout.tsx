@@ -1,4 +1,4 @@
-import { BottomNavigation } from "@ui/BottomNavigation/BottomNavigation.tsx";
+import { BottomNavigation } from "@widgets/BottomNavigation/BottomNavigation";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Header } from "@widgets/Header/Header.tsx";
 

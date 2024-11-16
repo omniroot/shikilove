@@ -15,7 +15,6 @@ export const GlobalLayout = () => {
 	if (currentUserError) {
 		console.log("Error while getting current user, try relogin", currentUserError);
 		return <LoginPage />;
-		return null;
 	}
 
 	return (
