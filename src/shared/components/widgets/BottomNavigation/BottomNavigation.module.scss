@@ -13,6 +13,7 @@
 	border: $border;
 	border-radius: $radius-2;
 	background-color: $color-background;
+	z-index: 1000;
 
 	.navitem {
 		display: flex;
@@ -27,7 +28,6 @@
 		border: $border-transparent;
 		border-radius: $radius-2;
 		transition: all 200ms;
-		z-index: 10;
 
 		.profile_image {
 			width: 40px;
