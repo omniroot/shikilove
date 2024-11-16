@@ -7,6 +7,7 @@
 	border-radius: $radius;
 	padding: $padding;
 	gap: $gap;
+	z-index: 1000;
 
 	.left {
 		display: flex;
