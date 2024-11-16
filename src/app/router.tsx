@@ -8,6 +8,9 @@ const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.ts
 const ProfileEditPage = React.lazy(
 	() => import("@pages/profile/_pages/profile_edit/profile_edit.page.tsx"),
 );
+const ProfileAchievementsPage = React.lazy(
+	() => import("@pages/profile/_pages/profile_achievements/profile_achievements.page.tsx"),
+);
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -29,6 +32,15 @@ export const router = createBrowserRouter(
 					</Suspense>
 				}
 			/>
+			<Route
+				path="/profile/achievements"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<ProfileAchievementsPage />
+					</Suspense>
+				}
+			/>
+
 			<Route
 				path="/login"
 				element={

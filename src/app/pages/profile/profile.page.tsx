@@ -1,5 +1,5 @@
 import { useUser } from "@/shared/services/user/useUser.tsx";
-import { ProfileInfoCard, ProfileUserRates } from "@pages/profile/_components";
+import { AchievementsButton, ProfileInfoCard, ProfileUserRates } from "@pages/profile/_components";
 import { FC, ReactNode } from "react";
 import styles from "./profile.page.module.scss";
 
@@ -13,6 +13,7 @@ export const ProfilePage: FC<IProfilePageProps> = () => {
 	return (
 		<div className={styles.profile_page}>
 			<ProfileInfoCard currentUser={currentUser} />
+			<AchievementsButton />
 			<ProfileUserRates />
 		</div>
 	);
