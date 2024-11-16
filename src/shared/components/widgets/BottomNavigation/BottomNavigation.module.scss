@@ -27,6 +27,7 @@
 		border: $border-transparent;
 		border-radius: $radius-2;
 		transition: all 200ms;
+		z-index: 10;
 
 		.profile_image {
 			width: 40px;
