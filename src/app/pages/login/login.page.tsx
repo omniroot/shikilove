@@ -7,6 +7,7 @@ import styles from "./login.page.module.scss";
 import { useEffect } from "react";
 import { authApi } from "@/shared/services/auth/auth.api.ts";
 import { saveTokens } from "@/shared/utils/saveTokens.ts";
+import { userApi } from "@/shared/services/user/user.api.ts";
 
 export const LoginPage = () => {
 	const [searchParams] = useSearchParams();
@@ -15,10 +16,14 @@ export const LoginPage = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			if (code && code?.length > 1) {
-				const response = await authApi.fetchTokens(code);
-				if (response) {
-					saveTokens(response);
-					window.open(CONSTS.URL, "_self");
+				const tokens = await authApi.fetchTokens(code);
+				if (tokens) {
+					saveTokens(tokens);
+					const userId = await userApi.getCurrentUserId();
+					if (userId) {
+						localStorage.setItem("user_id", userId);
+						window.open(CONSTS.URL, "_self");
+					}
 				}
 			}
 		};
