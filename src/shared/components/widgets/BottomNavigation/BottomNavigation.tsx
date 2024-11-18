@@ -1,10 +1,10 @@
 import { IPage, PAGES } from "@/shared/consts/pages.tsx";
-import { useUser } from "@/shared/services/user/useUser.tsx";
 import clsx from "clsx";
 import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./BottomNavigation.module.scss";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
+import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
 
 const isCurrentPage = (currentPage: string, page: IPage) => {
 	// console.log(currentLink, page.path);
@@ -24,7 +24,7 @@ interface IBottomNavigationProps {
 }
 export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	const currentPage = useLocation().pathname;
-	const { currentUser } = useUser();
+	const { currentUser } = useCurrentUser();
 	const pages = PAGES.sidebar_start.concat(PAGES.sidebar_end);
 
 	if (currentPage === "/login/") {
