@@ -19,4 +19,13 @@ export const userApi = {
 			console.log(error);
 		}
 	},
+
+	getUser: async (userId: number) => {
+		try {
+			const response = await api.get<IUser>(`users/${userId}`);
+			return response.data;
+		} catch (error) {
+			console.log(error);
+		}
+	},
 };

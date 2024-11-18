@@ -1,9 +1,9 @@
 import { userApi } from "@/shared/services/user/user.api.ts";
 import { useQuery } from "@tanstack/react-query";
 
-export const useUser = () => {
+export const useCurrentUser = () => {
 	const {
-		isLoading: isCurrentUserLoading,
+		isFetching: isCurrentUserLoading,
 		data: currentUser,
 		error: currentUserError,
 	} = useQuery({
