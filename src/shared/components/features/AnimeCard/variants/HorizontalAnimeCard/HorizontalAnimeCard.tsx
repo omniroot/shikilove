@@ -19,7 +19,7 @@ export const HorizontalAnimeCard: FC<IHorizontalAnimeCardProps> = ({ animeCard }
 					<span className={styles.user_status}>{animeCard.userRate?.status}</span>
 					{/* <RightArrowIcon /> */}
 					<span className={styles.user_episodes}>
-						{animeCard.userRate?.episodes} /{animeCard.userRate?.episodes}
+						{animeCard.userRate?.episodes} /{animeCard.episodes}
 					</span>
 					{/* <RightArrowIcon /> */}
 					<span>
