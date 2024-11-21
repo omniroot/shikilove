@@ -11,6 +11,7 @@ const ProfileEditPage = React.lazy(
 const ProfileAchievementsPage = React.lazy(
 	() => import("@pages/profile/_pages/profile_achievements/profile_achievements.page.tsx"),
 );
+const DiscoveryPage = React.lazy(() => import("@pages/discovery/discovery.page.tsx"));
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -37,6 +38,15 @@ export const router = createBrowserRouter(
 				element={
 					<Suspense fallback={<ProfilePageSkeleton />}>
 						<ProfileAchievementsPage />
+					</Suspense>
+				}
+			/>
+
+			<Route
+				path="/discovery"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<DiscoveryPage />
 					</Suspense>
 				}
 			/>
