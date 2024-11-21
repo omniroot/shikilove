@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
 import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
-import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
+import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -13,40 +13,45 @@ interface IProfileUserRatesProps {
 	children?: ReactNode;
 }
 
-const animeFiltersList = [
+const animeFiltersList: IButtonGroupElement[] = [
 	{ id: "watching", icon: <WatchingIcon /> },
 	{ id: "completed", icon: <WatchedIcon /> },
 ];
 
+const getAnimeFilterItem = (id: string) => {
+	return animeFiltersList.find((filter) => filter.id === id) || animeFiltersList[0];
+};
+
 export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [userRateFilter, setUserRateFilter] = useState(searchParams.get("status") || "watching");
+	const currentFilter = searchParams.get("status") || "watching";
+	const [userRateFilter, setUserRateFilter] = useState(getAnimeFilterItem(currentFilter));
 	const { userRates } = useUserRate();
 
-	const onAnimeFilterClick = (nextActiveFilterId: string) => {
-		setSearchParams({ status: nextActiveFilterId });
-		setUserRateFilter(nextActiveFilterId);
+	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
+		setSearchParams({ status: nextActiveFilter.id });
+		setUserRateFilter(nextActiveFilter);
 	};
 
 	useEffect(() => {
-		setUserRateFilter(searchParams.get("status") || "watching");
+		setUserRateFilter(getAnimeFilterItem(currentFilter));
 	}, [searchParams]);
+	if (!userRateFilter) return null;
 
 	return (
 		<HeadingSection
-			title={capitalizeFirstLetter(userRateFilter)}
+			title={capitalizeFirstLetter(currentFilter)}
 			actionsSlot={
-				// TODO : refactoring Button Group, make it more generic. State should be passed as props
 				<ButtonGroup
 					elements={animeFiltersList}
-					deafultActive={userRateFilter}
-					onClick={onAnimeFilterClick}
+					activeElement={userRateFilter}
+					setActiveElement={(nextElement) => onAnimeFilterClick(nextElement)}
 				/>
 			}
 		>
 			<AnimeList scroll="vertical">
 				{userRates?.map((rate) => {
-					if (rate.status === userRateFilter) {
+					if (rate.status === userRateFilter.id) {
 						return <AnimeCard key={rate.id} animeCard={getAnimeCardData(rate)} />;
 					}
 				})}
