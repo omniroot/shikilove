@@ -48,7 +48,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 				/>
 			}
 		>
-			<AnimeList scroll="vertical">
+			<AnimeList>
 				{userRates?.map((rate) => {
 					if (rate.status === userRateFilter.id) {
 						return <AnimeCard key={rate.id} animeCard={getAnimeCardData(rate)} />;
