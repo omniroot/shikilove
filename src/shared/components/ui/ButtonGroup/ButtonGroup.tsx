@@ -27,7 +27,7 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 		const ell = document.getElementById(id);
 
 		if (ell) {
-			ell.scrollIntoView({ behavior: "smooth", block: "center" });
+			ell.scrollIntoView({ behavior: "smooth", block: "end" });
 		}
 	};
 
