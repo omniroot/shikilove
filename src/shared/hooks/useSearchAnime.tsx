@@ -81,6 +81,8 @@ export const useSearchAnime = (defaultSearch: string) => {
 				...anime,
 				_type: "ISearchAnime",
 			}));
+			console.log("searched", animes);
+
 			return animes;
 		},
 	});
