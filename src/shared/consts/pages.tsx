@@ -40,6 +40,12 @@ export const PAGES = {
 			name: "Settings",
 			path: "/settings",
 			icon: <SettingsIcon />,
+			inMobile: true,
+		},
+		{
+			name: "Settings",
+			path: "/settings",
+			icon: <SettingsIcon />,
 			inMobile: false,
 		},
 	],
