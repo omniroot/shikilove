@@ -13,6 +13,10 @@ export const AnimeCard: FC<IAnimeCardProps> = ({ animeCard }) => {
 	if (isMobile) {
 		// variant = "horizontal";
 	}
+
+	// TODO : refactoring animecards for slots. Card only html, css and slots (props).
+	// TODO : variant = "vertical" | "horizontal" for news and posts from user
+
 	return <HorizontalAnimeCard animeCard={animeCard} />;
 
 	// if (variant === "vertical" && userRateAnime) {
