@@ -5,18 +5,14 @@ import {
 	LatestIcon,
 	RecentlyIcon,
 } from "@/shared/icons/index.tsx";
-import { useAnimeOngoings } from "@/shared/services/anime/hooks/useAnimeOngoing.tsx";
-import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
-import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { OngoingFragment } from "@pages/discovery/_fragments/OngoingFragment/OngoingFragment.tsx";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
+import { FragmentContainer, IFragment } from "@ui/FragmentContainer/FragmentContainer.tsx";
+import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentContainer.utils.ts";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from "./discovery.page.module.scss";
-import { FragmentContainer, IFragment } from "@ui/FragmentContainer/FragmentContainer.tsx";
-import { OngoingFragment } from "@pages/discovery/_fragments/OngoingFragment/OngoingFragment.tsx";
-import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentContainer.utils.ts";
 import { LatestFragment } from "@pages/discovery/_fragments/LatestFragment/LatestFragment.tsx";
 
 const discoveryFilterButtonsList: IButtonGroupElement[] = [
