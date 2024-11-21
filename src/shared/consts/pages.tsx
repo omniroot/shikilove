@@ -1,11 +1,4 @@
-import {
-	ProfileIcon,
-	AnimeIcon,
-	SearchIcon,
-	SettingsIcon,
-	HomeIcon,
-	DiscoveryIcon,
-} from "@/shared/icons";
+import { DiscoveryIcon, HomeIcon, ProfileIcon, SearchIcon, SettingsIcon } from "@/shared/icons";
 import { ReactNode } from "react";
 
 export interface IPage {
@@ -25,7 +18,7 @@ export const PAGES = {
 		},
 		{
 			name: "Discovery",
-			path: "/discovery",
+			path: "/discovery?filter=recently",
 			icon: <DiscoveryIcon />,
 			inMobile: true,
 		},
@@ -39,7 +32,7 @@ export const PAGES = {
 	sidebar_end: [
 		{
 			name: "Profile",
-			path: "/profile?status=watching",
+			path: "/profile?filter=watching",
 			icon: <ProfileIcon />,
 			inMobile: true,
 		},
