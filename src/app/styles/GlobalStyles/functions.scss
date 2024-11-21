@@ -1,6 +1,0 @@
-@function hexOpacity($color, $opacity: 1) {
-	$r: red($color);
-	$g: green($color);
-	$b: blue($color);
-	@return rgba($r, $g, $b, $opacity);
-}
