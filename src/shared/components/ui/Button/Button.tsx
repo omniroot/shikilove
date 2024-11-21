@@ -9,7 +9,15 @@ interface IButtonProps {
 	id?: string;
 	as?: "button" | "Link";
 	to?: string;
-	variant?: "primary" | "ternary" | "secondary" | "animego" | "hanime" | "nhentai" | "shikimori";
+	variant?:
+		| "primary"
+		| "ternary"
+		| "transparent"
+		| "secondary"
+		| "animego"
+		| "hanime"
+		| "nhentai"
+		| "shikimori";
 	onClick?: (
 		event:
 			| React.MouseEvent<HTMLButtonElement, MouseEvent>

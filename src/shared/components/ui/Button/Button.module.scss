@@ -1,14 +1,15 @@
 .button {
 	display: flex;
-	align-items: center;
 	width: fit-content;
 	height: 40px;
+	justify-content: center;
+	align-items: center;
 
 	padding: $padding;
 	border-radius: 12px;
 	border: none;
 	gap: $gap;
-	color: $color-text-alt;
+	color: $color-text;
 	background-color: $color-primary;
 	transition: all 200ms;
 	font-weight: 600;
@@ -26,17 +27,24 @@
 }
 
 .button[data-variant="ternary"] {
-	justify-content: center;
 	padding: 12px 8px;
 	color: $color-text;
 	background-color: transparent;
 	border: $border-ternary;
 
-	&:hover,
-	&:focus {
+	&:hover {
 		color: $color-text;
 		background-color: $color-ternary;
 		border: $border-secondary;
+	}
+}
+
+.button[data-variant="transparent"] {
+	background-color: transparent;
+	border: transparent;
+
+	&:hover {
+		color: $color-primary;
 	}
 }
 
