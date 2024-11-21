@@ -46,7 +46,11 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 							key={page.name}
 						>
 							{page.path.includes("profile") ? (
-								<ImageView src={currentUser?.avatar} className={styles.profile_image} />
+								<ImageView
+									loading="eager"
+									src={currentUser?.avatar}
+									className={styles.profile_image}
+								/>
 							) : (
 								page.icon
 							)}
