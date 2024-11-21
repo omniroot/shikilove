@@ -1,4 +1,4 @@
-import { GET_ANIME_BY_ID } from "@/shared/services/anime/anime.graphql.ts";
+import { GET_ANIME_BY_ID, GET_ANIME_ONGOING } from "@/shared/services/anime/anime.graphql.ts";
 import {
 	IAnimeGet,
 	IAnimeResponse,
@@ -18,6 +18,16 @@ export const animeApi = {
 			_type: "IAnime",
 		}));
 		return animes[0];
+	},
+
+	getAnimeOngoing: async () => {
+		const response = await graphql<IAnimeResponse>(GET_ANIME_ONGOING);
+		let { animes } = response;
+		animes = animes.map((anime) => ({
+			...anime,
+			_type: "IAnime",
+		}));
+		return animes;
 	},
 
 	getSimilarAnime: async ({ animeId }: IAnimeGet) => {

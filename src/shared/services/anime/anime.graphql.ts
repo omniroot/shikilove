@@ -1,7 +1,5 @@
-export const GET_ANIME_BY_ID = `
-	query ($ids: String) {
-		animes(ids: $ids, limit: 1, kind: "!special") {
-			id
+const ANIME_QUERY = `
+id
 			name
 			russian
 			kind
@@ -86,6 +84,20 @@ export const GET_ANIME_BY_ID = `
 				chapters
 				episodes
 			}
+`;
+
+export const GET_ANIME_BY_ID = `
+	query ($ids: String) {
+		animes(ids: $ids, limit: 1, kind: "!special") {
+			${ANIME_QUERY}
+		}
+	}
+`;
+
+export const GET_ANIME_ONGOING = `
+	query () {
+		animes(limit: 10, kind: "!special", status: "ongoing") {
+			${ANIME_QUERY}
 		}
 	}
 `;
