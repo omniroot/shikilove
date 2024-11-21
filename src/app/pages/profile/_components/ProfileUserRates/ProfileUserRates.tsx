@@ -5,6 +5,7 @@ import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
+import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -18,23 +19,21 @@ const animeFiltersList: IButtonGroupElement[] = [
 	{ id: "completed", icon: <WatchedIcon /> },
 ];
 
-const getAnimeFilterItem = (id: string) => {
-	return animeFiltersList.find((filter) => filter.id === id) || animeFiltersList[0];
-};
-
 export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const currentFilter = searchParams.get("status") || "watching";
-	const [userRateFilter, setUserRateFilter] = useState(getAnimeFilterItem(currentFilter));
+	const currentFilter = searchParams.get("filter") || "watching";
+	const [userRateFilter, setUserRateFilter] = useState(
+		getButtonGroupElementById(animeFiltersList, currentFilter),
+	);
 	const { userRates } = useUserRate();
 
 	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
-		setSearchParams({ status: nextActiveFilter.id });
+		setSearchParams({ filter: nextActiveFilter.id });
 		setUserRateFilter(nextActiveFilter);
 	};
 
 	useEffect(() => {
-		setUserRateFilter(getAnimeFilterItem(currentFilter));
+		setUserRateFilter(getButtonGroupElementById(animeFiltersList, currentFilter));
 	}, [searchParams]);
 	if (!userRateFilter) return null;
 
