@@ -11,6 +11,7 @@ export const SettingsPage = () => {
 				<Button onClick={() => setTheme("default")}>default</Button>
 				<Button onClick={() => setTheme("catppuccin")}>catppuccin</Button>
 				<Button onClick={() => setTheme("catppuccin-dark")}>catppuccin dark</Button>
+				<Button onClick={() => setTheme("tokyo-night")}>tokyo night</Button>
 			</div>
 			<Button variant="primary">123</Button>
 		</div>

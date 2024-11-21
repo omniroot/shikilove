@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type ITheme = "default" | "catppuccin" | "catppuccin-dark";
+type ITheme = "default" | "catppuccin" | "catppuccin-dark" | "tokyo-night";
 
 interface IUseSettings {
 	theme: ITheme;
