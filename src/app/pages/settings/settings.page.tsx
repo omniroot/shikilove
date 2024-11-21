@@ -1,4 +1,4 @@
-import { useSettings } from "@/shared/hooks/useSettings.tsx";
+import { useSettings } from "@/shared/store/settings.store.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 
 export const SettingsPage = () => {
