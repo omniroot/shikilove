@@ -18,7 +18,11 @@ body {
 	background-color: $color-background !important;
 	touch-action: pan-x pan-y;
 	scrollbar-width: auto;
-	scrollbar-color: $color-primary $color-background;
+	scrollbar-color: $color-primary $color-ternary;
+}
+
+:root {
+	background-color: $color-background !important;
 }
 
 ::selection {
