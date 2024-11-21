@@ -36,6 +36,11 @@ import MessageIcon from "./svg/message-icon.svg?react";
 import ArrowLeftIcon from "./svg/arrow-left-icon.svg?react";
 import ProfileEditIcon from "./svg/profile-edit-icon.svg?react";
 import AchievementsIcon from "./svg/achievements-icon.svg?react";
+import DiscoveryIcon from "./svg/discovery-icon.svg?react";
+import CalendarIcon from "./svg/calendar-icon.svg?react";
+import RecentlyIcon from "./svg/recently-icon.svg?react";
+import CritiquesIcon from "./svg/critiques-icon.svg?react";
+import CollectionsIcon from "./svg/collections-icon.svg?react";
 
 export {
 	FilterIcon,
@@ -48,6 +53,11 @@ export {
 	ArrowLeftIcon,
 	ProfileEditIcon,
 	AchievementsIcon,
+	DiscoveryIcon,
+	CalendarIcon,
+	RecentlyIcon,
+	CritiquesIcon,
+	CollectionsIcon,
 };
 
 import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
