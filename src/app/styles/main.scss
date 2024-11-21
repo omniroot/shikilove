@@ -18,7 +18,7 @@ body {
 	background-color: var(--color-background) !important;
 	touch-action: pan-x pan-y;
 	scrollbar-width: auto;
-	scrollbar-color: var(--color-primary) var(--color-ternary);
+	scrollbar-color: var(--color-primary) var(--color-background);
 }
 
 :root {
