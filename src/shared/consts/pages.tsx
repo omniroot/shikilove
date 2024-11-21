@@ -1,4 +1,11 @@
-import { ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, HomeIcon } from "@/shared/icons";
+import {
+	ProfileIcon,
+	AnimeIcon,
+	SearchIcon,
+	SettingsIcon,
+	HomeIcon,
+	DiscoveryIcon,
+} from "@/shared/icons";
 import { ReactNode } from "react";
 
 export interface IPage {
@@ -17,9 +24,9 @@ export const PAGES = {
 			inMobile: true,
 		},
 		{
-			name: "Animes",
-			path: "/animes/",
-			icon: <AnimeIcon width={24} height={22} />,
+			name: "Discovery",
+			path: "/discovery",
+			icon: <DiscoveryIcon />,
 			inMobile: true,
 		},
 		{
