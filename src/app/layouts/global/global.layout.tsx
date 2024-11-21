@@ -5,9 +5,12 @@ import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx"
 import LoginPage from "@pages/login/login.page.tsx";
 import { Outlet } from "react-router-dom";
 import styles from "./global.layout.module.scss";
+import { useSettings } from "@/shared/hooks/useSettings.tsx";
+import { useEffect } from "react";
 
 export const GlobalLayout = () => {
 	const { currentUserError } = useCurrentUser();
+	const { theme } = useSettings();
 
 	// const { isRightSidebarOpened, rightSidebarContent } = useGlobalStore((state) => state);
 
@@ -16,6 +19,9 @@ export const GlobalLayout = () => {
 		console.log("Error while getting current user, try relogin", currentUserError);
 		return <LoginPage />;
 	}
+	useEffect(() => {
+		document.documentElement.setAttribute("theme", theme);
+	}, [theme]);
 
 	return (
 		<div className={styles.global_layout}>
