@@ -3,18 +3,18 @@
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
-	gap: $gap;
+	gap: var(--gap);
 
-	border: $border;
-	border-radius: $radius;
-	padding: $padding;
-	color: $color-text;
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: var(--padding);
+	color: var(--color-text);
 
 	.header {
 		display: flex;
 		justify-content: space-between;
 		.title {
-			font-size: $text-size-h3;
+			font-size: var(--text-size-h3);
 			font-weight: bold;
 		}
 		.actions {

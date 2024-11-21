@@ -1,17 +1,17 @@
 .user_info_card {
 	display: flex;
-	gap: $gap;
+	gap: var(--gap);
 	width: 100%;
 	height: fit-content;
-	padding: $padding;
-	border: $border;
-	border-radius: $radius;
+	padding: var(--padding);
+	border: var(--border);
+	border-radius: var(--radius);
 
 	.user_image {
 		width: 100px;
 		height: 100px;
 
-		border-radius: $radius;
+		border-radius: var(--radius);
 	}
 
 	.info {
@@ -22,21 +22,21 @@
 		.first_line {
 			display: flex;
 			justify-content: flex-start;
-			gap: $gap;
+			gap: var(--gap);
 
 			.nickname {
-				font-size: $text-size-h4;
+				font-size: var(--text-size-h4);
 				font-weight: bold;
 			}
 
 			.last_online_at {
 				width: 200px;
 				height: 200px;
-				font-size: $text-size-h6;
+				font-size: var(--text-size-h6);
 				font-weight: bold;
-				color: $color-text;
-				background-color: $color-primary;
-				border-radius: $radius;
+				color: var(--color-text);
+				background-color: var(--color-primary);
+				border-radius: var(--radius);
 				padding: 4px 4px;
 			}
 		}
@@ -46,8 +46,8 @@
 			justify-content: space-between;
 
 			.about {
-				font-size: $text-size-h5;
-				color: $color-text;
+				font-size: var(--text-size-h5);
+				color: var(--color-text);
 			}
 		}
 
@@ -56,34 +56,34 @@
 			justify-content: flex-start;
 
 			.about {
-				font-size: $text-size-h5;
-				color: $color-text;
+				font-size: var(--text-size-h5);
+				color: var(--color-text);
 			}
 		}
 
 		.dev_mode {
 			width: fit-content;
-			padding: $padding;
-			font-size: $text-size-h5;
-			color: $color-primary;
-			background-color: $color-secondary;
-			border-radius: $radius;
+			padding: var(--padding);
+			font-size: var(--text-size-h5);
+			color: var(--color-primary);
+			background-color: var(--color-secondary);
+			border-radius: var(--radius);
 		}
 	}
 	.user_actions {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: $gap;
+		gap: var(--gap);
 
 		.message_button {
 			width: 42px;
 			height: 42px;
-			color: $color-text;
+			color: var(--color-text);
 			background-color: transparent;
-			border: $border-ternary;
-			border-radius: $radius;
-			padding: $padding;
+			border: var(--border-ternary);
+			border-radius: var(--radius);
+			padding: var(--padding);
 			cursor: pointer;
 
 			svg {
@@ -95,11 +95,11 @@
 		.more_button {
 			width: 42px;
 			height: 42px;
-			color: $color-text;
+			color: var(--color-text);
 			background-color: transparent;
-			border: $border-ternary;
-			border-radius: $radius;
-			padding: $padding;
+			border: var(--border-ternary);
+			border-radius: var(--radius);
+			padding: var(--padding);
 			cursor: pointer;
 
 			svg {

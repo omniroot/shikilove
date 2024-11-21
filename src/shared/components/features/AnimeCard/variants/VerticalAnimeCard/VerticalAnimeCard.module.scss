@@ -2,7 +2,7 @@
 	position: relative;
 	max-width: 230px;
 	height: 400px;
-	color: $color-text;
+	color: var(--color-text);
 	text-decoration: none;
 
 	@include card;
@@ -11,7 +11,7 @@
 	.anime_image {
 		width: 100%;
 		height: 85%;
-		border-radius: $radius;
+		border-radius: var(--radius);
 	}
 
 	.info_container {
@@ -26,14 +26,14 @@
 		.user_status {
 			min-width: 15px;
 			padding: 2px 5px;
-			border-radius: $radius;
-			background-color: $color-secondary;
+			border-radius: var(--radius);
+			background-color: var(--color-secondary);
 		}
 		.user_episodes {
 			min-width: 15px;
 			padding: 2px 5px;
-			border-radius: $radius;
-			background-color: $color-secondary;
+			border-radius: var(--radius);
+			background-color: var(--color-secondary);
 		}
 	}
 
@@ -54,9 +54,9 @@
 	gap: 4px;
 	padding: 8px;
 
-	background-color: $color-ternary;
-	border: $border-secondary;
-	border-radius: $radius;
+	background-color: var(--color-ternary);
+	border: var(--border-secondary);
+	border-radius: var(--radius);
 	list-style: none;
 	z-index: 10;
 
@@ -76,7 +76,7 @@
 		}
 
 		&:hover {
-			background-color: $color-secondary;
+			background-color: var(--color-secondary);
 		}
 	}
 }

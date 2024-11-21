@@ -3,7 +3,7 @@
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: $gap;
+	gap: var(--gap);
 
 	.dicovery_filter_buttons {
 		width: 100%;

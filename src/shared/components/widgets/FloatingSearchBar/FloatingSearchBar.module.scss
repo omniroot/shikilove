@@ -9,46 +9,47 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	background-color: hexOpacity($color-background, 0.8);
+	// TODO opacity
+	background-color: var(--color-background);
 	backdrop-filter: blur(5px);
 	z-index: 10;
-	padding: $padding;
+	padding: var(--padding);
 
 	.floating_search_bar {
 		margin-top: 70px;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		gap: $gap;
+		gap: var(--gap);
 		max-height: 90dvh;
-		background-color: $color-background;
-		border: $border-ternary;
-		border-radius: $radius;
-		padding: $padding;
+		background-color: var(--color-background);
+		border: var(--border-ternary);
+		border-radius: var(--radius);
+		padding: var(--padding);
 
 		.search_form {
 			display: flex;
 			justify-content: space-between;
 			background-color: transparent;
-			border: $border-ternary;
-			border-radius: $radius;
-			padding: $padding;
+			border: var(--border-ternary);
+			border-radius: var(--radius);
+			padding: var(--padding);
 			transition: all 200ms;
 
 			&:focus-within {
-				border: $border-secondary;
+				border: var(--border-secondary);
 			}
 			.search_input {
 				width: 100%;
-				color: $color-text;
+				color: var(--color-text);
 				background-color: transparent;
-				font-size: $text-size-h5;
+				font-size: var(--text-size-h5);
 				border: none;
 				outline: none;
 			}
 			.search_actions {
 				display: flex;
-				gap: $gap;
+				gap: var(--gap);
 
 				.search_button {
 					border: none;

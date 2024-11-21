@@ -1,7 +1,7 @@
 .button_group {
 	display: flex;
 	flex-wrap: wrap;
-	gap: $gap;
+	gap: var(--gap);
 
 	// .button {
 	// 	display: flex;
@@ -9,22 +9,22 @@
 	// 	justify-content: center;
 	// 	width: fit-content;
 	// 	height: 42px;
-	// 	padding: $padding;
+	// 	padding: var(--padding);
 	// 	cursor: pointer;
-	// 	color: $color-text;
+	// 	color: var(--color-text);
 	// 	font-weight: inherit;
 	// 	background-color: transparent;
-	// 	border: $border;
-	// 	border-radius: $radius;
-	// 	gap: $gap;
+	// 	border: var(--border);
+	// 	border-radius: var(--radius);
+	// 	gap: var(--gap);
 
 	// 	&:hover {
-	// 		background-color: $color-secondary;
+	// 		background-color: var(--color-secondary);
 	// 	}
 	// }
 
 	.active {
-		border: $border-secondary;
-		background-color: $color-ternary;
+		border: var(--border-secondary);
+		background-color: var(--color-ternary);
 	}
 }

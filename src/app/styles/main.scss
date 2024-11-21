@@ -14,20 +14,20 @@ body {
 	display: flex;
 	height: 100%;
 	font-family: "Open Sans", sans-serif;
-	color: $color-text;
-	background-color: $color-background !important;
+	color: var(--color-text);
+	background-color: var(--color-background) !important;
 	touch-action: pan-x pan-y;
 	scrollbar-width: auto;
-	scrollbar-color: $color-primary $color-ternary;
+	scrollbar-color: var(--color-primary) var(--color-ternary);
 }
 
 :root {
-	background-color: $color-background !important;
+	background-color: var(--color-background) !important;
 }
 
 ::selection {
 	background-color: #7b4fa6;
-	color: $color-text;
+	color: var(--color-text);
 }
 
 #modal {
@@ -40,8 +40,8 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
-	background-color: hexOpacity($color-background, 0.9);
+	// TODO opacity
+	background-color: var(--color-background);
 	backdrop-filter: blur(5px);
 }
 
@@ -56,6 +56,7 @@ body {
 	justify-content: center;
 	align-items: center;
 
-	background-color: hexOpacity($color-background, 0.9);
+	// TODO opacity
+	background-color: var(--color-background);
 	backdrop-filter: blur(5px);
 }

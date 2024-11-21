@@ -1,7 +1,7 @@
 .animes_list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: $gap;
+	gap: var(--gap);
 	justify-content: flex-start;
 }
 

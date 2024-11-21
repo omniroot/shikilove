@@ -1,25 +1,25 @@
 .navbar {
 	display: flex;
 	flex-direction: column;
-	gap: $gap;
+	gap: var(--gap);
 
 	.navitem {
 		display: flex;
 		width: 100%;
-		padding: $padding-1;
-		color: $color-text;
+		padding: var(--padding-1);
+		color: var(--color-text);
 		cursor: pointer;
 		background-color: transparent;
 
-		border: $border-transparent;
-		border-radius: $radius;
+		border: var(--border-transparent);
+		border-radius: var(--radius);
 
 		&:hover {
-			background-color: $color-secondary;
+			background-color: var(--color-secondary);
 		}
 
 		.profile {
-			background-color: $color-secondary;
+			background-color: var(--color-secondary);
 		}
 	}
 
@@ -34,7 +34,7 @@
 		.profile_image {
 			width: 100%;
 			height: 100%;
-			border-radius: $radius;
+			border-radius: var(--radius);
 			background-color: transparent;
 		}
 	}
