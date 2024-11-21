@@ -17,7 +17,7 @@ body {
 	color: var(--color-text);
 	background-color: var(--color-background) !important;
 	touch-action: pan-x pan-y;
-	scrollbar-width: auto;
+	scrollbar-width: thin;
 	scrollbar-color: var(--color-primary) var(--color-background);
 }
 
@@ -26,8 +26,8 @@ body {
 }
 
 ::selection {
-	background-color: #7b4fa6;
-	color: var(--color-text);
+	color: var(--color-selection-text);
+	background-color: var(--color-selection-background);
 }
 
 #modal {
