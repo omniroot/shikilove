@@ -32,7 +32,8 @@
 	background-color: transparent;
 	border: $border-ternary;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		color: $color-text;
 		background-color: $color-ternary;
 		border: $border-secondary;
