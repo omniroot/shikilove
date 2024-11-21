@@ -3,25 +3,25 @@
 	flex-wrap: wrap;
 	gap: $gap;
 
-	.button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: fit-content;
-		height: 42px;
-		padding: $padding;
-		cursor: pointer;
-		color: $color-text;
-		font-weight: inherit;
-		background-color: transparent;
-		border: $border;
-		border-radius: $radius;
-		gap: $gap;
+	// .button {
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	width: fit-content;
+	// 	height: 42px;
+	// 	padding: $padding;
+	// 	cursor: pointer;
+	// 	color: $color-text;
+	// 	font-weight: inherit;
+	// 	background-color: transparent;
+	// 	border: $border;
+	// 	border-radius: $radius;
+	// 	gap: $gap;
 
-		&:hover {
-			background-color: $color-secondary;
-		}
-	}
+	// 	&:hover {
+	// 		background-color: $color-secondary;
+	// 	}
+	// }
 
 	.active {
 		border: $border-secondary;
