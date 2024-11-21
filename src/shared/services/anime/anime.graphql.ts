@@ -94,9 +94,17 @@ export const GET_ANIME_BY_ID = `
 	}
 `;
 
-export const GET_ANIME_ONGOING = `
+export const GET_ANIME_ONGOINGS = `
 	query () {
 		animes(limit: 10, kind: "!special", status: "ongoing") {
+			${ANIME_QUERY}
+		}
+	}
+`;
+
+export const GET_ANIME_LATESTS = `
+	query () {
+		animes(limit: 10, kind: "!special", status: "latest") {
 			${ANIME_QUERY}
 		}
 	}
