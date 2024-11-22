@@ -1,4 +1,4 @@
-import { useSettings } from "@/shared/store/settings.store.tsx";
+import { THEMES, useSettings } from "@/shared/store/settings.store.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 
 export const SettingsPage = () => {
@@ -8,10 +8,13 @@ export const SettingsPage = () => {
 			<span>Settings</span>
 			<span>Theme: {theme}</span>
 			<div>
-				<Button onClick={() => setTheme("default")}>default</Button>
-				<Button onClick={() => setTheme("catppuccin")}>catppuccin</Button>
-				<Button onClick={() => setTheme("catppuccin-dark")}>catppuccin dark</Button>
-				<Button onClick={() => setTheme("tokyo-night")}>tokyo night</Button>
+				{THEMES.map((theme) => {
+					return (
+						<Button key={theme} onClick={() => setTheme(theme)}>
+							{theme}
+						</Button>
+					);
+				})}
 			</div>
 			<Button variant="primary">123</Button>
 		</div>

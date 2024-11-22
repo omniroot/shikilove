@@ -1,12 +1,20 @@
 import { useEffect } from "react";
 import { create } from "zustand";
 
-type ITheme = "default" | "catppuccin" | "catppuccin-dark" | "tokyo-night";
+export const THEMES = [
+	"default",
+	"catppuccin",
+	"catppuccin-dark",
+	"tokyo-night",
+	"everforest",
+] as const;
+type ITheme = (typeof THEMES)[number];
 
 interface IUseSettings {
 	theme: ITheme;
 	setTheme: (newTheme: ITheme) => void;
 }
+
 const useSettingsStore = create<IUseSettings>((set) => ({
 	theme: (localStorage.getItem("theme") as ITheme) || "default",
 	setTheme: (newTheme) => set(() => ({ theme: newTheme })),

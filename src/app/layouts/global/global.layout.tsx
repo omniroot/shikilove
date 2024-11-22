@@ -5,9 +5,11 @@ import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx"
 import LoginPage from "@pages/login/login.page.tsx";
 import { Outlet } from "react-router-dom";
 import styles from "./global.layout.module.scss";
+import { useSettings } from "@/shared/store/settings.store.tsx";
 
 export const GlobalLayout = () => {
 	const { currentUserError } = useCurrentUser();
+	useSettings();
 
 	if (currentUserError) {
 		console.log("Error while getting current user, try relogin", currentUserError);
