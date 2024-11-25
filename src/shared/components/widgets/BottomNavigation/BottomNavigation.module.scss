@@ -23,6 +23,7 @@
 		height: 45px;
 		padding: var(--padding-1);
 		color: var(--color-text);
+
 		cursor: pointer;
 		text-decoration: none;
 		border: var(--border-transparent);
@@ -32,6 +33,7 @@
 		.profile_image {
 			width: 40px;
 			height: 40px;
+			border: var(--border-ternary);
 			border-radius: var(--radius);
 			background-color: transparent;
 		}
