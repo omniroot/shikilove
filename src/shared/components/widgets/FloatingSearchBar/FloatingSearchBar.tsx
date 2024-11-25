@@ -1,6 +1,5 @@
 import { useSearchAnime } from "@/shared/hooks/useSearchAnime.tsx";
 import { SearchIcon } from "@/shared/icons/index.tsx";
-import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import { Button } from "@ui/Button/Button.tsx";
@@ -80,7 +79,13 @@ export const FloatingSearchBar = () => {
 				) : (
 					<AnimeList scroll="vertical" className={styles.results}>
 						{searchAnimes?.map((anime) => {
-							return <AnimeCard key={anime.id} animeCard={getAnimeCardData(anime)} />;
+							return (
+								<AnimeCard
+									key={anime.id}
+									variant="horizontal"
+									anime={{ id: anime.id, poster: anime.poster.main2xUrl, name: anime.name }}
+								/>
+							);
 						})}
 					</AnimeList>
 				)}
