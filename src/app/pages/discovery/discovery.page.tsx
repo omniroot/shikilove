@@ -5,7 +5,7 @@ import {
 	LatestIcon,
 	RecentlyIcon,
 } from "@/shared/icons/index.tsx";
-import { OngoingFragment } from "@pages/discovery/_fragments/OngoingFragment/OngoingFragment.tsx";
+import { OngoingFragment } from "@pages/discovery/_fragments/DiscoveryOngoingFragment/DiscoveryOngoingFragment";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
 import { FragmentContainer, IFragment } from "@ui/FragmentContainer/FragmentContainer.tsx";
@@ -13,7 +13,9 @@ import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentC
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from "./discovery.page.module.scss";
-import { LatestFragment } from "@pages/discovery/_fragments/LatestFragment/LatestFragment.tsx";
+import { LatestFragment } from "@pages/discovery/_fragments/DiscoveryLatestFragment/DiscoveryLatestFragment";
+import { DiscoveryCritiqueFragment } from "@pages/discovery/_fragments/DiscoveryCritiqueFragment/DiscoveryCritiqueFragment.tsx";
+import { DiscoveryCollectionsFragment } from "@pages/discovery/_fragments/DiscoveryCollectionsFragment/DiscoveryCollectionsFragment.tsx";
 
 const discoveryFilterButtonsList: IButtonGroupElement[] = [
 	{ id: "ongoing", title: "Ongoing", icon: <RecentlyIcon width={18} /> },
@@ -26,6 +28,8 @@ const discoveryFilterButtonsList: IButtonGroupElement[] = [
 const discoveryFragmentsList: IFragment[] = [
 	{ id: "ongoing", fragment: <OngoingFragment /> },
 	{ id: "latest", fragment: <LatestFragment /> },
+	{ id: "critique", fragment: <DiscoveryCritiqueFragment /> },
+	{ id: "collections", fragment: <DiscoveryCollectionsFragment /> },
 ];
 
 export const DiscoveryPage = () => {

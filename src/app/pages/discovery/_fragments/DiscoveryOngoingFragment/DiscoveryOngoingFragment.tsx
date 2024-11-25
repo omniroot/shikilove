@@ -1,5 +1,4 @@
 import { useAnimeOngoings } from "@/shared/services/anime/hooks/useAnimeOngoing.tsx";
-import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 
@@ -10,7 +9,16 @@ export const OngoingFragment = () => {
 	return (
 		<AnimeList scroll="none">
 			{animeOngoings.map((ongoing) => (
-				<AnimeCard key={ongoing.id} animeCard={getAnimeCardData(ongoing)} />
+				<AnimeCard
+					key={ongoing.id}
+					variant="horizontal"
+					anime={{
+						id: ongoing.id,
+						poster: ongoing.poster.mainUrl,
+						name: ongoing.name,
+						episodes: ongoing.episodes,
+					}}
+				/>
 			))}
 		</AnimeList>
 	);
