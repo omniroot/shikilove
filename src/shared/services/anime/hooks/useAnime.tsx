@@ -1,5 +1,5 @@
 import { animeApi } from "@/shared/services/anime/anime.api.ts";
-import { IAnime, ISimilarAnime } from "@/shared/services/anime/anime.interface.ts";
+import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { useQuery } from "@tanstack/react-query";
 
 export const useAnime = (animeId: string) => {
@@ -12,21 +12,9 @@ export const useAnime = (animeId: string) => {
 		queryFn: () => animeApi.getAnime({ animeId }),
 	});
 
-	const {
-		isLoading: isSimilarAnimesLoading,
-		data: similarAnimes,
-		error: similarAnimesError,
-	} = useQuery<ISimilarAnime[]>({
-		queryKey: ["getSimilarAnime", animeId],
-		queryFn: () => animeApi.getSimilarAnime({ animeId }),
-	});
-
 	return {
 		isAnimeLoading,
 		anime,
 		animeError,
-		isSimilarAnimesLoading,
-		similarAnimes,
-		similarAnimesError,
 	};
 };
