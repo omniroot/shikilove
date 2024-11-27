@@ -20,7 +20,14 @@ export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<GlobalLayout />}>
 			<Route path="/" element={<HomePage />} />
-			<Route path="/animes/:animeId" element={<AnimePage />} />
+			<Route
+				path="/animes/:animeId"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<AnimePage />
+					</Suspense>
+				}
+			/>
 			<Route
 				path="/profile"
 				element={
