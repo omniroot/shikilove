@@ -22,12 +22,12 @@ export const PAGES = {
 			icon: <DiscoveryIcon />,
 			inMobile: true,
 		},
-		{
-			name: "Search",
-			path: "/search",
-			icon: <SearchIcon />,
-			inMobile: false,
-		},
+		// {
+		// 	name: "Search",
+		// 	path: "/search",
+		// 	icon: <SearchIcon />,
+		// 	inMobile: false,
+		// },
 	],
 	sidebar_end: [
 		{
@@ -41,12 +41,6 @@ export const PAGES = {
 			path: "/settings",
 			icon: <SettingsIcon />,
 			inMobile: true,
-		},
-		{
-			name: "Settings",
-			path: "/settings",
-			icon: <SettingsIcon />,
-			inMobile: false,
 		},
 	],
 };
