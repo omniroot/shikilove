@@ -56,7 +56,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 									key={userRate.id}
 									variant="vertical"
 									anime={{
-										id: userRate.id,
+										id: userRate.anime.id,
 										poster: userRate.anime.poster.main2xUrl,
 										name: userRate.anime.name,
 										episodes: userRate.anime.episodes,
