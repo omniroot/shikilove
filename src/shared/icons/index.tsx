@@ -1,66 +1,45 @@
 // Pages Icons
-import HomeIcon from "./svg/home-icon.svg?react";
-import ProfileIcon from "./svg/profile-icon.svg?react";
-import AnimeIcon from "./svg/anime-page-icon.svg?react";
-import SearchIcon from "./svg/search-icon.svg?react";
-import SettingsIcon from "./svg/settings-icon.svg?react";
-import LogoutIcon from "./svg/logout-icon.svg?react";
-
-export { HomeIcon, ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, LogoutIcon };
 
 // Anime User Rate Filter Icons
-import WatchingIcon from "./svg/watching-icon.svg?react";
-import PlannedIcon from "./svg/planned-icon.svg?react";
-import WatchedIcon from "./svg/watched-icon.svg?react";
-import PostponedIcon from "./svg/postponed-icon.svg?react";
-import DroppedIcon from "./svg/dropped-icon.svg?react";
-
-export { WatchingIcon, PlannedIcon, WatchedIcon, PostponedIcon, DroppedIcon };
 
 // Anime Info Icons
-import AnimeStatusIcon from "./svg/anime-status-icon.svg?react";
-import AnimeEpisodeIcon from "./svg/anime-episode-icon.svg?react";
-import AnimeRateIcon from "./svg/anime-rate-icon.svg?react";
-import AnimeAchievementIcon from "./svg/anime-achievement-icon.svg?react";
-
-export { AnimeStatusIcon, AnimeEpisodeIcon, AnimeRateIcon, AnimeAchievementIcon };
 
 // Other icons
-import FilterIcon from "./svg/filter-icon.svg?react";
-import PlusIcon from "./svg/plus-icon.svg?react";
-import RightArrowIcon from "./svg/right-arrow-icon.svg?react";
-import TrashIcon from "./svg/trash-icon.svg?react";
-import StarIcon from "./svg/star-icon.svg?react";
-import MoreIcon from "./svg/more-icon.svg?react";
-import MessageIcon from "./svg/message-icon.svg?react";
-import ArrowLeftIcon from "./svg/arrow-left-icon.svg?react";
-import ProfileEditIcon from "./svg/profile-edit-icon.svg?react";
-import AchievementsIcon from "./svg/achievements-icon.svg?react";
-import DiscoveryIcon from "./svg/discovery-icon.svg?react";
-import CalendarIcon from "./svg/calendar-icon.svg?react";
-import RecentlyIcon from "./svg/recently-icon.svg?react";
-import CritiquesIcon from "./svg/critiques-icon.svg?react";
-import CollectionsIcon from "./svg/collections-icon.svg?react";
-import LatestIcon from "./svg/latest-icon.svg?react";
 
-export {
-	FilterIcon,
-	PlusIcon,
-	RightArrowIcon,
-	TrashIcon,
-	StarIcon,
-	MoreIcon,
-	MessageIcon,
-	ArrowLeftIcon,
-	ProfileEditIcon,
-	AchievementsIcon,
-	DiscoveryIcon,
-	CalendarIcon,
-	RecentlyIcon,
-	CritiquesIcon,
-	CollectionsIcon,
-	LatestIcon,
-};
+export { default as HomeIcon } from "./svg/home-icon.svg?react";
+export { default as ProfileIcon } from "./svg/profile-icon.svg?react";
+export { default as AnimeIcon } from "./svg/anime-page-icon.svg?react";
+export { default as SearchIcon } from "./svg/search-icon.svg?react";
+export { default as SettingsIcon } from "./svg/settings-icon.svg?react";
+export { default as LogoutIcon } from "./svg/logout-icon.svg?react";
 
-import ShikimoriIcon from "./svg/shikimori-icon.svg?react";
-export { ShikimoriIcon };
+export { default as WatchingIcon } from "./svg/watching-icon.svg?react";
+export { default as PlannedIcon } from "./svg/planned-icon.svg?react";
+export { default as WatchedIcon } from "./svg/watched-icon.svg?react";
+export { default as PostponedIcon } from "./svg/postponed-icon.svg?react";
+export { default as DroppedIcon } from "./svg/dropped-icon.svg?react";
+
+export { default as AnimeStatusIcon } from "./svg/anime-status-icon.svg?react";
+export { default as AnimeEpisodeIcon } from "./svg/anime-episode-icon.svg?react";
+export { default as AnimeRateIcon } from "./svg/anime-rate-icon.svg?react";
+export { default as AnimeAchievementIcon } from "./svg/anime-achievement-icon.svg?react";
+
+export { default as FilterIcon } from "./svg/filter-icon.svg?react";
+export { default as PlusIcon } from "./svg/plus-icon.svg?react";
+export { default as RightArrowIcon } from "./svg/right-arrow-icon.svg?react";
+export { default as TrashIcon } from "./svg/trash-icon.svg?react";
+export { default as StarIcon } from "./svg/star-icon.svg?react";
+export { default as MoreIcon } from "./svg/more-icon.svg?react";
+export { default as MessageIcon } from "./svg/message-icon.svg?react";
+export { default as ArrowLeftIcon } from "./svg/arrow-left-icon.svg?react";
+export { default as ProfileEditIcon } from "./svg/profile-edit-icon.svg?react";
+export { default as AchievementsIcon } from "./svg/achievements-icon.svg?react";
+export { default as DiscoveryIcon } from "./svg/discovery-icon.svg?react";
+export { default as CalendarIcon } from "./svg/calendar-icon.svg?react";
+export { default as RecentlyIcon } from "./svg/recently-icon.svg?react";
+export { default as CritiquesIcon } from "./svg/critiques-icon.svg?react";
+export { default as CollectionsIcon } from "./svg/collections-icon.svg?react";
+export { default as LatestIcon } from "./svg/latest-icon.svg?react";
+export { default as BookmarkEditIcon } from "./svg/bookmark-edit.svg?react";
+
+export { default as ShikimoriIcon } from "./svg/shikimori-icon.svg?react";
