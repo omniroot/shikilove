@@ -15,6 +15,11 @@
 		gap: 4px;
 
 		.navigate_back_button {
+			color: var(--color-text);
+
+			&:hover {
+				color: var(--color-primary);
+			}
 		}
 
 		.logo {
