@@ -5,6 +5,7 @@ import { GlobalLayout } from "@/app/layouts/global/global.layout";
 import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
 import { HomePage } from "@pages/home/home.page.tsx";
 const LoginPage = React.lazy(() => import("@/app/pages/login/login.page.tsx"));
+const AnimePage = React.lazy(() => import("@/app/pages/anime/anime.page.tsx"));
 const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
 const ProfileEditPage = React.lazy(
 	() => import("@pages/profile/_pages/profile_edit/profile_edit.page.tsx"),
@@ -19,6 +20,7 @@ export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<GlobalLayout />}>
 			<Route path="/" element={<HomePage />} />
+			<Route path="/animes/:animeId" element={<AnimePage />} />
 			<Route
 				path="/profile"
 				element={

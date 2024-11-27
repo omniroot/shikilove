@@ -1,0 +1,37 @@
+.anime_info {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+
+	gap: var(--gap);
+
+	.poster {
+		width: 140px;
+		border-radius: var(--radius);
+	}
+
+	.subinfo {
+		display: flex;
+		flex-direction: column;
+
+		.name {
+			font-size: var(--text-size-h4);
+			font-weight: 600;
+		}
+
+		.russian {
+			color: var(--color-subtext);
+			font-size: var(--text-size-h5);
+			font-weight: 500;
+		}
+
+		.description {
+			cursor: pointer;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 5;
+			-webkit-box-orient: vertical;
+		}
+	}
+}
