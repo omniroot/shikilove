@@ -1,0 +1,77 @@
+import { IAnime } from "@/shared/services/anime/anime.interface.ts";
+import { Button } from "@ui/Button/Button.tsx";
+import { Divider } from "@ui/Divider/Divider.tsx";
+import { FC, useState } from "react";
+import styles from "./AnimeWatchContainer.module.scss";
+import { BookmarkEditIcon } from "@/shared/icons/index.tsx";
+import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
+import { Input } from "@ui/Input/Input.tsx";
+import clsx from "clsx";
+interface IWatchButtonProps {
+	anime: IAnime | undefined;
+}
+export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
+	const [userRateEditBottomSheetOpen, setUserRateEditBottomSheetOpen] = useState(false);
+	const [watchBottomSheetOpen, setWatchBottomSheetOpen] = useState(false);
+	const isHentai = anime?.genres.map((genre) => {
+		if (genre.name === "Hentai") return true;
+		return false;
+	});
+	// const {} = useUserRate(anime?.userRate.id);
+	const onWatchButtonClick = () => {
+		setWatchBottomSheetOpen((prev) => !prev);
+	};
+
+	const onUserRateEditClick = () => {
+		setUserRateEditBottomSheetOpen((prev) => !prev);
+	};
+
+	const onHentaiHavenClick = () => {
+		window.open(`https://nhentaihaven.org/?s=${anime?.name}&post_type=wp-manga`);
+	};
+
+	if (!anime) return "Loading anime...";
+	return (
+		<div className={styles.anime_watch_container}>
+			<Button className={styles.watch_button} variant="ternary" onClick={onWatchButtonClick}>
+				Watch
+			</Button>
+			<Button
+				className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
+				variant="ternary"
+				onClick={onUserRateEditClick}
+			>
+				{!anime.userRate ? (
+					<BookmarkEditIcon />
+				) : (
+					<div className={styles.user_rate_edit_content}>
+						<BookmarkEditIcon />
+						<span>{anime.userRate.episodes}</span>
+						<Divider orientation="vertical" className={styles.divider} />
+						<span>{anime.userRate.status}</span>
+					</div>
+				)}
+			</Button>
+			{userRateEditBottomSheetOpen && (
+				<BottomSheet
+					title="Edit user rate"
+					onOutsideClick={() => setUserRateEditBottomSheetOpen((prev) => !prev)}
+				>
+					<div className={styles.user_rate_edit_container}>
+						<Input defaultValue={String(anime.userRate?.episodes || 0)} />
+						<Input defaultValue={String(anime.userRate?.status || "Watching")} />
+					</div>
+				</BottomSheet>
+			)}
+			{watchBottomSheetOpen && (
+				<BottomSheet title="Watch" onOutsideClick={() => setWatchBottomSheetOpen((prev) => !prev)}>
+					{isHentai && (
+						<Button onClick={onHentaiHavenClick} variant="nhentai">
+							HentaiHaven
+						</Button>
+					)}
+				</BottomSheet>
+			)}
+		</div>
+	);
+};

@@ -1,9 +1,9 @@
 import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
 import { AnimeInfo } from "@pages/anime/_components/AnimeInfo/AnimeInfo.tsx";
-import { WatchButton } from "@pages/anime/_components/WatchButton/WatchButton.tsx";
+import { AnimeWatchContainer } from "@pages/anime/_components/AnimeWatchContainer/AnimeWatchContainer.tsx";
 import { useParams } from "react-router-dom";
 import styles from "./anime.page.module.scss";
-import { ImageView } from "@ui/ImageView/ImageView.tsx";
+import { AnimeMoreInfo } from "@pages/anime/_components/AnimeMoreInfo/AnimeMoreInfo.tsx";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
@@ -12,12 +12,8 @@ export const AnimePage = () => {
 	return (
 		<div className={styles.anime_page}>
 			<AnimeInfo anime={anime} />
-			<WatchButton animeId={animeId} />
-			<ImageView
-				src={anime?.screenshots[0].x332Url}
-				full={anime?.screenshots[0].originalUrl}
-				allowFullscreen
-			/>
+			<AnimeMoreInfo anime={anime} />
+			<AnimeWatchContainer anime={anime} />
 		</div>
 	);
 };
