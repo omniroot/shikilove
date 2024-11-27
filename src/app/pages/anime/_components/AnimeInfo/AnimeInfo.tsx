@@ -28,7 +28,7 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 			/>
 			<div className={styles.subinfo}>
 				<div className={styles.name}>{anime.name}</div>
-				<div className={styles.russian}>{anime.name}</div>
+				<div className={styles.russian}>{anime.russian}</div>
 				<Divider orientation="horizontal" />
 				<div className={styles.description} onClick={onDescriptionClick}>
 					{anime.description}
