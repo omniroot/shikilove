@@ -18,12 +18,14 @@ api.interceptors.response.use(
 	},
 	async (error) => {
 		const originalRequest = error.config;
+
 		if (
 			error.response &&
 			error.response.status === 401 &&
 			!originalRequest._retry &&
 			localStorage.getItem("refresh_token")
 		) {
+
 			originalRequest._retry = true;
 			console.log("Trying refreshing tokens");
 			const tokens = await authApi.refreshTokens(localStorage.getItem("refresh_token") || "");
@@ -38,3 +40,4 @@ api.interceptors.response.use(
 		return Promise.reject(error);
 	},
 );
+
