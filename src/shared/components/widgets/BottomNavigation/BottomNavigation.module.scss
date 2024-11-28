@@ -12,7 +12,8 @@
 	padding: var(--padding);
 	border: var(--border-ternary);
 	border-radius: var(--radius-2);
-	background-color: var(--color-background);
+	background-color: var(--color-background-80);
+	backdrop-filter: var(--blur);
 	z-index: 1000;
 
 	.navitem {

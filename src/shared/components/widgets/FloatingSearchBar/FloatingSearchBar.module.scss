@@ -10,8 +10,8 @@
 	justify-content: flex-start;
 	align-items: center;
 	// TODO opacity
-	background-color: var(--color-background);
-	backdrop-filter: blur(5px);
+	background-color: var(--color-background-80);
+	backdrop-filter: var(--blur);
 	z-index: 10;
 	padding: var(--padding);
 
