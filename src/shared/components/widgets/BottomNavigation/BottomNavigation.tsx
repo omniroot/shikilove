@@ -44,6 +44,7 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 							})}
 							to={page.path}
 							key={page.name}
+							viewTransition
 						>
 							{page.path.includes("profile") ? (
 								<ImageView

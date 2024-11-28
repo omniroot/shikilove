@@ -44,6 +44,7 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 							})}
 							to={page.path}
 							key={page.name}
+							viewTransition
 						>
 							<ImageView src={currentUser?.avatar} className={styles.profile_image} />
 						</Link>
@@ -54,6 +55,7 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 						className={clsx(styles.navitem, { [styles.active]: isCurrentPage(page) })}
 						to={page.path}
 						key={page.name}
+						viewTransition
 					>
 						{page.icon}
 					</Link>

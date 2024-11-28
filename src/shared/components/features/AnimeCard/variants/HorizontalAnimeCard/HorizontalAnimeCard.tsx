@@ -19,7 +19,7 @@ export const HorizontalAnimeCard: FC<IHorizontalAnimeCardProps> = ({ anime }) =>
 			className={styles.anime_card}
 		>
 			<ImageView src={anime.poster} alt="poster" className={styles.poster} />
-			<Link to={`/animes/${anime.id}`} className={styles.info}>
+			<Link to={`/animes/${anime.id}`} className={styles.info} viewTransition>
 				<span className={styles.title}>{anime.name}</span>
 				<div className={styles.line}>
 					{anime.userRate?.status}
