@@ -1,0 +1,18 @@
+.select {
+	border: var(--border-ternary);
+	border-radius: var(--radius);
+	padding: var(--padding);
+
+	color: var(--color-text);
+	background-color: var(--color-background);
+
+	transition:
+		background-color 200ms,
+		border 200ms;
+
+	&:hover {
+		border: var(--border-secondary);
+
+		background-color: var(--color-ternary);
+	}
+}
