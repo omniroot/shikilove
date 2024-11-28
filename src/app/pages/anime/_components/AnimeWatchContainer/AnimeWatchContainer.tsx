@@ -9,6 +9,7 @@ import { Input } from "@ui/Input/Input.tsx";
 import clsx from "clsx";
 import { UserRateEditBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/UserRateEditBottomSheet/UserRateEditBottomSheet.tsx";
 import { WatchBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/WatchBottomSheet.tsx";
+import { AnimatePresence } from "framer-motion";
 interface IWatchButtonProps {
 	anime: IAnime | undefined;
 }
@@ -47,12 +48,14 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 					</div>
 				)}
 			</Button>
-			{userRateEditBottomSheetOpen && (
-				<UserRateEditBottomSheet anime={anime} onOutsideClick={onUserRateEditClick} />
-			)}
-			{watchBottomSheetOpen && (
-				<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
-			)}
+			<AnimatePresence>
+				{userRateEditBottomSheetOpen && (
+					<UserRateEditBottomSheet anime={anime} onOutsideClick={onUserRateEditClick} />
+				)}
+				{watchBottomSheetOpen && (
+					<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
