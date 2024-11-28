@@ -7,16 +7,15 @@ import { BookmarkEditIcon } from "@/shared/icons/index.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Input } from "@ui/Input/Input.tsx";
 import clsx from "clsx";
+import { UserRateEditBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/UserRateEditBottomSheet/UserRateEditBottomSheet.tsx";
+import { WatchBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/WatchBottomSheet.tsx";
 interface IWatchButtonProps {
 	anime: IAnime | undefined;
 }
 export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 	const [userRateEditBottomSheetOpen, setUserRateEditBottomSheetOpen] = useState(false);
 	const [watchBottomSheetOpen, setWatchBottomSheetOpen] = useState(false);
-	const isHentai = anime?.genres.map((genre) => {
-		if (genre.name === "Hentai") return true;
-		return false;
-	});
+
 	// const {} = useUserRate(anime?.userRate.id);
 	const onWatchButtonClick = () => {
 		setWatchBottomSheetOpen((prev) => !prev);
@@ -24,10 +23,6 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 
 	const onUserRateEditClick = () => {
 		setUserRateEditBottomSheetOpen((prev) => !prev);
-	};
-
-	const onHentaiHavenClick = () => {
-		window.open(`https://nhentaihaven.org/?s=${anime?.name}&post_type=wp-manga`);
 	};
 
 	if (!anime) return "Loading anime...";
@@ -53,24 +48,10 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 				)}
 			</Button>
 			{userRateEditBottomSheetOpen && (
-				<BottomSheet
-					title="Edit user rate"
-					onOutsideClick={() => setUserRateEditBottomSheetOpen((prev) => !prev)}
-				>
-					<div className={styles.user_rate_edit_container}>
-						<Input defaultValue={String(anime.userRate?.episodes || 0)} />
-						<Input defaultValue={String(anime.userRate?.status || "Watching")} />
-					</div>
-				</BottomSheet>
+				<UserRateEditBottomSheet anime={anime} onOutsideClick={onUserRateEditClick} />
 			)}
 			{watchBottomSheetOpen && (
-				<BottomSheet title="Watch" onOutsideClick={() => setWatchBottomSheetOpen((prev) => !prev)}>
-					{isHentai && (
-						<Button onClick={onHentaiHavenClick} variant="nhentai">
-							HentaiHaven
-						</Button>
-					)}
-				</BottomSheet>
+				<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
 			)}
 		</div>
 	);
