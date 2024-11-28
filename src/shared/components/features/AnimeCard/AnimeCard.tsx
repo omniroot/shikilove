@@ -5,15 +5,19 @@ import type { FC } from "react";
 
 interface IAnimeCardProps {
 	variant?: "vertical" | "horizontal";
-	animeCard: IAnimeCard;
+	anime: IAnimeCard;
 }
 
-export const AnimeCard: FC<IAnimeCardProps> = ({ animeCard }) => {
+export const AnimeCard: FC<IAnimeCardProps> = ({ variant, anime }) => {
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 	if (isMobile) {
-		// variant = "horizontal";
+		variant = "horizontal";
 	}
-	return <HorizontalAnimeCard animeCard={animeCard} />;
+
+	if (!anime) return "Laoding anime...";
+	// TODO : refactoring animecards for slots. Card only html, css and slots (props).
+	// TODO : variant = "vertical" | "horizontal" for news and posts from user
+	if (variant === "horizontal") return <HorizontalAnimeCard anime={anime} />;
 
 	// if (variant === "vertical" && userRateAnime) {
 	// 	return <VerticalAnimeCard userRateAnime={userRateAnime} />;

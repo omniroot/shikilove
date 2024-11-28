@@ -1,0 +1,24 @@
+.anime_more_info {
+	display: flex;
+	justify-content: space-around;
+	gap: var(--gap);
+
+	border: var(--border);
+	border-radius: 16px;
+	padding: var(--padding);
+
+	.element {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		.title {
+			font-size: var(--text-size-h6);
+			color: var(--color-subtext);
+		}
+
+		.content {
+			font-weight: 600;
+		}
+	}
+}

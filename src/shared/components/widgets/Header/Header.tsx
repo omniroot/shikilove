@@ -30,7 +30,11 @@ export const Header = () => {
 						whileTap={{ rotate: 45 }}
 						transition={{ duration: 0.4, bounce: 0.25 }}
 					>
-						<Button onClick={() => navigate(-1)} className={styles.navigate_back_button}>
+						<Button
+							onClick={() => navigate(-1)}
+							className={styles.navigate_back_button}
+							variant="transparent"
+						>
 							<ArrowLeftIcon height={20} width={20} />
 						</Button>
 					</motion.div>

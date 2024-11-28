@@ -4,64 +4,85 @@ import { IUserRate } from "@/shared/services/userRate/userRate.interface.ts";
 import { IAnimeCard } from "@/shared/types/anime_card.interface.ts";
 
 type IGetAnimeCardDataProps = IAnime | ISearchAnime | IUserRate | ISimilarAnime;
+
 export const getAnimeCardData = (anime: IGetAnimeCardDataProps): IAnimeCard => {
-	const animeCard: IAnimeCard | any = {};
+	let animeCard: IAnimeCard;
+
+	animeCard = {
+		id: "20",
+		poster: "",
+		name: "",
+		russian: "",
+		episodes: 0,
+		score: 0,
+		kind: "",
+		airedOn: "",
+		userRate: {
+			status: "",
+			episodes: 0,
+			score: 0,
+		},
+	};
 
 	if (anime._type === "IAnime") {
-		// console.log("IAnime", anime);
-
 		const _anime = anime as IAnime;
-		animeCard.id = _anime.id;
-		animeCard.poster = _anime.poster.mainUrl;
-		animeCard.name = _anime.name;
-		animeCard.russian = _anime.russian;
-		animeCard.episodes = _anime.episodes;
-		animeCard.score = _anime.score;
-		animeCard.kind = _anime.kind;
-		animeCard.airedOn = String(_anime.airedOn.year);
-		animeCard.userRate = {
-			status: _anime.userRate?.status,
-			episodes: _anime.userRate?.episodes,
-			score: _anime.userRate?.score,
-		};
+		animeCard = {
+			id: _anime.id,
+			poster: _anime.poster.mainUrl,
+			name: _anime.name,
+			russian: _anime.russian,
+			episodes: _anime.episodes,
+			score: _anime.score,
+			kind: _anime.kind,
+			airedOn: String(_anime.airedOn.year),
+			userRate: {
+				status: _anime.userRate?.status,
+				episodes: _anime.userRate?.episodes,
+				score: _anime.userRate?.score,
+			},
+		} as IAnimeCard;
 	}
 
 	if (anime._type === "IUserRate") {
 		// console.log("IUserRate", anime);
 
 		const _anime = anime as IUserRate;
-		animeCard.id = _anime.anime.id;
-		animeCard.poster = _anime.anime.poster.main2xUrl;
-		animeCard.name = _anime.anime.name;
-		animeCard.russian = _anime.anime.russian;
-		animeCard.episodes = _anime.anime.episodes;
-		animeCard.score = _anime.anime.score;
-		animeCard.kind = _anime.anime.kind;
-		animeCard.airedOn = String(_anime.anime.airedOn.year);
-		animeCard.userRate = {
-			status: _anime.status,
-			episodes: _anime.episodes,
-			score: _anime.score,
-		};
+		animeCard = {
+			id: _anime.anime.id,
+			poster: _anime.anime.poster.main2xUrl,
+			name: _anime.anime.name,
+			russian: _anime.anime.russian,
+			episodes: _anime.anime.episodes,
+			score: _anime.anime.score,
+			kind: _anime.anime.kind,
+			airedOn: String(_anime.anime.airedOn.year),
+			userRate: {
+				status: _anime.status,
+				episodes: _anime.episodes,
+				score: _anime.score,
+			},
+		} as IAnimeCard;
 	}
 
 	if (anime._type === "ISearchAnime") {
 		// console.log("ISearchAnime", anime);
 
 		const _anime = anime as ISearchAnime;
-		animeCard.id = _anime.id;
-		animeCard.poster = _anime.poster.main2xUrl;
-		animeCard.name = _anime.name;
-		animeCard.russian = _anime.russian;
-		animeCard.episodes = _anime.episodes;
-		animeCard.score = _anime.score;
-		animeCard.kind = _anime.kind;
-		animeCard.airedOn = String(_anime.airedOn.year);
-		animeCard.userRate = {
-			status: _anime.userRate?.status,
-			episodes: _anime.userRate?.episodes,
-			score: _anime.userRate?.score,
-		};
+		animeCard = {
+			id: _anime.id,
+			poster: _anime.poster.main2xUrl,
+			name: _anime.name,
+			russian: _anime.russian,
+			episodes: _anime.episodes,
+			score: _anime.score,
+			kind: _anime.kind,
+			airedOn: String(_anime.airedOn.year),
+			userRate: {
+				status: _anime.userRate?.status,
+				episodes: _anime.userRate?.episodes,
+				score: _anime.userRate?.score,
+			},
+		} as IAnimeCard;
 	}
 
 	// TODO add similar anime check

@@ -6,13 +6,17 @@ type IAnimeListProps = {
 	className?: string;
 	scroll?: "none" | "vertical" | "horizontal";
 };
-export const AnimeList: FC<IAnimeListProps> = ({ children, className, scroll }) => {
+export const AnimeList: FC<IAnimeListProps> = ({ children, className, scroll = "none" }) => {
 	const _class = clsx(styles.animes_list, className);
 
 	return (
 		<div
 			className={_class}
-			style={scroll === "horizontal" ? { overflowX: "scroll" } : { overflowY: "scroll" }}
+			style={
+				(scroll === "horizontal" && { overflowX: "scroll" }) ||
+				(scroll === "vertical" && { overflowY: "scroll" }) ||
+				{}
+			}
 		>
 			{children}
 		</div>

@@ -1,6 +1,6 @@
 .icon_button {
 	display: flex;
-	gap: $gap;
+	gap: var(--gap);
 	align-items: center;
 	justify-content: center;
 }

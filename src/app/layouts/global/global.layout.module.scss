@@ -1,25 +1,25 @@
 .global_layout {
 	display: flex;
-	gap: $gap-2;
+	gap: var(--gap-2);
 	width: 100dvw;
 	min-height: 100dvh;
-	padding: $padding-2;
+	padding: var(--padding-2);
 	overflow-x: hidden;
 
 	.main {
+		margin-top: 70px;
 		width: 100%;
 	}
 
 	.right_sidebar {
-		@include card;
 	}
 }
 
 @media screen and (max-width: 768px) {
 	.global_layout {
 		flex-direction: column;
-		padding: $padding-1;
-		gap: $gap;
+		padding: var(--padding-1);
+		gap: var(--gap);
 	}
 
 	.main {

@@ -1,7 +1,7 @@
 .anime_user_rates {
 	display: flex;
 	flex-direction: column;
-	gap: $gap;
+	gap: var(--gap);
 	width: 100%;
 
 	.anime_filters {

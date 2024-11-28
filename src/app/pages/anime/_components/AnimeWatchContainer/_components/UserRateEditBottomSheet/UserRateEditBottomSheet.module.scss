@@ -1,0 +1,14 @@
+.user_rate_edit_container {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+
+	.selects {
+		display: flex;
+		gap: var(--gap);
+	}
+
+	.save_button {
+		width: 100%;
+	}
+}

@@ -1,15 +1,28 @@
-import { FC, ReactNode } from "react";
-import styles from "./Button.module.scss";
 import clsx from "clsx";
+import { FC, ReactNode } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Button.module.scss";
 
 interface IButtonProps {
 	children?: ReactNode;
 	className?: string;
+	id?: string;
 	as?: "button" | "Link";
 	to?: string;
-	variant?: "primary" | "ternary" | "secondary" | "animego" | "hanime" | "nhentai" | "shikimori";
-	onClick?: () => void;
+	variant?:
+		| "primary"
+		| "ternary"
+		| "transparent"
+		| "secondary"
+		| "animego"
+		| "hanime"
+		| "nhentai"
+		| "shikimori";
+	onClick?: (
+		event:
+			| React.MouseEvent<HTMLButtonElement, MouseEvent>
+			| React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+	) => void;
 }
 export const Button: FC<IButtonProps> = ({
 	children,

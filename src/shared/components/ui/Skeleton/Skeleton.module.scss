@@ -38,7 +38,7 @@
 .image {
 	width: 40px;
 	height: 40px;
-	border-radius: $radius;
+	border-radius: var(--radius);
 }
 
 .title {

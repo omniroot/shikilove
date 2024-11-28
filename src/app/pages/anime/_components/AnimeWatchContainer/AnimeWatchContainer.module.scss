@@ -1,0 +1,40 @@
+.anime_watch_container {
+	display: flex;
+	width: 100%;
+	gap: 4px;
+
+	.watch_button {
+		width: 100%;
+		border-radius: 16px;
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+	}
+
+	.user_rate_edit {
+		display: flex;
+		width: max-content;
+		border-radius: 16px;
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+
+		.user_rate_edit_content {
+			display: flex;
+			justify-content: center;
+			gap: var(--gap);
+
+			.divider {
+				min-height: 100%;
+			}
+		}
+
+		&.empty {
+			min-width: 20%;
+		}
+	}
+
+	.user_rate_edit_container {
+		display: flex;
+		width: 100%;
+		gap: 4px;
+	}
+}

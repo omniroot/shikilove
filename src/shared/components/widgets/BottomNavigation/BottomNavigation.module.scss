@@ -6,13 +6,14 @@
 	bottom: 10px;
 	left: 50%;
 	translate: -50%;
-	gap: $gap-2;
+	gap: var(--gap-2);
 	max-width: 90%;
 	height: 70px;
-	padding: $padding;
-	border: $border;
-	border-radius: $radius-2;
-	background-color: $color-background;
+	padding: var(--padding);
+	border: var(--border-ternary);
+	border-radius: var(--radius-2);
+	background-color: var(--color-background-80);
+	backdrop-filter: var(--blur);
 	z-index: 1000;
 
 	.navitem {
@@ -21,28 +22,30 @@
 		align-items: center;
 		width: 70px;
 		height: 45px;
-		padding: $padding-1;
-		color: $color-text;
+		padding: var(--padding-1);
+		color: var(--color-text);
+
 		cursor: pointer;
 		text-decoration: none;
-		border: $border-transparent;
-		border-radius: $radius-2;
+		border: var(--border-transparent);
+		border-radius: var(--radius-2);
 		transition: all 200ms;
 
 		.profile_image {
 			width: 40px;
 			height: 40px;
-			border-radius: $radius;
+			border: var(--border-ternary);
+			border-radius: var(--radius);
 			background-color: transparent;
 		}
 
 		&:hover {
-			background-color: $color-ternary;
+			background-color: var(--color-ternary);
 		}
 	}
 	.active {
 		width: 100px;
-		background-color: $color-ternary;
-		padding: $padding-1;
+		background-color: var(--color-ternary);
+		padding: var(--padding-1);
 	}
 }

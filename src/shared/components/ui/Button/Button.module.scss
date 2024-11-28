@@ -1,23 +1,24 @@
 .button {
 	display: flex;
-	align-items: center;
 	width: fit-content;
 	height: 40px;
+	justify-content: center;
+	align-items: center;
 
-	padding: $padding;
+	padding: var(--padding);
 	border-radius: 12px;
 	border: none;
-	gap: $gap;
-	color: $color-text-alt;
-	background-color: $color-primary;
+	gap: var(--gap);
+	color: var(--color-alttext);
+	background-color: var(--color-primary);
 	transition: all 200ms;
 	font-weight: 600;
 	cursor: pointer;
 	text-decoration: none;
 
 	&:hover {
-		color: $color-primary;
-		background-color: $color-secondary;
+		color: var(--color-primary);
+		background-color: var(--color-secondary);
 	}
 
 	&:active {
@@ -26,63 +27,71 @@
 }
 
 .button[data-variant="ternary"] {
-	justify-content: center;
 	padding: 12px 8px;
-	color: $color-text;
+	color: var(--color-text);
 	background-color: transparent;
-	border: $border-ternary;
+	border: var(--border-ternary);
 
 	&:hover {
-		color: $color-text;
-		background-color: $color-ternary;
-		border: $border-secondary;
+		color: var(--color-text);
+		background-color: var(--color-ternary);
+		border: var(--border-secondary);
+	}
+}
+
+.button[data-variant="transparent"] {
+	background-color: transparent;
+	border: transparent;
+
+	&:hover {
+		color: var(--color-primary);
 	}
 }
 
 .button[data-variant="secondary"] {
-	color: $color-text;
-	background-color: $color-secondary;
+	color: var(--color-text);
+	background-color: var(--color-secondary);
 
 	&:hover {
-		color: $color-text;
-		background-color: $color-secondary;
+		color: var(--color-text);
+		background-color: var(--color-secondary);
 	}
 }
 
 .button[data-variant="animego"] {
-	color: $color-text;
-	background-color: $color-animego;
+	color: var(--color-text);
+	background-color: var(--color-animego);
 
 	&:hover {
-		color: $color-text;
-		background-color: $color-animego-hover;
+		color: var(--color-text);
+		background-color: var(--color-animego)-hover;
 	}
 }
 .button[data-variant="hanime"] {
-	color: $color-text;
-	background-color: $color-hanime;
+	color: var(--color-text);
+	background-color: var(--color-hanime);
 
 	&:hover {
-		color: $color-text;
-		background-color: $color-hanime-hover;
+		color: var(--color-text);
+		background-color: var(--color-hanime)-hover;
 	}
 }
 .button[data-variant="nhentai"] {
-	color: $color-text;
-	background-color: $color-nhentai;
+	color: var(--color-text);
+	background-color: var(--color-nhentai);
 
 	&:hover {
-		color: $color-text;
-		background-color: $color-nhentai-hover;
+		color: var(--color-text);
+		background-color: var(--color-nhentai)-hover;
 	}
 }
 
 .button[data-variant="shikimori"] {
-	color: $color-primary;
-	background-color: $color-shikimori;
+	color: var(--color-primary);
+	background-color: var(--color-shikimori);
 
 	&:hover {
-		color: $color-primary;
-		background-color: $color-shikimori-hover;
+		color: var(--color-primary);
+		background-color: var(--color-shikimori)-hover;
 	}
 }

@@ -1,12 +1,19 @@
 .header {
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	translate: -50%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: calc(100% - var(--padding) * 2);
+	background-color: var(--color-background-80);
+	backdrop-filter: var(--blur);
 	height: 60px;
-	border: $border;
-	border-radius: $radius;
-	padding: $padding;
-	gap: $gap;
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: var(--padding);
+	gap: var(--gap);
 	z-index: 1000;
 
 	.left {
@@ -15,32 +22,31 @@
 		gap: 4px;
 
 		.navigate_back_button {
-			color: $color-text;
-			background-color: transparent;
+			color: var(--color-text);
 
 			&:hover {
-				color: $color-primary;
+				color: var(--color-primary);
 			}
 		}
 
 		.logo {
-			font-size: $text-size-h4;
+			font-size: var(--text-size-h4);
 			font-weight: bold;
 		}
 
 		.dev_mode {
 			width: fit-content;
-			padding: 2px $padding;
-			font-size: $text-size-h5;
-			color: $color-primary;
-			background-color: $color-secondary;
-			border-radius: $radius;
+			padding: 2px var(--padding);
+			font-size: var(--text-size-h5);
+			color: var(--color-primary);
+			background-color: var(--color-secondary);
+			border-radius: var(--radius);
 		}
 	}
 	.right {
 		display: flex;
-		gap: $gap;
-		padding: $padding;
+		gap: var(--gap);
+		padding: var(--padding);
 
 		.settings_button {
 			display: flex;
@@ -48,14 +54,14 @@
 			align-items: center;
 			width: 45px;
 			height: fit-content;
-			color: $color-text;
-			border: $border;
+			color: var(--color-text);
+			border: var(--border);
 			background-color: transparent;
-			padding: $padding;
-			border-radius: $radius;
+			padding: var(--padding);
+			border-radius: var(--radius);
 
 			&:hover {
-				background-color: $color-secondary;
+				background-color: var(--color-secondary);
 			}
 		}
 
@@ -65,13 +71,13 @@
 			align-items: center;
 			width: 45px;
 			height: fit-content;
-			color: $color-text;
+			color: var(--color-text);
 			background-color: transparent;
-			border: $border;
-			border-radius: $radius;
+			border: var(--border);
+			border-radius: var(--radius);
 
 			&:hover {
-				background-color: $color-secondary;
+				background-color: var(--color-secondary);
 			}
 		}
 	}

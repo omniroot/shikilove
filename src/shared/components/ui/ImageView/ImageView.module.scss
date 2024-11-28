@@ -7,11 +7,10 @@
 	align-items: center;
 
 	.image_view_modal {
-		width: 80%;
-		height: 70%;
+		width: 100%;
 		cursor: pointer;
 
-		background: $color-secondary;
+		background: var(--color-secondary);
 	}
 }
 

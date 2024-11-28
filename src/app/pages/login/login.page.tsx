@@ -2,41 +2,28 @@ import { CONSTS } from "@/shared/consts/consts.ts";
 import { ShikimoriIcon } from "@/shared/icons/index.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { useSearchParams } from "react-router-dom";
 import styles from "./login.page.module.scss";
+import { useAuthorization } from "@/shared/services/auth/useAuthorization.tsx";
+import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
-import { authApi } from "@/shared/services/auth/auth.api.ts";
-import { saveTokens } from "@/shared/utils/saveTokens.ts";
-import { userApi } from "@/shared/services/user/user.api.ts";
 
 export const LoginPage = () => {
 	const [searchParams] = useSearchParams();
 	const code = searchParams.get("code");
-
-	useEffect(() => {
-		const fetchData = async () => {
-			if (code && code?.length > 1) {
-				const tokens = await authApi.fetchTokens(code);
-				if (tokens) {
-					saveTokens(tokens);
-					const userId = await userApi.getCurrentUserId();
-					if (userId) {
-						localStorage.setItem("user_id", userId);
-						window.open(CONSTS.URL, "_self");
-					}
-				}
-			}
-		};
-		fetchData();
-	}, [code]);
-
+	const { auth, authError, authLoading, fetchAuth } = useAuthorization();
 	const onLoginButtonClick = () => {
 		window.open(CONSTS.OAUTH_URL, "_self");
 	};
+	useEffect(() => {
+		if (code && code?.length > 1) {
+			fetchAuth();
+		}
+	}, []);
 
 	const onLitemodeButtonClick = () => {
 		alert("Not realized");
 	};
+	console.log({ auth, authError, authLoading, fetchAuth });
 
 	return (
 		<div className={styles.login_page}>

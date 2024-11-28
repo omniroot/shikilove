@@ -5,17 +5,18 @@
 	flex-direction: column;
 
 	.tooltip {
-		min-width: fit-content;
-		height: 40px;
+		width: max-content;
+		min-height: 40px;
 		max-width: 300px;
 		text-wrap-mode: nowrap;
-		word-wrap: normal;
 		position: absolute;
-		background-color: hexOpacity($color-secondary, 0.8);
-		backdrop-filter: blur(5px);
-		border-radius: $radius;
-		padding: $padding;
-		z-index: 3;
+
+		// TODO opacity
+		background-color: var(--color-secondary);
+		backdrop-filter: var(--blur);
+		border-radius: var(--radius);
+		padding: var(--padding);
+		z-index: 100000;
 	}
 
 	.tooltip[data-position="top"] {

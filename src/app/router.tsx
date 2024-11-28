@@ -3,7 +3,9 @@ import { createBrowserRouter, createRoutesFromElements, Route } from "react-rout
 
 import { GlobalLayout } from "@/app/layouts/global/global.layout";
 import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
+import { HomePage } from "@pages/home/home.page.tsx";
 const LoginPage = React.lazy(() => import("@/app/pages/login/login.page.tsx"));
+const AnimePage = React.lazy(() => import("@/app/pages/anime/anime.page.tsx"));
 const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
 const ProfileEditPage = React.lazy(
 	() => import("@pages/profile/_pages/profile_edit/profile_edit.page.tsx"),
@@ -11,11 +13,21 @@ const ProfileEditPage = React.lazy(
 const ProfileAchievementsPage = React.lazy(
 	() => import("@pages/profile/_pages/profile_achievements/profile_achievements.page.tsx"),
 );
+const DiscoveryPage = React.lazy(() => import("@pages/discovery/discovery.page.tsx"));
+const SettingsPage = React.lazy(() => import("@pages/settings/settings.page.tsx"));
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<GlobalLayout />}>
-			{/* <Route path="/" element={<HomePage />} /> */}
+			<Route path="/" element={<HomePage />} />
+			<Route
+				path="/animes/:animeId"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<AnimePage />
+					</Suspense>
+				}
+			/>
 			<Route
 				path="/profile"
 				element={
@@ -37,6 +49,24 @@ export const router = createBrowserRouter(
 				element={
 					<Suspense fallback={<ProfilePageSkeleton />}>
 						<ProfileAchievementsPage />
+					</Suspense>
+				}
+			/>
+
+			<Route
+				path="/discovery"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<DiscoveryPage />
+					</Suspense>
+				}
+			/>
+
+			<Route
+				path="/settings"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<SettingsPage />
 					</Suspense>
 				}
 			/>

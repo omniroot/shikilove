@@ -1,0 +1,9 @@
+.similar_list {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: nowrap;
+	width: 100%;
+	height: fit-content;
+	overflow-x: scroll !important;
+}

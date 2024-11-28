@@ -1,10 +1,10 @@
 import { WatchedIcon, WatchingIcon } from "@/shared/icons/index.tsx";
 import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
-import { getAnimeCardData } from "@/shared/utils/getAnimeCardData.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
-import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
+import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
+import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -13,43 +13,59 @@ interface IProfileUserRatesProps {
 	children?: ReactNode;
 }
 
-const animeFiltersList = [
+const animeFiltersList: IButtonGroupElement[] = [
 	{ id: "watching", icon: <WatchingIcon /> },
 	{ id: "completed", icon: <WatchedIcon /> },
 ];
 
 export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [userRateFilter, setUserRateFilter] = useState(searchParams.get("status") || "watching");
+	const currentFilter = searchParams.get("filter") || "watching";
+	const [userRateFilter, setUserRateFilter] = useState(
+		getButtonGroupElementById(animeFiltersList, currentFilter),
+	);
 	const { userRates } = useUserRate();
 
-	const onAnimeFilterClick = (nextActiveFilterId: string) => {
-		setSearchParams({ status: nextActiveFilterId });
-		setUserRateFilter(nextActiveFilterId);
+	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
+		setSearchParams({ filter: nextActiveFilter.id });
+		setUserRateFilter(nextActiveFilter);
 	};
 
 	useEffect(() => {
-		setUserRateFilter(searchParams.get("status") || "watching");
+		setUserRateFilter(getButtonGroupElementById(animeFiltersList, currentFilter));
 	}, [searchParams]);
+	if (!userRateFilter) return null;
 
 	return (
 		<HeadingSection
-			title={capitalizeFirstLetter(userRateFilter)}
+			title={capitalizeFirstLetter(currentFilter)}
 			actionsSlot={
-				// TODO : refactoring Button Group, make it more generic. State should be passed as props
 				<ButtonGroup
 					elements={animeFiltersList}
-					deafultActive={userRateFilter}
-					onClick={onAnimeFilterClick}
+					activeElement={userRateFilter}
+					setActiveElement={(nextElement) => onAnimeFilterClick(nextElement)}
 				/>
 			}
 		>
-			<AnimeList scroll="vertical">
-				{userRates?.map((rate) => {
-					if (rate.status === userRateFilter) {
-						return <AnimeCard key={rate.id} animeCard={getAnimeCardData(rate)} />;
-					}
-				})}
+			<AnimeList>
+				{userRates &&
+					userRates?.map((userRate) => {
+						if (userRate.status === userRateFilter.id) {
+							return (
+								<AnimeCard
+									key={userRate.id}
+									variant="vertical"
+									anime={{
+										id: userRate.anime.id,
+										poster: userRate.anime.poster.main2xUrl,
+										name: userRate.anime.name,
+										episodes: userRate.anime.episodes,
+										userRate: userRate,
+									}}
+								/>
+							);
+						}
+					})}
 			</AnimeList>
 		</HeadingSection>
 	);
