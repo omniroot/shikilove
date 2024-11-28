@@ -7,6 +7,7 @@ import { AnimeWatchContainer } from "@pages/anime/_components/AnimeWatchContaine
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./anime.page.module.scss";
+import { AnimeSimilar } from "@pages/anime/_components/AnimeSimilar/AnimeSimilar.tsx";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
@@ -20,12 +21,14 @@ export const AnimePage = () => {
 		return () => changeTitle("");
 	}, [anime]);
 
+	if (!anime) return;
 	return (
 		<div className={styles.anime_page}>
 			<AnimeInfo anime={anime} />
 			<AnimeMoreInfo anime={anime} />
 			<AnimeWatchContainer anime={anime} />
-			<AnimeScreenshots screenshots={anime?.screenshots || []} />
+			<AnimeScreenshots screenshots={anime.screenshots} />
+			<AnimeSimilar anime={anime} />
 		</div>
 	);
 };
