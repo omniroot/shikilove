@@ -36,6 +36,14 @@ export const FloatingSearchBar = () => {
 		inputRef.current?.focus();
 	}, [searchAnimesIsLoading]);
 
+	useEffect(() => {
+		document.body.style.overflow = "hidden";
+
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, []);
+
 	const onSearchSubmit = (event: FormEvent<HTMLFormElement> | null) => {
 		if (event) {
 			event.preventDefault();
