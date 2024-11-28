@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./Select.module.scss";
 import clsx from "clsx";
 
-interface ISelectElement {
+export interface ISelectElement {
 	value: string;
 	label: string;
 }
