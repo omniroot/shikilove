@@ -1,6 +1,4 @@
 import axios from "axios";
-import { data } from "framer-motion/client";
-import { type } from "os";
 
 interface IAnilibData {
 	id: number;

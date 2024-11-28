@@ -1,11 +1,11 @@
-import { ReactNode, FC, useState } from "react";
-import styles from "./UserRateEditBottomSheet.module.scss";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
-import { Input } from "@ui/Input/Input.tsx";
-import { ISelectElement, Select } from "@ui/Select/Select.tsx";
-import { Button } from "@ui/Button/Button.tsx";
 import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
+import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
+import { Button } from "@ui/Button/Button.tsx";
+import { Select } from "@ui/Select/Select.tsx";
+import { FC, useState } from "react";
+import styles from "./UserRateEditBottomSheet.module.scss";
+import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 
 const getEpisodesSelectElements = (maxEpisodes: number) => {
 	const elements = Array.from({ length: maxEpisodes }, (_, i) => ({
@@ -50,7 +50,7 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	const onSaveButtonClick = () => {
 		updateUserRate({
 			userRateId: anime?.userRate.id || 0,
-			status: statusElement,
+			status: statusElement as IUserRateAnimeStatus,
 			episodes: Number(episodesElement),
 		});
 		alert("Updated");

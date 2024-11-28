@@ -1,15 +1,13 @@
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import { Button } from "@ui/Button/Button.tsx";
-import { Divider } from "@ui/Divider/Divider.tsx";
-import { FC, useState } from "react";
-import styles from "./AnimeWatchContainer.module.scss";
 import { BookmarkEditIcon } from "@/shared/icons/index.tsx";
-import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
-import { Input } from "@ui/Input/Input.tsx";
-import clsx from "clsx";
+import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { UserRateEditBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/UserRateEditBottomSheet/UserRateEditBottomSheet.tsx";
 import { WatchBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/WatchBottomSheet.tsx";
+import { Button } from "@ui/Button/Button.tsx";
+import { Divider } from "@ui/Divider/Divider.tsx";
+import clsx from "clsx";
 import { AnimatePresence } from "framer-motion";
+import { FC, useState } from "react";
+import styles from "./AnimeWatchContainer.module.scss";
 interface IWatchButtonProps {
 	anime: IAnime | undefined;
 }

@@ -1,4 +1,4 @@
-import { DiscoveryIcon, HomeIcon, ProfileIcon, SearchIcon, SettingsIcon } from "@/shared/icons";
+import { DiscoveryIcon, HomeIcon, ProfileIcon, SettingsIcon } from "@/shared/icons";
 import { ReactNode } from "react";
 
 export interface IPage {
