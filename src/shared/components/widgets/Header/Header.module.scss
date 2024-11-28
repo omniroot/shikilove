@@ -1,7 +1,14 @@
 .header {
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	translate: -50%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: calc(100% - var(--padding) * 2);
+	background-color: var(--color-background-80);
+	backdrop-filter: var(--blur);
 	height: 60px;
 	border: var(--border);
 	border-radius: var(--radius);
