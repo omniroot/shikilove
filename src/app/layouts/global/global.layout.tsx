@@ -3,7 +3,7 @@ import { NavigationLayout } from "@/app/layouts/navigation/navigation.layout.tsx
 import { SearchLayout } from "@/app/layouts/search/search.layout.tsx";
 import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
 import LoginPage from "@pages/login/login.page.tsx";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import styles from "./global.layout.module.scss";
 import { useSettings } from "@/shared/store/settings.store.tsx";
 
@@ -23,6 +23,7 @@ export const GlobalLayout = () => {
 			<main className={styles.main}>
 				<Outlet />
 			</main>
+			<ScrollRestoration />
 		</div>
 	);
 };

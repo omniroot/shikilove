@@ -1,4 +1,4 @@
-@import "./themes/themes";
+@import url("./themes/themes.scss");
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap";
 
 *,
@@ -9,24 +9,20 @@
 	margin: 0;
 	-webkit-tap-highlight-color: transparent;
 
-	// border: 1px solid brown;
+	/* // border: 1px solid brown; */
 }
 
 html,
 body {
-	display: flex;
-	height: 100%;
-	font-family: "Open Sans", sans-serif;
-	color: var(--color-text);
+	display: flex !important;
+	height: 100% !important;
+	font-family: "Open Sans", sans-serif !important;
+	color: var(--color-text) !important;
 	background-color: var(--color-background) !important;
-	touch-action: pan-x pan-y;
+	/* touch-action: pan-x pan-y; */
 	scrollbar-width: thin;
 	scrollbar-color: var(--color-primary) var(--color-background);
 }
-
-// :root {
-// 	background-color: var(--color-background) !important;
-// }
 
 ::selection {
 	color: var(--color-selection-text);
@@ -44,7 +40,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	z-index: 10000;
-	// TODO opacity
+	/* TODO opacity */
 	background-color: var(--color-background-80);
 	backdrop-filter: var(--blur);
 }
@@ -61,7 +57,7 @@ body {
 	align-items: center;
 	z-index: 10000;
 
-	// TODO opacity
+	/* // TODO opacity */
 	background-color: var(--color-background-80);
 	backdrop-filter: var(--blur);
 }

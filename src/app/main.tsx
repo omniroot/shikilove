@@ -1,5 +1,5 @@
 import { router } from "@/app/router.tsx";
-import "@/app/styles/main.scss";
+import "@/app/styles/main.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import dayjs from "dayjs";
