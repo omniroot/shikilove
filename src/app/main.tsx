@@ -1,5 +1,6 @@
 import { router } from "@/app/router.tsx";
 import "@/app/styles/main.css";
+import { CONSTS } from "@/shared/consts/consts.ts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import dayjs from "dayjs";
@@ -29,7 +30,7 @@ const client = new QueryClient({
 	defaultOptions: {
 		queries: {
 			refetchOnMount: false,
-			refetchInterval: 360000,
+			refetchInterval: CONSTS.REFETCH_INTERVAL,
 			refetchOnWindowFocus: false,
 			retryDelay: 1000,
 			retry: 1, // TODO its temporary fix, after adding intereeceptor in api, chage it to 2-3

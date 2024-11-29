@@ -1,3 +1,4 @@
+import { CONSTS } from "@/shared/consts/consts.ts";
 import { animeApi } from "@/shared/services/anime/anime.api.ts";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { useQuery } from "@tanstack/react-query";

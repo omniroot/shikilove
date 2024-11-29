@@ -10,6 +10,7 @@ export const useSimilarAnimes = (animeId: string) => {
 	} = useQuery<ISimilarAnime[]>({
 		queryKey: ["getSimilarAnime", animeId],
 		queryFn: () => animeApi.getSimilarAnime({ animeId }),
+		refetchInterval: false,
 	});
 
 	return {
