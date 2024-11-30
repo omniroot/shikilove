@@ -3,6 +3,9 @@
 	height: fit-content;
 	display: flex;
 
+	padding: var(--padding);
+	border: var(--border);
+	border-radius: var(--radius);
 	gap: var(--gap);
 
 	.poster {
