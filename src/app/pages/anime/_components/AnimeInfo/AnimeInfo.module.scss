@@ -16,6 +16,8 @@
 	.subinfo {
 		display: flex;
 		flex-direction: column;
+		justify-content: flex-start;
+		gap: 4px;
 
 		.name {
 			font-size: var(--text-size-h4);
