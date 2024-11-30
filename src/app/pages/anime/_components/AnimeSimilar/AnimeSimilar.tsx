@@ -15,7 +15,7 @@ export const AnimeSimilar: FC<IAnimeSimilarProps> = ({ anime }) => {
 	const { similarAnimes } = useSimilarAnimes(anime.id);
 	let count = 0;
 
-	if (!similarAnimes || !anime) return;
+	if (!similarAnimes?.length || !anime) return;
 	return (
 		<HeadingSection title="Similar">
 			<AnimeList scroll="horizontal" className={styles.similar_list}>
