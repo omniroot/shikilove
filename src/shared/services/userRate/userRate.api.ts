@@ -18,13 +18,14 @@ export const userRateApi = {
 		}));
 		return userRates.userRates;
 	},
-	addUserRate: async ({ animeId, status = "planned" }: IUserRateAdd) => {
+	addUserRate: async ({ animeId, episodes = "1", status = "planned" }: IUserRateAdd) => {
 		const response = await api.post<IUserRate>("v2/user_rates", {
 			user_rate: {
 				target_type: "Anime",
 				target_id: animeId,
 				user_id: localStorage.getItem("user_id"),
 				status: status,
+				episodes: episodes,
 			},
 		});
 		const { data } = response;

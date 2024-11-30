@@ -32,12 +32,13 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	anime,
 	onOutsideClick,
 }) => {
-	const { updateUserRate } = useUserRate(anime?.userRate.id);
+	const { addUserRate, updateUserRate } = useUserRate(anime?.userRate?.id || 0);
 	const episodesSelectElements = getEpisodesSelectElements(
-		anime?.episodes || anime?.episodesAired || 0,
+		anime?.episodes || anime?.episodesAired || 1,
 	);
-	const [episodesElement, setEpisodesElement] = useState(String(anime?.userRate.episodes || 0));
-	const [statusElement, setStatusElement] = useState(String(anime?.userRate?.status || "Watching"));
+	const [episodesElement, setEpisodesElement] = useState(String(anime?.userRate?.episodes || 1));
+	const [statusElement, setStatusElement] = useState(String(anime?.userRate?.status || "watching"));
+	const isExistInUserRate = anime?.userRate ? true : false;
 
 	const onEpisodesSelectChange = (newValue: string) => {
 		setEpisodesElement(newValue);
@@ -48,6 +49,15 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	};
 
 	const onSaveButtonClick = () => {
+		// add new user rate
+		if (!isExistInUserRate) {
+			addUserRate({
+				animeId: String(anime?.id || 0),
+				episodes: episodesElement,
+				status: statusElement as IUserRateAnimeStatus,
+			});
+			return;
+		}
 		updateUserRate({
 			userRateId: anime?.userRate.id || 0,
 			status: statusElement as IUserRateAnimeStatus,
@@ -58,7 +68,10 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 
 	if (!anime) return;
 	return (
-		<BottomSheet title="Edit user rate" onOutsideClick={onOutsideClick}>
+		<BottomSheet
+			title={isExistInUserRate ? "Edit user rate" : "Add user rate"}
+			onOutsideClick={onOutsideClick}
+		>
 			<div className={styles.user_rate_edit_container}>
 				<div className={styles.selects}>
 					<Select
@@ -73,7 +86,7 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 					/>
 				</div>
 				<Button variant="primary" className={styles.save_button} onClick={onSaveButtonClick}>
-					Save
+					{isExistInUserRate ? "Save" : "Add"}
 				</Button>
 			</div>
 		</BottomSheet>

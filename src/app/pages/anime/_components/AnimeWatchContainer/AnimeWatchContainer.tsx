@@ -8,16 +8,23 @@ import clsx from "clsx";
 import { AnimatePresence } from "framer-motion";
 import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
+import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 interface IWatchButtonProps {
 	anime: IAnime | undefined;
 }
 export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
+	const { addUserRate } = useUserRate();
 	const [userRateEditBottomSheetOpen, setUserRateEditBottomSheetOpen] = useState(false);
 	const [watchBottomSheetOpen, setWatchBottomSheetOpen] = useState(false);
 
 	// const {} = useUserRate(anime?.userRate.id);
 	const onWatchButtonClick = () => {
 		setWatchBottomSheetOpen((prev) => !prev);
+	};
+
+	const onUserRateAddClick = () => {
+		setUserRateEditBottomSheetOpen((prev) => !prev);
+		// addUserRate({animeId: String(anime?.id || 0), status: })
 	};
 
 	const onUserRateEditClick = () => {
@@ -30,22 +37,30 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 			<Button className={styles.watch_button} variant="ternary" onClick={onWatchButtonClick}>
 				Watch
 			</Button>
-			<Button
-				className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
-				variant="ternary"
-				onClick={onUserRateEditClick}
-			>
-				{!anime.userRate ? (
+			{!anime.userRate ? (
+				<Button
+					variant="ternary"
+					onClick={onUserRateAddClick}
+					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
+				>
 					<BookmarkEditIcon />
-				) : (
+					<span>Add to</span>
+				</Button>
+			) : (
+				<Button
+					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
+					variant="ternary"
+					onClick={onUserRateEditClick}
+				>
 					<div className={styles.user_rate_edit_content}>
 						<BookmarkEditIcon />
 						<span>{anime.userRate.episodes}</span>
 						<Divider orientation="vertical" className={styles.divider} />
 						<span>{anime.userRate.status}</span>
 					</div>
-				)}
-			</Button>
+				</Button>
+			)}
+
 			<AnimatePresence>
 				{userRateEditBottomSheetOpen && (
 					<UserRateEditBottomSheet anime={anime} onOutsideClick={onUserRateEditClick} />
