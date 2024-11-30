@@ -2,6 +2,8 @@ import { FC } from "react";
 import styles from "./AnimeScreenshots.module.scss";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
+import { Button } from "@ui/Button/Button.tsx";
+import { RightArrowIcon } from "@/shared/icons/index.tsx";
 
 interface IAnimeScreenshot {
 	id: string;
@@ -15,8 +17,18 @@ interface IAnimeScreenshotsProps {
 }
 export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ screenshots }) => {
 	let count = 0;
+
+	if (!screenshots.length) return;
 	return (
-		<HeadingSection title="Screenshots">
+		<HeadingSection
+			title="Screenshots"
+			actionsSlot={
+				<Button variant="ternary" as="Link" to="screenshots">
+					More
+					<RightArrowIcon />
+				</Button>
+			}
+		>
 			<div className={styles.anime_screenshots_container}>
 				{screenshots.map((screenshot) => {
 					count++;

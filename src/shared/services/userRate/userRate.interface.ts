@@ -37,7 +37,8 @@ export interface IUserRatesResponse {
 
 export interface IUserRateAdd {
 	animeId: string;
-	status: IUserRateAnimeStatus;
+	status?: IUserRateAnimeStatus;
+	episodes?: string;
 }
 
 export interface IUserRateUpdate {

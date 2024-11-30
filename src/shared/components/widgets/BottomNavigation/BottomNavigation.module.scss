@@ -34,7 +34,7 @@
 		.profile_image {
 			width: 40px;
 			height: 40px;
-			border: var(--border-ternary);
+			// border: var(--border-ternary);
 			border-radius: var(--radius);
 			background-color: transparent;
 		}
@@ -45,7 +45,8 @@
 	}
 	.active {
 		width: 100px;
-		background-color: var(--color-ternary);
+		background-color: var(--color-ternary-80);
+		backdrop-filter: var(--blur);
 		padding: var(--padding-1);
 	}
 }

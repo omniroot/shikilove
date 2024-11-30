@@ -59,7 +59,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 										id: userRate.anime.id,
 										poster: userRate.anime.poster.main2xUrl,
 										name: userRate.anime.name,
-										episodes: userRate.anime.episodes,
+										episodes: userRate.anime.episodes || userRate.anime.episodesAired,
 										userRate: userRate,
 									}}
 								/>

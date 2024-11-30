@@ -3,6 +3,9 @@
 	height: fit-content;
 	display: flex;
 
+	padding: var(--padding);
+	border: var(--border);
+	border-radius: var(--radius);
 	gap: var(--gap);
 
 	.poster {
@@ -13,6 +16,8 @@
 	.subinfo {
 		display: flex;
 		flex-direction: column;
+		justify-content: flex-start;
+		gap: 4px;
 
 		.name {
 			font-size: var(--text-size-h4);

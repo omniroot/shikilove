@@ -20,6 +20,11 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 		setWatchBottomSheetOpen((prev) => !prev);
 	};
 
+	const onUserRateAddClick = () => {
+		setUserRateEditBottomSheetOpen((prev) => !prev);
+		// addUserRate({animeId: String(anime?.id || 0), status: })
+	};
+
 	const onUserRateEditClick = () => {
 		setUserRateEditBottomSheetOpen((prev) => !prev);
 	};
@@ -30,22 +35,30 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 			<Button className={styles.watch_button} variant="ternary" onClick={onWatchButtonClick}>
 				Watch
 			</Button>
-			<Button
-				className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
-				variant="ternary"
-				onClick={onUserRateEditClick}
-			>
-				{!anime.userRate ? (
+			{!anime.userRate ? (
+				<Button
+					variant="ternary"
+					onClick={onUserRateAddClick}
+					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
+				>
 					<BookmarkEditIcon />
-				) : (
+					<span>Add to</span>
+				</Button>
+			) : (
+				<Button
+					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
+					variant="ternary"
+					onClick={onUserRateEditClick}
+				>
 					<div className={styles.user_rate_edit_content}>
 						<BookmarkEditIcon />
 						<span>{anime.userRate.episodes}</span>
 						<Divider orientation="vertical" className={styles.divider} />
 						<span>{anime.userRate.status}</span>
 					</div>
-				)}
-			</Button>
+				</Button>
+			)}
+
 			<AnimatePresence>
 				{userRateEditBottomSheetOpen && (
 					<UserRateEditBottomSheet anime={anime} onOutsideClick={onUserRateEditClick} />

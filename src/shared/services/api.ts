@@ -25,7 +25,6 @@ api.interceptors.response.use(
 			!originalRequest._retry &&
 			localStorage.getItem("refresh_token")
 		) {
-
 			originalRequest._retry = true;
 			console.log("Trying refreshing tokens");
 			const tokens = await authApi.refreshTokens(localStorage.getItem("refresh_token") || "");
@@ -40,4 +39,3 @@ api.interceptors.response.use(
 		return Promise.reject(error);
 	},
 );
-
