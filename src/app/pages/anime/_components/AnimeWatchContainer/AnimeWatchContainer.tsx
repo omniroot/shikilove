@@ -8,12 +8,10 @@ import clsx from "clsx";
 import { AnimatePresence } from "framer-motion";
 import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
-import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 interface IWatchButtonProps {
 	anime: IAnime | undefined;
 }
 export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
-	const { addUserRate } = useUserRate();
 	const [userRateEditBottomSheetOpen, setUserRateEditBottomSheetOpen] = useState(false);
 	const [watchBottomSheetOpen, setWatchBottomSheetOpen] = useState(false);
 

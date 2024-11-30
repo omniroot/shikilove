@@ -1,4 +1,3 @@
-import { CONSTS } from "@/shared/consts/consts.ts";
 import { userApi } from "@/shared/services/user/user.api.ts";
 import { useQuery } from "@tanstack/react-query";
 
