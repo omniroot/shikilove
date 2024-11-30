@@ -1,0 +1,10 @@
+.screenshots_page {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+
+	.screenshot {
+		border-radius: var(--radius);
+		cursor: pointer;
+	}
+}

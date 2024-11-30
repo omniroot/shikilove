@@ -6,6 +6,9 @@ import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
 import { HomePage } from "@pages/home/home.page.tsx";
 const LoginPage = React.lazy(() => import("@/app/pages/login/login.page.tsx"));
 const AnimePage = React.lazy(() => import("@/app/pages/anime/anime.page.tsx"));
+const ScreenshotsPage = React.lazy(
+	() => import("@/app/pages/anime/_pages/screenshots/screenshots.page.tsx"),
+);
 const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
 const ProfileEditPage = React.lazy(
 	() => import("@pages/profile/_pages/profile_edit/profile_edit.page.tsx"),
@@ -25,6 +28,14 @@ export const router = createBrowserRouter(
 				element={
 					<Suspense fallback={<ProfilePageSkeleton />}>
 						<AnimePage />
+					</Suspense>
+				}
+			/>
+			<Route
+				path="/animes/:animeId/screenshots"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<ScreenshotsPage />
 					</Suspense>
 				}
 			/>
