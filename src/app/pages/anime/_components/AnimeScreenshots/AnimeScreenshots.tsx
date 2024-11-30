@@ -15,6 +15,8 @@ interface IAnimeScreenshotsProps {
 }
 export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ screenshots }) => {
 	let count = 0;
+
+	if (!screenshots.length) return;
 	return (
 		<HeadingSection title="Screenshots">
 			<div className={styles.anime_screenshots_container}>
