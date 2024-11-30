@@ -10,8 +10,11 @@ import {
 } from "@/shared/services/userRate/userRate.interface.ts";
 
 export const userRateApi = {
-	getUserRates: async () => {
-		const userRates = await graphql<IUserRatesResponse>(GET_USER_RATES);
+	getUserRates: async ({ page = 1, limit = 30 }) => {
+		const userRates = await graphql<IUserRatesResponse>(GET_USER_RATES, {
+			page,
+			limit,
+		});
 		userRates.userRates = userRates.userRates.map((rate) => ({
 			...rate,
 			_type: "IUserRate",

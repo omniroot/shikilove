@@ -1,9 +1,9 @@
 export const GET_USER_RATES = `
-	{
+query($page:PositiveInt, $limit:PositiveInt) {
 		userRates(
-			page: 1
-			limit: 30
-			targetType: Anime
+			page: $page,
+			limit: $limit,
+			targetType: Anime,
 			order: { field: updated_at, order: desc }
 		) {
 			id

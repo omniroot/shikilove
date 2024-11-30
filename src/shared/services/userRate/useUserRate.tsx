@@ -1,12 +1,12 @@
 import { userRateApi } from "@/shared/services/userRate/userRate.api.ts";
 import {
-	IUserRates,
 	IUserRate,
 	IUserRateAdd,
-	IUserRateUpdate,
 	IUserRateDelete,
+	IUserRates,
+	IUserRateUpdate,
 } from "@/shared/services/userRate/userRate.interface.ts";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useUserRate = (userRateId?: number) => {
 	const queryClient = useQueryClient();
@@ -14,9 +14,15 @@ export const useUserRate = (userRateId?: number) => {
 		isLoading: isUserRatesLoading,
 		data: userRates,
 		error: userRatesError,
-	} = useQuery<IUserRates>({
+		fetchNextPage: fetchNextUserRatesPage,
+	} = useInfiniteQuery<IUserRates, Error>({
 		queryKey: ["userRates"],
-		queryFn: () => userRateApi.getUserRates(),
+		queryFn: ({ pageParam = 1 }) =>
+			userRateApi.getUserRates({ page: pageParam as number, limit: 30 }),
+		initialPageParam: 1,
+		getNextPageParam: (lastPage, pages) => {
+			return lastPage.length === 30 ? pages.length + 1 : undefined;
+		},
 	});
 
 	const { mutate: addUserRate } = useMutation<IUserRate, unknown, IUserRateAdd>({
@@ -50,6 +56,7 @@ export const useUserRate = (userRateId?: number) => {
 		isUserRatesLoading,
 		userRates,
 		userRatesError,
+		fetchNextUserRatesPage,
 		addUserRate,
 		updateUserRate,
 		deleteUserRate,

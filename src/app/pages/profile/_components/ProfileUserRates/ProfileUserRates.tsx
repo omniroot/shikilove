@@ -3,6 +3,7 @@ import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { Button } from "@ui/Button/Button.tsx";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
@@ -24,11 +25,15 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 	const [userRateFilter, setUserRateFilter] = useState(
 		getButtonGroupElementById(animeFiltersList, currentFilter),
 	);
-	const { userRates } = useUserRate();
+	const { userRates, fetchNextUserRatesPage } = useUserRate();
 
 	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
 		setSearchParams({ filter: nextActiveFilter.id });
 		setUserRateFilter(nextActiveFilter);
+	};
+
+	const onMoreButtonClick = () => {
+		fetchNextUserRatesPage();
 	};
 
 	useEffect(() => {
@@ -49,23 +54,26 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 		>
 			<AnimeList>
 				{userRates &&
-					userRates?.map((userRate) => {
-						if (userRate.status === userRateFilter.id) {
-							return (
-								<AnimeCard
-									key={userRate.id}
-									variant="vertical"
-									anime={{
-										id: userRate.anime.id,
-										poster: userRate.anime.poster.main2xUrl,
-										name: userRate.anime.name,
-										episodes: userRate.anime.episodes || userRate.anime.episodesAired,
-										userRate: userRate,
-									}}
-								/>
-							);
-						}
-					})}
+					userRates.pages.map((rates) =>
+						rates.map((userRate) => {
+							if (userRate.status === userRateFilter.id) {
+								return (
+									<AnimeCard
+										key={userRate.id}
+										variant="vertical"
+										anime={{
+											id: userRate.anime.id,
+											poster: userRate.anime.poster.main2xUrl,
+											name: userRate.anime.name,
+											episodes: userRate.anime.episodes || userRate.anime.episodesAired,
+											userRate: userRate,
+										}}
+									/>
+								);
+							}
+						}),
+					)}
+				<Button onClick={onMoreButtonClick}>More</Button>
 			</AnimeList>
 		</HeadingSection>
 	);
