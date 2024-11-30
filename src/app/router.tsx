@@ -9,6 +9,9 @@ const AnimePage = React.lazy(() => import("@/app/pages/anime/anime.page.tsx"));
 const ScreenshotsPage = React.lazy(
 	() => import("@/app/pages/anime/_pages/screenshots/screenshots.page.tsx"),
 );
+const SimilarsPage = React.lazy(
+	() => import("@/app/pages/anime/_pages/similars/similars.page.tsx"),
+);
 const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
 const ProfileEditPage = React.lazy(
 	() => import("@pages/profile/_pages/profile_edit/profile_edit.page.tsx"),
@@ -36,6 +39,14 @@ export const router = createBrowserRouter(
 				element={
 					<Suspense fallback={<ProfilePageSkeleton />}>
 						<ScreenshotsPage />
+					</Suspense>
+				}
+			/>
+			<Route
+				path="/animes/:animeId/similars"
+				element={
+					<Suspense fallback={<ProfilePageSkeleton />}>
+						<SimilarsPage />
 					</Suspense>
 				}
 			/>
