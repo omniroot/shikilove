@@ -3706,6 +3706,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react@npm:^0.462.0":
+  version: 0.462.0
+  resolution: "lucide-react@npm:0.462.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+  checksum: 10c0/684477fcd130036c89535ea21a1a35d95fc3e45e41cb5cdcc56702cdb28aa7c8b9f5cfba12123229949d79f6dc19eac27b1d1452a14803a81424d461477c37cf
+  languageName: node
+  linkType: hard
+
 "make-fetch-happen@npm:^13.0.0":
   version: 13.0.1
   resolution: "make-fetch-happen@npm:13.0.1"
@@ -4700,6 +4709,7 @@ __metadata:
     framer-motion: "npm:^11.11.4"
     globals: "npm:^15.11.0"
     lightningcss: "npm:^1.27.0"
+    lucide-react: "npm:^0.462.0"
     path: "npm:^0.12.7"
     prettier: "npm:^3.3.3"
     react: "npm:^18.3.1"
