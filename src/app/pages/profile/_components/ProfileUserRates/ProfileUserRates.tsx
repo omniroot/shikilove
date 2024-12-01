@@ -9,6 +9,7 @@ import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import styles from "./ProfileUserRates.module.scss";
 
 interface IProfileUserRatesProps {
 	children?: ReactNode;
@@ -39,7 +40,8 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 	useEffect(() => {
 		setUserRateFilter(getButtonGroupElementById(animeFiltersList, currentFilter));
 	}, [searchParams]);
-	if (!userRateFilter) return null;
+
+	// if (!userRateFilter || !userRates) return null;
 
 	return (
 		<HeadingSection
@@ -57,6 +59,8 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 					userRates.pages.map((rates) =>
 						rates.map((userRate) => {
 							if (userRate.status === userRateFilter.id) {
+								console.log(userRate);
+
 								return (
 									<AnimeCard
 										key={userRate.id}
@@ -73,7 +77,9 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 							}
 						}),
 					)}
-				<Button onClick={onMoreButtonClick}>More</Button>
+				<Button onClick={onMoreButtonClick} className={styles.more_button}>
+					More
+				</Button>
 			</AnimeList>
 		</HeadingSection>
 	);

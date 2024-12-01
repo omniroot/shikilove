@@ -1,0 +1,20 @@
+.context_button {
+	width: 100%;
+	justify-content: flex-start;
+	// display: flex;
+	// align-items: center;
+	// padding: var(--padding);
+	// gap: 4px;
+	// border: var(--border);
+	// border-radius: var(--radius);
+
+	.context_button_right {
+		display: flex;
+		align-items: center;
+		margin-left: auto;
+
+		* {
+			transition: all 200ms;
+		}
+	}
+}
