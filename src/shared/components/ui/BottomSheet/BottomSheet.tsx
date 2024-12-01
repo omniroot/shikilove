@@ -44,8 +44,12 @@ export const BottomSheet: FC<IBottomSheetProps> = ({
 						className={_class}
 						onClick={_onBottomSheetClick}
 					>
-						<span className={styles.title}>{title}</span>
-						<Divider />
+						{title && (
+							<>
+								<span className={styles.title}>{title}</span>
+								<Divider />
+							</>
+						)}
 						{children}
 					</motion.div>
 				</motion.div>,
