@@ -8,6 +8,7 @@ export interface IAnimeCard {
 	kind?: string;
 	airedOn?: string;
 	userRate?: {
+		id?: string;
 		status?: string;
 		episodes?: number;
 		score?: number;
