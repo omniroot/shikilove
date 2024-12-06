@@ -3,7 +3,7 @@ import styles from "./VerticalAnimeCard.module.scss";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Link } from "react-router-dom";
 import { PlusIcon, RightArrowIcon, TrashIcon, WatchingIcon } from "@/shared/icons/index.tsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { IUserRate } from "@/shared/services/userRate/userRate.interface.ts";
 import { title } from "process";
 

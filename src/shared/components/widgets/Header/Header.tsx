@@ -3,7 +3,7 @@ import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
 import { ArrowLeftIcon, SearchIcon } from "@/shared/icons/index.tsx";
 import { useFloatingSearchBarStore } from "@/shared/store/store.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 

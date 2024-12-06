@@ -1,7 +1,7 @@
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import styles from "./AnimeMoreInfo.module.scss";
 import { FC } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 interface IAnimeMoreInfoProps {
 	anime: IAnime | undefined;

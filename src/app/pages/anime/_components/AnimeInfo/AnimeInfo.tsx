@@ -4,7 +4,7 @@ import { FC, useState } from "react";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Divider } from "@ui/Divider/Divider.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 
 interface IAnimeInfoProps {
 	anime: IAnime | undefined;

@@ -1,6 +1,6 @@
 import { Divider } from "@ui/Divider/Divider.tsx";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { FC, MouseEvent, ReactNode } from "react";
 import styles from "./BottomSheet.module.scss";
 import { createPortal } from "react-dom";

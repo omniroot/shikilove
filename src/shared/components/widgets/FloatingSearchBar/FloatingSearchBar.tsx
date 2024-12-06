@@ -4,7 +4,7 @@ import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { useDebounce } from "@uidotdev/usehooks";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ChangeEvent, FormEvent, useEffect, useRef } from "react";
 import styles from "./FloatingSearchBar.module.scss";
 

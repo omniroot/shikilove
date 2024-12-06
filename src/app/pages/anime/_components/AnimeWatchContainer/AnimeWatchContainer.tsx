@@ -5,7 +5,7 @@ import { WatchBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_
 import { Button } from "@ui/Button/Button.tsx";
 import { Divider } from "@ui/Divider/Divider.tsx";
 import clsx from "clsx";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
 interface IWatchButtonProps {
