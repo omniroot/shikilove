@@ -1,5 +1,6 @@
 import { DroppedIcon, PlannedIcon, WatchedIcon, WatchingIcon } from "@/shared/icons/index.tsx";
 import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
+import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
@@ -10,7 +11,6 @@ import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from "./ProfileUserRates.module.scss";
-import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 
 interface IProfileUserRatesProps {
 	children?: ReactNode;
