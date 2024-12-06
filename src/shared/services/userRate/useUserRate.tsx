@@ -6,9 +6,13 @@ import {
 	IUserRates,
 	IUserRateUpdate,
 } from "@/shared/services/userRate/userRate.interface.ts";
+import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-export const useUserRate = (userRateId?: number) => {
+export const useUserRate = (
+	userRateStatus: IUserRateAnimeStatus = "watching",
+	userRateId?: number,
+) => {
 	const queryClient = useQueryClient();
 	const {
 		isLoading: isUserRatesLoading,
@@ -16,13 +20,14 @@ export const useUserRate = (userRateId?: number) => {
 		error: userRatesError,
 		fetchNextPage: fetchNextUserRatesPage,
 	} = useInfiniteQuery<IUserRates, Error>({
-		queryKey: ["userRates"],
+		queryKey: ["userRates", userRateId, userRateStatus],
 		queryFn: ({ pageParam = 1 }) =>
-			userRateApi.getUserRates({ page: pageParam as number, limit: 30 }),
+			userRateApi.getUserRates({ page: pageParam as number, limit: 30, status: userRateStatus }),
 		initialPageParam: 1,
 		getNextPageParam: (lastPage, pages) => {
 			return lastPage.length === 30 ? pages.length + 1 : undefined;
 		},
+		refetchOnMount: false,
 	});
 
 	const { mutate: addUserRate } = useMutation<IUserRate, unknown, IUserRateAdd>({

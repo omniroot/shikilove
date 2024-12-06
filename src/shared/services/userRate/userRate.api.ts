@@ -8,12 +8,20 @@ import {
 	IUserRateUpdate,
 	IUserRateDelete,
 } from "@/shared/services/userRate/userRate.interface.ts";
+import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
+
+interface IGetUserRates {
+	page?: number;
+	limit?: number;
+	status?: IUserRateAnimeStatus;
+}
 
 export const userRateApi = {
-	getUserRates: async ({ page = 1, limit = 30 }) => {
+	getUserRates: async ({ page = 1, limit = 30, status = "watching" }: IGetUserRates) => {
 		const userRates = await graphql<IUserRatesResponse>(GET_USER_RATES, {
 			page,
 			limit,
+			status,
 		});
 		userRates.userRates = userRates.userRates.map((rate) => ({
 			...rate,
