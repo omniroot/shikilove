@@ -1,10 +1,10 @@
-import { PlusIcon, RightArrowIcon } from "@/shared/icons/index.tsx";
+import { PlusIcon } from "@/shared/icons/index.tsx";
+import { IAnimeCard } from "@/shared/types/anime_card.interface.ts";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Button } from "@ui/Button/Button.tsx";
+import { ChevronRight } from "lucide-react";
 import { FC, useState } from "react";
 import styles from "./HorizontalContextBottomSheet.module.scss";
-import { IAnimeCard } from "@/shared/types/anime_card.interface.ts";
-import { ChevronDown, ChevronRight } from "lucide-react";
 
 interface IHorizontalContextBottomSheetProps {
 	anime: IAnimeCard;
