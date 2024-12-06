@@ -1,10 +1,17 @@
 .image_view_modal_container {
+	position: fixed;
+	top: 0;
+	left: 0;
+
 	display: flex;
-	width: 80%;
-	height: 70%;
+	width: 100%;
+	height: 100%;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	z-index: 10000;
+	background-color: var(--color-ternary-80);
+	backdrop-filter: var(--blur);
 
 	.image_view_modal {
 		width: 100%;
@@ -15,6 +22,7 @@
 }
 
 .image_view {
+	background-color: var(--color-ternary-80);
 }
 
 .clickable {

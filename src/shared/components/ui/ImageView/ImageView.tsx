@@ -28,13 +28,13 @@ export const ImageView: FC<IImageViewProps> = ({
 		}
 	};
 
-	if (isModal === true) {
-		const modal = document.getElementById("fullscreen_image") || document.body;
-		modal.style.display = "flex";
-	} else {
-		const modal = document.getElementById("fullscreen_image") || document.body;
-		modal.style.display = "none";
-	}
+	// if (isModal === true) {
+	// 	const modal = document.getElementById("fullscreen_image") || document.body;
+	// 	modal.style.display = "flex";
+	// } else {
+	// 	const modal = document.getElementById("fullscreen_image") || document.body;
+	// 	modal.style.display = "none";
+	// }
 
 	const _class = clsx(styles.image_view, className, {
 		[styles.clickable]: allowFullscreen,
@@ -46,16 +46,10 @@ export const ImageView: FC<IImageViewProps> = ({
 			{allowFullscreen === true &&
 				isModal === true &&
 				createPortal(
-					<div className={styles.image_view_modal_container} key={alt}>
-						<span>Click on image to close</span>
-						<img
-							src={full}
-							alt={alt}
-							className={clsx(_class, styles.image_view_modal)}
-							onClick={onImageClick}
-						/>
+					<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
+						<img src={full || src} alt={alt} className={clsx(_class, styles.image_view_modal)} />
 					</div>,
-					document.getElementById("fullscreen_image") || document.body,
+					document.body,
 				)}
 		</>
 	);
