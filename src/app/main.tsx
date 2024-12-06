@@ -33,7 +33,7 @@ const client = new QueryClient({
 			refetchInterval: CONSTS.REFETCH_INTERVAL,
 			refetchOnWindowFocus: false,
 			retryDelay: 1000,
-			retry: 1, // TODO its temporary fix, after adding intereeceptor in api, chage it to 2-3
+			retry: 2, // TODO its temporary fix, after adding intereeceptor in api, chage it to 2-3
 		},
 	},
 });
