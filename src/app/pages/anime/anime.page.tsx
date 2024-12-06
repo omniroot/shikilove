@@ -1,13 +1,15 @@
 import { useChangeTitle } from "@/shared/hooks/useChangeTitle.tsx";
 import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
-import { AnimeInfo } from "@pages/anime/_components/AnimeInfo/AnimeInfo.tsx";
-import { AnimeMoreInfo } from "@pages/anime/_components/AnimeMoreInfo/AnimeMoreInfo.tsx";
-import { AnimeScreenshots } from "@pages/anime/_components/AnimeScreenshots/AnimeScreenshots.tsx";
-import { AnimeWatchContainer } from "@pages/anime/_components/AnimeWatchContainer/AnimeWatchContainer.tsx";
+import {
+	AnimeInfo,
+	AnimeMoreInfo,
+	AnimeWatchContainer,
+	AnimeScreenshots,
+	AnimeSimilar,
+} from "@pages/anime/_components/index.ts";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./anime.page.module.scss";
-import { AnimeSimilar } from "@pages/anime/_components/AnimeSimilar/AnimeSimilar.tsx";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
