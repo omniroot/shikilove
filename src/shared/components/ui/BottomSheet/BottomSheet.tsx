@@ -1,7 +1,7 @@
 import { Divider } from "@ui/Divider/Divider.tsx";
 import clsx from "clsx";
 import { motion } from "motion/react";
-import { FC, MouseEvent, ReactNode } from "react";
+import { FC, MouseEvent, ReactNode, useEffect } from "react";
 import styles from "./BottomSheet.module.scss";
 import { createPortal } from "react-dom";
 interface IBottomSheetProps {
@@ -23,6 +23,15 @@ export const BottomSheet: FC<IBottomSheetProps> = ({
 	const _onBottomSheetClick = (event: MouseEvent<HTMLDivElement>) => {
 		event.stopPropagation();
 	};
+
+	useEffect(() => {
+		document.body.style.overflow = "hidden";
+
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, []);
+
 	const _class = clsx(styles.bottom_sheet, className);
 
 	return (
