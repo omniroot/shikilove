@@ -9,9 +9,10 @@ import styles from "./HorizontalAnimeCard.module.scss";
 
 interface IHorizontalAnimeCardProps {
 	anime: IAnimeCard;
+	onClick?: () => void;
 }
 
-export const HorizontalAnimeCard: FC<IHorizontalAnimeCardProps> = ({ anime }) => {
+export const HorizontalAnimeCard: FC<IHorizontalAnimeCardProps> = ({ anime, onClick }) => {
 	const [contextMenuVisible, setContextMenuVisible] = useState(false);
 
 	const toggleContextMenu = () => {
@@ -31,6 +32,7 @@ export const HorizontalAnimeCard: FC<IHorizontalAnimeCardProps> = ({ anime }) =>
 			whileInView={{ opacity: 1, scale: 1 }}
 			transition={{ duration: 0.25 }}
 			onContextMenu={onContextClick}
+			onClick={onClick}
 			className={styles.anime_card}
 		>
 			<ImageView

@@ -7,6 +7,7 @@ import { useDebounce } from "@uidotdev/usehooks";
 import { motion } from "motion/react";
 import { ChangeEvent, FormEvent, useEffect, useRef } from "react";
 import styles from "./FloatingSearchBar.module.scss";
+import { useFloatingSearchBarStore } from "@/shared/store/store.tsx";
 
 export const FloatingSearchBar = () => {
 	const {
@@ -18,6 +19,7 @@ export const FloatingSearchBar = () => {
 	} = useSearchAnime("");
 	const debouncedSearchAnimesQuery = useDebounce(searchAnimesQuery, 700);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const { toggleFloatingSearchBar } = useFloatingSearchBarStore();
 
 	const onSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setSearchAnimesQuery(event.target.value);
@@ -92,6 +94,7 @@ export const FloatingSearchBar = () => {
 									key={anime.id}
 									variant="horizontal"
 									anime={{ id: anime.id, poster: anime.poster.main2xUrl, name: anime.name }}
+									onClick={toggleFloatingSearchBar}
 								/>
 							);
 						})}
