@@ -25,7 +25,7 @@ export const ProfileInfoCard: FC<IProfileInfoCardProps> = ({ className, currentU
 		<div className={_class}>
 			<ImageView
 				src={currentUser.image.x80}
-				full={currentUser.image.x160}
+				full={currentUser.image.x148}
 				allowFullscreen
 				className={styles.user_image}
 			/>

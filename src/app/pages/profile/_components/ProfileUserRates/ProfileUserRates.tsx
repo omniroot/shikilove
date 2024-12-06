@@ -1,4 +1,4 @@
-import { WatchedIcon, WatchingIcon } from "@/shared/icons/index.tsx";
+import { DroppedIcon, PlannedIcon, WatchedIcon, WatchingIcon } from "@/shared/icons/index.tsx";
 import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
@@ -18,7 +18,9 @@ interface IProfileUserRatesProps {
 
 const animeFiltersList: IButtonGroupElement[] = [
 	{ id: "watching", icon: <WatchingIcon /> },
+	{ id: "planned", icon: <PlannedIcon /> },
 	{ id: "completed", icon: <WatchedIcon /> },
+	{ id: "dropped", icon: <DroppedIcon /> },
 ];
 
 export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
