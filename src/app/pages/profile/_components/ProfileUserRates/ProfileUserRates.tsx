@@ -10,6 +10,7 @@ import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from "./ProfileUserRates.module.scss";
+import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 
 interface IProfileUserRatesProps {
 	children?: ReactNode;
@@ -26,7 +27,9 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 	const [userRateFilter, setUserRateFilter] = useState(
 		getButtonGroupElementById(animeFiltersList, currentFilter),
 	);
-	const { userRates, fetchNextUserRatesPage } = useUserRate();
+	const { userRates, fetchNextUserRatesPage } = useUserRate(
+		(userRateFilter.id as IUserRateAnimeStatus) || "watching",
+	);
 
 	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
 		setSearchParams({ filter: nextActiveFilter.id });
