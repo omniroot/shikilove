@@ -67,7 +67,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 								return (
 									<AnimeCard
 										key={userRate.id}
-										variant="vertical"
+										variant="horizontal"
 										anime={{
 											id: userRate.anime.id,
 											poster: userRate.anime.poster.main2xUrl,
