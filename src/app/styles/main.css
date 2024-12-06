@@ -20,6 +20,7 @@ body {
 	color: var(--color-text) !important;
 	background-color: var(--color-background) !important;
 	/* touch-action: pan-x pan-y; */
+	overflow-x: hidden;
 	scrollbar-width: thin;
 	scrollbar-color: var(--color-primary) var(--color-background);
 }
