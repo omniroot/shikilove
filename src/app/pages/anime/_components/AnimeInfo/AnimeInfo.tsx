@@ -5,6 +5,7 @@ import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Divider } from "@ui/Divider/Divider.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { AnimatePresence } from "motion/react";
+import { parseShikimoriText } from "@/shared/utils/parseShikimoriText.ts";
 
 interface IAnimeInfoProps {
 	anime: IAnime | undefined;
@@ -32,8 +33,14 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 				{anime?.description?.length > 0 && (
 					<>
 						<Divider orientation="horizontal" />
-						<div className={styles.description} onClick={onDescriptionClick}>
-							{anime.description}
+						<div
+							className={styles.description}
+							onClick={onDescriptionClick}
+							dangerouslySetInnerHTML={{
+								__html: parseShikimoriText(anime.description),
+							}}
+						>
+							{/* {anime.description} */}
 						</div>
 					</>
 				)}
@@ -42,7 +49,7 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 			<AnimatePresence>
 				{descriptionBottomSheet && (
 					<BottomSheet title="Description" onOutsideClick={() => setDescriptionBottomSheet(false)}>
-						{anime?.description}
+						<div dangerouslySetInnerHTML={{ __html: parseShikimoriText(anime.description) }}></div>
 					</BottomSheet>
 				)}
 			</AnimatePresence>
