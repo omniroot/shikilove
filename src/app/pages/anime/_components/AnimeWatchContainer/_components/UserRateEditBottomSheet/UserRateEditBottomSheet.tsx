@@ -32,7 +32,7 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	anime,
 	onOutsideClick,
 }) => {
-	const { addUserRate, updateUserRate } = useUserRate(anime?.userRate?.id || 0);
+	const { addUserRate, updateUserRate } = useUserRate("watching", anime?.userRate?.id || 0);
 	const episodesSelectElements = getEpisodesSelectElements(
 		anime?.episodes || anime?.episodesAired || 1,
 	);

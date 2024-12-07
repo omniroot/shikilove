@@ -17,7 +17,12 @@ export const LatestFragment = () => {
 						poster: latest.poster.mainUrl,
 						name: latest.name,
 						episodes: latest.episodes,
-						userRate: latest.userRate,
+						userRate: {
+							episodes: latest.userRate.episodes,
+							id: String(latest.userRate.id),
+							score: latest.userRate.score,
+							status: latest.userRate.status,
+						},
 					}}
 				/>
 			))}
