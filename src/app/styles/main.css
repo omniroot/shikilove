@@ -30,6 +30,10 @@ body {
 	background-color: var(--color-selection-background);
 }
 
+a {
+	color: var(--color-primary);
+}
+
 #modal {
 	position: fixed;
 	top: 0;
