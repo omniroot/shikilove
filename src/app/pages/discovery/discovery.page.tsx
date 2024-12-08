@@ -16,6 +16,7 @@ import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentC
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from "./discovery.page.module.scss";
+import { DiscoveryCalendarFragment } from "@pages/discovery/_fragments/DiscoveryCalendarFragment/DiscoveryCalendarFragment.tsx";
 
 const discoveryFilterButtonsList: IButtonGroupElement[] = [
 	{ id: "ongoing", title: "Ongoing", icon: <RecentlyIcon width={18} /> },
@@ -30,6 +31,7 @@ const discoveryFragmentsList: IFragment[] = [
 	{ id: "latest", fragment: <LatestFragment /> },
 	{ id: "critique", fragment: <DiscoveryCritiqueFragment /> },
 	{ id: "collections", fragment: <DiscoveryCollectionsFragment /> },
+	{ id: "calendar", fragment: <DiscoveryCalendarFragment /> },
 ];
 
 export const DiscoveryPage = () => {
