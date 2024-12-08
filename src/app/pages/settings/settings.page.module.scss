@@ -1,0 +1,11 @@
+.settings_page {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+
+	.settings_heading {
+		text-align: center;
+		font-size: var(--text-size-h4);
+		font-weight: bold;
+	}
+}
