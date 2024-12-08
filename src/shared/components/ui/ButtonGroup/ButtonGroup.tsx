@@ -1,6 +1,6 @@
 import { Button } from "@ui/Button/Button.tsx";
 import clsx from "clsx";
-import { FC, type ReactNode } from "react";
+import { FC, useEffect, type ReactNode } from "react";
 import styles from "./ButtonGroup.module.scss";
 
 export interface IButtonGroupElement {
@@ -24,12 +24,16 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 }) => {
 	const onGroupItemClick = (id: string, element: IButtonGroupElement) => {
 		setActiveElement(element);
-		const ell = document.getElementById(id);
+	};
+
+	useEffect(() => {
+		const ell = document.getElementById(`button-group-${activeElement.id}`);
+		console.log(ell);
 
 		if (ell) {
 			ell.scrollIntoView({ behavior: "smooth", block: "end" });
 		}
-	};
+	}, [activeElement.id]);
 
 	const _class = clsx(styles.button_group, className);
 
