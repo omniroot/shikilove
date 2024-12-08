@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { FC, MouseEvent, ReactNode, useEffect } from "react";
 import styles from "./BottomSheet.module.scss";
 import { createPortal } from "react-dom";
+import { useBlocker } from "react-router-dom";
 interface IBottomSheetProps {
 	children?: ReactNode;
 	className?: string;
@@ -16,6 +17,11 @@ export const BottomSheet: FC<IBottomSheetProps> = ({
 	title,
 	onOutsideClick = () => {},
 }) => {
+	useBlocker(() => {
+		onOutsideClick();
+		return true;
+	});
+
 	const _onOutsideClick = () => {
 		onOutsideClick();
 	};
