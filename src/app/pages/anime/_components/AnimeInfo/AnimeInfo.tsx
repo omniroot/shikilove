@@ -1,11 +1,11 @@
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import styles from "./AnimeInfo.module.scss";
-import { FC, useState } from "react";
-import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { Divider } from "@ui/Divider/Divider.tsx";
-import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
-import { AnimatePresence } from "motion/react";
 import { parseShikimoriText } from "@/shared/utils/parseShikimoriText.ts";
+import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
+import { Divider } from "@ui/Divider/Divider.tsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
+import { AnimatePresence } from "motion/react";
+import { FC, useState } from "react";
+import styles from "./AnimeInfo.module.scss";
 
 interface IAnimeInfoProps {
 	anime: IAnime | undefined;
@@ -14,7 +14,7 @@ interface IAnimeInfoProps {
 export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 	const [descriptionBottomSheet, setDescriptionBottomSheet] = useState(false);
 
-	const onDescriptionClick = () => {
+	const toggleDescriptionBottomSheet = () => {
 		setDescriptionBottomSheet((prev) => !prev);
 	};
 
@@ -35,7 +35,7 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 						<Divider orientation="horizontal" />
 						<div
 							className={styles.description}
-							onClick={onDescriptionClick}
+							onClick={toggleDescriptionBottomSheet}
 							dangerouslySetInnerHTML={{
 								__html: parseShikimoriText(anime.description),
 							}}
@@ -48,7 +48,7 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 
 			<AnimatePresence>
 				{descriptionBottomSheet && (
-					<BottomSheet title="Description" onOutsideClick={() => setDescriptionBottomSheet(false)}>
+					<BottomSheet title="Description" onOutsideClick={toggleDescriptionBottomSheet}>
 						<div dangerouslySetInnerHTML={{ __html: parseShikimoriText(anime.description) }}></div>
 					</BottomSheet>
 				)}
