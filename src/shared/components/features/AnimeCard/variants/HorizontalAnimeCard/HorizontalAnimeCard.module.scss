@@ -49,6 +49,18 @@
 			font-weight: bold;
 		}
 
+		.description {
+			width: 100%;
+			height: fit-content;
+			display: -webkit-box; /* Use flexbox layout */
+			-webkit-box-orient: vertical; /* Set the box orientation to vertical */
+			-webkit-line-clamp: 4; /* Limit to 2 lines */
+			overflow: hidden; /* Hide overflow text */
+			text-overflow: ellipsis;
+			text-wrap: wrap;
+			font-size: var(--text-size-h5);
+		}
+
 		.subinfo {
 			width: 100%;
 			display: flex;
