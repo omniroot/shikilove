@@ -24,16 +24,13 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 }) => {
 	const onGroupItemClick = (id: string, element: IButtonGroupElement) => {
 		setActiveElement(element);
-	};
-
-	useEffect(() => {
-		const ell = document.getElementById(`button-group-${activeElement.id}`);
+		const ell = document.getElementById(id);
 		console.log(ell);
 
 		if (ell) {
 			ell.scrollIntoView({ behavior: "smooth", block: "end" });
 		}
-	}, [activeElement.id]);
+	};
 
 	const _class = clsx(styles.button_group, className);
 
