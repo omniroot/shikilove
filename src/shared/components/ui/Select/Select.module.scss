@@ -1,8 +1,8 @@
 .select {
 	border: var(--border-ternary);
-	border-radius: var(--radius);
+	border-radius: 12px;
 	padding: var(--padding);
-
+	outline: none;
 	color: var(--color-text);
 	background-color: var(--color-background);
 
