@@ -18,10 +18,10 @@ export const LatestFragment = () => {
 						name: latest.name,
 						episodes: latest.episodes,
 						userRate: {
-							episodes: latest.userRate.episodes,
-							id: String(latest.userRate.id),
-							score: latest.userRate.score,
-							status: latest.userRate.status,
+							episodes: latest.userRate?.episodes,
+							id: String(latest.userRate?.id),
+							score: latest.userRate?.score,
+							status: latest.userRate?.status,
 						},
 					}}
 				/>
