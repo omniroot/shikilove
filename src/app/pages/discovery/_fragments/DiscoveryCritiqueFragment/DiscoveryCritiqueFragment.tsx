@@ -2,9 +2,18 @@ import { useForumCritiques } from "@/shared/services/forum/hooks/useForumCritiqu
 import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { Button } from "@ui/Button/Button.tsx";
 
 export const DiscoveryCritiqueFragment = () => {
 	const { critiques, isCritiquesLoading } = useForumCritiques();
+
+	const onCritiqueShikimoriButtonClick = (
+		event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+	) => {
+		event.stopPropagation();
+		event.preventDefault();
+		alert("Not realized");
+	};
 
 	if (!critiques || isCritiquesLoading) return "Loading...";
 	return (
@@ -20,6 +29,7 @@ export const DiscoveryCritiqueFragment = () => {
 							poster: getPosterImage(critique.linked.target.image.x96),
 							description: `Critique by ${critique.user.nickname}`,
 						}}
+						testSlot={<Button onClick={onCritiqueShikimoriButtonClick}>Shikimori</Button>}
 					/>
 				);
 			})}
