@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import svgr from "vite-plugin-svgr";
 import { visualizer } from "rollup-plugin-visualizer";
+import { optimizeCssModules } from "vite-plugin-optimize-css-modules";
 
 export default defineConfig({
 	plugins: [
@@ -10,6 +11,7 @@ export default defineConfig({
 		visualizer({
 			open: true,
 		}) as PluginOption,
+		optimizeCssModules(),
 		svgr({
 			// svgrOptions: {
 			// 	plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],

@@ -4852,6 +4852,7 @@ __metadata:
     typescript: "npm:^5.5.3"
     typescript-eslint: "npm:^8.9.0"
     vite: "npm:^6.0.3"
+    vite-plugin-optimize-css-modules: "npm:^1.2.0"
     vite-plugin-svgr: "npm:^4.2.0"
     zustand: "npm:^5.0.0"
   languageName: unknown
@@ -5360,6 +5361,15 @@ __metadata:
   dependencies:
     inherits: "npm:2.0.3"
   checksum: 10c0/d29f6893e406b63b088ce9924da03201df89b31490d4d011f1c07a386ea4b3dbe907464c274023c237da470258e1805d806c7e4009a5974cd6b1d474b675852a
+  languageName: node
+  linkType: hard
+
+"vite-plugin-optimize-css-modules@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "vite-plugin-optimize-css-modules@npm:1.2.0"
+  peerDependencies:
+    vite: ^6.0.0 || ^5.0.0 || ^4.0.0 || ^3.0.0 || ^2.0.0
+  checksum: 10c0/e0216a4cd4543891139f244644384768dd7ba45ab726289b082a50855e6b18f8bd334552f6b9ee7278383d8512d071c30ba7fd4068e8be12a19693b95ce162d8
   languageName: node
   linkType: hard
 
