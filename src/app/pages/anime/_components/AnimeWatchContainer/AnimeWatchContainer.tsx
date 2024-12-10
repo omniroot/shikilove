@@ -9,7 +9,7 @@ import { AnimatePresence } from "motion/react";
 import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
 interface IWatchButtonProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 }
 export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 	const [userRateEditBottomSheetOpen, setUserRateEditBottomSheetOpen] = useState(false);

@@ -8,7 +8,7 @@ import { FC, useState } from "react";
 import styles from "./AnimeInfo.module.scss";
 
 interface IAnimeInfoProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 }
 
 export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
@@ -26,6 +26,7 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 				full={anime.poster.originalUrl}
 				className={styles.poster}
 				allowFullscreen
+				loading="eager"
 			/>
 			<div className={styles.subinfo}>
 				<div className={styles.name}>{anime.name}</div>
