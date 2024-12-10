@@ -10,6 +10,7 @@ import {
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./anime.page.module.scss";
+import { Loader } from "@ui/Loader/Loader.tsx";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
@@ -23,7 +24,7 @@ export const AnimePage = () => {
 		return () => changeTitle("");
 	}, [anime]);
 
-	if (!anime) return;
+	if (!anime) return <Loader fullscreen />;
 
 	return (
 		<div className={styles.anime_page}>
