@@ -4,6 +4,7 @@ import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { RightArrowIcon } from "@/shared/icons/index.tsx";
+import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 
 interface IAnimeScreenshot {
 	id: string;
@@ -13,12 +14,13 @@ interface IAnimeScreenshot {
 }
 
 interface IAnimeScreenshotsProps {
-	screenshots: IAnimeScreenshot[];
+	anime: IAnime;
 }
-export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ screenshots }) => {
+export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ anime }) => {
 	let count = 0;
+	console.log(anime);
 
-	if (!screenshots.length) return;
+	if (!anime.screenshots) return;
 	return (
 		<HeadingSection
 			title="Screenshots"
@@ -30,7 +32,7 @@ export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ screenshots }) =>
 			}
 		>
 			<div className={styles.anime_screenshots_container}>
-				{screenshots.map((screenshot) => {
+				{anime.screenshots.map((screenshot) => {
 					count++;
 					if (count <= 5) {
 						return (
