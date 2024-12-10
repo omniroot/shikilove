@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState, type FC } from "react";
-import { createPortal } from "react-dom";
 
+import { Portal } from "@ui/Portal/Portal.tsx";
 import styles from "./ImageView.module.scss";
+import { AnimatePresence } from "motion/react";
 
 interface IImageViewProps {
 	className?: string;
@@ -57,19 +58,20 @@ export const ImageView: FC<IImageViewProps> = ({
 				loading={loading}
 				ref={imageRef}
 			/>
-			{allowFullscreen === true &&
-				isModal === true &&
-				createPortal(
-					<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
-						<img
-							src={full ? full : src}
-							alt={alt}
-							className={clsx(_class, styles.image_view_modal)}
-							loading="eager"
-						/>
-					</div>,
-					document.body,
+			<AnimatePresence>
+				{allowFullscreen === true && isModal === true && (
+					<Portal>
+						<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
+							<img
+								src={full ? full : src}
+								alt={alt}
+								className={clsx(_class, styles.image_view_modal)}
+								loading="eager"
+							/>
+						</div>
+					</Portal>
 				)}
+			</AnimatePresence>
 		</>
 	);
 };
