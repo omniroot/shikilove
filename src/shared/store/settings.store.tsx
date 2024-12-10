@@ -8,6 +8,7 @@ export const THEMES = [
 	"tokyo-night",
 	"everforest",
 	"pastel-red",
+	"modern-dark",
 ] as const;
 type ITheme = (typeof THEMES)[number];
 
