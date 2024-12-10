@@ -1,6 +1,6 @@
 import { Button } from "@ui/Button/Button.tsx";
 import clsx from "clsx";
-import { FC, useEffect, type ReactNode } from "react";
+import { FC, type ReactNode } from "react";
 import styles from "./ButtonGroup.module.scss";
 
 export interface IButtonGroupElement {

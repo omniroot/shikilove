@@ -61,10 +61,11 @@ export const ImageView: FC<IImageViewProps> = ({
 				isModal === true &&
 				createPortal(
 					<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
-						<ImageView
-							src={full || ""}
+						<img
+							src={full ? full : src}
 							alt={alt}
 							className={clsx(_class, styles.image_view_modal)}
+							loading="eager"
 						/>
 					</div>,
 					document.body,
