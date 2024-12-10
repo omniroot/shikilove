@@ -6,13 +6,6 @@ import { Button } from "@ui/Button/Button.tsx";
 import { RightArrowIcon } from "@/shared/icons/index.tsx";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 
-interface IAnimeScreenshot {
-	id: string;
-	originalUrl: string;
-	x166Url: string;
-	x332Url: string;
-}
-
 interface IAnimeScreenshotsProps {
 	anime: IAnime;
 }
