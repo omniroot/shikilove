@@ -49,7 +49,7 @@ export const parseShikimoriText = (description: string) => {
 			newText,
 			coordinate.start,
 			coordinate.end,
-			`<a href="https://shikimori.one/characters/${descriptionsMatches[i].linkId}">${descriptionsMatches[i].linkText}</a>`,
+			`<a href="https://shikimori.one/characters/${descriptionsMatches[i].linkId}" target="_blank">${descriptionsMatches[i].linkText}</a>`,
 		);
 		i = i - 1;
 	}
