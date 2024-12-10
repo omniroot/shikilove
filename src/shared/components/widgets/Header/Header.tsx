@@ -20,8 +20,8 @@ export const Header = () => {
 	const mode = import.meta.env.MODE === "development" ? "dev" : "prod";
 
 	return (
-		<div className={styles.header}>
-			<div className={styles.left}>
+		<div className={styles.header} id="header">
+			<div id="header-left" className={styles.left}>
 				{!isRootPage && (
 					<motion.div
 						initial={{ rotate: 90 }}
@@ -39,14 +39,16 @@ export const Header = () => {
 						</Button>
 					</motion.div>
 				)}
-				<span className={styles.logo}>ShikiLove</span>
+				<span className={styles.logo} id="header-logo">
+					ShikiLove
+				</span>
 				<span className={styles.dev_mode}>
 					<Tooltip title={packageVersion} position="bottom">
 						{mode}
 					</Tooltip>
 				</span>
 			</div>
-			<div className={styles.right}>
+			<div id="header-right" className={styles.right}>
 				<Button onClick={toggleFloatingSearchBar}>
 					<SearchIcon />
 				</Button>
