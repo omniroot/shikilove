@@ -1,51 +1,91 @@
+import {
+	useAnilibGetAnimeByName,
+	useAnilibGetEpisodes,
+	useAnilibGetVideo,
+} from "@/shared/services/anilib/useAnilib.ts";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
-import { Button } from "@ui/Button/Button.tsx";
-import { FC, useState } from "react";
+import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
+import { FC, useEffect, useState } from "react";
 import styles from "./WatchBottomSheet.module.scss";
-import { useExternalSites } from "@/shared/hooks/useExternalSites.tsx";
-import axios from "axios";
 
 interface IWatchBottomSheetProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 	onOutsideClick: () => void;
 }
 export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideClick }) => {
-	const { openHentaiHaven, openAnilib } = useExternalSites();
-	const [link, setLink] = useState("");
-	const isHentai = anime?.genres.some((genre) => genre.name === "Hentai");
+	const [animeName] = useState(anime?.name || "");
+	const [player, setPlayer] = useState({ quality: 1080, link: "" });
 
-	const onHentaiHavenClick = () => {
-		openHentaiHaven(anime?.name);
-	};
+	const { fetchAnilibAnime, anilibAnime } = useAnilibGetAnimeByName(animeName);
+	const { fetchAnilibEpisodes, anilibEpisodes } = useAnilibGetEpisodes(anilibAnime?.slug_url || "");
 
-	const onAnilibClick = () => {
-		openAnilib(anime?.name);
-	};
+	const [episodesSelectElements] = useState(
+		anilibEpisodes?.map((episode) => {
+			return {
+				id: String(episode.id),
+				title: episode.name ? `Episode ${episode.number}: ${episode.name}` : episode.number,
+			};
+		}) || ([] as IButtonGroupElement[]),
+	);
 
-	const onTestAnilibClick = async () => {
-		const response = await axios.get("https://api.mangalib.me/api/episodes/54490");
-		const link = response.data.data.players[1].video.quality[0].href;
-		console.log(`https://video1.anilib.me/.%D0%B0s/${link}`);
-		// https://video1.anilib.me/.%D0%B0s//uploads/converted_videos/anime/6515/players/33631/33631_360.mp4
-		//video1.anilib.me/.as//uploads/converted_videos/anime/6515/players/33631/33631_360.mp4
-		// my
-		// https: //video1.anilib.me/.as//uploads/converted_videos/anime/6515/players/33631/33631_1080.mp4
-		setLink(`https://video1.anilib.me/.%D0%B0s/${link}`);
-	};
+	const [episode, setEpisode] = useState(() => {
+		if (anime?.userRate && anime?.userRate?.episodes > 0) {
+			return episodesSelectElements[anime?.userRate?.episodes - 1];
+		} else {
+			return episodesSelectElements[0];
+		}
+	});
 
-	if (!anime) return;
+	console.log({ episodesSelectElements, episode });
+
+	const { fetchAnilibVideo, anilibVideo } = useAnilibGetVideo(Number(episode?.id || 0) || 0);
+
+	// const isHentai = anime?.genres.some((genre) => genre.name === "Hentai");
+
+	useEffect(() => {
+		if (animeName === "") return;
+		console.log("effect");
+
+		if (!anilibAnime) {
+			fetchAnilibAnime();
+		}
+		if (!anilibEpisodes && anilibAnime) {
+			fetchAnilibEpisodes();
+		}
+	}, [animeName, anilibAnime]);
+
+	useEffect(() => {
+		if (!anilibVideo && episode) {
+			fetchAnilibVideo();
+			return;
+		}
+		if (anilibVideo) {
+			const qualities = anilibVideo.filter((video) => video.team === "AniDUB");
+			const max_quailty = qualities[0].videos[0];
+			setPlayer(max_quailty);
+		}
+	}, [anilibVideo]);
+
+	if (!anime && !anilibAnime) return;
 	return (
 		<BottomSheet title="Watch" onOutsideClick={onOutsideClick}>
 			<div className={styles.content}>
-				<Button onClick={onTestAnilibClick}>TEst anilib</Button>
-				{link !== "" && <video src={link} controls style={{ width: "100%" }} />}
-				{isHentai ? (
-					<Button onClick={onHentaiHavenClick} variant="nhentai">
-						HentaiHaven
-					</Button>
-				) : (
-					<Button onClick={onAnilibClick}>AniLib</Button>
+				<div className={styles.episodes_group}></div>
+				{anilibAnime?.name}
+				{episodesSelectElements && episode && (
+					<ButtonGroup
+						className={styles.episodes_group}
+						elements={episodesSelectElements}
+						activeElement={episode}
+						setActiveElement={(newValue) => setEpisode(newValue)}
+					/>
+				)}
+				{player.link !== "" && (
+					<div>
+						<span>{player.quality}p</span>
+						<video src={player.link} className={styles.video_player} controls />
+					</div>
 				)}
 			</div>
 		</BottomSheet>
