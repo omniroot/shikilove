@@ -3,9 +3,9 @@ import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
 import {
 	AnimeInfo,
 	AnimeMoreInfo,
-	AnimeWatchContainer,
 	AnimeScreenshots,
 	AnimeSimilar,
+	AnimeWatchContainer,
 } from "@pages/anime/_components/index.ts";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";

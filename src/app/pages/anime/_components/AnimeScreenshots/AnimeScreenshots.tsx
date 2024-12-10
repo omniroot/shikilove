@@ -18,7 +18,6 @@ interface IAnimeScreenshotsProps {
 }
 export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ anime }) => {
 	let count = 0;
-	console.log(anime);
 
 	if (!anime.screenshots) return;
 	return (
