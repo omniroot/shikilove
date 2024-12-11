@@ -58,6 +58,17 @@
 	}
 }
 
+.button[data-variant="gradient"] {
+	color: var(--color-alttext);
+	background: linear-gradient(90deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);
+	transition: all 200ms;
+
+	&:hover {
+		color: var(--color-alttext);
+		background: linear-gradient(90deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);
+	}
+}
+
 .button[data-variant="animego"] {
 	color: var(--color-text);
 	background-color: var(--color-animego);

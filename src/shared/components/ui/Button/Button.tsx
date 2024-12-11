@@ -13,6 +13,7 @@ interface IButtonProps {
 		| "primary"
 		| "ternary"
 		| "transparent"
+		| "gradient"
 		| "secondary"
 		| "animego"
 		| "hanime"
