@@ -14,6 +14,7 @@ export const userApi = {
 			return response.data.id;
 		} catch (error) {
 			console.log(error);
+			throw error;
 		}
 	},
 	getCurrentUser: async () => {
@@ -22,6 +23,7 @@ export const userApi = {
 			return response.data;
 		} catch (error) {
 			console.log(error);
+			throw error;
 		}
 	},
 

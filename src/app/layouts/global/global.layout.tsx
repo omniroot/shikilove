@@ -4,30 +4,31 @@ import { SearchLayout } from "@/app/layouts/search/search.layout.tsx";
 import { useScrollSave } from "@/shared/hooks/useScrollSave.tsx";
 import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
 import { useSettings } from "@/shared/store/settings.store.tsx";
-import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Button } from "@ui/Button/Button.tsx";
+import { Link, Outlet } from "react-router-dom";
 import styles from "./global.layout.module.scss";
 
 export const GlobalLayout = () => {
-	const { currentUser, isCurrentUserLoading } = useCurrentUser();
-	const navigate = useNavigate();
+	const { currentUser } = useCurrentUser();
 	useSettings();
 	useScrollSave();
-
-	useEffect(() => {
-		if (!currentUser && !isCurrentUserLoading) {
-			console.log("Error while getting current user, try relogin");
-			navigate("/login", { replace: true });
-		}
-	}, []);
 
 	return (
 		<div className={styles.global_layout}>
 			<NavigationLayout />
 			<SearchLayout />
-			<main className={styles.main} id="main">
-				<Outlet />
-			</main>
+			{!currentUser ? (
+				<main className={styles.main} id="main">
+					<Button asChild style={{ width: "100%" }}>
+						<Link to="/login">Go to Login page</Link>
+					</Button>
+					<Outlet />
+				</main>
+			) : (
+				<main className={styles.main} id="main">
+					<Outlet />
+				</main>
+			)}
 		</div>
 	);
 };
