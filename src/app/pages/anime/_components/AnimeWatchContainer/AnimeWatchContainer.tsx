@@ -8,12 +8,14 @@ import clsx from "clsx";
 import { AnimatePresence } from "motion/react";
 import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
+import { HentaiBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/HentaiBottomSheet/HentaiBottomSheet.tsx";
 interface IWatchButtonProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 }
 export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 	const [userRateEditBottomSheetOpen, setUserRateEditBottomSheetOpen] = useState(false);
 	const [watchBottomSheetOpen, setWatchBottomSheetOpen] = useState(false);
+	const isHentai = anime.genres.some((genre) => genre.name === "Hentai");
 
 	// const {} = useUserRate(anime?.userRate.id);
 	const onWatchButtonClick = () => {
@@ -32,12 +34,12 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 	if (!anime) return "Loading anime...";
 	return (
 		<div className={styles.anime_watch_container}>
-			<Button className={styles.watch_button} variant="ternary" onClick={onWatchButtonClick}>
+			<Button className={styles.watch_button} variant="outline" onClick={onWatchButtonClick}>
 				Watch
 			</Button>
 			{!anime.userRate ? (
 				<Button
-					variant="ternary"
+					variant="outline"
 					onClick={onUserRateAddClick}
 					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
 				>
@@ -47,7 +49,7 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 			) : (
 				<Button
 					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
-					variant="ternary"
+					variant="outline"
 					onClick={onUserRateEditClick}
 				>
 					<div className={styles.user_rate_edit_content}>
@@ -64,7 +66,13 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 					<UserRateEditBottomSheet anime={anime} onOutsideClick={onUserRateEditClick} />
 				)}
 				{watchBottomSheetOpen && (
-					<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
+					<>
+						{isHentai ? (
+							<HentaiBottomSheet anime={anime} />
+						) : (
+							<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
+						)}
+					</>
 				)}
 			</AnimatePresence>
 		</div>

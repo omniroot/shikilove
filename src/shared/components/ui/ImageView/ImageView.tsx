@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { useState, type FC } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useRef, useState, type FC } from "react";
 
+import { Portal } from "@ui/Portal/Portal.tsx";
 import styles from "./ImageView.module.scss";
 
 interface IImageViewProps {
 	className?: string;
-	src?: string;
+	src: string;
 	full?: string;
 	allowFullscreen?: boolean;
 	loading?: "lazy" | "eager";
@@ -20,6 +20,8 @@ export const ImageView: FC<IImageViewProps> = ({
 	allowFullscreen = false,
 	full,
 }) => {
+	const imageRef = useRef<HTMLImageElement>(null);
+	const [imageSrc, setImageSrc] = useState(src);
 	const [isModal, setIsModal] = useState(false);
 
 	const onImageClick = () => {
@@ -28,13 +30,18 @@ export const ImageView: FC<IImageViewProps> = ({
 		}
 	};
 
-	// if (isModal === true) {
-	// 	const modal = document.getElementById("fullscreen_image") || document.body;
-	// 	modal.style.display = "flex";
-	// } else {
-	// 	const modal = document.getElementById("fullscreen_image") || document.body;
-	// 	modal.style.display = "none";
-	// }
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			if (!imageRef.current?.complete) {
+				console.log("Attempt to refersh image");
+
+				setImageSrc(`${src}?t=${new Date().getTime()}`);
+				return;
+			}
+		}, 8000);
+
+		return () => clearTimeout(timer);
+	}, []);
 
 	const _class = clsx(styles.image_view, className, {
 		[styles.clickable]: allowFullscreen,
@@ -42,15 +49,24 @@ export const ImageView: FC<IImageViewProps> = ({
 
 	return (
 		<>
-			<img src={src} alt={alt} className={_class} onClick={onImageClick} loading={loading} />
-			{allowFullscreen === true &&
-				isModal === true &&
-				createPortal(
-					<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
-						<img src={full || src} alt={alt} className={clsx(_class, styles.image_view_modal)} />
-					</div>,
-					document.body,
-				)}
+			<img
+				src={imageSrc}
+				alt={alt}
+				className={_class}
+				onClick={onImageClick}
+				loading={loading}
+				ref={imageRef}
+			/>
+			<Portal show={allowFullscreen === true && isModal === true}>
+				<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
+					<img
+						src={full ? full : src}
+						alt={alt}
+						className={clsx(_class, styles.image_view_modal)}
+						loading="eager"
+					/>
+				</div>
+			</Portal>
 		</>
 	);
 };

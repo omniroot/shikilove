@@ -25,6 +25,7 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 	const onGroupItemClick = (id: string, element: IButtonGroupElement) => {
 		setActiveElement(element);
 		const ell = document.getElementById(id);
+		console.log(ell);
 
 		if (ell) {
 			ell.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -36,12 +37,14 @@ export const ButtonGroup: FC<IButtonGroupProps> = ({
 	return (
 		<div className={_class}>
 			{elements?.map((element) => {
+				const isActive = activeElement.id === element.id;
 				return (
 					<Button
 						className={clsx(styles.button, {
-							[styles.active]: activeElement.id === element.id,
+							[styles.active]: isActive,
 						})}
-						data-active={activeElement.id === element.id}
+						data-active={isActive}
+						variant={isActive ? "primary" : "outline"}
 						key={element.id}
 						onClick={() => onGroupItemClick(`button-group-${element.id}`, element)}
 						id={`button-group-${element.id}`}

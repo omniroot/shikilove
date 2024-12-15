@@ -1,53 +1,121 @@
+import { useAnilibGetAnimeByName } from "@/shared/services/anilib/useAnilib.ts";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
+import { EpisodeSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/EpisodeSelect/EpisodeSelect.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
-import { Button } from "@ui/Button/Button.tsx";
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styles from "./WatchBottomSheet.module.scss";
-import { useExternalSites } from "@/shared/hooks/useExternalSites.tsx";
-import axios from "axios";
+import { DubTeamSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/DubTeamSelect/DubTeamSelect.tsx";
+import { QualitySelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/QualitySelect/QualitySelect.tsx";
 
 interface IWatchBottomSheetProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 	onOutsideClick: () => void;
 }
+
 export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideClick }) => {
-	const { openHentaiHaven, openAnilib } = useExternalSites();
+	const { anilibAnime } = useAnilibGetAnimeByName(anime.name);
+	const videoRef = useRef<HTMLVideoElement>(null);
+	const [episode, setEpisode] = useState({ episodeId: -1, episode: -1 });
+	const [team, setTeam] = useState("");
 	const [link, setLink] = useState("");
-	const isHentai = anime?.genres.some((genre) => genre.name === "Hentai");
 
-	const onHentaiHavenClick = () => {
-		openHentaiHaven(anime?.name);
+	const onEpisodeSelect = (newValue: { episodeId: number; episode: number }) => {
+		console.log("new episode: ", newValue);
+		setEpisode(newValue);
 	};
 
-	const onAnilibClick = () => {
-		openAnilib(anime?.name);
+	const onTeamSelect = (newValue: string) => {
+		console.log("new team: ", newValue);
+		setTeam(newValue);
 	};
 
-	const onTestAnilibClick = async () => {
-		const response = await axios.get("https://api.mangalib.me/api/episodes/54490");
-		const link = response.data.data.players[1].video.quality[0].href;
-		console.log(`https://video1.anilib.me/.%D0%B0s/${link}`);
-		// https://video1.anilib.me/.%D0%B0s//uploads/converted_videos/anime/6515/players/33631/33631_360.mp4
-		//video1.anilib.me/.as//uploads/converted_videos/anime/6515/players/33631/33631_360.mp4
-		// my
-		// https: //video1.anilib.me/.as//uploads/converted_videos/anime/6515/players/33631/33631_1080.mp4
-		setLink(`https://video1.anilib.me/.%D0%B0s/${link}`);
+	const onQualitySelect = (newValue: string) => {
+		console.log("new link: ", newValue);
+
+		setLink(newValue);
+	};
+	console.log({ episode, team, link });
+
+	const _onOutsideClick = () => {
+		console.log("Exit and save watching session");
+
+		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
+
+		const nextWatching = {
+			...watching,
+			[anime.name]: {
+				episode,
+				team,
+				link,
+				timecode: videoRef.current?.currentTime,
+			},
+		};
+		localStorage.setItem("watching", JSON.stringify(nextWatching));
+
+		onOutsideClick();
 	};
 
-	if (!anime) return;
+	const onVideoLoad = () => {
+		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
+		const currentAnime = watching[anime.name];
+
+		if (videoRef.current && currentAnime) {
+			videoRef.current.currentTime = currentAnime.timecode || 0;
+		}
+	};
+
+	useEffect(() => {
+		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
+
+		const currentAnime = watching[anime.name];
+		if (currentAnime) {
+			setEpisode(currentAnime.episode);
+			setTeam(currentAnime.team);
+			setLink(currentAnime.link);
+		}
+	}, [videoRef]);
+
 	return (
-		<BottomSheet title="Watch" onOutsideClick={onOutsideClick}>
-			<div className={styles.content}>
-				<Button onClick={onTestAnilibClick}>TEst anilib</Button>
-				{link !== "" && <video src={link} controls style={{ width: "100%" }} />}
-				{isHentai ? (
-					<Button onClick={onHentaiHavenClick} variant="nhentai">
-						HentaiHaven
-					</Button>
-				) : (
-					<Button onClick={onAnilibClick}>AniLib</Button>
-				)}
-			</div>
+		<BottomSheet
+			title="Watch"
+			onOutsideClick={_onOutsideClick}
+			className={styles.watch_bottom_sheet}
+		>
+			{!anilibAnime ? (
+				<span>Loading...</span>
+			) : (
+				<div className={styles.content}>
+					<div className={styles.selects}>
+						<EpisodeSelect
+							animeSlugUrl={anilibAnime.slug_url}
+							defaultEpisode={episode.episode > 0 ? episode.episode : anime.userRate.episodes || 1}
+							onEpisodeSelect={onEpisodeSelect}
+						/>
+						{episode.episode > 0 && (
+							<DubTeamSelect episodeId={episode.episodeId} onTeamSelect={onTeamSelect} />
+						)}
+						{episode.episode > 0 && team.length && (
+							<QualitySelect
+								episodeId={episode.episodeId}
+								team={team}
+								onQualitySelect={onQualitySelect}
+							/>
+						)}
+					</div>
+
+					{link !== "" && (
+						<div>
+							<video
+								src={link}
+								ref={videoRef}
+								className={styles.video_player}
+								controls
+								onLoadedMetadata={onVideoLoad}
+							/>
+						</div>
+					)}
+				</div>
+			)}
 		</BottomSheet>
 	);
 };

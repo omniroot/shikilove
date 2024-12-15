@@ -3,9 +3,9 @@ import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
 import {
 	AnimeInfo,
 	AnimeMoreInfo,
-	AnimeWatchContainer,
 	AnimeScreenshots,
 	AnimeSimilar,
+	AnimeWatchContainer,
 } from "@pages/anime/_components/index.ts";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -24,12 +24,13 @@ export const AnimePage = () => {
 	}, [anime]);
 
 	if (!anime) return;
+
 	return (
 		<div className={styles.anime_page}>
 			<AnimeInfo anime={anime} />
 			<AnimeMoreInfo anime={anime} />
 			<AnimeWatchContainer anime={anime} />
-			<AnimeScreenshots screenshots={anime.screenshots} />
+			<AnimeScreenshots anime={anime} />
 			<AnimeSimilar anime={anime} />
 		</div>
 	);

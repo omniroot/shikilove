@@ -22,10 +22,10 @@ export const useUserRate = (
 	} = useInfiniteQuery<IUserRates, Error>({
 		queryKey: ["userRates", userRateStatus],
 		queryFn: ({ pageParam = 1 }) =>
-			userRateApi.getUserRates({ page: pageParam as number, limit: 30, status: userRateStatus }),
+			userRateApi.getUserRates({ page: pageParam as number, limit: 15, status: userRateStatus }),
 		initialPageParam: 1,
 		getNextPageParam: (lastPage, pages) => {
-			return lastPage.length === 30 ? pages.length + 1 : undefined;
+			return lastPage.length === 15 ? pages.length + 1 : undefined;
 		},
 		refetchOnMount: false,
 	});

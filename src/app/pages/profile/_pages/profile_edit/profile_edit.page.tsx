@@ -13,7 +13,7 @@ export const ProfileEditPage: FC<IProfileEditProps> = () => {
 	return (
 		<div className={styles.profile_edit_page}>
 			<span>profile edit page1</span>
-			<ImageView src={currentUser?.avatar} />
+			<ImageView src={currentUser?.avatar || ""} />
 			<input />
 		</div>
 	);

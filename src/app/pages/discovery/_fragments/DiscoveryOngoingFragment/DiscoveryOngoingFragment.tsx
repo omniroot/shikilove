@@ -16,7 +16,7 @@ export const OngoingFragment = () => {
 						id: ongoing.id,
 						poster: ongoing.poster.mainUrl,
 						name: ongoing.name,
-						episodes: ongoing.episodes,
+						episodes: ongoing.episodes || ongoing.episodesAired,
 					}}
 				/>
 			))}

@@ -4,7 +4,7 @@ import { FC } from "react";
 import { motion } from "motion/react";
 
 interface IAnimeMoreInfoProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 }
 export const AnimeMoreInfo: FC<IAnimeMoreInfoProps> = ({ anime }) => {
 	if (!anime) return "Anime more info loading...";

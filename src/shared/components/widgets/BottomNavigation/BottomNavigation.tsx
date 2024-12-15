@@ -33,6 +33,8 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 
 	const _class = clsx(styles.bottom_navigation, className);
 
+	// TODO temp solution, find a better way
+	if (!currentUser) return null;
 	return (
 		<div className={_class}>
 			{pages.map((page) => {
@@ -49,7 +51,7 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 							{page.path.includes("profile") ? (
 								<ImageView
 									loading="eager"
-									src={currentUser?.avatar}
+									src={currentUser?.avatar || ""}
 									className={styles.profile_image}
 								/>
 							) : (

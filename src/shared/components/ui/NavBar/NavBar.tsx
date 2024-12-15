@@ -46,7 +46,7 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 							key={page.name}
 							viewTransition
 						>
-							<ImageView src={currentUser?.avatar} className={styles.profile_image} />
+							<ImageView src={currentUser?.avatar || ""} className={styles.profile_image} />
 						</Link>
 					);
 				}

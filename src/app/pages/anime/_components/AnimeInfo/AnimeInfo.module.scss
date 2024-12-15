@@ -32,12 +32,22 @@
 		}
 
 		.description {
+			padding: 4px;
 			cursor: pointer;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			display: -webkit-box;
 			-webkit-line-clamp: 5;
 			-webkit-box-orient: vertical;
+			border-radius: var(--radius);
+
+			transition: all 200ms ease;
+			border: var(--border-transparent);
+
+			&:hover {
+				background-color: var(--color-ternary);
+				border: var(--border-secondary);
+			}
 		}
 	}
 }

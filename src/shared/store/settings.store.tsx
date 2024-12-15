@@ -7,6 +7,7 @@ export const THEMES = [
 	"catppuccin-dark",
 	"tokyo-night",
 	"everforest",
+	"pastel-red",
 ] as const;
 type ITheme = (typeof THEMES)[number];
 

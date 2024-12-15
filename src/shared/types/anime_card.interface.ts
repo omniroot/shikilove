@@ -3,6 +3,7 @@ export interface IAnimeCard {
 	poster?: string;
 	name?: string;
 	russian?: string;
+	description?: string;
 	episodes?: number;
 	score?: number;
 	kind?: string;

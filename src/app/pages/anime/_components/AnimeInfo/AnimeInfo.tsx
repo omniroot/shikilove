@@ -1,19 +1,20 @@
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import styles from "./AnimeInfo.module.scss";
-import { FC, useState } from "react";
-import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { Divider } from "@ui/Divider/Divider.tsx";
+import { parseShikimoriText } from "@/shared/utils/parseShikimoriText.ts";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
+import { Divider } from "@ui/Divider/Divider.tsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { AnimatePresence } from "motion/react";
+import { FC, useState } from "react";
+import styles from "./AnimeInfo.module.scss";
 
 interface IAnimeInfoProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 }
 
 export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 	const [descriptionBottomSheet, setDescriptionBottomSheet] = useState(false);
 
-	const onDescriptionClick = () => {
+	const toggleDescriptionBottomSheet = () => {
 		setDescriptionBottomSheet((prev) => !prev);
 	};
 
@@ -25,6 +26,7 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 				full={anime.poster.originalUrl}
 				className={styles.poster}
 				allowFullscreen
+				loading="eager"
 			/>
 			<div className={styles.subinfo}>
 				<div className={styles.name}>{anime.name}</div>
@@ -32,8 +34,14 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 				{anime?.description?.length > 0 && (
 					<>
 						<Divider orientation="horizontal" />
-						<div className={styles.description} onClick={onDescriptionClick}>
-							{anime.description}
+						<div
+							className={styles.description}
+							onClick={toggleDescriptionBottomSheet}
+							dangerouslySetInnerHTML={{
+								__html: parseShikimoriText(anime.description),
+							}}
+						>
+							{/* {anime.description} */}
 						</div>
 					</>
 				)}
@@ -41,8 +49,8 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 
 			<AnimatePresence>
 				{descriptionBottomSheet && (
-					<BottomSheet title="Description" onOutsideClick={() => setDescriptionBottomSheet(false)}>
-						{anime?.description}
+					<BottomSheet title="Description" onOutsideClick={toggleDescriptionBottomSheet}>
+						<div dangerouslySetInnerHTML={{ __html: parseShikimoriText(anime.description) }}></div>
 					</BottomSheet>
 				)}
 			</AnimatePresence>

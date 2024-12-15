@@ -64,8 +64,6 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 					userRates.pages.map((rates) =>
 						rates.map((userRate) => {
 							if (userRate.status === userRateFilter.id) {
-								console.log(userRate);
-
 								return (
 									<AnimeCard
 										key={userRate.id}

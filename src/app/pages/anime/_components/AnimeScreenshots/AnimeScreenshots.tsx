@@ -4,33 +4,30 @@ import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { RightArrowIcon } from "@/shared/icons/index.tsx";
-
-interface IAnimeScreenshot {
-	id: string;
-	originalUrl: string;
-	x166Url: string;
-	x332Url: string;
-}
+import { IAnime } from "@/shared/services/anime/anime.interface.ts";
+import { Link } from "react-router-dom";
 
 interface IAnimeScreenshotsProps {
-	screenshots: IAnimeScreenshot[];
+	anime: IAnime;
 }
-export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ screenshots }) => {
+export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ anime }) => {
 	let count = 0;
 
-	if (!screenshots.length) return;
+	if (!anime.screenshots) return;
 	return (
 		<HeadingSection
 			title="Screenshots"
 			actionsSlot={
-				<Button variant="ternary" as="Link" to="screenshots">
-					More
-					<RightArrowIcon />
+				<Button variant="outline" asChild>
+					<Link to="screenshots">
+						More
+						<RightArrowIcon />
+					</Link>
 				</Button>
 			}
 		>
 			<div className={styles.anime_screenshots_container}>
-				{screenshots.map((screenshot) => {
+				{anime.screenshots.map((screenshot) => {
 					count++;
 					if (count <= 5) {
 						return (

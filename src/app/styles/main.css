@@ -21,6 +21,7 @@ body {
 	background-color: var(--color-background) !important;
 	/* touch-action: pan-x pan-y; */
 	overflow-x: hidden;
+	overflow-y: auto;
 	scrollbar-width: thin;
 	scrollbar-color: var(--color-primary) var(--color-background);
 }
@@ -28,6 +29,10 @@ body {
 ::selection {
 	color: var(--color-selection-text);
 	background-color: var(--color-selection-background);
+}
+
+a {
+	color: var(--color-primary);
 }
 
 #modal {

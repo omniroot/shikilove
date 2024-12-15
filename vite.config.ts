@@ -1,13 +1,17 @@
-import { defineConfig } from "vite";
+import { defineConfig, type PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import svgr from "vite-plugin-svgr";
 import { visualizer } from "rollup-plugin-visualizer";
+import { optimizeCssModules } from "vite-plugin-optimize-css-modules";
 
 export default defineConfig({
 	plugins: [
 		react(),
-		visualizer({ open: true }),
+		visualizer({
+			open: true,
+		}) as PluginOption,
+		optimizeCssModules(),
 		svgr({
 			// svgrOptions: {
 			// 	plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
@@ -40,7 +44,7 @@ export default defineConfig({
 			"@widgets": path.resolve(__dirname, "src", "shared", "components", "widgets"),
 			"@ui": path.resolve(__dirname, "src", "shared", "components", "ui"),
 			"@": path.resolve(__dirname, "src"),
-			"/": path.resolve(__dirname),
+			"~": path.resolve(__dirname),
 		},
 	},
 });
