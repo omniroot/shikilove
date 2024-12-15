@@ -3,7 +3,6 @@ import { NavigationLayout } from "@/app/layouts/navigation/navigation.layout.tsx
 import { SearchLayout } from "@/app/layouts/search/search.layout.tsx";
 import { useScrollSave } from "@/shared/hooks/useScrollSave.tsx";
 import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
-import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 import { useSettings } from "@/shared/store/settings.store.tsx";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
