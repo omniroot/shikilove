@@ -32,12 +32,12 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 	if (!anime) return "Loading anime...";
 	return (
 		<div className={styles.anime_watch_container}>
-			<Button className={styles.watch_button} variant="ternary" onClick={onWatchButtonClick}>
+			<Button className={styles.watch_button} variant="outline" onClick={onWatchButtonClick}>
 				Watch
 			</Button>
 			{!anime.userRate ? (
 				<Button
-					variant="ternary"
+					variant="outline"
 					onClick={onUserRateAddClick}
 					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
 				>
@@ -47,7 +47,7 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 			) : (
 				<Button
 					className={clsx(styles.user_rate_edit, { [styles.empty]: !anime.userRate })}
-					variant="ternary"
+					variant="outline"
 					onClick={onUserRateEditClick}
 				>
 					<div className={styles.user_rate_edit_content}>
