@@ -8,6 +8,7 @@ import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { RightArrowIcon } from "@/shared/icons/index.tsx";
 import { Button } from "@ui/Button/Button.tsx";
+import { Link } from "react-router-dom";
 
 interface IAnimeSimilarProps {
 	anime: IAnime;
@@ -22,9 +23,10 @@ export const AnimeSimilar: FC<IAnimeSimilarProps> = ({ anime }) => {
 		<HeadingSection
 			title="Similar"
 			actionsSlot={
-				<Button variant="ternary" as="Link" to="similars">
-					More
-					<RightArrowIcon />
+				<Button variant="outline" asChild>
+					<Link to="similars">
+						More <RightArrowIcon />
+					</Link>
 				</Button>
 			}
 		>

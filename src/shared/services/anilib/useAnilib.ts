@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import useSWRImmutable from "swr/immutable";
 import { anilibApi } from "./anilib.api.ts";
 
 export const useAnilibGetAnimeByName = (name: string) => {
 	const {
 		data: anilibAnime,
 		isLoading: anilibAnimeIsLoading,
-		mutate: fetchAnilibAnime,
-	} = useSWRImmutable(`anilib-get-anime-by-name-${name}`, () => anilibApi.getAnimeByName(name));
+		refetch: fetchAnilibAnime,
+	} = useQuery({
+		queryKey: ["anilib-get-anime-by-name", name],
+		queryFn: () => anilibApi.getAnimeByName(name),
+	});
 
 	// 	const [anilibSearch, setAnilibSearch] = useState("");
 	// 	const {
@@ -37,7 +39,6 @@ export const useAnilibGetEpisodes = (slugUrl: string) => {
 	} = useQuery({
 		queryKey: ["anilib-get-episodes", slugUrl],
 		queryFn: () => anilibApi.getEpisodesById(slugUrl),
-		enabled: false,
 	});
 
 	return {
@@ -57,7 +58,6 @@ export const useAnilibGetVideo = (episode: number) => {
 	} = useQuery({
 		queryKey: ["anilib-get-video", episode],
 		queryFn: () => anilibApi.getVideosByEpisodeId(episode),
-		enabled: false,
 	});
 
 	return {

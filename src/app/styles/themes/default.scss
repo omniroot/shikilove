@@ -24,13 +24,48 @@ html {
 
 // VARIABLES
 html {
+	--border-value: 0.2rem;
 	--border-none: none;
-	--border-transparent: 0.2rem solid transparent;
-	--border-ternary: 0.2rem solid var(--color-ternary);
-	--border-secondary: 0.2rem solid var(--color-secondary);
-	--border-primary: 0.2rem solid var(--color-primary);
+	--border-transparent: var(--border-value) solid transparent;
+	--border-ternary: var(--border-value) solid var(--color-ternary);
+	--border-secondary: var(--border-value) solid var(--color-secondary);
+	--border-primary: var(--border-value) solid var(--color-primary);
 	--border-active: var(--border-primary);
 	--border: var(--border-ternary);
+
+	--scaling: 1;
+
+	--p-1: calc(0.5rem * var(--scaling));
+	--p-2: calc(0.75rem * var(--scaling));
+	--p-3: calc(1rem * var(--scaling));
+	--p-4: calc(1.25rem * var(--scaling));
+	--p-5: calc(1.5rem * var(--scaling));
+	--p-6: calc(1.75rem * var(--scaling));
+	--p-7: calc(2rem; * var(--scaling));
+
+	--p: var(--p-1);
+
+	--m-1: calc(0.5rem * var(--scaling));
+	--m-2: calc(0.75rem * var(--scaling));
+	--m-3: calc(1rem * var(--scaling));
+	--m-4: calc(1.25rem * var(--scaling));
+	--m-5: calc(1.5rem * var(--scaling));
+	--m-6: calc(1.75rem * var(--scaling));
+	--m-7: calc(2rem; * var(--scaling));
+
+	--radius-sm: 0.125rem; /* 2px */
+	--radius-base: 0.25rem; /* 4px */
+	--radius-md: 0.375rem; /* 6px */
+	--radius-lg: 0.5rem; /* 8px */
+	--radius-xl: 0.75rem; /* 12px */
+	--radius-2xl: 1rem; /* 16px */
+	--radius-3xl: 1.5rem; /* 24px */
+	--radius-full: 9999px; /* 100% */
+
+	--radius: var(--radius-2xl);
+	--radius-2: calc(var(--radius) * 2);
+
+	--m: var(--m-1);
 
 	--margin-1: 0.5rem;
 	--margin-2: 1rem;
@@ -40,10 +75,6 @@ html {
 	--padding-2: 1rem;
 	--padding: var(--padding-1);
 
-	--radius-1: 1rem;
-	--radius-2: 2rem;
-	--radius: var(--radius-1);
-
 	--gap-1: 0.5rem;
 	--gap-2: 1rem;
 	--gap: var(--gap-1);
@@ -51,6 +82,8 @@ html {
 	--blur: blur(15px);
 	--shadow: 3px 4px 10px 0px rgba(34, 60, 80, 0.2);
 	--shadow-2: 3px 4px 10px 0px rgba(34, 60, 80, 0.8);
+
+	--animation: background-color 200ms, scale 200ms, color 200ms, transform 200ms, border 200ms;
 
 	--text-size-h1: 2rem;
 	--text-size-h2: 1.75rem;

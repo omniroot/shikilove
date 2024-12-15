@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState, type FC } from "react";
-import { createPortal } from "react-dom";
 
+import { Portal } from "@ui/Portal/Portal.tsx";
 import styles from "./ImageView.module.scss";
 
 interface IImageViewProps {
@@ -57,19 +57,16 @@ export const ImageView: FC<IImageViewProps> = ({
 				loading={loading}
 				ref={imageRef}
 			/>
-			{allowFullscreen === true &&
-				isModal === true &&
-				createPortal(
-					<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
-						<img
-							src={full ? full : src}
-							alt={alt}
-							className={clsx(_class, styles.image_view_modal)}
-							loading="eager"
-						/>
-					</div>,
-					document.body,
-				)}
+			<Portal show={allowFullscreen === true && isModal === true}>
+				<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
+					<img
+						src={full ? full : src}
+						alt={alt}
+						className={clsx(_class, styles.image_view_modal)}
+						loading="eager"
+					/>
+				</div>
+			</Portal>
 		</>
 	);
 };

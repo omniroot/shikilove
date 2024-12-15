@@ -1,18 +1,55 @@
 .select {
-	border: var(--border-ternary);
-	border-radius: 12px;
-	padding: var(--padding);
-	outline: none;
-	color: var(--color-text);
-	background-color: var(--color-background);
+	width: fit-content;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--radius-xl);
+	padding: var(--p) var(--p-2);
+	cursor: pointer;
+	user-select: none;
+	gap: var(--gap);
+	transition: var(--animation);
+	text-wrap: nowrap;
+	text-overflow: ellipsis;
 
-	transition:
-		background-color 200ms,
-		border 200ms;
+	svg {
+		transition: var(--animation);
+	}
 
-	&:hover {
+	&[data-opened="true"] {
 		border: var(--border-secondary);
+	}
+}
 
-		background-color: var(--color-ternary);
+.select_content {
+	position: absolute;
+	display: flex;
+	max-height: 250px;
+	flex-direction: column;
+	background-color: var(--color-background);
+	border: var(--border);
+	border-radius: var(--radius-xl);
+	gap: var(--gap);
+	overflow-y: scroll;
+	padding: var(--p);
+
+	z-index: 100000;
+
+	.select_item {
+		display: flex;
+		padding: 2px var(--p);
+		min-height: 30px;
+		border: var(--border-transparent);
+		transition: var(--animation);
+		border-radius: var(--radius-lg);
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--color-ternary-80);
+		}
+	}
+	.select_item_active {
+		background-color: var(--color-secondary);
 	}
 }

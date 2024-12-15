@@ -8,6 +8,7 @@ import clsx from "clsx";
 import dayjs from "dayjs";
 import { FC } from "react";
 import styles from "./ProfileInfoCard.module.scss";
+import { Link } from "react-router-dom";
 
 interface IProfileInfoCardProps {
 	className?: string;
@@ -41,11 +42,15 @@ export const ProfileInfoCard: FC<IProfileInfoCardProps> = ({ className, currentU
 				</div>
 			</div>
 			<div className={styles.user_actions}>
-				<Button as="Link" to="edit" className={styles.message_button}>
-					<MessageIcon />
+				<Button asChild className={styles.message_button}>
+					<Link to="edit">
+						<MessageIcon />
+					</Link>
 				</Button>
-				<Button as="Link" to="edit" className={styles.profile_edit_button}>
-					<ProfileEditIcon />
+				<Button asChild className={styles.profile_edit_button}>
+					<Link to="edit">
+						<ProfileEditIcon />
+					</Link>
 				</Button>
 			</div>
 		</div>

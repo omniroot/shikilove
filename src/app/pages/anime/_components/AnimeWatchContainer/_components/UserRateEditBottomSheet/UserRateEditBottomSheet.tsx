@@ -2,10 +2,10 @@ import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Button } from "@ui/Button/Button.tsx";
-import { Select } from "@ui/Select/Select.tsx";
 import { FC, useState } from "react";
 import styles from "./UserRateEditBottomSheet.module.scss";
 import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
+import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 
 const getEpisodesSelectElements = (maxEpisodes: number) => {
 	const elements = Array.from({ length: maxEpisodes }, (_, i) => ({
@@ -23,6 +23,10 @@ const statusSelectElements = [
 	{ value: "dropped", label: "Dropped" },
 	{ value: "planned", label: "Planned" },
 ];
+
+const getLabel = (value: string) => {
+	return statusSelectElements.find((el) => el.value === value)?.label ?? "";
+};
 
 interface IUserRateEditBottomSheetProps {
 	anime: IAnime | undefined;
@@ -75,15 +79,32 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 			<div className={styles.user_rate_edit_container}>
 				<div className={styles.selects}>
 					<Select
-						elements={episodesSelectElements}
-						value={String(episodesElement)}
-						onChange={onEpisodesSelectChange}
-					/>
+						defaultValue={{ value: episodesElement, label: episodesElement }}
+						onActiveChange={onEpisodesSelectChange}
+						positionY="top"
+						positionX="right"
+					>
+						<SelectContent>
+							{episodesSelectElements.map((element) => (
+								<SelectItem key={element.value} value={element.value}>
+									{element.label}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
 					<Select
-						elements={statusSelectElements}
-						value={statusElement}
-						onChange={onStatusSelectChange}
-					/>
+						defaultValue={{ value: statusElement, label: getLabel(statusElement) }}
+						onActiveChange={onStatusSelectChange}
+						positionY="top"
+					>
+						<SelectContent>
+							{statusSelectElements.map((element) => (
+								<SelectItem key={element.value} value={element.value}>
+									{element.label}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
 				</div>
 				<Button variant="primary" className={styles.save_button} onClick={onSaveButtonClick}>
 					{isExistInUserRate ? "Save" : "Add"}

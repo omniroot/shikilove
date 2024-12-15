@@ -14,6 +14,7 @@ export default [
 		files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
 		rules: {
 			"react/react-in-jsx-scope": "off",
+			"@typescript-eslint/no-empty-object-type": "off",
 		},
 		languageOptions: { globals: globals.browser },
 	},
