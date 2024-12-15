@@ -1,43 +1,39 @@
 import clsx from "clsx";
-import { FC, ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { FC } from "react";
 import styles from "./Button.module.scss";
+import { Slot } from "@radix-ui/react-slot";
 
-interface IButtonProps {
-	children?: ReactNode;
-	className?: string;
-	id?: string;
-	as?: "button" | "Link";
-	to?: string;
+interface IButtonProps
+	extends React.DetailedHTMLProps<
+		React.ButtonHTMLAttributes<HTMLButtonElement>,
+		HTMLButtonElement
+	> {
+	asChild?: boolean;
 	variant?:
 		| "primary"
-		| "ternary"
-		| "transparent"
-		| "gradient"
+		| "outline"
 		| "secondary"
+		| "ghost"
+		| "gradient"
 		| "animego"
 		| "hanime"
 		| "nhentai"
 		| "shikimori";
-	onClick?: (
-		event:
-			| React.MouseEvent<HTMLButtonElement, MouseEvent>
-			| React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-	) => void;
 }
 export const Button: FC<IButtonProps> = ({
 	children,
 	className,
-	as = "button",
-	to = "",
-	variant = "ternary",
+	variant = "primary",
+	asChild = false,
 	...rest
 }) => {
+	const Comp = asChild ? Slot : "button";
 	const _class = clsx(styles.button, className);
-	const Component = as === "Link" ? Link : "button";
 	return (
-		<Component className={_class} data-variant={variant} to={to} {...rest}>
+		<Comp className={_class} data-variant={variant} {...rest}>
 			{children}
-		</Component>
+		</Comp>
 	);
 };
+
+<Button>Button</Button>;

@@ -1,71 +1,65 @@
 .button {
 	display: flex;
-	width: fit-content;
-	height: 40px;
 	justify-content: center;
 	align-items: center;
 
-	padding: var(--padding);
-	border-radius: 12px;
-	border: none;
-	gap: var(--gap);
-	color: var(--color-alttext);
-	background-color: var(--color-primary);
-	transition: all 200ms;
-	font-weight: 600;
+	width: fit-content;
+	padding: var(--p) var(--p-2);
+
+	border: var(--border-transparent);
+	border-radius: var(--radius-lg);
+
 	cursor: pointer;
+	transition: var(--animation);
+
 	text-decoration: none;
 
-	&:hover {
-		color: var(--color-primary);
-		background-color: var(--color-secondary);
-	}
-
 	&:active {
-		transform: scale(97%);
+		scale: 95%;
 	}
 }
 
-.button[data-variant="ternary"] {
-	padding: 12px 8px;
+.button[data-variant="primary"] {
+	color: var(--color-alttext);
+	background-color: var(--color-primary);
+}
+
+.button[data-variant="outline"] {
 	color: var(--color-text);
 	background-color: transparent;
 	border: var(--border-ternary);
-
-	&:hover {
-		color: var(--color-text);
-		background-color: var(--color-ternary);
-		border: var(--border-secondary);
-	}
-}
-
-.button[data-variant="transparent"] {
-	background-color: transparent;
-	border: transparent;
-
-	&:hover {
-		color: var(--color-primary);
-	}
 }
 
 .button[data-variant="secondary"] {
 	color: var(--color-text);
 	background-color: var(--color-secondary);
+}
 
-	&:hover {
-		color: var(--color-text);
-		background-color: var(--color-secondary);
+.button[data-variant="ghost"] {
+	color: var(--color-text);
+	background-color: transparent;
+
+	@media (hover: hover) {
+		&:hover {
+			color: var(--color-text);
+			background-color: var(--color-ternary);
+		}
 	}
 }
+
+//
+//
+//
+//
+//
 
 .button[data-variant="gradient"] {
 	color: var(--color-alttext);
 	background: linear-gradient(90deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);
-	transition: all 200ms;
 
 	&:hover {
 		color: var(--color-alttext);
-		background: linear-gradient(90deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);
+		background: linear-gradient(180deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);
 	}
 }
 
