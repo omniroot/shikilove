@@ -9,14 +9,14 @@ import { Outlet, useNavigate } from "react-router-dom";
 import styles from "./global.layout.module.scss";
 
 export const GlobalLayout = () => {
-	const { currentUserError } = useCurrentUser();
+	const { currentUser, isCurrentUserLoading } = useCurrentUser();
 	const navigate = useNavigate();
 	useSettings();
 	useScrollSave();
 
 	useEffect(() => {
-		if (currentUserError) {
-			console.log("Error while getting current user, try relogin", currentUserError);
+		if (!currentUser && !isCurrentUserLoading) {
+			console.log("Error while getting current user, try relogin");
 			navigate("/login", { replace: true });
 		}
 	}, []);
