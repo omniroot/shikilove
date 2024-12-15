@@ -1,0 +1,16 @@
+html[theme="modern-dark"] {
+	--color-primary: hsl(206, 74%, 56%);
+	--color-secondary: #1a1a1d;
+	--color-ternary: #1b1b1e;
+	--color-ternary-80: #1b1b1ec0;
+	--color-background: #0a0f10;
+	--color-background-80: #0a0f10c0;
+	--color-text: #cdd6f4;
+	--color-subtext: #a6adc8;
+}
+
+html[theme="modern-dark"] {
+	#header {
+		box-shadow: var(--shadow);
+	}
+}

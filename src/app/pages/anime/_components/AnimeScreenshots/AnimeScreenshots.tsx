@@ -13,7 +13,7 @@ interface IAnimeScreenshotsProps {
 export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ anime }) => {
 	let count = 0;
 
-	if (!anime.screenshots) return;
+	if (!anime.screenshots.length) return;
 	return (
 		<HeadingSection
 			title="Screenshots"

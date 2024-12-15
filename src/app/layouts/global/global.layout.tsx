@@ -25,7 +25,7 @@ export const GlobalLayout = () => {
 		<div className={styles.global_layout}>
 			<NavigationLayout />
 			<SearchLayout />
-			<main className={styles.main}>
+			<main className={styles.main} id="main">
 				<Outlet />
 			</main>
 		</div>
