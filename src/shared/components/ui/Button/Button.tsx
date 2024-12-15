@@ -19,18 +19,20 @@ interface IButtonProps
 		| "hanime"
 		| "nhentai"
 		| "shikimori";
+	circle?: boolean;
 }
 export const Button: FC<IButtonProps> = ({
 	children,
 	className,
 	variant = "primary",
 	asChild = false,
+	circle = false,
 	...rest
 }) => {
 	const Comp = asChild ? Slot : "button";
 	const _class = clsx(styles.button, className);
 	return (
-		<Comp className={_class} data-variant={variant} {...rest}>
+		<Comp className={_class} data-variant={variant} data-circle={circle} {...rest}>
 			{children}
 		</Comp>
 	);
