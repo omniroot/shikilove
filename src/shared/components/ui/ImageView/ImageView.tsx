@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, type FC } from "react";
 
 import { Portal } from "@ui/Portal/Portal.tsx";
 import styles from "./ImageView.module.scss";
-import { AnimatePresence } from "motion/react";
 
 interface IImageViewProps {
 	className?: string;
