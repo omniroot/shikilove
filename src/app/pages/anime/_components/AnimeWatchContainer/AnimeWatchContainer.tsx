@@ -8,12 +8,14 @@ import clsx from "clsx";
 import { AnimatePresence } from "motion/react";
 import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
+import { HentaiBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/HentaiBottomSheet/HentaiBottomSheet.tsx";
 interface IWatchButtonProps {
 	anime: IAnime;
 }
 export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 	const [userRateEditBottomSheetOpen, setUserRateEditBottomSheetOpen] = useState(false);
 	const [watchBottomSheetOpen, setWatchBottomSheetOpen] = useState(false);
+	const isHentai = anime.genres.some((genre) => genre.name === "Hentai");
 
 	// const {} = useUserRate(anime?.userRate.id);
 	const onWatchButtonClick = () => {
@@ -64,7 +66,13 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 					<UserRateEditBottomSheet anime={anime} onOutsideClick={onUserRateEditClick} />
 				)}
 				{watchBottomSheetOpen && (
-					<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
+					<>
+						{isHentai ? (
+							<HentaiBottomSheet anime={anime} />
+						) : (
+							<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
+						)}
+					</>
 				)}
 			</AnimatePresence>
 		</div>

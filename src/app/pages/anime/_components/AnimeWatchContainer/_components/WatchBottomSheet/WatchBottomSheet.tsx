@@ -55,6 +55,15 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 		onOutsideClick();
 	};
 
+	const onVideoLoad = () => {
+		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
+		const currentAnime = watching[anime.name];
+
+		if (videoRef.current && currentAnime) {
+			videoRef.current.currentTime = currentAnime.timecode || 0;
+		}
+	};
+
 	useEffect(() => {
 		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
 
@@ -65,135 +74,6 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 			setLink(currentAnime.link);
 		}
 	}, [videoRef]);
-
-	const onVideoLoad = () => {
-		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
-		const currentAnime = watching[anime.name];
-
-		if (videoRef.current && currentAnime) {
-			videoRef.current.currentTime = currentAnime.timecode || 0;
-		}
-	};
-
-	// useEffect(() => {
-	// 	if (videoRef.current) {
-	// 		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
-	// 		const nextWatching = {
-	// 			...watching,
-	// 			[anime.name]: {
-	// 				...watching[anime.name],
-	// 				timecode: videoRef.current.currentTime,
-	// 			},
-	// 		};
-	// 		localStorage.setItem("watching", JSON.stringify(nextWatching));
-	// 	}
-	// }, [videoRef]);
-
-	// const { isLoading, episodes, changeEpisode, videos } = useWatchBottomSheet({
-	// 	name: anime.name,
-	// });
-	// const [activeEpisode, setActiveEpisode] = useState<string>();
-	// const [activeTeam, setActiveTeam] = useState<string>();
-	// const [activeQuality, setActiveQuality] = useState<string>();
-	// const [episodesSelectElements, setEpisodesSelectElements] = useState<ISelectElement[]>([]);
-	// const [teamsSelectElements, setTeamsSelectElements] = useState<ISelectElement[]>([]);
-	// const [qualitiesSelectElements, setQualitiesSelectElements] = useState<ISelectElement[]>([]);
-	// const prefferedTeam = "AniLibria.TV";
-
-	// useEffect(() => {
-	// 	if (episodes) {
-	// 		let _nextActiveElement = "";
-	// 		const _nextElements = episodes.map((episode) => {
-	// 			if (Number(episode.number) === anime.userRate.episodes) {
-	// 				_nextActiveElement = episode.number;
-	// 			}
-	// 			return {
-	// 				value: episode.number,
-	// 				label: episode.name ? `${episode.number}: ${episode.name}` : `${episode.number}`,
-	// 			};
-	// 		});
-	// 		setEpisodesSelectElements(_nextElements);
-	// 		setActiveEpisode(_nextActiveElement);
-	// 		changeEpisode(Number(_nextActiveElement));
-	// 	}
-	// }, [episodes]);
-
-	// useEffect(() => {
-	// 	if (videos) {
-	// 		let _nextActiveElement = "";
-	// 		const _nextElements = videos.map((video) => {
-	// 			if (video.team === prefferedTeam) {
-	// 				_nextActiveElement = video.team;
-	// 			}
-	// 			return {
-	// 				value: video.team,
-	// 				label: video.team,
-	// 			};
-	// 		});
-
-	// 		setTeamsSelectElements(_nextElements);
-	// 		setActiveTeam(_nextActiveElement);
-	// 	}
-	// }, [videos]);
-
-	// useEffect(() => {
-	// 	if (videos && activeEpisode) {
-	// 		const _nextElements = videos
-	// 			.filter((video) => video.team === activeTeam)
-	// 			.map(({ links }) => {
-	// 				return links.map((link) => ({
-	// 					value: link.quality,
-	// 					label: link.quality,
-	// 				})) as ISelectElement[];
-	// 			});
-
-	// 		// setVideosSelectElements(_nextElements);
-	// 	}
-	// }, [activeTeam, videos]);
-
-	// useEffect(() => {
-	// 	if (activeEpisode && episodes) {
-	// 		changeEpisode(Number(activeEpisode));
-	// 	}
-	// }, [activeEpisode]);
-
-	// useEffect(() => {
-	// 	if (activeEpisode && episodes) {
-	// 		changeEpisode(Number(activeEpisode));
-	// 	}
-	// }, [episodes]);
-
-	// // const isHentai = anime?.genres.some((genre) => genre.name === "Hentai");
-
-	// useEffect(() => {
-	// 	if (animeName === "") return;
-	// 	console.log("effect");
-
-	// 	if (!anilibAnime) {background: linear-gradient(180deg, rgb(205, 179, 206) 0%, rgb(192, 176, 159) 100%);
-	// 	}
-	// 	if (!anilibEpisodes && anilibAnime) {
-	// 		fetchAnilibEpisodes();
-	// 	}
-	// }, [animeName, anilibAnime]);
-
-	// useEffect(() => {
-	// 	if (!anilibVideo && episode) {
-	// 		fetchAnilibVideo();
-	// 		return;
-	// 	}
-	// 	if (anilibVideo) {
-	// 		const qualities = anilibVideo.filter((video) => video.team === "AniDUB");
-	// 		const max_quailty = qualities[0].videos[0];
-	// 		setPlayer(max_quailty);
-	// 	}
-	// }, [anilibVideo]);
-
-	// if (isLoading || !anilibEpisodes)
-	// 	return (
-	// 		<BottomSheet title="Watch" onOutsideClick={onOutsideClick}>
-	// 			<span>Loading...</span>
-	// 		</BottomSheet>
-	// 	);
 
 	return (
 		<BottomSheet
