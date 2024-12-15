@@ -58,20 +58,16 @@ export const ImageView: FC<IImageViewProps> = ({
 				loading={loading}
 				ref={imageRef}
 			/>
-			<AnimatePresence>
-				{allowFullscreen === true && isModal === true && (
-					<Portal>
-						<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
-							<img
-								src={full ? full : src}
-								alt={alt}
-								className={clsx(_class, styles.image_view_modal)}
-								loading="eager"
-							/>
-						</div>
-					</Portal>
-				)}
-			</AnimatePresence>
+			<Portal show={allowFullscreen === true && isModal === true}>
+				<div className={styles.image_view_modal_container} key={alt} onClick={onImageClick}>
+					<img
+						src={full ? full : src}
+						alt={alt}
+						className={clsx(_class, styles.image_view_modal)}
+						loading="eager"
+					/>
+				</div>
+			</Portal>
 		</>
 	);
 };
