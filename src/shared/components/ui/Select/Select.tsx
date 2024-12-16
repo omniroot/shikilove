@@ -111,6 +111,13 @@ export const SelectContent: FC<IContextContentProps> = ({ children }) => {
 					selectRef.current.offsetTop - contentRef.current.offsetHeight - 10 + "px";
 			}
 
+			if (positionX === "left") {
+				console.log("left");
+
+				contentRef.current.style.left =
+					contentRef.current.offsetLeft - selectRef.current.offsetLeft + "px";
+			}
+
 			if (positionX === "right") {
 				console.log("right");
 
