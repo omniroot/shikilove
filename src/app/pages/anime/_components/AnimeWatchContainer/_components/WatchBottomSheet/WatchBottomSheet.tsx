@@ -1,11 +1,11 @@
 import { useAnilibGetAnimeByName } from "@/shared/services/anilib/useAnilib.ts";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import { EpisodeSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/EpisodeSelect/EpisodeSelect.tsx";
-import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
-import { FC, useEffect, useRef, useState } from "react";
-import styles from "./WatchBottomSheet.module.scss";
 import { DubTeamSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/DubTeamSelect/DubTeamSelect.tsx";
+import { EpisodeSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/EpisodeSelect/EpisodeSelect.tsx";
 import { QualitySelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/QualitySelect/QualitySelect.tsx";
+import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
+import { FC, useLayoutEffect, useRef, useState } from "react";
+import styles from "./WatchBottomSheet.module.scss";
 
 interface IWatchBottomSheetProps {
 	anime: IAnime;
@@ -64,16 +64,18 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 		}
 	};
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
 
 		const currentAnime = watching[anime.name];
 		if (currentAnime) {
+			console.log("Loaded from last watching", currentAnime);
+
 			setEpisode(currentAnime.episode);
 			setTeam(currentAnime.team);
 			setLink(currentAnime.link);
 		}
-	}, [videoRef]);
+	}, []);
 
 	return (
 		<BottomSheet
@@ -88,20 +90,22 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 					<div className={styles.selects}>
 						<EpisodeSelect
 							animeSlugUrl={anilibAnime.slug_url}
-							defaultEpisode={episode.episode > 0 ? episode.episode : anime.userRate.episodes || 1}
+							defaultEpisode={
+								episode.episode > 0 ? episode.episode : (anime.userRate?.episodes ?? 1)
+							}
 							onEpisodeSelect={onEpisodeSelect}
 						/>
 						{episode.episode > 0 && (
 							<DubTeamSelect episodeId={episode.episodeId} onTeamSelect={onTeamSelect} />
 						)}
-						{episode.episode > 0 && team.length && (
-							<QualitySelect
-								episodeId={episode.episodeId}
-								team={team}
-								onQualitySelect={onQualitySelect}
-							/>
-						)}
 					</div>
+					{episode.episode > 0 && team.length && (
+						<QualitySelect
+							episodeId={episode.episodeId}
+							team={team}
+							onQualitySelect={onQualitySelect}
+						/>
+					)}
 
 					{link !== "" && (
 						<div>

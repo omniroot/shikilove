@@ -76,6 +76,7 @@ export const EpisodeSelect: FC<IEpisodeSelectProps> = ({
 			}}
 			onActiveChange={onItemSelect}
 			positionY="top"
+			positionX="right"
 		>
 			<SelectContent>
 				{anilibEpisodes.map((episode) => {
