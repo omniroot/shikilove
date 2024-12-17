@@ -32,6 +32,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 	const { userRates, fetchNextUserRatesPage } = useUserRate(
 		(userRateFilter.id as IUserRateAnimeStatus) || "watching",
 	);
+	const [userRatesCount, setUserRatesCount] = useState(0);
 
 	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
 		setSearchParams({ filter: nextActiveFilter.id });
@@ -46,11 +47,20 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 		setUserRateFilter(getButtonGroupElementById(animeFiltersList, currentFilter));
 	}, [searchParams]);
 
+	useEffect(() => {
+		if (userRates) {
+			const nextUserRatesCount = userRates.pages.reduce((prev, rates) => {
+				return prev + rates.length;
+			}, 0);
+			setUserRatesCount(nextUserRatesCount);
+		}
+	}, [userRates]);
+
 	// if (!userRateFilter || !userRates) return null;
 
 	return (
 		<HeadingSection
-			title={capitalizeFirstLetter(currentFilter)}
+			title={`${capitalizeFirstLetter(currentFilter)} (${userRatesCount})`}
 			actionsSlot={
 				<ButtonGroup
 					elements={animeFiltersList}
@@ -61,8 +71,8 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 		>
 			<AnimeList>
 				{userRates &&
-					userRates.pages.map((rates) =>
-						rates.map((userRate) => {
+					userRates.pages.map((rates) => {
+						return rates.map((userRate) => {
 							if (userRate.status === userRateFilter.id) {
 								return (
 									<AnimeCard
@@ -70,7 +80,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 										variant="horizontal"
 										anime={{
 											id: userRate.anime.id,
-											poster: userRate.anime.poster.main2xUrl,
+											poster: userRate.anime.poster?.main2xUrl || "/404.png",
 											name: userRate.anime.name,
 											episodes: userRate.anime.episodes || userRate.anime.episodesAired,
 											userRate: userRate,
@@ -78,8 +88,8 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 									/>
 								);
 							}
-						}),
-					)}
+						});
+					})}
 				<Button onClick={onMoreButtonClick} className={styles.more_button}>
 					More
 				</Button>
