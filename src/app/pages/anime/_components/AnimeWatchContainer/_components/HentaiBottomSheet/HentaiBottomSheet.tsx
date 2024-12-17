@@ -7,8 +7,9 @@ import styles from "./HentaiBottomSheet.module.scss";
 import { openAnimeExternal } from "@/shared/utils/openAnimeSites.ts";
 interface IHentaiBottomSheetProps {
 	anime: IAnime;
+	onOutsideClick: () => void;
 }
-export const HentaiBottomSheet: FC<IHentaiBottomSheetProps> = ({ anime }) => {
+export const HentaiBottomSheet: FC<IHentaiBottomSheetProps> = ({ anime, onOutsideClick }) => {
 	const { openHentaiHaven } = useExternalSites();
 
 	const openGoogle = (langauge: "ru" | "en") => {
@@ -19,7 +20,7 @@ export const HentaiBottomSheet: FC<IHentaiBottomSheetProps> = ({ anime }) => {
 	};
 
 	return (
-		<BottomSheet title="Hentai">
+		<BottomSheet title="Hentai" onOutsideClick={onOutsideClick}>
 			<div className={styles.content}>
 				<Button onClick={() => openHentaiHaven(anime.name)}>HentaiHaven</Button>
 				<Button onClick={() => openAnimeExternal(anime.name, "nhentai")} variant="nhentai">

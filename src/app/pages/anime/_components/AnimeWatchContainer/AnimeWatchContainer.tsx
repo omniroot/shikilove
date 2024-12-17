@@ -68,7 +68,7 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 				{watchBottomSheetOpen && (
 					<>
 						{isHentai ? (
-							<HentaiBottomSheet anime={anime} />
+							<HentaiBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
 						) : (
 							<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
 						)}
