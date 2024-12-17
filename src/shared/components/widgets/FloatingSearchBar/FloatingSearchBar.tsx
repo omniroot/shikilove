@@ -16,7 +16,7 @@ export const FloatingSearchBar = () => {
 		refetchSearchAnimes,
 		searchAnimesQuery,
 		setSearchAnimesQuery,
-	} = useSearchAnime("");
+	} = useSearchAnime(localStorage.getItem("last_search") || "");
 	const debouncedSearchAnimesQuery = useDebounce(searchAnimesQuery, 700);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { toggleFloatingSearchBar } = useFloatingSearchBarStore();
@@ -26,7 +26,10 @@ export const FloatingSearchBar = () => {
 	};
 
 	useEffect(() => {
-		if (debouncedSearchAnimesQuery !== "") {
+		if (
+			debouncedSearchAnimesQuery !== "" &&
+			debouncedSearchAnimesQuery !== localStorage.getItem("last_search")
+		) {
 			console.log("SEARCHED", debouncedSearchAnimesQuery);
 
 			refetchSearchAnimes();
