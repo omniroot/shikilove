@@ -9,8 +9,8 @@
 	gap: var(--gap);
 
 	.poster {
-		width: 140px;
-		min-width: 140px;
+		width: 160px;
+		aspect-ratio: 4 / 6;
 		background-color: transparent;
 		border: var(--border-ternary);
 		border-radius: var(--radius);
