@@ -35,10 +35,10 @@ const SelectContext = createContext<ISelectContext>({
 	open: false,
 	activeValue: { label: "test", value: "test" },
 	onActiveChange: () => {
-		console.log("Add onActiveChange in Select");
+		// console.log("Add onActiveChange in Select");
 	},
 	toggleOpen: () => {
-		console.log("Add toggleOpen in Select");
+		// console.log("Add toggleOpen in Select");
 	},
 	positionY: "bottom",
 	positionX: "center",
@@ -95,7 +95,7 @@ export const SelectContent: FC<IContextContentProps> = ({ children }) => {
 
 	useEffect(() => {
 		if (contentRef && contentRef.current && selectRef && selectRef.current) {
-			console.log("Run useEffect in Select2Content");
+			// console.log("Run useEffect in Select2Content");
 
 			contentRef.current.style.width = width + "px";
 			contentRef.current.style.left =
@@ -104,7 +104,7 @@ export const SelectContent: FC<IContextContentProps> = ({ children }) => {
 				"px";
 			contentRef.current.style.top =
 				selectRef.current.offsetTop + selectRef.current.offsetHeight + 10 + "px";
-			console.log("position, ", positionY, positionX);
+			// console.log("position, ", positionY, positionX);
 
 			if (positionY === "top") {
 				contentRef.current.style.top =
@@ -112,14 +112,14 @@ export const SelectContent: FC<IContextContentProps> = ({ children }) => {
 			}
 
 			if (positionX === "left") {
-				console.log("left");
+				// console.log("left");
 
 				contentRef.current.style.left =
 					contentRef.current.offsetLeft - selectRef.current.offsetLeft + "px";
 			}
 
 			if (positionX === "right") {
-				console.log("right");
+				// console.log("right");
 
 				contentRef.current.style.left = selectRef.current.offsetLeft + "px";
 			}
