@@ -29,6 +29,13 @@
 	color: var(--color-text);
 	background-color: transparent;
 	border: var(--border-ternary);
+
+	@media (hover: hover) {
+		&:hover {
+			border: var(--border-secondary);
+			background-color: var(--color-ternary);
+		}
+	}
 }
 
 .button[data-variant="secondary"] {
