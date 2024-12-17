@@ -11,7 +11,18 @@
 	.poster {
 		width: 140px;
 		min-width: 140px;
+		background-color: transparent;
+		border: var(--border-ternary);
 		border-radius: var(--radius);
+
+		transition: var(--animation);
+
+		@media (hover: hover) {
+			&:hover {
+				border: var(--border-secondary);
+				background-color: var(--color-ternary);
+			}
+		}
 	}
 
 	.subinfo {
