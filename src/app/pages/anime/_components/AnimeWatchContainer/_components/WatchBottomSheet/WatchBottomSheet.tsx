@@ -6,6 +6,7 @@ import { QualitySelect } from "@pages/anime/_components/AnimeWatchContainer/_com
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { FC, useLayoutEffect, useRef, useState } from "react";
 import styles from "./WatchBottomSheet.module.scss";
+import { Loader } from "lucide-react";
 
 interface IWatchBottomSheetProps {
 	anime: IAnime;
@@ -84,7 +85,7 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 			className={styles.watch_bottom_sheet}
 		>
 			{!anilibAnime ? (
-				<span>Loading...</span>
+				<Loader />
 			) : (
 				<div className={styles.content}>
 					<div className={styles.selects}>

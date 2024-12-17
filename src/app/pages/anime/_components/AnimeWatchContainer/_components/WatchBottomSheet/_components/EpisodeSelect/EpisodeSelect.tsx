@@ -1,6 +1,7 @@
 import { IAnilibEpisode } from "@/shared/services/anilib/anilib.interface.ts";
 import { useAnilibGetEpisodes } from "@/shared/services/anilib/useAnilib.ts";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
+import { Loader } from "lucide-react";
 import { FC, useEffect, useState } from "react";
 
 // const getEpisodesElements = (episodes: IAnilibEpisode[] | undefined) => {
@@ -66,7 +67,7 @@ export const EpisodeSelect: FC<IEpisodeSelectProps> = ({
 		}
 	}, [anilibEpisodes]);
 
-	if (!anilibEpisodes || !episode) return <span>Loading...</span>;
+	if (!anilibEpisodes || !episode) return <Loader />;
 
 	return (
 		<Select

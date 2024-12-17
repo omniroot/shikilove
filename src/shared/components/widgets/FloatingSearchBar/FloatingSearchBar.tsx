@@ -8,6 +8,7 @@ import { motion } from "motion/react";
 import { ChangeEvent, FormEvent, useEffect, useRef } from "react";
 import styles from "./FloatingSearchBar.module.scss";
 import { useFloatingSearchBarStore } from "@/shared/store/store.tsx";
+import { Loader } from "@ui/Loader/Loader.tsx";
 
 export const FloatingSearchBar = () => {
 	const {
@@ -88,7 +89,7 @@ export const FloatingSearchBar = () => {
 					</div>
 				</form>
 				{searchAnimesIsLoading ? (
-					<div>Loading</div>
+					<Loader fullscreen />
 				) : (
 					<AnimeList scroll="vertical" className={styles.results}>
 						{searchAnimes?.map((anime) => {

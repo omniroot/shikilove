@@ -31,7 +31,6 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 		setUserRateEditBottomSheetOpen((prev) => !prev);
 	};
 
-	if (!anime) return "Loading anime...";
 	return (
 		<div className={styles.anime_watch_container}>
 			<Button className={styles.watch_button} variant="outline" onClick={onWatchButtonClick}>
