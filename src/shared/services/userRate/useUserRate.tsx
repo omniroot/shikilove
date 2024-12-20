@@ -9,10 +9,11 @@ import {
 import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-export const useUserRate = (
-	userRateStatus: IUserRateAnimeStatus = "watching",
-	userRateId?: number,
-) => {
+interface IUseUserRateProps {
+	userRateStatus: IUserRateAnimeStatus;
+	userRateId?: number;
+}
+export const useUserRate = ({ userRateStatus, userRateId }: IUseUserRateProps) => {
 	const queryClient = useQueryClient();
 	const {
 		isLoading: isUserRatesLoading,
@@ -21,13 +22,31 @@ export const useUserRate = (
 		fetchNextPage: fetchNextUserRatesPage,
 	} = useInfiniteQuery<IUserRates, Error>({
 		queryKey: ["userRates", userRateStatus],
-		queryFn: ({ pageParam = 1 }) =>
-			userRateApi.getUserRates({ page: pageParam as number, limit: 15, status: userRateStatus }),
+		queryFn: async ({ pageParam }) => {
+			// const cachedData = queryClient.getQueryData<IUserRates>([
+			// 	"userRates",
+			// 	userRateStatus,
+			// 	userRatePage,
+			// ]);
+			// if (cachedData) {
+			// 	console.log({ cachedData });
+			// 	// @ts-ignore
+			// 	return cachedData.pages[0]; // Возвращаем закешированные данные
+			// }
+			const res = await userRateApi.getUserRates({
+				page: pageParam as number,
+				limit: 15,
+				status: userRateStatus,
+			});
+			console.log({ res });
+			return res;
+		},
 		initialPageParam: 1,
 		getNextPageParam: (lastPage, pages) => {
 			return lastPage.length === 15 ? pages.length + 1 : undefined;
 		},
 		refetchOnMount: false,
+		retryOnMount: false,
 	});
 
 	const { mutate: addUserRate } = useMutation<IUserRate, unknown, IUserRateAdd>({

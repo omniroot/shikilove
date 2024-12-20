@@ -14,3 +14,10 @@
 		overflow-x: scroll;
 	}
 }
+
+.filters_buttons_group {
+	justify-content: flex-start;
+
+	overflow-x: scroll;
+	flex-wrap: nowrap;
+}

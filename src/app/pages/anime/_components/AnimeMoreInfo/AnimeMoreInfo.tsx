@@ -7,7 +7,6 @@ interface IAnimeMoreInfoProps {
 	anime: IAnime;
 }
 export const AnimeMoreInfo: FC<IAnimeMoreInfoProps> = ({ anime }) => {
-	if (!anime) return "Anime more info loading...";
 	return (
 		<motion.div className={styles.anime_more_info} initial={{ scale: 0.9 }} animate={{ scale: 1 }}>
 			<div className={styles.element}>

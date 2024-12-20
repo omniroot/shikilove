@@ -18,7 +18,6 @@ export const AnimeInfo: FC<IAnimeInfoProps> = ({ anime }) => {
 		setDescriptionBottomSheet((prev) => !prev);
 	};
 
-	if (!anime) return "Anime Loading...";
 	return (
 		<div className={styles.anime_info}>
 			<ImageView

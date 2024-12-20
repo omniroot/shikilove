@@ -3,6 +3,10 @@
 	flex-wrap: wrap;
 	gap: var(--gap);
 
+	.button {
+		text-wrap: nowrap;
+	}
+
 	// .button {
 	// 	display: flex;
 	// 	align-items: center;

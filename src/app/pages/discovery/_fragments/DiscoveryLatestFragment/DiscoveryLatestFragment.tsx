@@ -1,11 +1,12 @@
 import { useAnimeLatests } from "@/shared/services/anime/hooks/useAnimeLatest.tsx";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { Loader } from "@ui/Loader/Loader.tsx";
 
 export const LatestFragment = () => {
 	const { animeLatests, isAnimeLatestsLoading } = useAnimeLatests();
 
-	if (!animeLatests || isAnimeLatestsLoading) return "Loading...";
+	if (!animeLatests || isAnimeLatestsLoading) return <Loader fullscreen />;
 	return (
 		<AnimeList scroll="none">
 			{animeLatests.map((latest) => (

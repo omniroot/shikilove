@@ -3,6 +3,7 @@ import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import { Button } from "@ui/Button/Button.tsx";
+import { Loader } from "@ui/Loader/Loader.tsx";
 
 export const DiscoveryCritiqueFragment = () => {
 	const { critiques, isCritiquesLoading } = useForumCritiques();
@@ -15,7 +16,7 @@ export const DiscoveryCritiqueFragment = () => {
 		alert("Not realized");
 	};
 
-	if (!critiques || isCritiquesLoading) return "Loading...";
+	if (!critiques || isCritiquesLoading) return <Loader fullscreen />;
 	return (
 		<AnimeList scroll="none">
 			{critiques.map((critique) => {

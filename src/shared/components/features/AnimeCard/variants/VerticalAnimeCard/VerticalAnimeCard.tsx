@@ -73,7 +73,7 @@ export const VerticalAnimeCard: FC<IVerticalAnimeCardProps> = ({ userRateAnime }
 					)}
 				</div>
 				<ImageView
-					src={userRateAnime.anime.poster.main2xUrl}
+					src={userRateAnime.anime.poster?.main2xUrl || "/404.png"}
 					alt={title}
 					className={styles.anime_image}
 				/>

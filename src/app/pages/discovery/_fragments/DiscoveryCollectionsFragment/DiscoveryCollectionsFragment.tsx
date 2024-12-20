@@ -2,6 +2,7 @@ import { useForumCollections } from "@/shared/services/forum/hooks/useForumColle
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 import { Button } from "@ui/Button/Button.tsx";
+import { Loader } from "@ui/Loader/Loader.tsx";
 
 export const DiscoveryCollectionsFragment = () => {
 	const { collections, isCollectionsLoading } = useForumCollections();
@@ -15,7 +16,7 @@ export const DiscoveryCollectionsFragment = () => {
 		window.open(link, "_blank");
 	};
 
-	if (!collections || isCollectionsLoading) return "Loading...";
+	if (!collections || isCollectionsLoading) return <Loader fullscreen />;
 	return (
 		<AnimeList scroll="none">
 			{collections.map((collection) => {

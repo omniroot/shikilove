@@ -1,0 +1,46 @@
+.container {
+	position: relative;
+	border-radius: var(--radius);
+	overflow: hidden;
+	.overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		// padding: var(--p);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+
+		background-color: var(--color-ternary-80);
+
+		.bottom {
+			width: 100%;
+			display: flex;
+			padding: var(--p);
+
+			.timeline_container {
+				position: relative;
+				display: flex;
+				align-items: center;
+				width: 100%;
+				height: fit-content;
+
+				.timeline {
+					display: flex;
+					min-width: 100%;
+					min-height: 3px;
+					background-color: blue;
+				}
+				.position {
+					position: absolute;
+					width: 4px;
+					height: 4px;
+					background-color: red;
+				}
+			}
+		}
+	}
+}

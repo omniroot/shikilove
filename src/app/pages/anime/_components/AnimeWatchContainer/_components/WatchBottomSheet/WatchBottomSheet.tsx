@@ -4,6 +4,7 @@ import { DubTeamSelect } from "@pages/anime/_components/AnimeWatchContainer/_com
 import { EpisodeSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/EpisodeSelect/EpisodeSelect.tsx";
 import { QualitySelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/QualitySelect/QualitySelect.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
+import { Loader } from "lucide-react";
 import { FC, useLayoutEffect, useRef, useState } from "react";
 import styles from "./WatchBottomSheet.module.scss";
 
@@ -84,7 +85,7 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 			className={styles.watch_bottom_sheet}
 		>
 			{!anilibAnime ? (
-				<span>Loading...</span>
+				<Loader />
 			) : (
 				<div className={styles.content}>
 					<div className={styles.selects}>

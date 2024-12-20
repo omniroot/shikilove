@@ -21,7 +21,7 @@ export interface IUserRate {
 		};
 		poster: {
 			main2xUrl: string;
-		};
+		} | null;
 	};
 	episodes: number;
 	status: string;

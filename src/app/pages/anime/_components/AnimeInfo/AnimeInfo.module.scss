@@ -9,9 +9,20 @@
 	gap: var(--gap);
 
 	.poster {
-		width: 140px;
-		min-width: 140px;
+		width: 160px;
+		aspect-ratio: 4 / 6;
+		background-color: transparent;
+		border: var(--border-ternary);
 		border-radius: var(--radius);
+
+		transition: var(--animation);
+
+		@media (hover: hover) {
+			&:hover {
+				border: var(--border-secondary);
+				background-color: var(--color-ternary);
+			}
+		}
 	}
 
 	.subinfo {
@@ -37,7 +48,7 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			display: -webkit-box;
-			-webkit-line-clamp: 5;
+			-webkit-line-clamp: 7;
 			-webkit-box-orient: vertical;
 			border-radius: var(--radius);
 
