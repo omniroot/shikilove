@@ -5,18 +5,17 @@ import {
 	WatchedIcon,
 	WatchingIcon,
 } from "@/shared/icons/index.tsx";
+import { DroppedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/DroppedFragment/DroppedFragment";
+import { OnHoldFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/OnHoldFragment /OnHoldFragment ";
+import { PlannedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/PlannedFragment/PlannedFragment";
+import { WatchedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/WatchedFragment/WatchedFragment";
 import { WatchingFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/WatchingFragment/WatchingFragment";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
 import { FragmentContainer, IFragment } from "@ui/FragmentContainer/FragmentContainer";
 import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentContainer.utils";
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import styles from "./ProfileUserRates.module.scss";
-import { PlannedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/PlannedFragment/PlannedFragment";
-import { WatchedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/WatchedFragment/WatchedFragment";
-import { DroppedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/DroppedFragment/DroppedFragment";
-import { OnHoldFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/OnHoldFragment /OnHoldFragment ";
-import { PauseIcon } from "lucide-react";
 
 interface IProfileUserRatesProps {
 	children?: ReactNode;

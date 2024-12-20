@@ -49,7 +49,7 @@ export const getAnimeCardData = (anime: IGetAnimeCardDataProps): IAnimeCard => {
 		const _anime = anime as IUserRate;
 		animeCard = {
 			id: _anime.anime.id,
-			poster: _anime.anime.poster.main2xUrl,
+			poster: _anime.anime.poster?.main2xUrl || "/404.png",
 			name: _anime.anime.name,
 			russian: _anime.anime.russian,
 			episodes: _anime.anime.episodes,
