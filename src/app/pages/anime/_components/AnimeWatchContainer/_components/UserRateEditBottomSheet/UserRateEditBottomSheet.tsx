@@ -29,20 +29,23 @@ const getLabel = (value: string) => {
 };
 
 interface IUserRateEditBottomSheetProps {
-	anime: IAnime | undefined;
+	anime: IAnime;
 	onOutsideClick: () => void;
 }
 export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	anime,
 	onOutsideClick,
 }) => {
-	const { addUserRate, updateUserRate } = useUserRate("watching", anime?.userRate?.id || 0);
+	const { addUserRate, updateUserRate } = useUserRate({
+		userRateStatus: "watching",
+		userRateId: anime.userRate?.id || 0,
+	});
 	const episodesSelectElements = getEpisodesSelectElements(
-		anime?.episodes || anime?.episodesAired || 1,
+		anime.episodes || anime.episodesAired || 1,
 	);
-	const [episodesElement, setEpisodesElement] = useState(String(anime?.userRate?.episodes || 1));
-	const [statusElement, setStatusElement] = useState(String(anime?.userRate?.status || "watching"));
-	const isExistInUserRate = anime?.userRate ? true : false;
+	const [episodesElement, setEpisodesElement] = useState(String(anime.userRate?.episodes || 1));
+	const [statusElement, setStatusElement] = useState(String(anime.userRate?.status || "watching"));
+	const isExistInUserRate = anime.userRate ? true : false;
 
 	const onEpisodesSelectChange = (newValue: string) => {
 		setEpisodesElement(newValue);
@@ -56,18 +59,17 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 		// add new user rate
 		if (!isExistInUserRate) {
 			addUserRate({
-				animeId: String(anime?.id || 0),
+				animeId: String(anime.id || 0),
 				episodes: episodesElement,
 				status: statusElement as IUserRateAnimeStatus,
 			});
 			return;
 		}
 		updateUserRate({
-			userRateId: anime?.userRate.id || 0,
+			userRateId: anime.userRate.id || 0,
 			status: statusElement as IUserRateAnimeStatus,
 			episodes: Number(episodesElement),
 		});
-		alert("Updated");
 	};
 
 	if (!anime) return;
