@@ -1,100 +1,81 @@
-import { DroppedIcon, PlannedIcon, WatchedIcon, WatchingIcon } from "@/shared/icons/index.tsx";
-import { useUserRate } from "@/shared/services/userRate/useUserRate.tsx";
-import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
-import { capitalizeFirstLetter } from "@/shared/utils/capitalizeFirstLetter.ts";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
-import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
-import { Button } from "@ui/Button/Button.tsx";
+import {
+	DroppedIcon,
+	PlannedIcon,
+	PostponedIcon,
+	WatchedIcon,
+	WatchingIcon,
+} from "@/shared/icons/index.tsx";
+import { WatchingFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/WatchingFragment/WatchingFragment";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
-import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
+import { FragmentContainer, IFragment } from "@ui/FragmentContainer/FragmentContainer";
+import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentContainer.utils";
 import { FC, ReactNode, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import styles from "./ProfileUserRates.module.scss";
+import { PlannedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/PlannedFragment/PlannedFragment";
+import { WatchedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/WatchedFragment/WatchedFragment";
+import { DroppedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/DroppedFragment/DroppedFragment";
+import { OnHoldFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/OnHoldFragment /OnHoldFragment ";
+import { PauseIcon } from "lucide-react";
 
 interface IProfileUserRatesProps {
 	children?: ReactNode;
 }
 
 const animeFiltersList: IButtonGroupElement[] = [
-	{ id: "watching", icon: <WatchingIcon /> },
-	{ id: "planned", icon: <PlannedIcon /> },
-	{ id: "completed", icon: <WatchedIcon /> },
-	{ id: "dropped", icon: <DroppedIcon /> },
+	{ id: "watching", icon: <WatchingIcon />, title: "Watching" },
+	{ id: "planned", icon: <PlannedIcon />, title: "Planned" },
+	{ id: "completed", icon: <WatchedIcon />, title: "Watched" },
+	{ id: "dropped", icon: <DroppedIcon />, title: "Dropped" },
+	{ id: "on_hold", icon: <PostponedIcon />, title: "On Hold" },
+];
+
+const userRateFragmentsList: IFragment[] = [
+	{ id: "watching", fragment: <WatchingFragment /> },
+	{ id: "planned", fragment: <PlannedFragment /> },
+	{ id: "watched", fragment: <WatchedFragment /> },
+	{ id: "dropped", fragment: <DroppedFragment /> },
+	{ id: "on_hold", fragment: <OnHoldFragment /> },
+	// { id: "latest", fragment: <LatestFragment /> },
+	// { id: "critique", fragment: <DiscoveryCritiqueFragment /> },
+	// { id: "collections", fragment: <DiscoveryCollectionsFragment /> },
+	// { id: "calendar", fragment: <DiscoveryCalendarFragment /> },
 ];
 
 export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
-	const currentFilter = searchParams.get("filter") || "watching";
+	const [currentFragment, setCurrentFragment] = useState(
+		getFragmentContainerElementById(userRateFragmentsList, "watching"),
+	);
 	const [userRateFilter, setUserRateFilter] = useState(
-		getButtonGroupElementById(animeFiltersList, currentFilter),
+		getButtonGroupElementById(animeFiltersList, currentFragment.id),
 	);
-	const { userRates, fetchNextUserRatesPage } = useUserRate(
-		(userRateFilter.id as IUserRateAnimeStatus) || "watching",
-	);
-	const [userRatesCount, setUserRatesCount] = useState(0);
 
 	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
-		setSearchParams({ filter: nextActiveFilter.id });
-		setUserRateFilter(nextActiveFilter);
+		setCurrentFragment(getFragmentContainerElementById(userRateFragmentsList, nextActiveFilter.id));
+		setUserRateFilter(getButtonGroupElementById(animeFiltersList, nextActiveFilter.id));
 	};
 
-	const onMoreButtonClick = () => {
-		fetchNextUserRatesPage();
-	};
-
-	useEffect(() => {
-		setUserRateFilter(getButtonGroupElementById(animeFiltersList, currentFilter));
-	}, [searchParams]);
-
-	useEffect(() => {
-		if (userRates) {
-			const nextUserRatesCount = userRates.pages.reduce((prev, rates) => {
-				return prev + rates.length;
-			}, 0);
-			setUserRatesCount(nextUserRatesCount);
-		}
-	}, [userRates]);
+	// useEffect(() => {
+	// 	if (userRates) {
+	// 		const nextUserRatesCount = userRates.pages.reduce((prev, rates) => {
+	// 			return prev + rates.length;
+	// 		}, 0);
+	// 		setUserRatesCount(nextUserRatesCount);
+	// 	}
+	// }, [userRates]);
 
 	// if (!userRateFilter || !userRates) return null;
 
 	return (
-		<HeadingSection
-			title={`${capitalizeFirstLetter(currentFilter)} (${userRatesCount})`}
-			actionsSlot={
-				<ButtonGroup
-					elements={animeFiltersList}
-					activeElement={userRateFilter}
-					setActiveElement={(nextElement) => onAnimeFilterClick(nextElement)}
-				/>
-			}
-		>
-			<AnimeList>
-				{userRates &&
-					userRates.pages.map((rates) => {
-						return rates.map((userRate) => {
-							if (userRate.status === userRateFilter.id) {
-								return (
-									<AnimeCard
-										key={userRate.id}
-										variant="horizontal"
-										anime={{
-											id: userRate.anime.id,
-											poster: userRate.anime.poster?.main2xUrl || "/404.png",
-											name: userRate.anime.name,
-											episodes: userRate.anime.episodes || userRate.anime.episodesAired,
-											userRate: userRate,
-										}}
-									/>
-								);
-							}
-						});
-					})}
-				<Button onClick={onMoreButtonClick} className={styles.more_button}>
-					More
-				</Button>
-			</AnimeList>
-		</HeadingSection>
+		<>
+			<ButtonGroup
+				elements={animeFiltersList}
+				activeElement={userRateFilter}
+				setActiveElement={(nextElement) => onAnimeFilterClick(nextElement)}
+				className={styles.filters_buttons_group}
+			/>
+			<FragmentContainer fragments={userRateFragmentsList} activeFragment={currentFragment} />
+		</>
 	);
 };
 
