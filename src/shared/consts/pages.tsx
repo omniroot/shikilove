@@ -32,7 +32,7 @@ export const PAGES = {
 	sidebar_end: [
 		{
 			name: "Profile",
-			path: "/profile?filter=watching",
+			path: "/profile",
 			icon: <ProfileIcon />,
 			inMobile: true,
 		},
