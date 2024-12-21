@@ -7,6 +7,7 @@ import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Loader } from "lucide-react";
 import { FC, useLayoutEffect, useRef, useState } from "react";
 import styles from "./WatchBottomSheet.module.scss";
+import { AnimePlayer } from "@features/AnimePlayer/AnimePlayer";
 
 interface IWatchBottomSheetProps {
 	anime: IAnime;
@@ -110,13 +111,14 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 
 					{link !== "" && (
 						<div>
-							<video
+							<AnimePlayer src={link} />
+							{/* <video
 								src={link}
 								ref={videoRef}
 								className={styles.video_player}
 								controls
 								onLoadedMetadata={onVideoLoad}
-							/>
+							/> */}
 						</div>
 					)}
 				</div>
