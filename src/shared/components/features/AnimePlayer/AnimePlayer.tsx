@@ -1,9 +1,9 @@
+import { Button } from "@ui/Button/Button";
 import clsx from "clsx";
 import { Maximize2Icon, PauseIcon, PlayIcon } from "lucide-react";
-import React, { FC, forwardRef, useEffect, useRef, useState } from "react";
-import styles from "./AnimePlayer.module.scss";
-import { Button } from "@ui/Button/Button";
 import { AnimatePresence, motion } from "motion/react";
+import React, { FC, useEffect, useRef, useState } from "react";
+import styles from "./AnimePlayer.module.scss";
 
 const formatTime = (seconds: number) => {
 	const totalSeconds = Math.floor(seconds);
@@ -163,7 +163,7 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 
 		let timeout: any;
 
-		let mouseHandler = (event: globalThis.MouseEvent) => {
+		const mouseHandler = () => {
 			if (isMouseHide) {
 				setIsMouseHide(false);
 				document.body.style.cursor = "auto";
@@ -193,7 +193,7 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 	}, [isFullscreen, overlayOpen]);
 
 	useEffect(() => {
-		const handleMouseEnter = (event: globalThis.MouseEvent) => {
+		const handleMouseEnter = () => {
 			console.log("mouse enter");
 
 			// if (!isMouseHide) {
@@ -206,13 +206,13 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 			setOverlayOpen(false);
 		};
 
-		const handleFullscreenChange = () => {
-			console.log("handle fullscreen");
+		// const handleFullscreenChange = () => {
+		// 	console.log("handle fullscreen");
 
-			if (!document.fullscreenElement) {
-				setIsFullscreen(false);
-			}
-		};
+		// 	if (!document.fullscreenElement) {
+		// 		setIsFullscreen(false);
+		// 	}
+		// };
 
 		if (containerRef.current && playerRef.current) {
 			containerRef.current.addEventListener("mouseenter", handleMouseEnter);
@@ -228,8 +228,10 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 		};
 	}, []);
 
-	const onDragStart = (e) => {
-		e.preventDefault();
+	const onDragStart = (
+		event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>,
+	) => {
+		event.preventDefault();
 		document.addEventListener("mousemove", onDrag);
 		document.addEventListener("mouseup", onDragEnd);
 		document.addEventListener("touchmove", onDrag, { passive: false });
