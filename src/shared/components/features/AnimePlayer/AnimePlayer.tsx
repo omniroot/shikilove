@@ -166,14 +166,18 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 		const mouseHandler = () => {
 			if (isMouseHide) {
 				setIsMouseHide(false);
-				document.body.style.cursor = "auto";
+				if (containerRef.current) {
+					containerRef.current.style.cursor = "auto";
+				}
 			}
 
 			if (timeout) clearTimeout(timeout);
 			// console.log(event);
 
 			timeout = setTimeout(() => {
-				document.body.style.cursor = "none";
+				if (containerRef.current) {
+					containerRef.current.style.cursor = "none";
+				}
 
 				setIsMouseHide(true);
 				setOverlayOpen(false);
