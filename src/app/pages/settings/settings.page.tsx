@@ -1,22 +1,27 @@
-import { THEMES, useSettings } from "@/shared/store/settings.store.tsx";
 import { Button } from "@ui/Button/Button.tsx";
+import { Divider } from "@ui/Divider/Divider.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 import styles from "./settings.page.module.scss";
-import { Divider } from "@ui/Divider/Divider.tsx";
+import { useSettings } from "@/shared/hooks/useSettings.tsx";
 
 export const SettingsPage = () => {
-	const { theme, setTheme } = useSettings();
-	const themeSelectElements = THEMES.map((theme) => {
+	const { theme, themes, setTheme, toggleShowHeader } = useSettings();
+	const themeSelectElements = themes.map((theme) => {
 		return {
 			label: theme,
 			value: theme,
 		};
 	});
 
+	const onToggleHeaderClick = () => {
+		toggleShowHeader();
+	};
+
 	return (
 		<div className={styles.settings_page}>
 			<span className={styles.settings_heading}>Settings</span>
+			<Button onClick={onToggleHeaderClick}>Toggle Header</Button>
 			<Select
 				defaultValue={{ value: theme, label: theme }}
 				onActiveChange={(newTheme) => setTheme(newTheme as typeof theme)}

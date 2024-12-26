@@ -21,8 +21,11 @@
 		gap: var(--gap);
 	}
 
-	.main {
+	.main[data-showHeader="true"] {
 		margin-top: 70px;
+	}
+
+	.main {
 		margin-bottom: 80px;
 	}
 }

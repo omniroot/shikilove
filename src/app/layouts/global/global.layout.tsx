@@ -3,20 +3,23 @@ import { NavigationLayout } from "@/app/layouts/navigation/navigation.layout.tsx
 import { SearchLayout } from "@/app/layouts/search/search.layout.tsx";
 import { useScrollSave } from "@/shared/hooks/useScrollSave.tsx";
 import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
-import { useSettings } from "@/shared/store/settings.store.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { Link, Outlet } from "react-router-dom";
 import styles from "./global.layout.module.scss";
+import { useStorage } from "@/shared/hooks/useStorage.tsx";
+import { useSettings } from "@/shared/hooks/useSettings.tsx";
 
 export const GlobalLayout = () => {
-	const { currentUser } = useCurrentUser();
-	useSettings();
+	useStorage();
+	const { showHeader } = useSettings();
 	useScrollSave();
+	const { currentUser } = useCurrentUser();
 
 	return (
 		<div className={styles.global_layout}>
 			<NavigationLayout />
 			<SearchLayout />
+			{/* TODO fix that shit if user not login */}
 			{!currentUser ? (
 				<main className={styles.main} id="main">
 					<Button asChild style={{ width: "100%" }}>
@@ -25,7 +28,7 @@ export const GlobalLayout = () => {
 					<Outlet />
 				</main>
 			) : (
-				<main className={styles.main} id="main">
+				<main className={styles.main} id="main" data-showHeader={showHeader}>
 					<Outlet />
 				</main>
 			)}
