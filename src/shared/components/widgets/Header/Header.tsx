@@ -2,11 +2,11 @@
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
 import { ArrowLeftIcon, SearchIcon } from "@/shared/icons/index.tsx";
 import { useFloatingSearchBarStore } from "@/shared/store/store.tsx";
+import { Button } from "@ui/Button/Button.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import { motion } from "motion/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
-import { Button } from "@ui/Button/Button.tsx";
 export const Header = () => {
 	const { packageVersion } = usePackageInfo();
 	const { toggleFloatingSearchBar } = useFloatingSearchBarStore((state) => state);
