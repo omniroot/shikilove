@@ -1,25 +1,20 @@
+import { useStorage } from "@/shared/hooks/useStorage.tsx";
 import { debounce } from "@/shared/utils/debounse.ts";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export const useScrollSave = () => {
-	const scroll = useRef(0);
+	const { getScrollPosition, addScrollPosition } = useStorage();
 	const path = useLocation().pathname;
 
 	useEffect(() => {
-		const scroll = Number(sessionStorage.getItem(location.pathname));
-
-		if (!scroll) {
-			document.body.scrollTop = 0;
-			return;
-		}
+		const scroll = getScrollPosition(location.pathname);
 		document.body.scrollTop = scroll;
 	}, [path]);
 
 	useEffect(() => {
 		const handleScroll = () => {
-			scroll.current = document.body.scrollTop;
-			sessionStorage.setItem(location.pathname, String(scroll.current));
+			addScrollPosition(location.pathname, document.body.scrollTop);
 		};
 		document.body.addEventListener(
 			"scroll",
