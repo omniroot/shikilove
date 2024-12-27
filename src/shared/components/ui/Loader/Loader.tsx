@@ -3,8 +3,10 @@ import styles from "./Loader.module.scss";
 
 interface ILoaderProps {
 	fullscreen?: boolean;
+	width?: number;
+	height?: number;
 }
-export const Loader: FC<ILoaderProps> = ({ fullscreen }) => {
+export const Loader: FC<ILoaderProps> = ({ fullscreen, width, height }) => {
 	if (fullscreen)
 		return (
 			<div className={styles.fullscreen_loader}>
@@ -12,5 +14,5 @@ export const Loader: FC<ILoaderProps> = ({ fullscreen }) => {
 			</div>
 		);
 
-	return <div className={styles.loader} />;
+	return <div className={styles.loader} style={{ width, height }} />;
 };

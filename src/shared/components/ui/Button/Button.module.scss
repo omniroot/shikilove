@@ -60,6 +60,10 @@
 	border-radius: var(--radius-full);
 }
 
+.button[data-loading="true"] {
+	background-color: var(--color-ternary-80);
+}
+
 //
 //
 //
