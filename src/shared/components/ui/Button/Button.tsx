@@ -42,8 +42,8 @@ export const Button: FC<IButtonProps> = ({
 			data-circle={circle}
 			{...rest}
 		>
-			{loading && <Loader width={24} height={24} />}
 			{children}
+			{/* <div>{loading && <Loader width={24} height={24} />}</div> */}
 		</Comp>
 	);
 };
