@@ -27,16 +27,22 @@ interface IAnimePlayerProps
 }
 
 type IPlayerStatus = "playing" | "stoped";
-export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }) => {
+export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, src, ...rest }) => {
+	const [isDrag, setIsDrag] = useState(false);
 	const [isFullscreen, setIsFullscreen] = useState(false);
 	const [isMouseHide, setIsMouseHide] = useState(false);
 	const [overlayOpen, setOverlayOpen] = useState(false);
 	const [playerStatus, setPlayerStatus] = useState<IPlayerStatus>("stoped");
 	const [duration, setDuration] = useState(0);
 	const [currentTime, setCurrentTime] = useState<number>(0);
+	const [newTime, setNewTime] = useState<number>(0);
+	const [previewCoordinate, setPreviewCoordinate] = useState({ x: 0, y: 0 });
 	const playerRef = useRef<HTMLVideoElement>(null);
+	const positionRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const timelineRef = useRef<HTMLDivElement>(null);
+	const previewContainerRef = useRef<HTMLDivElement>(null);
+	const previewVideoRef = useRef<HTMLVideoElement>(null);
 
 	const togglePlayerStatus = () => {
 		const nextStatus = playerStatus === "playing" ? "stoped" : "playing";
@@ -236,6 +242,10 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 		event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>,
 	) => {
 		event.preventDefault();
+		setIsDrag(true);
+		if ("clientX" in event) {
+			setPreviewCoordinate({ x: event.clientX - 40, y: -70 });
+		}
 		document.addEventListener("mousemove", onDrag);
 		document.addEventListener("mouseup", onDragEnd);
 		document.addEventListener("touchmove", onDrag, { passive: false });
@@ -243,22 +253,31 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 	};
 
 	const onDrag = (e) => {
-		if (timelineRef.current) {
+		if (timelineRef.current && previewVideoRef.current && positionRef.current) {
 			const rect = timelineRef.current.getBoundingClientRect();
 			const offsetX = e.clientX ? e.clientX - rect.left : e.touches[0].clientX - rect.left;
 			const newTime = Math.max(0, Math.min((offsetX / rect.width) * duration, duration));
-			if (playerRef.current) {
-				playerRef.current.currentTime = newTime;
-			}
-			setCurrentTime(newTime);
+
+			positionRef.current.style.width = `${(newTime / duration) * 100}%`;
+			// previewContainerRef.current.style.left = e.clientX;
+			previewVideoRef.current.currentTime = newTime;
+			setPreviewCoordinate({ x: e.clientX - 40, y: -70 });
+			setNewTime(newTime);
 		}
 	};
 
 	const onDragEnd = () => {
+		console.log("drag end");
+
+		setIsDrag(false);
 		document.removeEventListener("mousemove", onDrag);
 		document.removeEventListener("mouseup", onDragEnd);
 		document.removeEventListener("touchmove", onDrag);
 		document.removeEventListener("touchend", onDragEnd);
+		if (playerRef.current) {
+			playerRef.current.currentTime = newTime;
+		}
+		setCurrentTime(newTime);
 	};
 
 	const _class = clsx(styles.player, className, {
@@ -272,6 +291,7 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 				onLoadedMetadata={onVideoLoaded}
 				onClick={onVideoClick}
 				onTimeUpdate={onVideoPlaying}
+				src={src}
 				{...rest}
 			/>
 			<AnimatePresence>
@@ -291,12 +311,22 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, ...rest }
 							{/* <span>{isMouseHide ? "true" : "false"}</span> */}
 						</div>
 						<div className={styles.bottom}>
+							{isDrag && (
+								<div
+									ref={previewContainerRef}
+									className={styles.preview_container}
+									style={{ left: previewCoordinate.x, top: previewCoordinate.y }}
+								>
+									<video ref={previewVideoRef} src={src} className={styles.preview_video} />
+								</div>
+							)}
 							<div className={styles.timeline_container}>
 								<div className={styles.timeline} onClick={onTimelineClick} ref={timelineRef}>
 									<div
 										className={styles.position}
 										onMouseDown={onDragStart}
 										onTouchStart={onDragStart}
+										ref={positionRef}
 										// onClick={onTimelineClick}
 										style={{ width: `${(currentTime / duration) * 100}%` }}
 									/>
