@@ -12,19 +12,6 @@ import { RouterProvider } from "react-router-dom";
 dayjs().locale("en");
 dayjs.extend(relativeTime);
 
-// const client = new ApolloClient({
-// 	uri: CONSTS.API_URL,
-// 	cache: new InMemoryCache(),
-// 	defaultOptions: {
-// 		query: {
-// 			pollInterval: 45000,
-// 		},
-// 	},
-// 	headers: {
-// 		"User-Agent": CONSTS.USER_AGENT,
-// 		Authorization: `Bearer ${access_token}`,
-// 	},
-// });
 
 const client = new QueryClient({
 	defaultOptions: {
