@@ -1041,6 +1041,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@siberiacancode/reactuse@npm:^0.0.76":
+  version: 0.0.76
+  resolution: "@siberiacancode/reactuse@npm:0.0.76"
+  dependencies:
+    screenfull: "npm:^6.0.2"
+  peerDependencies:
+    "@types/react": ^18.0.0
+    react: ^17.0.2 || ^18.0.0
+    react-dom: ^17.0.2 || ^18.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/b25f817ee43b5fae453c04b4422dc32a43b1c6ad6518c5d2b20d5e9de9db2d7f13268c464ee8aa20b1cc345a5e6b9790bcba29bcce6f992f233e167a82148743
+  languageName: node
+  linkType: hard
+
 "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0":
   version: 8.0.0
   resolution: "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0"
@@ -1181,6 +1197,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/history@npm:1.90.0":
+  version: 1.90.0
+  resolution: "@tanstack/history@npm:1.90.0"
+  checksum: 10c0/7781a452ddf71b5a6ce926ee852b98c7c1f82d5ed4f477fa7a3557ae94af9d51064f5afb941af22346bcc128c620b1bf3cd219af184157f77b92b65a390fbe76
+  languageName: node
+  linkType: hard
+
 "@tanstack/query-core@npm:5.59.16":
   version: 5.59.16
   resolution: "@tanstack/query-core@npm:5.59.16"
@@ -1215,6 +1238,42 @@ __metadata:
   peerDependencies:
     react: ^18 || ^19
   checksum: 10c0/82acf170d2d169ad18081e4dc52bdcec3b92bd1b134bb704ab6949937a59fd4d7d4ddb1172dd7fdbd1667a2d2e0ffa118e68bde5f53972649b8e55bd0e87244c
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-router@npm:^1.93.0":
+  version: 1.93.0
+  resolution: "@tanstack/react-router@npm:1.93.0"
+  dependencies:
+    "@tanstack/history": "npm:1.90.0"
+    "@tanstack/react-store": "npm:^0.7.0"
+    jsesc: "npm:^3.0.2"
+    tiny-invariant: "npm:^1.3.3"
+    tiny-warning: "npm:^1.0.3"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 10c0/87f6de8ef50256b903a3c02e5e207e43b862b1fa0b1ed2ee4bb23b9db7648b1cb3090a9b39a8899334f02fe0419a59caa7d5ff710f858d9636561c71de38e214
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-store@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@tanstack/react-store@npm:0.7.0"
+  dependencies:
+    "@tanstack/store": "npm:0.7.0"
+    use-sync-external-store: "npm:^1.4.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/7e971ae3c547d0d803133f07737e7cc7cf381e959b4fab3f55755b28c194688392f5b921d3d43b8c9c81bdc721ea8878c680d4ca28a1ccd59e8a64ab7bcfd0f8
+  languageName: node
+  linkType: hard
+
+"@tanstack/store@npm:0.7.0":
+  version: 0.7.0
+  resolution: "@tanstack/store@npm:0.7.0"
+  checksum: 10c0/17003f1eba25bb6e9e2557ffb5d9c63cac09aa46f57d670a917727665ccc0b72d8d421ea1c07451257554aa5d14dbfff46875e7ed6a81f133b0738065f3162df
   languageName: node
   linkType: hard
 
@@ -3169,6 +3228,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"immer@npm:^10.1.1":
+  version: 10.1.1
+  resolution: "immer@npm:10.1.1"
+  checksum: 10c0/b749e10d137ccae91788f41bd57e9387f32ea6d6ea8fd7eb47b23fd7766681575efc7f86ceef7fe24c3bc9d61e38ff5d2f49c2663b2b0c056e280a4510923653
+  languageName: node
+  linkType: hard
+
 "immutable@npm:^4.0.0":
   version: 4.3.7
   resolution: "immutable@npm:4.3.7"
@@ -4777,6 +4843,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"screenfull@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "screenfull@npm:6.0.2"
+  checksum: 10c0/e4accdb10410aa506dc10b3aa55b05f96421da8559ca3594c44e2cb80174d3a01819ea2b0e815797e24843844599f27778daa69d53bdb007f6bbd77c94e50d0d
+  languageName: node
+  linkType: hard
+
 "semver@npm:^6.3.1":
   version: 6.3.1
   resolution: "semver@npm:6.3.1"
@@ -4851,9 +4924,11 @@ __metadata:
     "@emotion/css": "npm:^11.13.4"
     "@eslint/js": "npm:^9.12.0"
     "@radix-ui/react-slot": "npm:^1.1.1"
+    "@siberiacancode/reactuse": "npm:^0.0.76"
     "@svgr/plugin-svgo": "npm:^8.1.0"
     "@tanstack/react-query": "npm:^5.59.16"
     "@tanstack/react-query-devtools": "npm:^5.62.3"
+    "@tanstack/react-router": "npm:^1.93.0"
     "@types/eslint": "npm:^9.6.1"
     "@types/node": "npm:^22.7.4"
     "@types/react": "npm:^18.3.3"
@@ -4867,6 +4942,7 @@ __metadata:
     eslint: "npm:^9.12.0"
     eslint-plugin-react: "npm:^7.37.1"
     globals: "npm:^15.11.0"
+    immer: "npm:^10.1.1"
     lightningcss: "npm:^1.27.0"
     lucide-react: "npm:^0.468.0"
     motion: "npm:^11.13.1"
@@ -5181,6 +5257,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-invariant@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "tiny-invariant@npm:1.3.3"
+  checksum: 10c0/65af4a07324b591a059b35269cd696aba21bef2107f29b9f5894d83cc143159a204b299553435b03874ebb5b94d019afa8b8eff241c8a4cfee95872c2e1c1c4a
+  languageName: node
+  linkType: hard
+
+"tiny-warning@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tiny-warning@npm:1.0.3"
+  checksum: 10c0/ef8531f581b30342f29670cb41ca248001c6fd7975ce22122bd59b8d62b4fc84ad4207ee7faa95cde982fa3357cd8f4be650142abc22805538c3b1392d7084fa
+  languageName: node
+  linkType: hard
+
 "to-fast-properties@npm:^2.0.0":
   version: 2.0.0
   resolution: "to-fast-properties@npm:2.0.0"
@@ -5375,7 +5465,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.2.0":
+"use-sync-external-store@npm:^1.2.0, use-sync-external-store@npm:^1.4.0":
   version: 1.4.0
   resolution: "use-sync-external-store@npm:1.4.0"
   peerDependencies:
