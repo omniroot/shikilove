@@ -1,18 +1,18 @@
 // import LoginPage from "@/app/pages/LoginPage/LoginPage.tsx";
 import { NavigationLayout } from "@/app/layouts/navigation/navigation.layout.tsx";
 import { SearchLayout } from "@/app/layouts/search/search.layout.tsx";
-import { useScrollSave } from "@/shared/hooks/useScrollSave.tsx";
+// import { useSaveScroll } from "@/shared/hooks/useScrollSave.tsx";
+import { useSaveScroll } from "@/shared/store/storage/useSaveScroll";
+import { useSettings } from "@/shared/store/settings/useSettings";
 import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { Link, Outlet } from "react-router-dom";
 import styles from "./global.layout.module.scss";
-import { useStorage } from "@/shared/hooks/useStorage.tsx";
-import { useSettings } from "@/shared/hooks/useSettings.tsx";
 
 export const GlobalLayout = () => {
-	useStorage();
-	const { showHeader } = useSettings();
-	useScrollSave();
+	// useStorage();
+	useSettings();
+	useSaveScroll();
 	const { currentUser } = useCurrentUser();
 
 	return (
@@ -28,7 +28,7 @@ export const GlobalLayout = () => {
 					<Outlet />
 				</main>
 			) : (
-				<main className={styles.main} id="main" data-showHeader={showHeader}>
+				<main className={styles.main} id="main">
 					<Outlet />
 				</main>
 			)}

@@ -2,10 +2,10 @@ import { BottomNavigation } from "@widgets/BottomNavigation/BottomNavigation";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Header } from "@widgets/Header/Header.tsx";
 import { Sidebar } from "@widgets/Sidebar/Sidebar.tsx";
-import { useSettings } from "@/shared/hooks/useSettings.tsx";
+import { useSettings } from "@/shared/store/settings/useSettings";
 
 export const NavigationLayout = () => {
-	const { showHeader } = useSettings();
+	// const { showHeader } = useSettings();
 
 	const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 	const isTablet = useMediaQuery("only screen and (min-width: 769px) and (max-width: 1024px)");
@@ -15,7 +15,7 @@ export const NavigationLayout = () => {
 			{(isTablet || isDesktop) && <Sidebar />}
 			{/* {(isTablet || isDesktop) && <FloatingSearchButton />} */}
 			{/* <FloatingSearchBar /> */}
-			{isMobile && showHeader && <Header />}
+			{isMobile && <Header />}
 			{isMobile && <BottomNavigation />}
 		</>
 	);

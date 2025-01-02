@@ -3,19 +3,14 @@ import { Divider } from "@ui/Divider/Divider.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 import styles from "./settings.page.module.scss";
-import { useSettings } from "@/shared/hooks/useSettings.tsx";
+import { useSettings } from "@/shared/store/settings/useSettings";
+import { THEMES } from "@/shared/store/settings/settings.store.ts";
 
 export const SettingsPage = () => {
-	const { theme, themes, setTheme, toggleShowHeader } = useSettings();
-	const themeSelectElements = themes.map((theme) => {
-		return {
-			label: theme,
-			value: theme,
-		};
-	});
+	const { theme, changeTheme } = useSettings();
 
 	const onToggleHeaderClick = () => {
-		toggleShowHeader();
+		// toggleShowHeader();
 	};
 
 	return (
@@ -24,14 +19,14 @@ export const SettingsPage = () => {
 			<Button onClick={onToggleHeaderClick}>Toggle Header</Button>
 			<Select
 				defaultValue={{ value: theme, label: theme }}
-				onActiveChange={(newTheme) => setTheme(newTheme as typeof theme)}
+				onActiveChange={(newTheme) => changeTheme(newTheme as typeof theme)}
 				positionX="right"
 			>
 				<SelectContent>
-					{themeSelectElements.map((element) => {
+					{THEMES.map((theme) => {
 						return (
-							<SelectItem key={element.value} value={element.value}>
-								{element.label}
+							<SelectItem key={theme} value={theme}>
+								{theme}
 							</SelectItem>
 						);
 					})}
