@@ -31,9 +31,13 @@ export const ImageView: FC<IImageViewProps> = ({
 	};
 
 	useEffect(() => {
+		setImageSrc(src);
+	}, [src]);
+
+	useEffect(() => {
 		const timer = setTimeout(() => {
 			if (!imageRef.current?.complete) {
-				console.log("Attempt to refersh image");
+				console.log("Attempt to refresh image");
 
 				setImageSrc(`${src}?t=${new Date().getTime()}`);
 				return;
@@ -41,7 +45,7 @@ export const ImageView: FC<IImageViewProps> = ({
 		}, 8000);
 
 		return () => clearTimeout(timer);
-	}, []);
+	}, [src]);
 
 	const _class = clsx(styles.image_view, className, {
 		[styles.clickable]: allowFullscreen,
