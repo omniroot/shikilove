@@ -9,9 +9,10 @@ import { Button } from "@ui/Button/Button.tsx";
 // import { Link, Outlet } from "@tanstack/react-router";
 import styles from "./global.layout.module.scss";
 import { Link, Outlet } from "@tanstack/react-router";
+import { useStorage } from "@/shared/store/storage/useStorage.tsx";
 
 export const GlobalLayout = () => {
-	// useStorage();
+	useStorage();
 	useSettings();
 	useSaveScroll();
 	const { currentUser } = useCurrentUser();
