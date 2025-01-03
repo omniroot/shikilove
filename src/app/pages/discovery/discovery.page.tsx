@@ -5,51 +5,35 @@ import {
 	LatestIcon,
 	RecentlyIcon,
 } from "@/shared/icons/index.tsx";
-import { DiscoveryCollectionsFragment } from "@pages/discovery/_fragments/DiscoveryCollectionsFragment/DiscoveryCollectionsFragment.tsx";
-import { DiscoveryCritiqueFragment } from "@pages/discovery/_fragments/DiscoveryCritiqueFragment/DiscoveryCritiqueFragment.tsx";
-import { LatestFragment } from "@pages/discovery/_fragments/DiscoveryLatestFragment/DiscoveryLatestFragment";
-import { OngoingFragment } from "@pages/discovery/_fragments/DiscoveryOngoingFragment/DiscoveryOngoingFragment";
+import { createLazyRoute, Outlet } from "@tanstack/react-router";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
-import { FragmentContainer, IFragment } from "@ui/FragmentContainer/FragmentContainer.tsx";
-import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentContainer.utils.ts";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 import styles from "./discovery.page.module.scss";
-import { DiscoveryCalendarFragment } from "@pages/discovery/_fragments/DiscoveryCalendarFragment/DiscoveryCalendarFragment.tsx";
 
 const discoveryFilterButtonsList: IButtonGroupElement[] = [
-	{ id: "ongoing", title: "Ongoing", icon: <RecentlyIcon width={18} /> },
-	{ id: "latest", title: "Latest", icon: <LatestIcon width={20} /> },
-	{ id: "critique", title: "Critique", icon: <CritiquesIcon width={18} /> },
+	{ id: "ongoings", title: "Ongoing", icon: <RecentlyIcon width={18} /> },
+	{ id: "latests", title: "Latest", icon: <LatestIcon width={20} /> },
+	{ id: "critiques", title: "Critique", icon: <CritiquesIcon width={18} /> },
 	{ id: "collections", title: "Collections", icon: <CollectionsIcon width={18} /> },
 	{ id: "calendar", title: "Calendar", icon: <CalendarIcon width={18} /> },
 ];
 
-const discoveryFragmentsList: IFragment[] = [
-	{ id: "ongoing", fragment: <OngoingFragment /> },
-	{ id: "latest", fragment: <LatestFragment /> },
-	{ id: "critique", fragment: <DiscoveryCritiqueFragment /> },
-	{ id: "collections", fragment: <DiscoveryCollectionsFragment /> },
-	{ id: "calendar", fragment: <DiscoveryCalendarFragment /> },
-];
-
 export const DiscoveryPage = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
-	const currentFilter = searchParams.get("filter") || "ongoing";
+	const navigate = Route.useNavigate();
+	const currentFilter = "ongoing";
 	const [activeElement, setActiveElement] = useState(
 		getButtonGroupElementById(discoveryFilterButtonsList, currentFilter),
 	);
-	const activeFragment = getFragmentContainerElementById(discoveryFragmentsList, activeElement.id);
 
 	const onElementClick = (nextElement: IButtonGroupElement) => {
-		setSearchParams({ filter: nextElement.id });
+		navigate({ to: `/discovery/${nextElement.id}` });
 		setActiveElement(nextElement);
 	};
 
-	useEffect(() => {
-		setActiveElement(getButtonGroupElementById(discoveryFilterButtonsList, currentFilter));
-	}, [searchParams]);
+	// useEffect(() => {
+	// 	setActiveElement(getButtonGroupElementById(discoveryFilterButtonsList, currentFilter));
+	// }, [searchParams]);
 
 	return (
 		<div className={styles.discovery_page}>
@@ -59,9 +43,11 @@ export const DiscoveryPage = () => {
 				activeElement={activeElement}
 				setActiveElement={onElementClick}
 			/>
-			<FragmentContainer fragments={discoveryFragmentsList} activeFragment={activeFragment} />
+			<Outlet />
 		</div>
 	);
 };
 
-export default DiscoveryPage;
+export const Route = createLazyRoute("/discovery")({
+	component: DiscoveryPage,
+});

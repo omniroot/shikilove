@@ -2,12 +2,12 @@ import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
 import { useSimilarAnimes } from "@/shared/services/anime/hooks/useAnimeSimilar.tsx";
 import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { createLazyRoute } from "@tanstack/react-router";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
-import { useParams } from "react-router-dom";
 import styles from "./similars.page.module.scss";
 
 export const SimilarsPage = () => {
-	const { animeId } = useParams();
+	const { animeId } = Route.useParams();
 	const { anime } = useAnime(animeId || "0");
 	const { similarAnimes } = useSimilarAnimes(animeId || "0");
 
@@ -37,4 +37,6 @@ export const SimilarsPage = () => {
 	);
 };
 
-export default SimilarsPage;
+export const Route = createLazyRoute("/animes/$animeId/similars")({
+	component: SimilarsPage,
+});

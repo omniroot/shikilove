@@ -1,8 +1,7 @@
+import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
 import { FC } from "react";
 import styles from "./Button.module.scss";
-import { Slot } from "@radix-ui/react-slot";
-import { Loader } from "@ui/Loader/Loader.tsx";
 
 interface IButtonProps
 	extends React.DetailedHTMLProps<

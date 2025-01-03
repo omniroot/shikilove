@@ -4,7 +4,7 @@ import { HorizontalContextBottomSheet } from "@features/AnimeCard/variants/Horiz
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { AnimatePresence, motion } from "motion/react";
 import { FC, MouseEvent, ReactNode, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 import styles from "./HorizontalAnimeCard.module.scss";
 import { parseShikimoriText } from "@/shared/utils/parseShikimoriText.ts";
 
@@ -50,7 +50,12 @@ export const HorizontalAnimeCard: FC<IHorizontalAnimeCardProps> = ({
 					allowFullscreen
 				/>
 			)}
-			<Link to={`/animes/${anime.id}`} className={styles.info} viewTransition>
+			<Link
+				to={`/animes/$animeId`}
+				params={{ animeId: anime.id }}
+				className={styles.info}
+				viewTransition
+			>
 				{anime.name && <span className={styles.title}>{anime.name}</span>}
 				{anime.description && (
 					<span

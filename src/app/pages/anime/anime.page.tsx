@@ -7,13 +7,13 @@ import {
 	AnimeSimilar,
 	AnimeWatchContainer,
 } from "@pages/anime/_components/index.ts";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import styles from "./anime.page.module.scss";
+import { createLazyRoute } from "@tanstack/react-router";
 import { Loader } from "@ui/Loader/Loader.tsx";
+import { useEffect } from "react";
+import styles from "./anime.page.module.scss";
 
 export const AnimePage = () => {
-	const { animeId } = useParams();
+	const { animeId } = Route.useParams();
 	const { anime } = useAnime(animeId || "20");
 	const { changeTitle } = useChangeTitle();
 
@@ -37,4 +37,6 @@ export const AnimePage = () => {
 	);
 };
 
-export default AnimePage;
+export const Route = createLazyRoute("/animes/$animeId")({
+	component: AnimePage,
+});

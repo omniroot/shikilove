@@ -18,7 +18,7 @@ export const PAGES = {
 		},
 		{
 			name: "Discovery",
-			path: "/discovery?filter=recently",
+			path: "/discovery/ongoings",
 			icon: <DiscoveryIcon />,
 			inMobile: true,
 		},

@@ -91,7 +91,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 // import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 // import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
 // import { ButtonGroup } from "@ui/ButtonGroup/ButtonGroup.tsx";
-// import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "@tanstack/react-router";
 
 // type IPages = "watching" | "planned" | "completed" | "rewatching" | "on_hold" | "dropped";
 

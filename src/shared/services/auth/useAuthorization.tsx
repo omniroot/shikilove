@@ -3,11 +3,8 @@ import { authApi } from "@/shared/services/auth/auth.api.ts";
 import { userApi } from "@/shared/services/user/user.api.ts";
 import { saveTokens } from "@/shared/utils/saveTokens.ts";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
 
-export const useAuthorization = () => {
-	const [searchParams] = useSearchParams();
-	const code = searchParams.get("code");
+export const useAuthorization = (code?: string) => {
 	const {
 		data: auth,
 		isFetching: authLoading,

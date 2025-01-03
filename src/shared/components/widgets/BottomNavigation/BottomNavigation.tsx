@@ -1,7 +1,7 @@
 import { IPage, PAGES } from "@/shared/consts/pages.tsx";
 import clsx from "clsx";
 import { FC } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "@tanstack/react-router";
 import styles from "./BottomNavigation.module.scss";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";

@@ -1,9 +1,10 @@
 import { useAnimeOngoings } from "@/shared/services/anime/hooks/useAnimeOngoing.tsx";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { createLazyRoute } from "@tanstack/react-router";
 import { Loader } from "@ui/Loader/Loader.tsx";
 
-export const OngoingFragment = () => {
+export const OngoingsPage = () => {
 	const { animeOngoings, isAnimeOngoingsLoading } = useAnimeOngoings();
 
 	if (!animeOngoings || isAnimeOngoingsLoading) return <Loader fullscreen />;
@@ -24,3 +25,7 @@ export const OngoingFragment = () => {
 		</AnimeList>
 	);
 };
+
+export const Route = createLazyRoute("/discovery/ongoings")({
+	component: OngoingsPage,
+});

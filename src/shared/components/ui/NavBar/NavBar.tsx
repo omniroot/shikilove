@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "@tanstack/react-router";
 import styles from "./NavBar.module.scss";
 import clsx from "clsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";

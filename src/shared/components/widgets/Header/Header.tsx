@@ -2,17 +2,16 @@
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
 import { ArrowLeftIcon, SearchIcon } from "@/shared/icons/index.tsx";
 import { useFloatingSearchBarStore } from "@/shared/store/store.tsx";
+import { useLocation } from "@tanstack/react-router";
 import { Button } from "@ui/Button/Button.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import { motion } from "motion/react";
-import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 export const Header = () => {
 	const { packageVersion } = usePackageInfo();
 	const { toggleFloatingSearchBar } = useFloatingSearchBarStore((state) => state);
 
 	const currentLocation = useLocation().pathname;
-	const navigate = useNavigate();
 
 	const isRootPage = currentLocation === "/";
 
@@ -31,7 +30,7 @@ export const Header = () => {
 						transition={{ duration: 0.4, bounce: 0.25 }}
 					>
 						<Button
-							onClick={() => navigate(-1)}
+							onClick={() => window.history.back()}
 							className={styles.navigate_back_button}
 							variant="ghost"
 						>

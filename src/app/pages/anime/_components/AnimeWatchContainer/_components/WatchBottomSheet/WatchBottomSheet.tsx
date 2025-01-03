@@ -57,14 +57,14 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 		onOutsideClick();
 	};
 
-	const onVideoLoad = () => {
-		const watching = JSON.parse(localStorage.getItem("watching") || "{}");
-		const currentAnime = watching[anime.name];
+	// const onVideoLoad = () => {
+	// 	const watching = JSON.parse(localStorage.getItem("watching") || "{}");
+	// 	const currentAnime = watching[anime.name];
 
-		if (videoRef.current && currentAnime) {
-			videoRef.current.currentTime = currentAnime.timecode || 0;
-		}
-	};
+	// 	if (videoRef.current && currentAnime) {
+	// 		videoRef.current.currentTime = currentAnime.timecode || 0;
+	// 	}
+	// };
 
 	useLayoutEffect(() => {
 		const watching = JSON.parse(localStorage.getItem("watching") || "{}");

@@ -1,110 +1,130 @@
-import React, { Suspense } from "react";
-import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import { createRootRoute, createRoute, createRouter } from "@tanstack/react-router";
+import GlobalLayout from "./layouts/global/global.layout";
+import { HomePage } from "@pages/home/home.page";
+import { NotFoundPage } from "@pages/notfound/notfound.page.tsx";
+import { z } from "zod";
 
-import { GlobalLayout } from "@/app/layouts/global/global.layout";
-import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
-import { HomePage } from "@pages/home/home.page.tsx";
-import AnimePage from "@pages/anime/anime.page.tsx";
-import ProfilePage from "@pages/profile/profile.page.tsx";
-const LoginPage = React.lazy(() => import("@/app/pages/login/login.page.tsx"));
-// const AnimePage = React.lazy(() => import("@/app/pages/anime/anime.page.tsx"));
-const ScreenshotsPage = React.lazy(
-	() => import("@/app/pages/anime/_pages/screenshots/screenshots.page.tsx"),
+const rootRoute = createRootRoute({
+	component: () => <GlobalLayout />,
+});
+
+// Home Page
+const indexRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "/",
+	component: () => <HomePage />,
+});
+
+// Profile Page
+const profileRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "profile",
+}).lazy(() => import("@/app/pages/profile/profile.page.tsx").then((b) => b.Route));
+
+// Anime Page
+const animeRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "animes/$animeId",
+}).lazy(() => import("@/app/pages/anime/anime.page.tsx").then((b) => b.Route));
+
+// Anime Screenshots Page
+const animeScreenshotsRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "animes/$animeId/screenshots",
+}).lazy(() =>
+	import("@/app/pages/anime/_pages/screenshots/screenshots.page.tsx").then((b) => b.Route),
 );
-const SimilarsPage = React.lazy(
-	() => import("@/app/pages/anime/_pages/similars/similars.page.tsx"),
+
+// Anime Similars Page
+const animeSimilarsRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "animes/$animeId/similars",
+}).lazy(() => import("@/app/pages/anime/_pages/similars/similars.page.tsx").then((b) => b.Route));
+
+// const discoverySearchShema = z.object({
+// 	filter: z.enum(["ongoing", "recently", "critiques", "collections", "calendar"]),
+// });
+
+// Discovery Page
+const discoveryRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "discovery",
+	// validateSearch: (search) => discoverySearchShema.parse(search),
+}).lazy(() => import("@/app/pages/discovery/discovery.page.tsx").then((b) => b.Route));
+
+// Discovery Ongoings Page
+const ongoingsRoute = createRoute({
+	getParentRoute: () => discoveryRoute,
+	path: "ongoings",
+}).lazy(() => import("@pages/discovery/_pages/ongoings/ongoings.page.tsx").then((b) => b.Route));
+
+// Discovery Latests Page
+const latestsRoute = createRoute({
+	getParentRoute: () => discoveryRoute,
+	path: "latests",
+}).lazy(() => import("@pages/discovery/_pages/latests/latests.page.tsx").then((b) => b.Route));
+
+// Discovery Critiques Page
+const critiquesRoute = createRoute({
+	getParentRoute: () => discoveryRoute,
+	path: "critiques",
+}).lazy(() => import("@pages/discovery/_pages/critiques/critiques.page.tsx").then((b) => b.Route));
+
+// Discovery Collections Page
+const collectionsRoute = createRoute({
+	getParentRoute: () => discoveryRoute,
+	path: "collections",
+}).lazy(() =>
+	import("@pages/discovery/_pages/collections/collections.page.tsx").then((b) => b.Route),
 );
-// const ProfilePage = React.lazy(() => import("@/app/pages/profile/profile.page.tsx"));
-const ProfileEditPage = React.lazy(
-	() => import("@pages/profile/_pages/profile_edit/profile_edit.page.tsx"),
-);
-const ProfileAchievementsPage = React.lazy(
-	() => import("@pages/profile/_pages/profile_achievements/profile_achievements.page.tsx"),
-);
-const DiscoveryPage = React.lazy(() => import("@pages/discovery/discovery.page.tsx"));
-const SettingsPage = React.lazy(() => import("@pages/settings/settings.page.tsx"));
 
-export const router = createBrowserRouter(
-	createRoutesFromElements(
-		<Route path="/" element={<GlobalLayout />}>
-			<Route path="/" element={<HomePage />} />
-			<Route
-				path="/animes/:animeId"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<AnimePage />
-					</Suspense>
-				}
-			/>
-			<Route
-				path="/animes/:animeId/screenshots"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<ScreenshotsPage />
-					</Suspense>
-				}
-			/>
-			<Route
-				path="/animes/:animeId/similars"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<SimilarsPage />
-					</Suspense>
-				}
-			/>
-			<Route
-				path="/profile"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<ProfilePage />
-					</Suspense>
-				}
-			/>
-			<Route
-				path="/profile/edit"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<ProfileEditPage />
-					</Suspense>
-				}
-			/>
-			<Route
-				path="/profile/achievements"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<ProfileAchievementsPage />
-					</Suspense>
-				}
-			/>
+// Discovery Calendar Page
+const calendarRoute = createRoute({
+	getParentRoute: () => discoveryRoute,
+	path: "calendar",
+}).lazy(() => import("@pages/discovery/_pages/calendar/calendar.page.tsx").then((b) => b.Route));
 
-			<Route
-				path="/discovery"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<DiscoveryPage />
-					</Suspense>
-				}
-			/>
+const loginSchema = z.object({
+	code: z.string().optional(),
+});
+// Login Page
+const loginRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "login",
+	validateSearch: (search) => loginSchema.parse(search),
+}).lazy(() => import("@/app/pages/login/login.page.tsx").then((b) => b.Route));
 
-			<Route
-				path="/settings"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<SettingsPage />
-					</Suspense>
-				}
-			/>
+// Settings Page
+const settingsRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "settings",
+}).lazy(() => import("@/app/pages/settings/settings.page.tsx").then((b) => b.Route));
 
-			<Route
-				path="/login"
-				element={
-					<Suspense fallback={<ProfilePageSkeleton />}>
-						<LoginPage />
-					</Suspense>
-				}
-			/>
+const routeTree = rootRoute.addChildren([
+	indexRoute,
+	profileRoute,
+	settingsRoute,
+	animeRoute,
+	animeScreenshotsRoute,
+	animeSimilarsRoute,
+	loginRoute,
+	discoveryRoute.addChildren([
+		ongoingsRoute,
+		latestsRoute,
+		critiquesRoute,
+		collectionsRoute,
+		calendarRoute,
+	]),
+]);
 
-			{/* <Route path="*" element={<NotFoundPage />} /> */}
-		</Route>,
-	),
-);
+export const router = createRouter({
+	routeTree,
+	defaultPreload: "intent",
+	defaultNotFoundComponent: () => <NotFoundPage />,
+});
+
+declare module "@tanstack/react-router" {
+	interface Register {
+		router: typeof router;
+	}
+}

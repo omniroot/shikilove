@@ -1,9 +1,10 @@
 import { useAnimeLatests } from "@/shared/services/anime/hooks/useAnimeLatest.tsx";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { createLazyRoute } from "@tanstack/react-router";
 import { Loader } from "@ui/Loader/Loader.tsx";
 
-export const LatestFragment = () => {
+export const LatestsPage = () => {
 	const { animeLatests, isAnimeLatestsLoading } = useAnimeLatests();
 
 	if (!animeLatests || isAnimeLatestsLoading) return <Loader fullscreen />;
@@ -30,3 +31,7 @@ export const LatestFragment = () => {
 		</AnimeList>
 	);
 };
+
+export const Route = createLazyRoute("/discovery/latests")({
+	component: LatestsPage,
+});

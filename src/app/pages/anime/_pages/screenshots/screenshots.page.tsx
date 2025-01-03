@@ -1,11 +1,11 @@
-import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
-import styles from "./screenshots.page.module.scss";
 import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
-import { useParams } from "react-router-dom";
+import { createLazyRoute } from "@tanstack/react-router";
+import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
+import styles from "./screenshots.page.module.scss";
 
 export const ScreenshotsPage = () => {
-	const { animeId } = useParams();
+	const { animeId } = Route.useParams();
 	const { anime } = useAnime(animeId || "0");
 
 	if (!anime) return;
@@ -26,4 +26,6 @@ export const ScreenshotsPage = () => {
 	);
 };
 
-export default ScreenshotsPage;
+export const Route = createLazyRoute("/animes/$animeId/screenshots")({
+	component: ScreenshotsPage,
+});

@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 import styles from "./settings.page.module.scss";
 import { useSettings } from "@/shared/store/settings/useSettings";
 import { THEMES } from "@/shared/store/settings/settings.store.ts";
+import { createLazyRoute } from "@tanstack/react-router";
 
 export const SettingsPage = () => {
 	const { theme, changeTheme } = useSettings();
@@ -63,4 +64,6 @@ export const SettingsPage = () => {
 	);
 };
 
-export default SettingsPage;
+export const Route = createLazyRoute("/settings")({
+	component: SettingsPage,
+});
