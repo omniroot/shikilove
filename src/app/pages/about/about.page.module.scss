@@ -63,6 +63,7 @@
 				background-color: var(--color-ternary);
 				border-bottom: none;
 				border-radius: var(--radius-full);
+				animation: width 1.5s forwards;
 			}
 
 			& span:first-child {
@@ -78,5 +79,14 @@
 				border-radius: var(--radius);
 			}
 		}
+	}
+}
+
+@keyframes width {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
 	}
 }

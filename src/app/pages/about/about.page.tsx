@@ -33,6 +33,7 @@ export const AboutPage = () => {
 				{Object.entries(devDependencies).map(([name, version]) => (
 					<div key={name} className={styles.dependency}>
 						<span>{name}</span>
+						<Divider orientation="horizontal" className={styles.divider} />
 						<span>{version}</span>
 					</div>
 				))}
