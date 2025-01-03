@@ -2,7 +2,7 @@ import { useAnilibGetVideo } from "@/shared/services/anilib/useAnilib.ts";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 import { FC } from "react";
 
-interface IQuality {
+export interface IQuality {
 	player: string;
 	link: string;
 	quality: string;
@@ -11,7 +11,7 @@ interface IQuality {
 interface IQualitySelectProps {
 	episodeId: number;
 	team: string;
-	onQualitySelect: (link: string) => void;
+	onQualitySelect: (newValue: IQuality) => void;
 }
 export const QualitySelect: FC<IQualitySelectProps> = ({
 	episodeId: episode,
@@ -35,6 +35,11 @@ export const QualitySelect: FC<IQualitySelectProps> = ({
 		}, []);
 	}
 
+	const _onQualitySelect = (newValue: string) => {
+		const quality = qualities.filter((quality) => quality.link === newValue)[0];
+		onQualitySelect(quality);
+	};
+
 	// if (video.player === "Kodik") {
 	// 	// @ts-ignore
 	// 	const quality = video.src.split("/").pop();
@@ -55,7 +60,7 @@ export const QualitySelect: FC<IQualitySelectProps> = ({
 			defaultValue={{ value: qualities[0].link, label: qualities[0].quality }}
 			positionY="top"
 			positionX="right"
-			onActiveChange={onQualitySelect}
+			onActiveChange={_onQualitySelect}
 		>
 			<SelectContent>
 				{qualities.map((quality) => (

@@ -2,7 +2,10 @@ import { useAnilibGetAnimeByName } from "@/shared/services/anilib/useAnilib.ts";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { DubTeamSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/DubTeamSelect/DubTeamSelect.tsx";
 import { EpisodeSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/EpisodeSelect/EpisodeSelect.tsx";
-import { QualitySelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/QualitySelect/QualitySelect.tsx";
+import {
+	IQuality,
+	QualitySelect,
+} from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/QualitySelect/QualitySelect.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Loader } from "lucide-react";
 import { FC, useLayoutEffect, useRef, useState } from "react";
@@ -19,6 +22,7 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [episode, setEpisode] = useState({ episodeId: -1, episode: -1 });
 	const [team, setTeam] = useState("");
+	const [quality, setQuality] = useState("");
 	const [link, setLink] = useState("");
 
 	const onEpisodeSelect = (newValue: { episodeId: number; episode: number }) => {
@@ -31,10 +35,11 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 		setTeam(newValue);
 	};
 
-	const onQualitySelect = (newValue: string) => {
+	const onQualitySelect = (newValue: IQuality) => {
 		console.log("new link: ", newValue);
 
-		setLink(newValue);
+		setLink(newValue.link);
+		setQuality(newValue.quality);
 	};
 	console.log({ episode, team, link });
 

@@ -90,25 +90,4 @@ export const EpisodeSelect: FC<IEpisodeSelectProps> = ({
 			</SelectContent>
 		</Select>
 	);
-
-	// return (
-	// 	<>
-	// 		<div className={styles.episode_select_container}>
-	// 			<div className={styles.episode_select} onClick={() => setSelectOpen((prev) => !prev)}>
-	//
-	// 			</div>
-	// 		</div>
-	// 		{selectOpen &&
-	// 			createPortal(
-	// 				<div className={styles.episode_list_container}>
-	// 					<div className={styles.episode_list}>
-	// 						{anilibEpisodes.map((episode) => {
-	// 							return <div key={episode.id}>{episode.name}</div>;
-	// 						})}
-	// 					</div>
-	// 				</div>,
-	// 				document.body,
-	// 			)}
-	// 	</>
-	// );
 };
