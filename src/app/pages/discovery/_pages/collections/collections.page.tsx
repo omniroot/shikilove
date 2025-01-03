@@ -1,10 +1,11 @@
 import { useForumCollections } from "@/shared/services/forum/hooks/useForumCollections.tsx";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { createLazyRoute } from "@tanstack/react-router";
 import { Button } from "@ui/Button/Button.tsx";
 import { Loader } from "@ui/Loader/Loader.tsx";
 
-export const DiscoveryCollectionsFragment = () => {
+export const CollectionsPage = () => {
 	const { collections, isCollectionsLoading } = useForumCollections();
 
 	const onCollectionShikimoriButtonClick = (
@@ -46,3 +47,7 @@ export const DiscoveryCollectionsFragment = () => {
 		</AnimeList>
 	);
 };
+
+export const Route = createLazyRoute("/discovery/collections")({
+	component: CollectionsPage,
+});

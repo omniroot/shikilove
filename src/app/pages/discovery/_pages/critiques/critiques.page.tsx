@@ -2,10 +2,11 @@ import { useForumCritiques } from "@/shared/services/forum/hooks/useForumCritiqu
 import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { createLazyRoute } from "@tanstack/react-router";
 import { Button } from "@ui/Button/Button.tsx";
 import { Loader } from "@ui/Loader/Loader.tsx";
 
-export const DiscoveryCritiqueFragment = () => {
+export const CritiquesPage = () => {
 	const { critiques, isCritiquesLoading } = useForumCritiques();
 
 	const onCritiqueShikimoriButtonClick = (
@@ -37,3 +38,7 @@ export const DiscoveryCritiqueFragment = () => {
 		</AnimeList>
 	);
 };
+
+export const Route = createLazyRoute("/discovery/critiques")({
+	component: CritiquesPage,
+});

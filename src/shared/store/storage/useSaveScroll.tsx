@@ -1,7 +1,7 @@
 import { useStorage } from "@/shared/store/storage/useStorage";
 import { debounce } from "@/shared/utils/debounse.ts";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@tanstack/react-router";
 
 export const useSaveScroll = () => {
 	const { addScrollPosition, getScrollPosition } = useStorage();

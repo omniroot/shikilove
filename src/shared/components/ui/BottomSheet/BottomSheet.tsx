@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { FC, MouseEvent, ReactNode, useEffect } from "react";
 import styles from "./BottomSheet.module.scss";
 import { createPortal } from "react-dom";
-import { useBlocker } from "react-router-dom";
+import { useBlocker } from "@tanstack/react-router";
 interface IBottomSheetProps {
 	children?: ReactNode;
 	className?: string;

@@ -4,13 +4,12 @@ import { Button } from "@ui/Button/Button.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import styles from "./login.page.module.scss";
 import { useAuthorization } from "@/shared/services/auth/useAuthorization.tsx";
-import { useSearchParams } from "react-router-dom";
+import { createLazyRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 
 export const LoginPage = () => {
-	const [searchParams] = useSearchParams();
-	const code = searchParams.get("code");
-	const { auth, authError, authLoading, fetchAuth } = useAuthorization();
+	const { code } = Route.useSearch();
+	const { auth, authError, authLoading, fetchAuth } = useAuthorization(code);
 	const onLoginButtonClick = () => {
 		window.open(CONSTS.OAUTH_URL, "_self");
 	};
@@ -61,4 +60,6 @@ export const LoginPage = () => {
 	);
 };
 
-export default LoginPage;
+export const Route = createLazyRoute("/login")({
+	component: LoginPage,
+});

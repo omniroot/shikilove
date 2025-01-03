@@ -1,6 +1,6 @@
 import { NavBar } from "@ui/NavBar/NavBar";
 import styles from "./Sidebar.module.scss";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@tanstack/react-router";
 import { PAGES } from "@/shared/consts/pages";
 import { ShikimoriIcon } from "@/shared/icons";
 

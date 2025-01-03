@@ -3,7 +3,8 @@ import { useCalendar } from "@/shared/services/calendar/useCalendar.tsx";
 import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
-import styles from "./DiscoveryCalendarFragment.module.scss";
+import styles from "./calendar.page.module.scss";
+import { createLazyRoute } from "@tanstack/react-router";
 
 const convertCalendar = (calendars: ICalendar[]) => {
 	let days: { [key: string]: ICalendar[] } = {};
@@ -23,7 +24,7 @@ const convertCalendar = (calendars: ICalendar[]) => {
 	return days;
 };
 
-export const DiscoveryCalendarFragment = () => {
+export const CalendarPage = () => {
 	const { calendar } = useCalendar();
 	const days = convertCalendar(calendar || []);
 
@@ -53,3 +54,7 @@ export const DiscoveryCalendarFragment = () => {
 		</div>
 	);
 };
+
+export const Route = createLazyRoute("/discovery/calendar")({
+	component: CalendarPage,
+});

@@ -31,6 +31,7 @@ interface ISettingsStore {
 
 export const useSettingsStore = create<ISettingsStore>()(
 	persist(
+		// @ts-expect-error bcz
 		(set) => ({
 			settings: { theme: "default" }, // Используем IThemes.Default
 		}),

@@ -1,8 +1,7 @@
-import { BottomNavigation } from "@widgets/BottomNavigation/BottomNavigation";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { BottomNavigation } from "@widgets/BottomNavigation/BottomNavigation";
 import { Header } from "@widgets/Header/Header.tsx";
 import { Sidebar } from "@widgets/Sidebar/Sidebar.tsx";
-import { useSettings } from "@/shared/store/settings/useSettings";
 
 export const NavigationLayout = () => {
 	// const { showHeader } = useSettings();

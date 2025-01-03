@@ -6,8 +6,9 @@ import { useSaveScroll } from "@/shared/store/storage/useSaveScroll";
 import { useSettings } from "@/shared/store/settings/useSettings";
 import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
 import { Button } from "@ui/Button/Button.tsx";
-import { Link, Outlet } from "react-router-dom";
+// import { Link, Outlet } from "@tanstack/react-router";
 import styles from "./global.layout.module.scss";
+import { Link, Outlet } from "@tanstack/react-router";
 
 export const GlobalLayout = () => {
 	// useStorage();

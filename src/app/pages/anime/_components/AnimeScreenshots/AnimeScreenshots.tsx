@@ -5,7 +5,7 @@ import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { RightArrowIcon } from "@/shared/icons/index.tsx";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 
 interface IAnimeScreenshotsProps {
 	anime: IAnime;
@@ -19,7 +19,7 @@ export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ anime }) => {
 			title="Screenshots"
 			actionsSlot={
 				<Button variant="outline" asChild>
-					<Link to="screenshots">
+					<Link from="/animes/$animeId" to="screenshots">
 						More
 						<RightArrowIcon />
 					</Link>

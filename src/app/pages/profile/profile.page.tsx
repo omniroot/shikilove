@@ -3,6 +3,7 @@ import { AchievementsButton, ProfileInfoCard, ProfileUserRates } from "@pages/pr
 import { ProfilePageSkeleton } from "@pages/profile/profile.page.skeleton.tsx";
 import { FC, ReactNode } from "react";
 import styles from "./profile.page.module.scss";
+import { createLazyRoute } from "@tanstack/react-router";
 
 interface IProfilePageProps {
 	children?: ReactNode;
@@ -21,4 +22,6 @@ export const ProfilePage: FC<IProfilePageProps> = () => {
 	);
 };
 
-export default ProfilePage;
+export const Route = createLazyRoute("/profile")({
+	component: ProfilePage,
+});

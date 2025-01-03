@@ -252,7 +252,7 @@ export const AnimePlayer: FC<IAnimePlayerProps> = ({ className, title, src, ...r
 		document.addEventListener("touchend", onDragEnd);
 	};
 
-	const onDrag = (e) => {
+	const onDrag = (e: any) => {
 		if (timelineRef.current && previewVideoRef.current && positionRef.current) {
 			const rect = timelineRef.current.getBoundingClientRect();
 			const offsetX = e.clientX ? e.clientX - rect.left : e.touches[0].clientX - rect.left;
