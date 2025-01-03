@@ -15,6 +15,12 @@ const indexRoute = createRoute({
 	component: () => <HomePage />,
 });
 
+// About Page
+const aboutRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "about",
+}).lazy(() => import("@/app/pages/about/about.page.tsx").then((b) => b.Route));
+
 // Profile Page
 const profileRoute = createRoute({
 	getParentRoute: () => rootRoute,
@@ -102,6 +108,7 @@ const settingsRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([
 	indexRoute,
+	aboutRoute,
 	profileRoute,
 	settingsRoute,
 	animeRoute,

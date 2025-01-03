@@ -1,11 +1,15 @@
 import PackageRaw from "/package.json?raw";
 const info = JSON.parse(PackageRaw);
 
+interface IDependency {
+	[key: string]: string;
+}
+
 export const usePackageInfo = () => {
-	const packageVersion = info.version;
-	const dependencies = info.dependencies;
-	const devDependencies = info.devDependencies;
-	const packageManagerVersion = info.packageManager;
+	const packageVersion: string = info.version;
+	const dependencies: IDependency = info.dependencies;
+	const devDependencies: IDependency = info.devDependencies;
+	const packageManagerVersion: string = info.packageManager;
 
 	return {
 		packageVersion,

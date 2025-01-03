@@ -2,7 +2,7 @@
 import { usePackageInfo } from "@/shared/hooks/usePackageInfo.tsx";
 import { ArrowLeftIcon, SearchIcon } from "@/shared/icons/index.tsx";
 import { useFloatingSearchBarStore } from "@/shared/store/store.tsx";
-import { useLocation } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Button } from "@ui/Button/Button.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
 import { motion } from "motion/react";
@@ -38,9 +38,11 @@ export const Header = () => {
 						</Button>
 					</motion.div>
 				)}
-				<span className={styles.logo} id="header-logo">
-					ShikiLove
-				</span>
+				<Button asChild variant="ghost">
+					<Link to="/about" className={styles.logo} id="header-logo">
+						ShikiLove
+					</Link>
+				</Button>
 				<span className={styles.dev_mode}>
 					<Tooltip title={packageVersion} position="bottom">
 						{mode}
