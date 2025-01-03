@@ -1,0 +1,42 @@
+.friends_list {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+
+	.friend {
+		width: fit-content;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		cursor: pointer;
+
+		border: var(--border);
+		border-radius: var(--radius);
+		padding: var(--p);
+		transition: var(--animation);
+
+		&:hover {
+			background-color: var(--color-ternary);
+			border: var(--border-secondary);
+		}
+
+		.avatar {
+			width: 65px;
+			height: 65px;
+
+			border-radius: var(--radius);
+		}
+
+		.nickname {
+			font-weight: bold;
+		}
+
+		.last_online_at {
+			color: var(--color-subtext);
+		}
+	}
+}

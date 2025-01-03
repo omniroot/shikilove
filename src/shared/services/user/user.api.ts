@@ -1,5 +1,5 @@
 import { api } from "@/shared/services/api.ts";
-import { IUser } from "@/shared/services/user/user.interface.ts";
+import { IFriend, IUser } from "@/shared/services/user/user.interface.ts";
 import axios from "axios";
 
 export const userApi = {
@@ -20,6 +20,16 @@ export const userApi = {
 	getCurrentUser: async () => {
 		try {
 			const response = await api.get<IUser>(`users/${localStorage.getItem("user_id")}`);
+			return response.data;
+		} catch (error) {
+			console.log(error);
+			throw error;
+		}
+	},
+
+	getCurrentUserFriends: async () => {
+		try {
+			const response = await api.get<IFriend[]>(`users/${localStorage.getItem("user_id")}/friends`);
 			return response.data;
 		} catch (error) {
 			console.log(error);
