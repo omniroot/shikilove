@@ -2,9 +2,8 @@ import { Divider } from "@ui/Divider/Divider.tsx";
 import clsx from "clsx";
 import { motion } from "motion/react";
 import { FC, MouseEvent, ReactNode, useEffect } from "react";
-import styles from "./BottomSheet.module.scss";
 import { createPortal } from "react-dom";
-import { useBlocker } from "@tanstack/react-router";
+import styles from "./BottomSheet.module.scss";
 interface IBottomSheetProps {
 	children?: ReactNode;
 	className?: string;
@@ -17,11 +16,6 @@ export const BottomSheet: FC<IBottomSheetProps> = ({
 	title,
 	onOutsideClick = () => {},
 }) => {
-	useBlocker(() => {
-		onOutsideClick();
-		return true;
-	});
-
 	const _onOutsideClick = () => {
 		onOutsideClick();
 	};
@@ -34,7 +28,7 @@ export const BottomSheet: FC<IBottomSheetProps> = ({
 		document.body.style.overflow = "hidden";
 
 		return () => {
-			document.body.style.overflow = "unset";
+			document.body.style.overflow = "auto";
 		};
 	}, []);
 
