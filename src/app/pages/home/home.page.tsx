@@ -2,8 +2,11 @@ import { PlusIcon } from "@/shared/icons/index.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { useEffect } from "react";
 import styles from "./home.page.module.scss";
+import { useNotificationsStore } from "@/shared/store/notifications/notifications.store.tsx";
 
 export const HomePage = () => {
+	const { notifications, addNotification } = useNotificationsStore();
+
 	// const link =
 	// 	"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
 
@@ -11,6 +14,7 @@ export const HomePage = () => {
 		// addABear();
 		// setTest(Math.random());
 	};
+	console.log("@home page ", notifications);
 
 	useEffect(() => {
 		window.addEventListener("storage", (event) => {
@@ -23,7 +27,7 @@ export const HomePage = () => {
 			<span>No widgets in Home Page</span>
 			{/* {bears} */}
 			<Button onClick={onButtonClick}>change test variable</Button>
-			<Button variant="outline">
+			<Button variant="outline" onClick={() => addNotification({ message: `${Math.random()}` })}>
 				<PlusIcon />
 				Add widget
 			</Button>
