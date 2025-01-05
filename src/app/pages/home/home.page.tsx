@@ -2,11 +2,10 @@ import { PlusIcon } from "@/shared/icons/index.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { useEffect } from "react";
 import styles from "./home.page.module.scss";
-import { AnimePlayer } from "@features/AnimePlayer/AnimePlayer.tsx";
 
 export const HomePage = () => {
-	const link =
-		"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
+	// const link =
+	// 	"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
 
 	const onButtonClick = () => {
 		// addABear();
@@ -28,7 +27,8 @@ export const HomePage = () => {
 				<PlusIcon />
 				Add widget
 			</Button>
-			<AnimePlayer title="Chrome cast test" src={link} />
+
+			{/* <AnimePlayer title="Chrome cast test" src={link} /> */}
 		</div>
 	);
 };
