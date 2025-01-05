@@ -24,17 +24,17 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 		const _nextPage = page.path.replaceAll("/", "");
 
 		if (_currentPage === _nextPage) {
-			console.log(_currentPage, _nextPage, "===> true");
+			// console.log(_currentPage, _nextPage, "===> true");
 			return true;
 		}
-		console.log(_currentPage, _nextPage, "===> false");
+		// console.log(_currentPage, _nextPage, "===> false");
 		return false;
 	};
 
 	return (
 		<div className={styles.navbar}>
 			{pages.map((page) => {
-				console.log("!!", page);
+				// console.log("!!", page);
 
 				if (page.path === `/users/${currentUser?.id}/`) {
 					return (
