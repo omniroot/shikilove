@@ -1,0 +1,122 @@
+- [ ] 1.1.0 - Refactoring api
+  - [x] Refactoring settings store, useSettings
+  - [x] Rewrite to tanstack router
+  - [x] Add useStorage hook and store for managing local storage
+  - [x] Add about page and fix usePackageVersion hook
+  - [ ] Create useSettings, useLastWatched and etc hooks
+  - [ ] Use new Settings for save userRateFilter and restore from it
+  - [ ] AnimePlayer
+  - [ ] Add chronology of anime
+  - [ ] Refactoring search.api.ts, useSearch, FloatingSearchBar and etc (use serachParams for show FSB)
+  - [ ] Add friendApi, friendList and user page
+  - [ ] Refactoring full AnimePage and it components
+- [x] 1.0.0 - Release first stable version
+  - [x] Testing
+  - [x] Write plan for 1.1.0
+- [x] 0.10.3
+  - [x] Separate userRates filters in Fragments
+  - [x] More refactoring and fixed
+- [x] 0.10.2 - Testing and fixing bugs
+  - [x] Fix error from loading deafultEpisode if anime not found in userRate
+  - [x] Fix position in EpisodeSelect
+  - [x] Add radius in video-player
+  - [x] Add pastel-green theme
+- [x] 0.10.1 - Refactoring
+  - [x] Add minimize css
+- [x] 0.10.0 - Going to 1.0.0 release
+
+  - [x] Parse text from shikimori like description and news
+  - [x] Add logo
+  - [x] Close modal while back button is pressed
+  - [x] Fix DiscoveryCritiqueFragments
+  - [x] Fix DiscoveryCollectionsFragments
+  - [x] Add pastel-red theme
+  - [x] Add DiscoveryCalendarFragment
+  - [x] AnimePlayer, base by team, first select team and get avaliable episodes
+
+  - [x] Settings design and page
+
+- [x] 0.9.2
+  - [x] Add more button on ProfileUserRates for load more anime
+  - [x] Fix for not showing title in BottomSheet
+  - [x] More and more refactoring and fix bugs
+- [x] 0.9.1 - Some Fixes
+  - [x] Fix Achievements icon
+  - [x] Fix showing airedEpisodes for ongoing animes
+  - [x] Fix adding to user list
+  - [x] Fix bottom positions in Tooltip
+  - [x] Update min width in Add to user list button
+  - [x] Add opacity background in active nav in BottomNavigation and color-ternary-80 in themes
+  - [x] Add border and padding in AnimeInfo
+  - [x] Not showing AnimeSimilar, AnimeScreenshots and AnimeDescription if it empty
+  - [x] Add screenshots page
+  - [x] Add similars page
+- [x] 0.9.0 - Big update
+  - [x] Add interceptors in Axios
+  - [x] More refactoring
+  - [x] Add Home, Discovery, Settings, Anime page
+  - [x] Add Ongoing, Latest, Critique, Collections, Calendar fragments in DiscoveryPage
+  - [x] Refactoring AnimeCard's for uses unified props, like name, poster, episodes. No magical animeData={anime}
+  - [x] Add Critique, collections, calendar components and api
+  - [x] Add themes
+  - [x] Add more ui components
+  - [x] Many many more improvments, bug fixes and refactoring
+- [x] 0.8.0 - Refactoring
+  - [x] Move all no global features in page folder
+  - [x] Add Right Context Menu in VerticalAnimeCard
+  - [x] Redesign HorizontalAnimeCard
+  - [x] Fix verticalAnimeCard
+  - [x] Add SimilarAnimeCard
+  - [x] Add SearchAnimeCard
+  - [x] Big refactoring with new architecure
+    - [x] user page
+- [x] 0.7.0 - Big functionality update
+  - [x] Update stock theme
+  - [x] Add FloatingSearchButton and update FloatingSearchBar
+  - [x] Add Header for mobile
+  - [x] Reduced website loading time
+  - [x] Add test AnimeCard variants
+  - [x] ProfilePage
+  - [x] UserRates Chart
+  - [x] User Activity Chart
+- [x] 0.6.0 - Refactoring api's
+  - [x] Refactoring useUserRate and userRateApi
+  - [x] Refactoring useAnime and userAnimeApi
+  - [x] Add refetching onSuccess useMutation in useUserRate
+  - [x] Add lazy loading to ImageView and set it by default
+  - [x] Refactoring useAuthorization, useCurrentUser and LoginPage authorization to useAuthorization and authApi
+  - [x] Separate userRate filter in url parameter and on click on sidebar profile icon redirect to ?status=watching
+  - [x] Add chip with app version
+  - [x] Change selection color
+- [x] 0.5.0 - Go to 80% functionality
+  - [x] Change all css variables to scss and rewrite scss vars name
+  - [x] Add the ability to add anime to your list
+  - [x] Add suspence to all Pages
+  - [x] Change Page Name to Anime Name in AnimePage
+  - [x] Delete apollo graphql and use Tanstack query and axios for graphql
+- [x] 0.4.0 - Optimization
+  - [x] Optimize imports in router using React.lazy
+  - [x] Optimize imports in all projects for optimize dev build
+- [x] 0.3.0 - Refactoring all
+  - [x] Refactoring pages to PAGES global consts
+  - [x] Refactoring ui components
+  - [x] Refactoring features components
+- [x] 0.2.0 - Adaptive for mobile devices. Some improvments
+  - [x] Redesign LoginPage
+  - [x] Refactored AnimePage
+  - [x] Initial adaptive for mobile devices
+  - [x] Redesign BottomNavigation
+  - [x] Add adaptive to LoginPage
+  - [x] Hide Sidebar and BottomNavigation in LoginPage
+  - [x] Fix BottomNavigation types
+  - [x] Many other adaptives
+- [x] 0.1.0 - This release is aimed at updating the existing functionality and redesign.
+  - [x] Add fullscreen view for ImageView
+  - [x] Add button to watch anime in other sites
+  - [x] Add AnimeScreenshots
+  - [x] Migrate from biome.js to prettier and eslint
+  - [x] Refactoring packages
+  - [x] Add function to change episodes and status
+  - [x] Add tooltip to Genre component
+  - [x] Add chip in AnimeCard with anime status and watched episodes
+  - [x] Add ButtomNavigation component
