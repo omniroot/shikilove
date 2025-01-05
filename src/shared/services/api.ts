@@ -54,8 +54,8 @@ api.interceptors.response.use(
 			if (tokens) {
 				localStorage.setItem("access_token", tokens.access_token);
 				localStorage.setItem("refresh_token", tokens.refresh_token);
-				window.location.reload();
 			}
+			return api(originalRequest);
 		}
 		return Promise.reject(error);
 	},
