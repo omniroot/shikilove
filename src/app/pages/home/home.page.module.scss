@@ -6,4 +6,14 @@
 	justify-content: center;
 	align-items: center;
 	gap: var(--gap);
+
+	.news {
+		border: var(--border-secondary);
+		border-radius: var(--radius);
+		padding: var(--padding);
+		color: var(--color-primary);
+		background-color: var(--color-ternary);
+		font-size: var(--text-size-h4);
+		font-weight: 500;
+	}
 }
