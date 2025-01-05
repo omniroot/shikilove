@@ -1,17 +1,18 @@
 import { DiscoveryIcon, HomeIcon, ProfileIcon, SettingsIcon } from "@/shared/icons/index.tsx";
 import { Link, useLocation } from "@tanstack/react-router";
-import { Info } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import styles from "./ModernBottomNavigation.module.scss";
+import { useAuth } from "@/shared/services/auth/useAuth.tsx";
+import { LogInIcon } from "lucide-react";
 
 export const ModernBottomNavigation = () => {
+	const { userId, isAuthorized } = useAuth();
 	const bottomNavigationRef = useRef<HTMLDivElement>(null);
 	const activeIndicatorRef = useRef<HTMLDivElement>(null);
 	const activeIndicatorStartRef = useRef<HTMLDivElement>(null);
 	const activeIndicatorEndRef = useRef<HTMLDivElement>(null);
 	const [prevActiveItem, setPrevActiveItem] = useState<HTMLLinkElement | null>(null);
 	const currentUrl = useLocation().pathname;
-	const currentUserId = localStorage.getItem("user_id") || "";
 
 	// pizdec eto rabotaet 6:00 am
 	// ok it work on right direction but on left...
@@ -124,7 +125,6 @@ export const ModernBottomNavigation = () => {
 				setPrevActiveItem(activeItem);
 			}
 		}
-		1;
 	}, [currentUrl]);
 
 	return (
@@ -146,14 +146,25 @@ export const ModernBottomNavigation = () => {
 			>
 				<DiscoveryIcon width={20} height={20} />
 			</Link>
-			<Link
-				to="/users/$userId"
-				params={{ userId: currentUserId }}
-				className={styles.bottom_navigation_item}
-				activeProps={{ className: styles.active, id: "active_bn" }}
-			>
-				<ProfileIcon width={20} height={20} />
-			</Link>
+			{isAuthorized ? (
+				<Link
+					to="/users/$userId"
+					params={{ userId: String(userId) }}
+					className={styles.bottom_navigation_item}
+					activeProps={{ className: styles.active, id: "active_bn" }}
+				>
+					<ProfileIcon width={20} height={20} />
+				</Link>
+			) : (
+				<Link
+					to="/login"
+					className={styles.bottom_navigation_item}
+					activeProps={{ className: styles.active, id: "active_bn" }}
+				>
+					<LogInIcon width={20} height={20} />
+					{/* <ProfileIcon width={20} height={20} /> */}
+				</Link>
+			)}
 			<Link
 				to="/settings"
 				className={styles.bottom_navigation_item}

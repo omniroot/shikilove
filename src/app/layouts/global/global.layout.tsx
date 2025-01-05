@@ -12,25 +12,16 @@ export const GlobalLayout = () => {
 	useStorage();
 	useSettings();
 	useSaveScroll();
-	const { data: currentUser } = useUser();
 
 	return (
 		<div className={styles.global_layout}>
 			<NavigationLayout />
 			<SearchLayout />
 			{/* TODO fix that shit if user not login */}
-			{!currentUser ? (
-				<main className={styles.main} id="main">
-					<Button asChild style={{ width: "100%" }}>
-						<Link to="/login">Go to Login page</Link>
-					</Button>
-					<Outlet />
-				</main>
-			) : (
-				<main className={styles.main} id="main">
-					<Outlet />
-				</main>
-			)}
+
+			<main className={styles.main} id="main">
+				<Outlet />
+			</main>
 		</div>
 	);
 };

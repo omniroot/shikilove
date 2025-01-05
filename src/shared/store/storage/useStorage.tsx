@@ -29,5 +29,10 @@ export const useStorage = () => {
 		});
 	};
 
-	return { getScrollPosition, addScrollPosition, getWatchHistory, addWatchHistory };
+	return {
+		getScrollPosition,
+		addScrollPosition,
+		getWatchHistory,
+		addWatchHistory,
+	};
 };
