@@ -17,6 +17,8 @@ export const ModernBottomNavigation = () => {
 	// pizdec eto rabotaet 6:00 am
 	// ok it work on right direction but on left...
 	// ok next day, left direction work to
+	// why i use 2 animation elements, i think it will be work with one element
+	// TODO: Delete one of animation element
 
 	useEffect(() => {
 		if (
