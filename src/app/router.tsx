@@ -21,11 +21,11 @@ const aboutRoute = createRoute({
 	path: "about",
 }).lazy(() => import("@/app/pages/about/about.page.tsx").then((b) => b.Route));
 
-// Profile Page
-const profileRoute = createRoute({
+// User Page
+const userRoute = createRoute({
 	getParentRoute: () => rootRoute,
-	path: "profile",
-}).lazy(() => import("@/app/pages/profile/profile.page.tsx").then((b) => b.Route));
+	path: "users/$userId",
+}).lazy(() => import("@/app/pages/user/user.page.tsx").then((b) => b.Route));
 
 // Anime Page
 const animeRoute = createRoute({
@@ -109,7 +109,7 @@ const settingsRoute = createRoute({
 const routeTree = rootRoute.addChildren([
 	indexRoute,
 	aboutRoute,
-	profileRoute,
+	userRoute,
 	settingsRoute,
 	animeRoute,
 	animeScreenshotsRoute,

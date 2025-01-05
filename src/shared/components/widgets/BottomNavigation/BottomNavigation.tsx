@@ -1,31 +1,31 @@
-import { IPage, PAGES } from "@/shared/consts/pages.tsx";
+import { DiscoveryIcon, HomeIcon, ProfileIcon, SettingsIcon } from "@/shared/icons/index.tsx";
+import { useUser } from "@pages/user/_api/user";
+import { Link, useLocation } from "@tanstack/react-router";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import clsx from "clsx";
 import { FC } from "react";
-import { Link, useLocation } from "@tanstack/react-router";
 import styles from "./BottomNavigation.module.scss";
-import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
 
-const isCurrentPage = (currentPage: string, page: IPage) => {
-	// console.log(currentLink, page.path);
-	const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
-	const _nextPage = page.path.split("?")[0].replaceAll("/", "");
+// const isCurrentPage = (currentPage: string, page: IPage) => {
+// 	// console.log(currentLink, page.path);
+// 	const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
+// 	const _nextPage = page.path.split("?")[0].replaceAll("/", "");
 
-	if (_currentPage === _nextPage || _currentPage.includes(page.path)) {
-		// console.log(_currentPage, _nextPage, "===> true");
-		return true;
-	}
-	// console.log(_currentPage, _nextPage, "===> false");
-	return false;
-};
+// 	if (_currentPage === _nextPage || _currentPage.includes(page.path)) {
+// 		// console.log(_currentPage, _nextPage, "===> true");
+// 		return true;
+// 	}
+// 	// console.log(_currentPage, _nextPage, "===> false");
+// 	return false;
+// };
 
 interface IBottomNavigationProps {
 	className?: string;
 }
 export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	const currentPage = useLocation().pathname;
-	const { currentUser } = useCurrentUser();
-	const pages = PAGES.sidebar_start.concat(PAGES.sidebar_end);
+	const { data: currentUser } = useUser();
+	const currenUserId = localStorage.getItem("user_id") || "0";
 
 	if (currentPage === "/login/") {
 		return null;
@@ -37,30 +37,46 @@ export const BottomNavigation: FC<IBottomNavigationProps> = ({ className }) => {
 	if (!currentUser) return null;
 	return (
 		<div className={_class}>
-			{pages.map((page) => {
-				if (page.inMobile) {
-					return (
-						<Link
-							className={clsx(styles.navitem, {
-								[styles.active]: isCurrentPage(currentPage, page),
-							})}
-							to={page.path}
-							key={page.name}
-							viewTransition
-						>
-							{page.path.includes("profile") ? (
-								<ImageView
-									loading="eager"
-									src={currentUser?.avatar || ""}
-									className={styles.profile_image}
-								/>
-							) : (
-								page.icon
-							)}
-						</Link>
-					);
-				}
-			})}
+			<Link
+				className={styles.navitem}
+				to="/"
+				activeProps={{ className: styles.active }}
+				viewTransition
+			>
+				<HomeIcon />
+			</Link>
+
+			<Link
+				className={styles.navitem}
+				to="/discovery"
+				activeProps={{ className: styles.active }}
+				viewTransition
+			>
+				<DiscoveryIcon />
+			</Link>
+
+			<Link
+				className={styles.navitem}
+				to="/users/$userId"
+				params={{ userId: currenUserId }}
+				activeProps={{ className: styles.active }}
+				viewTransition
+			>
+				{currentUser?.avatar ? (
+					<ImageView src={currentUser?.avatar} className={styles.profile_image} />
+				) : (
+					<ProfileIcon />
+				)}
+			</Link>
+
+			<Link
+				className={styles.navitem}
+				to="/settings"
+				activeProps={{ className: styles.active }}
+				viewTransition
+			>
+				<SettingsIcon />
+			</Link>
 		</div>
 	);
 };

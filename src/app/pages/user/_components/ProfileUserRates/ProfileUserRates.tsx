@@ -5,17 +5,18 @@ import {
 	WatchedIcon,
 	WatchingIcon,
 } from "@/shared/icons/index.tsx";
-import { DroppedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/DroppedFragment/DroppedFragment";
-import { OnHoldFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/OnHoldFragment /OnHoldFragment ";
-import { PlannedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/PlannedFragment/PlannedFragment";
-import { WatchedFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/WatchedFragment/WatchedFragment";
-import { WatchingFragment } from "@pages/profile/_components/ProfileUserRates/_fragments/WatchingFragment/WatchingFragment";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { useGetUserRates } from "@pages/user/_api/userRate/hooks/useGetUserRates.tsx";
+import { IUserRateStatus } from "@pages/user/_api/userRate/userRate.interface.ts";
+import { Button } from "@ui/Button/Button.tsx";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
-import { FragmentContainer, IFragment } from "@ui/FragmentContainer/FragmentContainer";
-import { getFragmentContainerElementById } from "@ui/FragmentContainer/FragmentContainer.utils";
+import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
+import { Loader } from "@ui/Loader/Loader.tsx";
 import { FC, ReactNode, useState } from "react";
 import styles from "./ProfileUserRates.module.scss";
+import { getRouteApi } from "@tanstack/react-router";
 
 interface IProfileUserRatesProps {
 	children?: ReactNode;
@@ -29,29 +30,24 @@ const animeFiltersList: IButtonGroupElement[] = [
 	{ id: "on_hold", icon: <PostponedIcon />, title: "On Hold" },
 ];
 
-const userRateFragmentsList: IFragment[] = [
-	{ id: "watching", fragment: <WatchingFragment /> },
-	{ id: "planned", fragment: <PlannedFragment /> },
-	{ id: "watched", fragment: <WatchedFragment /> },
-	{ id: "dropped", fragment: <DroppedFragment /> },
-	{ id: "on_hold", fragment: <OnHoldFragment /> },
-	// { id: "latest", fragment: <LatestFragment /> },
-	// { id: "critique", fragment: <DiscoveryCritiqueFragment /> },
-	// { id: "collections", fragment: <DiscoveryCollectionsFragment /> },
-	// { id: "calendar", fragment: <DiscoveryCalendarFragment /> },
-];
-
 export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
-	const [currentFragment, setCurrentFragment] = useState(
-		getFragmentContainerElementById(userRateFragmentsList, "watching"),
-	);
-	const [userRateFilter, setUserRateFilter] = useState(
-		getButtonGroupElementById(animeFiltersList, currentFragment.id),
-	);
+	const { userId } = getRouteApi("/users/$userId").useParams();
+	const [userRateFilter, setUserRateFilter] = useState<IButtonGroupElement>(animeFiltersList[0]);
+	const {
+		data: userRates,
+		isSuccess,
+		fetchNextPage: fetchNextUserRatesPage,
+	} = useGetUserRates({
+		userId: Number(userId),
+		userRateStatus: userRateFilter.id as IUserRateStatus,
+	});
 
 	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {
-		setCurrentFragment(getFragmentContainerElementById(userRateFragmentsList, nextActiveFilter.id));
 		setUserRateFilter(getButtonGroupElementById(animeFiltersList, nextActiveFilter.id));
+	};
+
+	const onMoreButtonClick = () => {
+		fetchNextUserRatesPage();
 	};
 
 	// useEffect(() => {
@@ -73,7 +69,35 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 				setActiveElement={(nextElement) => onAnimeFilterClick(nextElement)}
 				className={styles.filters_buttons_group}
 			/>
-			<FragmentContainer fragments={userRateFragmentsList} activeFragment={currentFragment} />
+
+			<HeadingSection title="Watching">
+				{!isSuccess ? (
+					<Loader fullscreen />
+				) : (
+					<AnimeList>
+						{userRates.pages.map((rates) => {
+							return rates.map((userRate) => {
+								return (
+									<AnimeCard
+										key={userRate.id}
+										variant="horizontal"
+										anime={{
+											id: userRate.anime.id,
+											poster: userRate.anime.poster?.main2xUrl || "/404.png",
+											name: userRate.anime.name,
+											episodes: userRate.anime.episodes || userRate.anime.episodesAired,
+											userRate: userRate,
+										}}
+									/>
+								);
+							});
+						})}
+						<Button onClick={onMoreButtonClick} className={styles.more_button}>
+							More
+						</Button>
+					</AnimeList>
+				)}
+			</HeadingSection>
 		</>
 	);
 };

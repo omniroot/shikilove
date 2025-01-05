@@ -1,4 +1,4 @@
-import { DiscoveryIcon, HomeIcon, SettingsIcon } from "@/shared/icons/index.tsx";
+import { DiscoveryIcon, HomeIcon, ProfileIcon, SettingsIcon } from "@/shared/icons/index.tsx";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Info } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -11,6 +11,7 @@ export const ModernBottomNavigation = () => {
 	const activeIndicatorEndRef = useRef<HTMLDivElement>(null);
 	const [prevActiveItem, setPrevActiveItem] = useState<HTMLLinkElement | null>(null);
 	const currentUrl = useLocation().pathname;
+	const currentUserId = localStorage.getItem("user_id") || "";
 
 	// pizdec eto rabotaet 6:00 am
 	// ok it work on right direction but on left...
@@ -136,28 +137,29 @@ export const ModernBottomNavigation = () => {
 				className={styles.bottom_navigation_item}
 				activeProps={{ className: styles.active, id: "active_bn" }}
 			>
-				<HomeIcon />
+				<HomeIcon width={20} height={20} />
 			</Link>
 			<Link
 				to="/discovery"
 				className={styles.bottom_navigation_item}
 				activeProps={{ className: styles.active, id: "active_bn" }}
 			>
-				<DiscoveryIcon />
+				<DiscoveryIcon width={20} height={20} />
+			</Link>
+			<Link
+				to="/users/$userId"
+				params={{ userId: currentUserId }}
+				className={styles.bottom_navigation_item}
+				activeProps={{ className: styles.active, id: "active_bn" }}
+			>
+				<ProfileIcon width={20} height={20} />
 			</Link>
 			<Link
 				to="/settings"
 				className={styles.bottom_navigation_item}
 				activeProps={{ className: styles.active, id: "active_bn" }}
 			>
-				<SettingsIcon />
-			</Link>
-			<Link
-				to="/about"
-				className={styles.bottom_navigation_item}
-				activeProps={{ className: styles.active, id: "active_bn" }}
-			>
-				<Info />
+				<SettingsIcon width={20} height={20} />
 			</Link>
 		</div>
 	);

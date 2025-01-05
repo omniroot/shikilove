@@ -1,21 +1,18 @@
-// import LoginPage from "@/app/pages/LoginPage/LoginPage.tsx";
 import { NavigationLayout } from "@/app/layouts/navigation/navigation.layout.tsx";
 import { SearchLayout } from "@/app/layouts/search/search.layout.tsx";
-// import { useSaveScroll } from "@/shared/hooks/useScrollSave.tsx";
-import { useSaveScroll } from "@/shared/store/storage/useSaveScroll";
 import { useSettings } from "@/shared/store/settings/useSettings";
-import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
-import { Button } from "@ui/Button/Button.tsx";
-// import { Link, Outlet } from "@tanstack/react-router";
-import styles from "./global.layout.module.scss";
-import { Link, Outlet } from "@tanstack/react-router";
+import { useSaveScroll } from "@/shared/store/storage/useSaveScroll";
 import { useStorage } from "@/shared/store/storage/useStorage.tsx";
+import { useUser } from "@pages/user/_api/user";
+import { Link, Outlet } from "@tanstack/react-router";
+import { Button } from "@ui/Button/Button.tsx";
+import styles from "./global.layout.module.scss";
 
 export const GlobalLayout = () => {
 	useStorage();
 	useSettings();
 	useSaveScroll();
-	const { currentUser } = useCurrentUser();
+	const { data: currentUser } = useUser();
 
 	return (
 		<div className={styles.global_layout}>

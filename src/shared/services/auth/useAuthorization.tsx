@@ -1,7 +1,7 @@
 import { CONSTS } from "@/shared/consts/consts.ts";
 import { authApi } from "@/shared/services/auth/auth.api.ts";
-import { userApi } from "@/shared/services/user/user.api.ts";
 import { saveTokens } from "@/shared/utils/saveTokens.ts";
+import { userApi } from "@pages/user/_api/user";
 import { useQuery } from "@tanstack/react-query";
 
 export const useAuthorization = (code?: string) => {

@@ -8,6 +8,7 @@
 	align-items: center;
 	padding: 8px;
 	border-radius: var(--radius-full);
+	z-index: 10000;
 
 	background-color: var(--color-ternary);
 
@@ -52,7 +53,7 @@
 		align-items: center;
 		width: 50px;
 		height: 50px;
-		padding: 15px;
+		// padding: 15px;
 		border-radius: var(--radius-full);
 		transition: width 0.5s;
 		z-index: 3;

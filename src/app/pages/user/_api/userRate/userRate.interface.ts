@@ -1,9 +1,12 @@
-import { IType } from "@/shared/types/_type.interface.ts";
-import { IUserRateAnimeStatus } from "@/shared/types/userRate.interface.ts";
+export type IUserRateStatus =
+	| "watching"
+	| "planned"
+	| "completed"
+	| "rewatching"
+	| "on_hold"
+	| "dropped";
 
 export interface IUserRate {
-	_type: IType;
-
 	id: string;
 	anime: {
 		id: string;
@@ -36,15 +39,16 @@ export interface IUserRatesResponse {
 }
 
 export interface IUserRateAdd {
+	userId: number;
 	animeId: string;
-	status?: IUserRateAnimeStatus;
+	status?: IUserRateStatus;
 	episodes?: string;
 }
 
 export interface IUserRateUpdate {
 	userRateId: number;
 	episodes?: number;
-	status?: IUserRateAnimeStatus;
+	status?: IUserRateStatus;
 }
 
 export interface IUserRateDelete {

@@ -1,6 +1,5 @@
 import { MessageIcon, ProfileEditIcon } from "@/shared/icons/index.tsx";
-import { IUser } from "@/shared/services/user/user.interface.ts";
-import { ProfileInfoCardSkeleton } from "@pages/profile/_components/ProfileInfoCard/ProfileInfoCard.skeleton";
+import { ProfileInfoCardSkeleton } from "@pages/user/_components/ProfileInfoCard/ProfileInfoCard.skeleton";
 import { Button } from "@ui/Button/Button.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { Tooltip } from "@ui/Tooltip/Tooltip.tsx";
@@ -9,6 +8,7 @@ import dayjs from "dayjs";
 import { FC } from "react";
 import styles from "./ProfileInfoCard.module.scss";
 import { Link } from "@tanstack/react-router";
+import { IUser } from "@pages/user/_api/user/user.interface.ts";
 
 interface IProfileInfoCardProps {
 	className?: string;
