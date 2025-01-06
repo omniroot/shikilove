@@ -1,0 +1,73 @@
+.bottom_navigation {
+	position: fixed;
+	bottom: 10px;
+	left: 50%;
+	translate: -50%;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	border: var(--border-secondary);
+	border-radius: var(--radius-full);
+	z-index: 10000;
+
+	background-color: var(--color-ternary);
+
+	.active_indicator {
+		position: fixed;
+		visibility: hidden;
+		width: 50px;
+		height: 50px;
+		padding: 15px;
+		background-color: var(--color-primary);
+		border-radius: var(--radius-full);
+		transition: left 250ms;
+		z-index: 2;
+	}
+
+	.active_indicator_start,
+	.active_indicator_end {
+		// display: none;
+		width: 50px;
+		height: 50px;
+		padding: 15px;
+
+		border-radius: var(--radius-full);
+		position: fixed;
+		background-color: var(--color-background);
+		z-index: 1;
+		float: right;
+		// visibility: ;
+	}
+
+	.active_indicator_start {
+		transition: width 350ms;
+	}
+
+	.active_indicator_end {
+		right: 0;
+	}
+
+	.bottom_navigation_item {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		// padding: 15px;
+		border-radius: var(--radius-full);
+		transition: var(--animation);
+
+		z-index: 3;
+
+		&:not(.active):hover {
+			color: var(--color-primary);
+			background-color: var(--color-secondary);
+		}
+
+		&.active {
+			color: var(--color-alttext);
+		}
+	}
+}

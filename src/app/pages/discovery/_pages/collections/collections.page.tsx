@@ -1,0 +1,53 @@
+import { useForumCollections } from "@/shared/services/forum/hooks/useForumCollections.tsx";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { createLazyRoute } from "@tanstack/react-router";
+import { Button } from "@ui/Button/Button.tsx";
+import { Loader } from "@ui/Loader/Loader.tsx";
+
+export const CollectionsPage = () => {
+	const { collections, isCollectionsLoading } = useForumCollections();
+
+	const onCollectionShikimoriButtonClick = (
+		event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+		link: string,
+	) => {
+		event.stopPropagation();
+		event.preventDefault();
+		window.open(link, "_blank");
+	};
+
+	if (!collections || isCollectionsLoading) return <Loader fullscreen />;
+	return (
+		<AnimeList scroll="none">
+			{collections.map((collection) => {
+				return (
+					<AnimeCard
+						key={collection.id}
+						variant="horizontal"
+						anime={{
+							id: String(collection.id),
+							name: collection.topic_title,
+						}}
+						testSlot={
+							<Button
+								onClick={(event) =>
+									onCollectionShikimoriButtonClick(
+										event,
+										`https://shikimori.me/collections/${collection.linked_id}`,
+									)
+								}
+							>
+								Shikimori
+							</Button>
+						}
+					/>
+				);
+			})}
+		</AnimeList>
+	);
+};
+
+export const Route = createLazyRoute("/discovery/collections")({
+	component: CollectionsPage,
+});

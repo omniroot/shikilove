@@ -1,0 +1,92 @@
+.page {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+
+	.general {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		padding: var(--p-2);
+		border: var(--border);
+		border-radius: var(--radius);
+	}
+
+	.secondary {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		padding: var(--p-2);
+		border: var(--border);
+		border-radius: var(--radius);
+		gap: var(--gap);
+
+		& > div {
+			width: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: var(--gap);
+
+			font-weight: bold;
+
+			padding: var(--p-2);
+			border: var(--border);
+			border-radius: var(--radius);
+		}
+	}
+
+	.dependencies {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap);
+
+		padding: var(--p-2);
+		border: var(--border);
+		border-radius: var(--radius);
+
+		.dependency {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			text-wrap: nowrap;
+			gap: var(--gap);
+
+			.divider {
+				width: 100%;
+				height: 3px;
+				background-color: var(--color-ternary);
+				border-bottom: none;
+				border-radius: var(--radius-full);
+				animation: width 1.5s forwards;
+			}
+
+			& span:first-child {
+				background-color: var(--color-ternary);
+				padding: var(--p);
+				border-radius: var(--radius);
+			}
+
+			& span:last-child {
+				color: var(--color-alttext);
+				background-color: var(--color-primary);
+				padding: var(--p);
+				border-radius: var(--radius);
+			}
+		}
+	}
+}
+
+@keyframes width {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}

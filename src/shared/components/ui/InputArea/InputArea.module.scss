@@ -9,7 +9,7 @@
 
 	padding: var(--padding-2);
 	border-radius: var(--radius);
-	transition: all 200ms;
+	transition: var(--animation);
 
 	&:focus-within {
 		border: var(--border-secondary);

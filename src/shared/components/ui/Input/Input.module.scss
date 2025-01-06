@@ -5,7 +5,7 @@
 	border: var(--border-ternary);
 	border-radius: var(--radius);
 	padding: var(--padding);
-	transition: all 200ms;
+	transition: var(--animation);
 
 	&:focus-within {
 		border: var(--border-secondary);

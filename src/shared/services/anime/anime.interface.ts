@@ -115,6 +115,22 @@ export interface IAnimeResponse {
 	animes: IAnime[];
 }
 
+export interface IAnimeFranchise {
+	id: number;
+	date: number;
+	name: string;
+	image_url: string;
+	url: string;
+	year: number;
+	kind: string;
+	weight: number;
+}
+
+export interface IAnimeFranchisesResponse {
+	links: unknown[];
+	nodes: IAnimeFranchise[];
+}
+
 export interface IAnimeGet {
 	animeId?: string;
 }

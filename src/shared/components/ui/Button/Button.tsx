@@ -1,7 +1,7 @@
+import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
 import { FC } from "react";
 import styles from "./Button.module.scss";
-import { Slot } from "@radix-ui/react-slot";
 
 interface IButtonProps
 	extends React.DetailedHTMLProps<
@@ -9,6 +9,7 @@ interface IButtonProps
 		HTMLButtonElement
 	> {
 	asChild?: boolean;
+	loading?: boolean;
 	variant?:
 		| "primary"
 		| "outline"
@@ -24,6 +25,7 @@ interface IButtonProps
 export const Button: FC<IButtonProps> = ({
 	children,
 	className,
+	loading = false,
 	variant = "primary",
 	asChild = false,
 	circle = false,
@@ -32,8 +34,15 @@ export const Button: FC<IButtonProps> = ({
 	const Comp = asChild ? Slot : "button";
 	const _class = clsx(styles.button, className);
 	return (
-		<Comp className={_class} data-variant={variant} data-circle={circle} {...rest}>
+		<Comp
+			className={_class}
+			data-loading={loading}
+			data-variant={variant}
+			data-circle={circle}
+			{...rest}
+		>
 			{children}
+			{/* <div>{loading && <Loader width={24} height={24} />}</div> */}
 		</Comp>
 	);
 };

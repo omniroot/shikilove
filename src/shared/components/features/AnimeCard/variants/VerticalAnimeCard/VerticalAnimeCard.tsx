@@ -1,11 +1,11 @@
 import { FC, MouseEvent, useEffect, useState } from "react";
 import styles from "./VerticalAnimeCard.module.scss";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 import { PlusIcon, RightArrowIcon, TrashIcon, WatchingIcon } from "@/shared/icons/index.tsx";
 import { motion } from "motion/react";
-import { IUserRate } from "@/shared/services/userRate/userRate.interface.ts";
 import { title } from "process";
+import { IUserRate } from "@pages/user/_api/userRate/userRate.interface.ts";
 
 interface IVerticalAnimeCardProps {
 	userRateAnime: IUserRate;
@@ -59,7 +59,8 @@ export const VerticalAnimeCard: FC<IVerticalAnimeCardProps> = ({ userRateAnime }
 	return (
 		<>
 			<Link
-				to={`/animes/${userRateAnime.anime.id}`}
+				to={`/animes/$animeId`}
+				params={{ animeId: userRateAnime.anime.id }}
 				className={styles.anime_card}
 				key={userRateAnime.id}
 				onContextMenu={onContextMenuClick}

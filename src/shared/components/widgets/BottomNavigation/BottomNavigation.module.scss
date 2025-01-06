@@ -29,7 +29,7 @@
 		text-decoration: none;
 		border: var(--border-transparent);
 		border-radius: var(--radius-2);
-		transition: all 200ms;
+		transition: var(--animation);
 
 		.profile_image {
 			width: 40px;

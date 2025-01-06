@@ -1,0 +1,37 @@
+.notification_layout {
+	position: fixed;
+	top: 80px;
+	left: 50%;
+	translate: -50% 0;
+
+	width: var(--width);
+	height: fit-content;
+
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+
+	z-index: 10000;
+
+	.notification {
+		width: 100%;
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		gap: var(--gap);
+
+		background-color: var(--color-background);
+		border: var(--border);
+		border-radius: var(--radius);
+		padding: var(--p);
+
+		font-weight: 600;
+
+		.close_button {
+			display: flex;
+			padding: 4px;
+
+			margin-left: auto;
+		}
+	}
+}

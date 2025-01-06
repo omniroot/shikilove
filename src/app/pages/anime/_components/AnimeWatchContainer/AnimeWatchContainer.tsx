@@ -17,14 +17,12 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 	const [watchBottomSheetOpen, setWatchBottomSheetOpen] = useState(false);
 	const isHentai = anime.genres.some((genre) => genre.name === "Hentai");
 
-	// const {} = useUserRate(anime?.userRate.id);
 	const onWatchButtonClick = () => {
 		setWatchBottomSheetOpen((prev) => !prev);
 	};
 
 	const onUserRateAddClick = () => {
 		setUserRateEditBottomSheetOpen((prev) => !prev);
-		// addUserRate({animeId: String(anime?.id || 0), status: })
 	};
 
 	const onUserRateEditClick = () => {

@@ -1,6 +1,7 @@
 export const CONSTS = {
 	// Global consts
 	REFETCH_INTERVAL: 550000,
+	STALE_TIME: 550000,
 
 	// For api services
 	API_URL: import.meta.env.VITE_API_URL,

@@ -1,32 +1,33 @@
-import { THEMES, useSettings } from "@/shared/store/settings.store.tsx";
 import { Button } from "@ui/Button/Button.tsx";
+import { Divider } from "@ui/Divider/Divider.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 import styles from "./settings.page.module.scss";
-import { Divider } from "@ui/Divider/Divider.tsx";
+import { useSettings } from "@/shared/store/settings/useSettings";
+import { THEMES } from "@/shared/store/settings/settings.store.ts";
+import { createLazyRoute } from "@tanstack/react-router";
 
 export const SettingsPage = () => {
-	const { theme, setTheme } = useSettings();
-	const themeSelectElements = THEMES.map((theme) => {
-		return {
-			label: theme,
-			value: theme,
-		};
-	});
+	const { theme, changeTheme } = useSettings();
+
+	const onToggleHeaderClick = () => {
+		// toggleShowHeader();
+	};
 
 	return (
 		<div className={styles.settings_page}>
 			<span className={styles.settings_heading}>Settings</span>
+			<Button onClick={onToggleHeaderClick}>Toggle Header</Button>
 			<Select
 				defaultValue={{ value: theme, label: theme }}
-				onActiveChange={(newTheme) => setTheme(newTheme as typeof theme)}
+				onActiveChange={(newTheme) => changeTheme(newTheme as typeof theme)}
 				positionX="right"
 			>
 				<SelectContent>
-					{themeSelectElements.map((element) => {
+					{THEMES.map((theme) => {
 						return (
-							<SelectItem key={element.value} value={element.value}>
-								{element.label}
+							<SelectItem key={theme} value={theme}>
+								{theme}
 							</SelectItem>
 						);
 					})}
@@ -53,6 +54,9 @@ export const SettingsPage = () => {
 				<Button variant="primary">Primary Button</Button>
 				<Button variant="secondary">Secondary Button</Button>
 				<Button variant="outline">Outline Button</Button>
+				<Button variant="outline" loading>
+					Outline Button
+				</Button>
 				<Button variant="gradient">Gradient Button</Button>
 				<Button variant="ghost">Ghost Button</Button>
 			</HeadingSection>
@@ -60,4 +64,6 @@ export const SettingsPage = () => {
 	);
 };
 
-export default SettingsPage;
+export const Route = createLazyRoute("/settings")({
+	component: SettingsPage,
+});

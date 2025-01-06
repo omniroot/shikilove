@@ -1,9 +1,9 @@
 import type { FC, ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "@tanstack/react-router";
 import styles from "./NavBar.module.scss";
 import clsx from "clsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { useCurrentUser } from "@/shared/services/user/hooks/useCurrentUser.tsx";
+import { useUser } from "@pages/user/_api/user";
 
 interface IPage {
 	name: string;
@@ -16,7 +16,7 @@ interface INavBarProps {
 
 export const NavBar: FC<INavBarProps> = ({ pages }) => {
 	const currentPage = useLocation().pathname;
-	const { currentUser } = useCurrentUser();
+	const { data: currentUser } = useUser();
 
 	const isCurrentPage = (page: IPage) => {
 		// console.log(currentLink, page.path);
@@ -24,17 +24,17 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 		const _nextPage = page.path.replaceAll("/", "");
 
 		if (_currentPage === _nextPage) {
-			console.log(_currentPage, _nextPage, "===> true");
+			// console.log(_currentPage, _nextPage, "===> true");
 			return true;
 		}
-		console.log(_currentPage, _nextPage, "===> false");
+		// console.log(_currentPage, _nextPage, "===> false");
 		return false;
 	};
 
 	return (
 		<div className={styles.navbar}>
 			{pages.map((page) => {
-				console.log("!!", page);
+				// console.log("!!", page);
 
 				if (page.path === `/users/${currentUser?.id}/`) {
 					return (

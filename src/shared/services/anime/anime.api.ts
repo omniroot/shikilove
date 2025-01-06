@@ -4,6 +4,7 @@ import {
 	GET_ANIME_ONGOINGS,
 } from "@/shared/services/anime/anime.graphql.ts";
 import {
+	IAnimeFranchisesResponse,
 	IAnimeGet,
 	IAnimeResponse,
 	ISimilarAnime,
@@ -42,6 +43,11 @@ export const animeApi = {
 			_type: "IAnime",
 		}));
 		return animes;
+	},
+
+	getAnimeFranchises: async ({ animeId }: IAnimeGet) => {
+		const response = await api.get<IAnimeFranchisesResponse>(`animes/${animeId}/franchise`);
+		return response.data.nodes;
 	},
 
 	getSimilarAnime: async ({ animeId }: IAnimeGet) => {

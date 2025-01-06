@@ -83,7 +83,12 @@ html {
 	--shadow: 3px 4px 10px 0px rgba(34, 60, 80, 0.2);
 	--shadow-2: 3px 4px 10px 0px rgba(34, 60, 80, 0.8);
 
-	--animation: background-color 200ms, scale 200ms, color 200ms, transform 200ms, border 200ms;
+	--width: calc(100% - var(--padding) * 2);
+
+	--animation-value: 250ms;
+	--animation: background-color var(--animation-value), scale var(--animation-value),
+		color var(--animation-value), transform var(--animation-value), border var(--animation-value),
+		height var(--animation-value), width var(--animation-value);
 
 	--text-size-h1: 2rem;
 	--text-size-h2: 1.75rem;

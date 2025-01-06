@@ -21,6 +21,9 @@
 		gap: var(--gap);
 	}
 
+	.main[data-showHeader="true"] {
+	}
+
 	.main {
 		margin-top: 70px;
 		margin-bottom: 80px;
