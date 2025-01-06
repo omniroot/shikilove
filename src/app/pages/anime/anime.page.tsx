@@ -1,6 +1,7 @@
 import { useChangeTitle } from "@/shared/hooks/useChangeTitle.tsx";
 import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
 import {
+	AnimeFranchises,
 	AnimeInfo,
 	AnimeMoreInfo,
 	AnimeScreenshots,
@@ -32,6 +33,7 @@ export const AnimePage = () => {
 			<AnimeMoreInfo anime={anime} />
 			<AnimeWatchContainer anime={anime} />
 			<AnimeScreenshots anime={anime} />
+			<AnimeFranchises anime={anime} />
 			<AnimeSimilar anime={anime} />
 		</div>
 	);

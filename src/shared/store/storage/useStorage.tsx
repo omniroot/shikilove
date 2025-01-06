@@ -2,7 +2,7 @@ import { IWatchHistory, useStorageStore } from "@/shared/store/storage/storage.s
 import { produce } from "immer";
 export const useStorage = () => {
 	const { storage } = useStorageStore();
-	console.log({ storage });
+	// console.log({ storage });
 
 	const getScrollPosition = (url: string) => {
 		return storage.scrollPositions[url] ?? 0;
