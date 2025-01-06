@@ -57,23 +57,16 @@
 		height: 50px;
 		// padding: 15px;
 		border-radius: var(--radius-full);
-		transition: width 0.5s;
+		transition: var(--animation);
+
 		z-index: 3;
+
+		&:hover {
+			background-color: var(--color-secondary);
+		}
 
 		&.active {
 			color: var(--color-alttext);
-		}
-
-		&.active::before {
-			content: "";
-			position: absolute;
-			top: -6px;
-			left: 50%;
-			translate: -50%;
-			width: 6px;
-			height: 6px;
-			background-color: #007bff;
-			border-radius: 50%;
 		}
 	}
 }
