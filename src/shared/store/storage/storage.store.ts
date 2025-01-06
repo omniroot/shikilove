@@ -27,7 +27,7 @@ interface IStorageStore {
 
 export const useStorageStore = create<IStorageStore>()(
 	persist(
-		(set) => ({
+		() => ({
 			storage: { scrollPositions: {}, watchHistory: {} },
 		}),
 		{
