@@ -46,6 +46,9 @@ export const ModernBottomNavigation = () => {
 			const activeItemRightOffset = bottomNavgationWidth - (activeItem.offsetLeft || 0);
 
 			const padding = Number(bottomNavigationRef.current.style.padding);
+			const toRight = 3;
+
+			const toLeft = 6;
 
 			console.log({
 				activeItemLink: activeItem.href,
@@ -77,7 +80,7 @@ export const ModernBottomNavigation = () => {
 			if (direction === "right") {
 				activeIndicatorStartRef.current.style.visibility = "visible";
 
-				activeIndicatorStartRef.current.style.left = previousItemLeftOffset + "px";
+				activeIndicatorStartRef.current.style.left = previousItemLeftOffset - toRight + "px";
 				activeIndicatorStartRef.current.style.width =
 					activeItemLeftOffset - previousItemLeftOffset - padding + 50 + "px";
 
@@ -89,8 +92,8 @@ export const ModernBottomNavigation = () => {
 					activeIndicatorEndRef.current.style.visibility = "visible";
 
 					activeIndicatorEndRef.current.style.width =
-						previousItemRightOffset - activeItemRightOffset + 50 + "px";
-					activeIndicatorEndRef.current.style.right = activeItemRightOffset - 50 + "px";
+						previousItemRightOffset - activeItemRightOffset + 50 + toRight + "px";
+					activeIndicatorEndRef.current.style.right = activeItemRightOffset - 50 - toLeft + "px";
 
 					setTimeout(() => {
 						if (!activeIndicatorStartRef.current || !activeIndicatorEndRef.current) return;
@@ -106,7 +109,7 @@ export const ModernBottomNavigation = () => {
 			} else {
 				activeIndicatorStartRef.current.style.visibility = "visible";
 
-				activeIndicatorStartRef.current.style.right = previousItemRightOffset - 50 + "px";
+				activeIndicatorStartRef.current.style.right = previousItemRightOffset - 50 - toLeft + "px";
 				activeIndicatorStartRef.current.style.width =
 					activeItemRightOffset - previousItemRightOffset - padding + 50 + "px";
 				setTimeout(() => {
