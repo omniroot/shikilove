@@ -20,7 +20,7 @@ export const useSaveScroll = () => {
 		};
 		document.body.addEventListener(
 			"scroll",
-			debounce(() => handleScroll(), 500),
+			debounce(() => handleScroll(), 300),
 		);
 		return () => {
 			document.body.removeEventListener("scroll", handleScroll);
