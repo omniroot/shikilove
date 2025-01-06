@@ -61,7 +61,8 @@
 
 		z-index: 3;
 
-		&:hover {
+		&:not(.active):hover {
+			color: var(--color-primary);
 			background-color: var(--color-secondary);
 		}
 
