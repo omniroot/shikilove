@@ -1,8 +1,8 @@
 import { PlusIcon } from "@/shared/icons/index.tsx";
+import { useNotificationsStore } from "@/shared/store/notifications/notifications.store.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { useEffect } from "react";
 import styles from "./home.page.module.scss";
-import { useNotificationsStore } from "@/shared/store/notifications/notifications.store.tsx";
 
 export const HomePage = () => {
 	const { notifications, addNotification } = useNotificationsStore();

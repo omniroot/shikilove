@@ -148,7 +148,7 @@ export const ModernBottomNavigation = () => {
 				<HomeIcon width={20} height={20} />
 			</Link>
 			<Link
-				to="/discovery"
+				to="/discovery/ongoings"
 				className={styles.bottom_navigation_item}
 				activeProps={{ className: styles.active, id: "active_bn" }}
 			>
