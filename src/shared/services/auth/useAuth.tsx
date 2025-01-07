@@ -35,6 +35,7 @@ export const useAuth = () => {
 			setIsAuthorized(true);
 		}
 	}, []);
+
 	const login = async (code: string) => {
 		const tokens = await fetchTokens(code);
 		if (!tokens) return;
@@ -47,37 +48,3 @@ export const useAuth = () => {
 
 	return { isAuthorized, userId, login };
 };
-
-// export const useAuthorization = ({ code, config }: IUseAuthorization) => {
-// 	const {
-// 		data: auth,
-// 		isFetching: authLoading,
-// 		error: authError,
-// 		refetch: fetchAuth,
-// 	} = useQuery({
-// 		queryKey: ["auth"],
-// 		queryFn: async () => {
-// 			if (code && code?.length > 1) {
-//
-// 				saveTokens(tokens);
-// 				const userId = await userApi.getCurrentUserId();
-// 				if (!userId) {
-// 					console.log("user with ne wtokent not recived");
-// 					return;
-// 				}
-// 				localStorage.setItem("user_id", String(userId));
-// 				console.log("user id", userId);
-// 				window.open(CONSTS.URL, "_self");
-// 			}
-// 		},
-// 		enabled: false,
-// 		...config,
-// 	});
-
-// 	return {
-// 		auth,
-// 		authLoading,
-// 		authError,
-// 		fetchAuth,
-// 	};
-// };
