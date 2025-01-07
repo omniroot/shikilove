@@ -32,6 +32,9 @@ export const HomePage = () => {
 				Add widget
 			</Button>
 
+			<Button loading onClick={() => addNotification({ message: `${Math.random()}` })}>
+				Helloo world
+			</Button>
 			{/* <AnimePlayer title="Chrome cast test" src={link} /> */}
 		</div>
 	);

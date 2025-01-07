@@ -2,6 +2,7 @@ import { createLink } from "@tanstack/react-router";
 import clsx from "clsx";
 import React, { FC } from "react";
 import styles from "./Button.module.scss";
+import { Loader } from "@ui/Loader/Loader.tsx";
 
 interface IButtonProps
 	extends React.DetailedHTMLProps<
@@ -25,6 +26,7 @@ interface IButtonProps
 export const Button: FC<IButtonProps> = ({
 	children,
 	className,
+	disabled = false,
 	loading = false,
 	variant = "primary",
 	circle = false,
@@ -35,13 +37,15 @@ export const Button: FC<IButtonProps> = ({
 	return (
 		<button
 			className={_class}
+			disabled={disabled || loading}
+			data-disabled={disabled || loading}
 			data-loading={loading}
 			data-variant={variant}
 			data-circle={circle}
 			{...rest}
 		>
+			{loading && <Loader width={24} height={24} />}
 			{children}
-			{/* <div>{loading && <Loader width={24} height={24} />}</div> */}
 		</button>
 	);
 };
