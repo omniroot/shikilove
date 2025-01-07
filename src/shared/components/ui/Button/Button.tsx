@@ -1,6 +1,6 @@
-import { Slot } from "@radix-ui/react-slot";
+import { createLink } from "@tanstack/react-router";
 import clsx from "clsx";
-import { FC } from "react";
+import React, { FC } from "react";
 import styles from "./Button.module.scss";
 
 interface IButtonProps
@@ -8,7 +8,6 @@ interface IButtonProps
 		React.ButtonHTMLAttributes<HTMLButtonElement>,
 		HTMLButtonElement
 	> {
-	asChild?: boolean;
 	loading?: boolean;
 	variant?:
 		| "primary"
@@ -22,19 +21,19 @@ interface IButtonProps
 		| "shikimori";
 	circle?: boolean;
 }
+
 export const Button: FC<IButtonProps> = ({
 	children,
 	className,
 	loading = false,
 	variant = "primary",
-	asChild = false,
 	circle = false,
 	...rest
 }) => {
-	const Comp = asChild ? Slot : "button";
 	const _class = clsx(styles.button, className);
+
 	return (
-		<Comp
+		<button
 			className={_class}
 			data-loading={loading}
 			data-variant={variant}
@@ -43,8 +42,41 @@ export const Button: FC<IButtonProps> = ({
 		>
 			{children}
 			{/* <div>{loading && <Loader width={24} height={24} />}</div> */}
-		</Comp>
+		</button>
 	);
 };
 
-<Button>Button</Button>;
+interface BasicLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+	loading?: boolean;
+	variant?:
+		| "primary"
+		| "outline"
+		| "secondary"
+		| "ghost"
+		| "gradient"
+		| "animego"
+		| "hanime"
+		| "nhentai"
+		| "shikimori";
+	circle?: boolean;
+}
+
+const BasicLinkComponent = React.forwardRef<HTMLAnchorElement, BasicLinkProps>(
+	({ children, className, loading = false, variant = "primary", circle = false, ...rest }, ref) => {
+		const _class = clsx(styles.button, className);
+		return (
+			<a
+				ref={ref}
+				className={_class}
+				data-loading={loading}
+				data-variant={variant}
+				data-circle={circle}
+				{...rest}
+			>
+				{children}
+			</a>
+		);
+	},
+);
+BasicLinkComponent.displayName = "BasicLinkComponent";
+export const ButtonLink = createLink(BasicLinkComponent);
