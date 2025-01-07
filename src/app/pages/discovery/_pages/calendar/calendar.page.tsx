@@ -1,10 +1,11 @@
-import { ICalendar } from "@/shared/services/calendar/calendar.interface.ts";
-import { useCalendar } from "@/shared/services/calendar/useCalendar.tsx";
 import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import styles from "./calendar.page.module.scss";
 import { createLazyRoute } from "@tanstack/react-router";
+import { ICalendar } from "@pages/discovery/_api/calendar/calendar.interface.ts";
+import { useGetCalendar } from "@pages/discovery/_api/calendar/calendar.api.ts";
+import { Loader } from "@ui/Loader/Loader.tsx";
 
 const convertCalendar = (calendars: ICalendar[]) => {
 	let days: { [key: string]: ICalendar[] } = {};
@@ -25,10 +26,10 @@ const convertCalendar = (calendars: ICalendar[]) => {
 };
 
 export const CalendarPage = () => {
-	const { calendar } = useCalendar();
+	const { data: calendar } = useGetCalendar();
 	const days = convertCalendar(calendar || []);
 
-	if (!calendar) return;
+	if (!calendar) return <Loader fullscreen />;
 	return (
 		<div className={styles.discovery_calendar_fragment}>
 			{Object.keys(days).map((key) => (
