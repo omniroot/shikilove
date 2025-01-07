@@ -10,47 +10,6 @@ const _shikimoriAuth = axios.create({
 	},
 });
 
-_shikimoriAuth.interceptors.request.use(
-	(config) => {
-		console.log("Request: ", {
-			method: config.method,
-			url: config.url,
-			data: config.data,
-			headers: config.headers,
-		});
-		return config;
-	},
-	(error) => {
-		console.log("Request error: ", error);
-		return Promise.reject(error);
-	},
-);
-
-_shikimoriAuth.interceptors.response.use(
-	(response) => {
-		console.log("Response: ", {
-			status: response.status,
-			statusText: response.statusText,
-			data: response.data,
-		});
-		return response;
-	},
-	(error) => {
-		console.log("Response error: ", error);
-		return Promise.reject(error);
-	},
-);
-
-// REFRESH TOKENS
-// if (refresh_token) {
-// 	console.log("Refresh token exist, refreshing...");
-// 	const response = await authApi.refreshTokens(refresh_token);
-// 	if (response) {
-// 		saveTokens(response);
-// 		window.location.reload();
-// 	}
-// }
-
 export interface IAuthTokens {
 	access_token: string;
 	refresh_token: string;
