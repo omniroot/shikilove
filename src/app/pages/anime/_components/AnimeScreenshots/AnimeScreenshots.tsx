@@ -1,11 +1,10 @@
+import { RightArrowIcon } from "@/shared/icons/index.tsx";
+import { ButtonLink } from "@ui/Button/Button.tsx";
+import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
+import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { FC } from "react";
 import styles from "./AnimeScreenshots.module.scss";
-import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
-import { Button } from "@ui/Button/Button.tsx";
-import { RightArrowIcon } from "@/shared/icons/index.tsx";
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import { Link } from "@tanstack/react-router";
+import { IAnime } from "@pages/anime/_api/anime/anime.interface.ts";
 
 interface IAnimeScreenshotsProps {
 	anime: IAnime;
@@ -18,12 +17,10 @@ export const AnimeScreenshots: FC<IAnimeScreenshotsProps> = ({ anime }) => {
 		<HeadingSection
 			title="Screenshots"
 			actionsSlot={
-				<Button variant="outline" asChild>
-					<Link from="/animes/$animeId" to="screenshots">
-						More
-						<RightArrowIcon />
-					</Link>
-				</Button>
+				<ButtonLink variant="outline" from="/animes/$animeId" to="screenshots">
+					More
+					<RightArrowIcon />
+				</ButtonLink>
 			}
 		>
 			<div className={styles.anime_screenshots_container}>

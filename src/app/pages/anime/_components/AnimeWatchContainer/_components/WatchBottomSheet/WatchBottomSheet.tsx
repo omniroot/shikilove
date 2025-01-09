@@ -1,5 +1,3 @@
-import { useAnilibGetAnimeByName } from "@pages/anime/_api/anilib/useAnilib";
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { useStorage } from "@/shared/store/storage/useStorage.tsx";
 import { AnimePlayer } from "@features/AnimePlayer/AnimePlayer";
 import { DubTeamSelect } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/_components/DubTeamSelect/DubTeamSelect.tsx";
@@ -12,6 +10,8 @@ import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Loader } from "lucide-react";
 import { FC, useRef, useState } from "react";
 import styles from "./WatchBottomSheet.module.scss";
+import { IAnime } from "@pages/anime/_api/anime/anime.interface.ts";
+import { useGetAnilibAnime } from "@pages/anime/_api/anilib/getAnilibAnime/getAnilibAnime.ts";
 
 interface IWatchBottomSheetProps {
 	anime: IAnime;
@@ -22,7 +22,7 @@ export const WatchBottomSheet: FC<IWatchBottomSheetProps> = ({ anime, onOutsideC
 	const { getWatchHistory, addWatchHistory } = useStorage();
 	const previuosWatchState = getWatchHistory(anime.name);
 	console.info({ previuosWatchState });
-	const { anilibAnime } = useAnilibGetAnimeByName(anime.name);
+	const { data: anilibAnime } = useGetAnilibAnime({ name: anime.name });
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [episode, setEpisode] = useState(
 		previuosWatchState.episode ?? { episodeId: -1, episode: -1 },

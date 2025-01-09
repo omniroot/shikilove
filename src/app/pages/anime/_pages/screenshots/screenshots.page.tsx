@@ -1,12 +1,12 @@
-import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
 import { createLazyRoute } from "@tanstack/react-router";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import styles from "./screenshots.page.module.scss";
+import { useGetAnime } from "@pages/anime/_api/anime/getAnimes/getAnimes.ts";
 
 export const ScreenshotsPage = () => {
 	const { animeId } = Route.useParams();
-	const { anime } = useAnime(animeId || "0");
+	const { data: anime } = useGetAnime({ animeId });
 
 	if (!anime) return;
 	return (

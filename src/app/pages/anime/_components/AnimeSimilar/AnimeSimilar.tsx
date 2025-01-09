@@ -1,21 +1,22 @@
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import styles from "./AnimeSimilar.module.scss";
-import { FC } from "react";
-import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
-import { useSimilarAnimes } from "@/shared/services/anime/hooks/useAnimeSimilar.tsx";
-import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
-import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
-import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { RightArrowIcon } from "@/shared/icons/index.tsx";
-import { Button } from "@ui/Button/Button.tsx";
-import { Link } from "@tanstack/react-router";
+import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
+import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
+import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
+import { ButtonLink } from "@ui/Button/Button.tsx";
+import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
+import { FC } from "react";
+import styles from "./AnimeSimilar.module.scss";
+import { IAnime } from "@pages/anime/_api/anime/anime.interface.ts";
+import { useGetAnimeSimilars } from "@pages/anime/_api/anime/getAnimeSimilars/getAnimeSimilars.ts";
 
 interface IAnimeSimilarProps {
 	anime: IAnime;
 }
 
 export const AnimeSimilar: FC<IAnimeSimilarProps> = ({ anime }) => {
-	const { similarAnimes } = useSimilarAnimes(anime.id);
+	const { data: similarAnimes } = useGetAnimeSimilars({ animeId: anime.id });
+	console.log({ similarAnimes });
+
 	let count = 0;
 
 	if (!similarAnimes?.length || !anime) return;
@@ -23,11 +24,9 @@ export const AnimeSimilar: FC<IAnimeSimilarProps> = ({ anime }) => {
 		<HeadingSection
 			title="Similar"
 			actionsSlot={
-				<Button variant="outline" asChild>
-					<Link from="/animes/$animeId" to="similars">
-						More <RightArrowIcon />
-					</Link>
-				</Button>
+				<ButtonLink variant="outline" from="/animes/$animeId" to="similars">
+					More <RightArrowIcon />
+				</ButtonLink>
 			}
 		>
 			<AnimeList scroll="horizontal" className={styles.similar_list}>

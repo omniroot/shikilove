@@ -35,6 +35,7 @@ export const ImageView: FC<IImageViewProps> = ({
 	}, [src]);
 
 	useEffect(() => {
+		if (loading === "lazy") return;
 		const timer = setTimeout(() => {
 			if (!imageRef.current?.complete) {
 				console.log("Attempt to refresh image");

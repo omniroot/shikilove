@@ -1,5 +1,4 @@
 import { BookmarkEditIcon } from "@/shared/icons/index.tsx";
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { UserRateEditBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/UserRateEditBottomSheet/UserRateEditBottomSheet.tsx";
 // import { WatchBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/WatchBottomSheet.tsx";
 import { Button } from "@ui/Button/Button.tsx";
@@ -10,6 +9,7 @@ import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
 import { HentaiBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/HentaiBottomSheet/HentaiBottomSheet.tsx";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
+import { IAnime } from "@pages/anime/_api/anime/anime.interface.ts";
 interface IWatchButtonProps {
 	anime: IAnime;
 }

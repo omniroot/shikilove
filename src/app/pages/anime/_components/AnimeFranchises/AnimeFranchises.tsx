@@ -1,33 +1,33 @@
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
-import { useAnimeFranchises } from "@/shared/services/anime/hooks/useAnimeFranchises.tsx";
 import { Link } from "@tanstack/react-router";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { FC } from "react";
 import styles from "./AnimeFranchises.module.scss";
+import { IAnime } from "@pages/anime/_api/anime/anime.interface.ts";
+import { useGetAnimeFranchise } from "@pages/anime/_api/anime/getAnimeFranchise/getAnimeFranchise.ts";
 interface IAnimeFranchisesProps {
 	anime: IAnime;
 }
 export const AnimeFranchises: FC<IAnimeFranchisesProps> = ({ anime }) => {
-	const { data: franchises } = useAnimeFranchises(anime.id);
+	const { data: franchise } = useGetAnimeFranchise({ animeId: anime.id });
 
 	return (
 		<HeadingSection title="Franchises">
-			{franchises?.map((franchise, index) => (
+			{franchise?.map((item, index) => (
 				<Link
-					key={franchise.id}
+					key={item.id}
 					className={styles.franchise}
 					to="/animes/$animeId"
-					params={{ animeId: String(franchise.id) }}
-					data-iscurrent={franchise.id === Number(anime.id) ? true : false}
+					params={{ animeId: String(item.id) }}
+					data-iscurrent={item.id === Number(anime.id) ? true : false}
 				>
-					<span className={styles.index}>{Math.abs(index - franchises.length)}</span>
-					<ImageView src={franchise.image_url} alt={franchise.name} className={styles.poster} />
+					<span className={styles.index}>{Math.abs(index - franchise.length)}</span>
+					<ImageView src={item.image_url} alt={item.name} className={styles.poster} />
 					<div className={styles.info}>
-						<span className={styles.name}>{franchise.name}</span>
-						<span className={styles.kind}>{franchise.kind}</span>
+						<span className={styles.name}>{item.name}</span>
+						<span className={styles.kind}>{item.kind}</span>
 					</div>
-					<span className={styles.year}>{franchise.year}</span>
+					<span className={styles.year}>{item.year}</span>
 				</Link>
 			))}
 		</HeadingSection>

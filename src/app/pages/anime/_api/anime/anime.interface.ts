@@ -90,45 +90,8 @@ export interface IAnime {
 	};
 }
 
-export interface ISimilarAnime {
-	_type: IType;
-	id: string;
-	name: string;
-	russian: string;
-	image: {
-		original: string;
-		preview: string;
-		x96: string;
-		x48: string;
-	};
-	url: string;
-	kind: string;
-	score: string;
-	status: string;
-	episodes: number;
-	episodes_aired: number;
-	aired_on: string;
-	released_on: string;
-}
-
 export interface IAnimeResponse {
 	animes: IAnime[];
-}
-
-export interface IAnimeFranchise {
-	id: number;
-	date: number;
-	name: string;
-	image_url: string;
-	url: string;
-	year: number;
-	kind: string;
-	weight: number;
-}
-
-export interface IAnimeFranchisesResponse {
-	links: unknown[];
-	nodes: IAnimeFranchise[];
 }
 
 export interface IAnimeGet {

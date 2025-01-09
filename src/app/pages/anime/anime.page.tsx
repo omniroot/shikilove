@@ -1,5 +1,4 @@
 import { useChangeTitle } from "@/shared/hooks/useChangeTitle.tsx";
-import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
 import {
 	AnimeFranchises,
 	AnimeInfo,
@@ -12,10 +11,11 @@ import { createLazyRoute } from "@tanstack/react-router";
 import { Loader } from "@ui/Loader/Loader.tsx";
 import { useEffect } from "react";
 import styles from "./anime.page.module.scss";
+import { useGetAnime } from "@pages/anime/_api/anime/getAnimes/getAnimes.ts";
 
 export const AnimePage = () => {
 	const { animeId } = Route.useParams();
-	const { anime } = useAnime(animeId || "20");
+	const { data: anime } = useGetAnime({ animeId });
 	const { changeTitle } = useChangeTitle();
 
 	useEffect(() => {

@@ -1,15 +1,15 @@
-import { useAnime } from "@/shared/services/anime/hooks/useAnime.tsx";
-import { useSimilarAnimes } from "@/shared/services/anime/hooks/useAnimeSimilar.tsx";
 import { getPosterImage } from "@/shared/utils/getPosterImage.ts";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { createLazyRoute } from "@tanstack/react-router";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import styles from "./similars.page.module.scss";
+import { useGetAnime } from "@pages/anime/_api/anime/getAnimes/getAnimes.ts";
+import { useGetAnimeSimilars } from "@pages/anime/_api/anime/getAnimeSimilars/getAnimeSimilars.ts";
 
 export const SimilarsPage = () => {
 	const { animeId } = Route.useParams();
-	const { anime } = useAnime(animeId || "0");
-	const { similarAnimes } = useSimilarAnimes(animeId || "0");
+	const { data: anime } = useGetAnime({ animeId });
+	const { data: similarAnimes } = useGetAnimeSimilars({ animeId });
 
 	if (!anime || !similarAnimes) return;
 	return (
