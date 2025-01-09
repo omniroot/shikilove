@@ -1,6 +1,6 @@
 import { CONSTS } from "@/shared/consts/consts.ts";
 import { authApi } from "@/shared/services/auth/auth.api.ts";
-import axios, { AxiosRequestHeaders, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse } from "axios";
 
 export const _graphql = axios.create({
 	baseURL: "https://shikimori.one/api/graphql",
@@ -66,20 +66,24 @@ interface IVariables {
 	[key: string]: string | number | undefined;
 }
 
-export const graphql = async <T>(query: string, variables?: IVariables): Promise<T> => {
-	try {
-		const response = await _graphql.post<{ data: T }>("", {
+interface IGraphql {
+	query: string;
+	variables?: IVariables;
+	config?: AxiosRequestConfig;
+}
+
+export const graphql = async <T>({
+	query,
+	variables,
+	config,
+}: IGraphql): Promise<AxiosResponse<{ data: T }>> => {
+	const response = await _graphql.post<{ data: T }>(
+		"",
+		{
 			query: query,
 			variables: variables,
-		});
-		return response.data.data;
-	} catch (error) {
-		if (axios.isAxiosError(error)) {
-			console.log("Error with graphql ==> ", error);
-			throw error;
-		} else {
-			throw error;
-			throw "error";
-		}
-	}
+		},
+		config,
+	);
+	return response;
 };
