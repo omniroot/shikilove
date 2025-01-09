@@ -1,7 +1,7 @@
 import { BookmarkEditIcon } from "@/shared/icons/index.tsx";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { UserRateEditBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/UserRateEditBottomSheet/UserRateEditBottomSheet.tsx";
-import { WatchBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/WatchBottomSheet.tsx";
+// import { WatchBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/WatchBottomSheet/WatchBottomSheet.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { Divider } from "@ui/Divider/Divider.tsx";
 import clsx from "clsx";
@@ -9,6 +9,7 @@ import { AnimatePresence } from "motion/react";
 import { FC, useState } from "react";
 import styles from "./AnimeWatchContainer.module.scss";
 import { HentaiBottomSheet } from "@pages/anime/_components/AnimeWatchContainer/_components/HentaiBottomSheet/HentaiBottomSheet.tsx";
+import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 interface IWatchButtonProps {
 	anime: IAnime;
 }
@@ -67,7 +68,10 @@ export const AnimeWatchContainer: FC<IWatchButtonProps> = ({ anime }) => {
 						{isHentai ? (
 							<HentaiBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
 						) : (
-							<WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
+							<BottomSheet onOutsideClick={onWatchButtonClick}>
+								<span>Animewatch player in refactoring...</span>
+							</BottomSheet>
+							// <WatchBottomSheet anime={anime} onOutsideClick={onWatchButtonClick} />
 						)}
 					</>
 				)}

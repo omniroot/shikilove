@@ -1,4 +1,4 @@
-import { useAnilibGetVideo } from "@/shared/services/anilib/useAnilib.ts";
+import { useAnilibGetVideo } from "@pages/anime/_api/anilib/useAnilib";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 import { FC } from "react";
 

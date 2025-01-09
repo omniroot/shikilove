@@ -1,4 +1,4 @@
-import { useAnilibGetAnimeByName } from "@/shared/services/anilib/useAnilib.ts";
+import { useAnilibGetAnimeByName } from "@pages/anime/_api/anilib/useAnilib";
 import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { useStorage } from "@/shared/store/storage/useStorage.tsx";
 import { AnimePlayer } from "@features/AnimePlayer/AnimePlayer";

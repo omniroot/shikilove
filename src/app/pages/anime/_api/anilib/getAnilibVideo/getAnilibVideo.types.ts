@@ -1,60 +1,3 @@
-export interface IAnimelibSearch {
-	id: number;
-	name: string;
-	rus_name: string;
-	eng_name: string;
-	slug: string;
-	slug_url: string;
-	cover: {
-		filename: string;
-		thumbnail: string;
-		default: string;
-		md: string;
-	};
-	ageRestriction: {
-		id: number;
-		label: string;
-	};
-	site: number;
-	type: {
-		id: number;
-		label: string;
-	};
-	releaseDate: string;
-	rating: {
-		average: string;
-		averageFormated: string;
-		votes: number;
-		votesFormated: string;
-		user: number;
-	};
-	model: string;
-	status: {
-		id: number;
-		label: string;
-	};
-	releaseDateString: string;
-	shiki_rate: unknown | null;
-}
-
-export interface IAnilibEpisode {
-	id: number;
-	model: string;
-	name: string;
-	number: string;
-	number_secondary: string;
-	season: string;
-	status: {
-		id: string;
-		label: string;
-		abbr: unknown | null;
-	};
-	anime_id: number;
-	created_at: string;
-	item_number: number;
-	type: string;
-}
-
 export interface IAnilibVideo {
 	id: number;
 	model: string;
@@ -69,7 +12,7 @@ export interface IAnilibVideo {
 	};
 	anime_id: number;
 	created_at: string;
-	players: IAnilibAnimeLibPlayer[];
+	players: IAnilibKodikPlayer[] | IAnilibAnimeLibPlayer[];
 	type: string;
 }
 

@@ -1,5 +1,5 @@
-import { IAnilibEpisode } from "@/shared/services/anilib/anilib.interface.ts";
-import { useAnilibGetEpisodes } from "@/shared/services/anilib/useAnilib.ts";
+import { IAnilibEpisode } from "@pages/anime/_api/anilib/anilib.interface";
+import { useAnilibGetEpisodes } from "@pages/anime/_api/anilib/useAnilib";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
 import { Loader } from "lucide-react";
 import { FC, useEffect, useState } from "react";
