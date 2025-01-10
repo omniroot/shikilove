@@ -1,0 +1,30 @@
+.list_view {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	// border: 2px solid red;
+
+	& > .list_view_item {
+		width: 180px;
+		height: auto;
+		color: var(--color-alttext);
+		padding: var(--p);
+		background-color: var(--color-primary);
+		border-radius: 12px;
+	}
+
+	& > .list_view_item:not(:last-child, :first-child) {
+		border-radius: 6px;
+	}
+
+	& > .list_view_item:first-child {
+		// background-color: red;
+		border-bottom-right-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+
+	& > .list_view_item:last-child {
+		border-top-right-radius: 6px;
+		border-top-left-radius: 6px;
+	}
+}
