@@ -4149,6 +4149,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-query-kit@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "react-query-kit@npm:3.3.1"
+  peerDependenciesMeta:
+    "@tanstack/react-query":
+      optional: true
+  checksum: 10c0/bfd10b0f6020955de0ef881b6650a611542cb046dbbac1a424fdb147244d472e389f7b5c355150e66e7e48f1f3bdc3708ab473dc5c9be8c79ee839e12fe0f106
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.14.2":
   version: 0.14.2
   resolution: "react-refresh@npm:0.14.2"
@@ -4495,6 +4505,7 @@ __metadata:
     prettier: "npm:^3.3.3"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
+    react-query-kit: "npm:^3.3.1"
     rollup-plugin-visualizer: "npm:^5.12.0"
     sass: "npm:^1.79.4"
     swr: "npm:^2.2.5"
