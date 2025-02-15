@@ -1,22 +1,11 @@
-import { IUserRate, IUserRateAdd, userRateApi } from "@pages/user/_api/userRate/index.ts";
-import { useMutation, UseMutationOptions } from "@tanstack/react-query";
-
-interface IUseAddUserRateProps {
-	userId?: number;
-	config?: UseMutationOptions<IUserRate, unknown, IUserRateAdd, unknown>;
-}
-
-const currentUserId = Number(localStorage.getItem("user_id")) || 0;
-export const useAddUserRate = ({ userId = currentUserId, config }: IUseAddUserRateProps) => {
-	return useMutation<IUserRate, unknown, IUserRateAdd>({
-		mutationKey: ["addUserRate", userId],
-		mutationFn: async (variables) => {
-			const response = await userRateApi.addUserRate(variables);
-			return response.data;
-		},
-		...config,
-	});
-};
+// const { mutate: addUserRate } = useMutation<IUserRate, unknown, IUserRateAdd>({
+// 	mutationKey: ["addUserRate", userRateId],
+// 	mutationFn: (variables) => userRateApi.addUserRate(variables),
+// 	onSuccess: () => {
+// 		queryClient.invalidateQueries({ queryKey: ["getAnime"] });
+// 		queryClient.invalidateQueries({ queryKey: ["userRates"] });
+// 	},
+// });
 
 // const { mutate: updateUserRate } = useMutation<IUserRate, unknown, IUserRateUpdate>({
 // 	mutationKey: ["updateUserRate", userRateId],
@@ -56,3 +45,4 @@ export const useAddUserRate = ({ userId = currentUserId, config }: IUseAddUserRa
 // 		queryClient.invalidateQueries({ queryKey: ["animeById", animeId] });
 // 	},
 // });
+// };

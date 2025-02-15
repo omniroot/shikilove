@@ -7,8 +7,7 @@ import {
 } from "@/shared/icons/index.tsx";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard.tsx";
 import { AnimeList } from "@features/AnimeList/AnimeList.tsx";
-import { useGetUserRates } from "@pages/user/_api/userRate/hooks/useGetUserRates.tsx";
-import { IUserRateStatus } from "@pages/user/_api/userRate/userRate.interface.ts";
+import { IUserRateStatus } from "@pages/user/_api/userRate/userRate.types";
 import { Button } from "@ui/Button/Button.tsx";
 import { ButtonGroup, IButtonGroupElement } from "@ui/ButtonGroup/ButtonGroup.tsx";
 import { getButtonGroupElementById } from "@ui/ButtonGroup/ButtonGroup.utils.tsx";
@@ -17,6 +16,7 @@ import { Loader } from "@ui/Loader/Loader.tsx";
 import { FC, ReactNode, useState } from "react";
 import styles from "./ProfileUserRates.module.scss";
 import { getRouteApi } from "@tanstack/react-router";
+import { useGetUserRates } from "@pages/user/_api/userRate/getUserRates/getUserRates.api.ts";
 
 interface IProfileUserRatesProps {
 	children?: ReactNode;
@@ -39,7 +39,7 @@ export const ProfileUserRates: FC<IProfileUserRatesProps> = () => {
 		fetchNextPage: fetchNextUserRatesPage,
 	} = useGetUserRates({
 		userId: Number(userId),
-		userRateStatus: userRateFilter.id as IUserRateStatus,
+		status: userRateFilter.id as IUserRateStatus,
 	});
 
 	const onAnimeFilterClick = (nextActiveFilter: IButtonGroupElement) => {

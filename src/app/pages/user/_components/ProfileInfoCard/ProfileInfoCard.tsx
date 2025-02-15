@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import { FC } from "react";
 import styles from "./ProfileInfoCard.module.scss";
 import { Link } from "@tanstack/react-router";
-import { IUser } from "@pages/user/_api/user/user.interface.ts";
+import { IUser } from "@/features/users/api/getUser/getUser.types";
 
 interface IProfileInfoCardProps {
 	className?: string;
@@ -42,12 +42,12 @@ export const ProfileInfoCard: FC<IProfileInfoCardProps> = ({ className, currentU
 				</div>
 			</div>
 			<div className={styles.user_actions}>
-				<Button asChild className={styles.message_button}>
+				<Button className={styles.message_button}>
 					<Link to="/">
 						<MessageIcon />
 					</Link>
 				</Button>
-				<Button asChild className={styles.profile_edit_button}>
+				<Button className={styles.profile_edit_button}>
 					<Link to="/">
 						<ProfileEditIcon />
 					</Link>

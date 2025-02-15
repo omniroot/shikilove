@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
 // interface IAchievementsButtonProps {}
 export const AchievementsButton = () => {
 	return (
-		<Button className={styles.achievements_button} variant="outline" asChild>
+		<Button className={styles.achievements_button} variant="outline">
 			<Link to="/">
 				<AchievementsIcon />
 				achievements

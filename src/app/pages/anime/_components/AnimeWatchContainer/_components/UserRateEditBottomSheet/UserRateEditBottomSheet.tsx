@@ -1,12 +1,12 @@
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Button } from "@ui/Button/Button.tsx";
 import { FC, useState } from "react";
 import styles from "./UserRateEditBottomSheet.module.scss";
 import { Select, SelectContent, SelectItem } from "@ui/Select/Select.tsx";
-import { useAddUserRate } from "@pages/user/_api/userRate/hooks/useAddUserRate.tsx";
-import { useUpdateUserRate } from "@pages/user/_api/userRate/hooks/useUpdateUserRate.tsx";
-import { IUserRateStatus } from "@pages/user/_api/userRate/userRate.interface.ts";
+import { IUserRateStatus } from "@pages/user/_api/userRate/userRate.types";
+import { IAnime } from "@pages/anime/_api/anime/anime.interface.ts";
+import { useAddUserRate } from "@pages/user/_api/userRate/addUserRate/addUserRate.api.ts";
+import { useUpdateUserRate } from "@pages/user/_api/userRate/updateUserRate/updateUserRate.api.ts";
 
 const getEpisodesSelectElements = (maxEpisodes: number) => {
 	const elements = Array.from({ length: maxEpisodes }, (_, i) => ({
@@ -37,11 +37,6 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	anime,
 	onOutsideClick,
 }) => {
-	const { mutate: addUserRate } = useAddUserRate({});
-	const { mutate: updateUserRate } = useUpdateUserRate({
-		userRateId: anime.userRate?.id || 0,
-	});
-
 	const episodesSelectElements = getEpisodesSelectElements(
 		anime.episodes || anime.episodesAired || 1,
 	);
@@ -49,6 +44,16 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	const [statusElement, setStatusElement] = useState<IUserRateStatus>(
 		String(anime.userRate?.status || "watching") as IUserRateStatus,
 	);
+	const { mutate: addUserRate } = useAddUserRate({
+		animeId: Number(anime.id),
+		episodes: String(episodesElement),
+		status: statusElement,
+	});
+	const { mutate: updateUserRate } = useUpdateUserRate({
+		userRateId: anime.userRate?.id || 0,
+		episodes: Number(episodesElement),
+		status: statusElement,
+	});
 	const isExistInUserRate = anime.userRate ? true : false;
 
 	const onEpisodesSelectChange = (newValue: string) => {
@@ -62,21 +67,10 @@ export const UserRateEditBottomSheet: FC<IUserRateEditBottomSheetProps> = ({
 	const onSaveButtonClick = () => {
 		// add new user rate
 		if (!isExistInUserRate) {
-			addUserRate({
-				animeId: String(anime.id || 0),
-				// TODO FIx this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				// rewrite userRate api and hook
-				userId: Number(localStorage.getItem("user_id")),
-				episodes: episodesElement,
-				status: statusElement,
-			});
+			addUserRate();
 			return;
 		}
-		updateUserRate({
-			userRateId: anime.userRate.id || 0,
-			status: statusElement,
-			episodes: Number(episodesElement),
-		});
+		updateUserRate();
 	};
 
 	if (!anime) return;

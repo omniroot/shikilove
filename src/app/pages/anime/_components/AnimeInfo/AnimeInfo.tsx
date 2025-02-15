@@ -1,4 +1,3 @@
-import { IAnime } from "@/shared/services/anime/anime.interface.ts";
 import { parseShikimoriText } from "@/shared/utils/parseShikimoriText.ts";
 import { BottomSheet } from "@ui/BottomSheet/BottomSheet.tsx";
 import { Divider } from "@ui/Divider/Divider.tsx";
@@ -6,6 +5,7 @@ import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import { AnimatePresence } from "motion/react";
 import { FC, useState } from "react";
 import styles from "./AnimeInfo.module.scss";
+import { IAnime } from "@pages/anime/_api/anime/anime.interface.ts";
 
 interface IAnimeInfoProps {
 	anime: IAnime;

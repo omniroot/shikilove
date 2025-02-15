@@ -3,7 +3,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import styles from "./NavBar.module.scss";
 import clsx from "clsx";
 import { ImageView } from "@ui/ImageView/ImageView.tsx";
-import { useUser } from "@pages/user/_api/user";
+import { useGetUser } from "@/features/users/api/getUser/getUser.api";
 
 interface IPage {
 	name: string;
@@ -16,7 +16,7 @@ interface INavBarProps {
 
 export const NavBar: FC<INavBarProps> = ({ pages }) => {
 	const currentPage = useLocation().pathname;
-	const { data: currentUser } = useUser();
+	const { data: currentUser } = useGetUser();
 
 	const isCurrentPage = (page: IPage) => {
 		// console.log(currentLink, page.path);

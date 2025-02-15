@@ -1,7 +1,6 @@
 import { authApi } from "@/shared/services/auth/auth.api.ts";
 import { useAuthStore } from "@/shared/store/auth.store.tsx";
 import { saveTokens } from "@/shared/utils/saveTokens.ts";
-import { userApi } from "@pages/user/_api/user/user.api.ts";
 import { useNavigate } from "@tanstack/react-router";
 import { useLayoutEffect } from "react";
 
@@ -27,7 +26,7 @@ export const useAuth = () => {
 		saveTokens(tokens);
 
 		// fetch current user id
-		const userId = await userApi.getCurrentUserId();
+		const userId = await authApi.getCurrentUserId();
 		if (!userId) {
 			console.log("user with new token not received");
 			return;

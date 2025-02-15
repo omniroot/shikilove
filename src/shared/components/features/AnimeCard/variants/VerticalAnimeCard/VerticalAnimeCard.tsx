@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { PlusIcon, RightArrowIcon, TrashIcon, WatchingIcon } from "@/shared/icons/index.tsx";
 import { motion } from "motion/react";
 import { title } from "process";
-import { IUserRate } from "@pages/user/_api/userRate/userRate.interface.ts";
+import { IUserRate } from "@pages/user/_api/userRate/userRate.types";
 
 interface IVerticalAnimeCardProps {
 	userRateAnime: IUserRate;

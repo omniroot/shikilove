@@ -4,7 +4,7 @@ import { ImageView } from "@ui/ImageView/ImageView.tsx";
 import dayjs from "dayjs";
 import { HeadingSection } from "@ui/HeadingSection/HeadingSection.tsx";
 import { Link } from "@tanstack/react-router";
-import { IFriend } from "@pages/user/_api/user";
+import { IFriend } from "@/features/users/api/getUserFriends/getUserFriends.types";
 
 interface IFriendsListProps {
 	friends: IFriend[];

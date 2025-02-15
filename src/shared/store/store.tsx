@@ -12,13 +12,3 @@ export const useGlobalStore = create<IGlobalStore>((set) => ({
 	rightSidebarContent: <div>Content</div>,
 	setRightSidebarContent: (content) => set(() => ({ rightSidebarContent: content })),
 }));
-
-interface IFloatingSearchBarStore {
-	isFloatingSearchBarOpened: boolean;
-	toggleFloatingSearchBar: () => void;
-}
-export const useFloatingSearchBarStore = create<IFloatingSearchBarStore>((set) => ({
-	isFloatingSearchBarOpened: false,
-	toggleFloatingSearchBar: () =>
-		set((state) => ({ isFloatingSearchBarOpened: !state.isFloatingSearchBarOpened })),
-}));

@@ -16,6 +16,20 @@ export interface IAuthTokens {
 }
 
 export const authApi = {
+	getCurrentUserId: async () => {
+		try {
+			const response = await axios.get<{ id: string }>("https://shikimori.one/api/users/whoami", {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+				},
+			});
+			console.log("GetCurrentUserID:  ", response);
+			return response.data.id;
+		} catch (error) {
+			console.log(error);
+			throw error;
+		}
+	},
 	fetchTokens: async (authorizationCode: string) => {
 		try {
 			const response = await _shikimoriAuth.post<IAuthTokens>("oauth/token", {

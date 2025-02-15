@@ -3,6 +3,7 @@ import { useNotificationsStore } from "@/shared/store/notifications/notification
 import { Button } from "@ui/Button/Button.tsx";
 import { useEffect } from "react";
 import styles from "./home.page.module.scss";
+import { ListView, ListViewItem } from "@ui/ListView/ListView.tsx";
 
 export const HomePage = () => {
 	const { notifications, addNotification } = useNotificationsStore();
@@ -35,6 +36,12 @@ export const HomePage = () => {
 			<Button loading onClick={() => addNotification({ message: `${Math.random()}` })}>
 				Helloo world
 			</Button>
+			<ListView>
+				<ListViewItem>1</ListViewItem>
+				<ListViewItem>2</ListViewItem>
+				<ListViewItem>3</ListViewItem>
+				<ListViewItem>4</ListViewItem>
+			</ListView>
 			{/* <AnimePlayer title="Chrome cast test" src={link} /> */}
 		</div>
 	);
